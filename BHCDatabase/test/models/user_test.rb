@@ -64,5 +64,8 @@ test "name should not be too long" do
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 
 end
