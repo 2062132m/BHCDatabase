@@ -14,7 +14,8 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 100px;
+  background-color: #eeeeee;
 }
 
 section {
@@ -26,6 +27,7 @@ textarea {
 }
 
 .center {
+  background-color: white;
   text-align: center;
   h1 {
     margin-bottom: 10px;
@@ -62,18 +64,30 @@ p {
 
 /* header */
 
+header {
+  .navbar-nav {
+      a {
+        line-height: 32px;
+    }
+  }
+}
+
+.navbar-default {
+  background-color: white;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
+  #logotext {
+    font-size: 1.7em;
+    color: #008ED4;
+    letter-spacing: -1px;
+    font-weight: bold;
+    &:hover {
+      color: #008ED4;
+      text-decoration: none;
+    }
   }
 }
 
