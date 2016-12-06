@@ -1,5 +1,12 @@
 class SessionsController < ApplicationController
+
+  skip_before_action :require_login
+
   def new
+    if logged_in?
+      redirect_to root_url if logged_in?
+      flash[:info] = "You are already logged in."
+    end
   end
   
   def create
@@ -16,6 +23,6 @@ class SessionsController < ApplicationController
   
   def destroy
     log_out if logged_in?
-    redirect_to root_url
+    redirect_to login_path
   end
 end
