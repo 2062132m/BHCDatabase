@@ -7,7 +7,11 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-<%= render 'layouts/header' %>
+<% unless current_page?(login_path) %>
+  <%= render 'layouts/header' %>
+<% else %>
+  <%= render 'layouts/login_header' %>
+<% end %>
 <div class="container">
   <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
