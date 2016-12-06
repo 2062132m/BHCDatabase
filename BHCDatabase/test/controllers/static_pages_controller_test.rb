@@ -4,6 +4,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   
   def setup
     @base_title = "Building Healthy Communities"
+    @user = users(:david)
+    log_in_as(@user, remember_me: '1')
   end
   
   test "should get root" do
