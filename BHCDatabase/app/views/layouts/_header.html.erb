@@ -2,22 +2,33 @@
   <div class="container">
     <div id="logo">
       <%= link_to image_tag("BHC Logo.jpg", alt: "BHC Logo"), root_path %>
-      <%= link_to image_tag("BHC Lettering.png", alt: "Building Healthy Communities in Dumfries and Galloway"),
+      <%= link_to image_tag("BHC Lettering.png", alt: "Building Healthy Communities in Dumfries and Galloway", id: "logotext"),
                   root_path %>
     </div>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="true">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Search", '#' %></li>
-            <li><%= link_to "Initiatives", '#' %></li>
-            <li><%= link_to "Volunteers", '#' %></li>
-            <li><%= link_to "Members", '#' %></li>
-            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-        <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Search", '#' %></li>
+              <li><%= link_to "Initiatives", '#' %></li>
+              <li><%= link_to "Volunteers", '#' %></li>
+              <li><%= link_to "Members", '#' %></li>
+              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+          <% else %>
+              <li><%= link_to "Log in", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
   </div>
 </header>
