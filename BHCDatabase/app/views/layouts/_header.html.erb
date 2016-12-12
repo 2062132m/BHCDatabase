@@ -1,19 +1,21 @@
 <header class="navbar navbar-fixed-top navbar-default">
   <div class="container">
-    <div id="logo">
-      <%= link_to image_tag("BHC Logo.jpg", alt: "BHC Logo"), root_path %>
-      <%= link_to image_tag("BHC Lettering.png", alt: "Building Healthy Communities in Dumfries and Galloway", id: "logotext"),
-                  root_path %>
+    <div class="navbar-header">
+      <div id="logo">
+        <%= link_to image_tag("BHC Logo.jpg", alt: "BHC Logo"), root_path %>
+        <%= link_to image_tag("BHC Lettering.png", alt: "Building Healthy Communities in Dumfries and Galloway", id: "logotext"),
+                    root_path %>
+      </div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="true">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
     <nav>
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
