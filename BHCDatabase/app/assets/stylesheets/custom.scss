@@ -22,6 +22,15 @@ $gray-medium-light: #eaeaea;
       font-size: 30px;
       text-align: center;
     }
+    .footer {
+      small, ul, li {
+        display: block;
+        float: none;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+    }
 }
 
 /* universal */
