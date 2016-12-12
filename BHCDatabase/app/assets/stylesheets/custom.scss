@@ -17,6 +17,13 @@ $gray-medium-light: #eaeaea;
   }
 }
 
+@media (max-width:767px){
+    .navbar-nav li {
+      font-size: 30px;
+      text-align: center;
+    }
+}
+
 /* universal */
 
 body {
