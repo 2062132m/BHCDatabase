@@ -37,7 +37,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 100px;
-  background-color: #eeeeee;
+  background-color: #00B0D8;
 }
 
 section {
@@ -53,6 +53,24 @@ textarea {
   text-align: center;
   h1 {
     margin-bottom: 10px;
+  }
+}
+
+/* home */
+
+#areainfo {
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid #61BB46;
+  h3 {
+    color: #118CC8;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    border: 1px solid black;
+    //background-color: white;
   }
 }
 
@@ -78,6 +96,13 @@ h2 {
   color: $gray-light;
 }
 
+h3 {
+  font-size: 2em;
+  letter-spacing: -1.5px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -96,6 +121,7 @@ header {
 
 .navbar-default {
   background-color: white;
+  border-bottom: 2px solid #61BB46;
 }
 
 #logo {
@@ -123,7 +149,7 @@ header {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
+  border-top: 1px solid #61BB46;
   color: $gray-light;
   a {
     color: $gray;
