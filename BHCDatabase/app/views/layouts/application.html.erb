@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title><%= full_title(yield(:title)) %></title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= render 'layouts/rails_default' %>
   <%= render 'layouts/shim' %>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
 <% unless current_page?(login_path) %>
   <%= render 'layouts/header' %>
-<% else %>
-  <%= render 'layouts/login_header' %>
 <% end %>
 <div class="container">
   <% flash.each do |message_type, message| %>

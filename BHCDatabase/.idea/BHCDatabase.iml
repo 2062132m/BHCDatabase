@@ -251,6 +251,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rake (v11.3.0, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.9.8, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.9.7, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="respond-js-rails (v1.4.2.2, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.8.1, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.22, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.6, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
