@@ -87,6 +87,8 @@ textarea {
 
 #home-strap {
   margin-top: 50px;
+  width: 98.8%;
+  border-radius: 20px;
 }
 
 /* typography */
@@ -164,9 +166,9 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #61BB46;
-  color: $gray-light;
+  color: white;
   a {
-    color: $gray;
+    color: white;
     &:hover {
       color: $gray-darker;
     }
