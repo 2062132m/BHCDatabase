@@ -66,12 +66,10 @@ textarea {
   h3 {
     color: #118CC8;
   }
-  ul {
-    list-style: none;
-    padding: 0;
-    border: 1px solid black;
-    //background-color: white;
-  }
+}
+
+#home-strap {
+  margin-top: 50px;
 }
 
 /* typography */
@@ -130,7 +128,7 @@ header {
   #logotext {
     font-size: 1.7em;
     color: #008ED4;
-    letter-spacing: -1px;
+    letter-spacing: -1px;       // Don't think this does anything anymore...
     font-weight: bold;
     &:hover {
       color: #008ED4;
