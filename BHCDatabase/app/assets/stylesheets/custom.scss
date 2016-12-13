@@ -15,6 +15,9 @@ $gray-medium-light: #eaeaea;
   #logotext {
     display: none;
   }
+  #strapline {
+    display: none;
+  }
 }
 
 @media (max-width:767px){
@@ -53,6 +56,20 @@ textarea {
   text-align: center;
   h1 {
     margin-bottom: 10px;
+  }
+}
+
+/* login */
+
+#login {
+  margin-top: -60px;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid #61BB46;
+  padding: 10px;
+  padding-bottom: 30px;
+  h1 {
+    color: #118CC8
   }
 }
 
@@ -138,8 +155,7 @@ header {
 }
 
 #strapline {
-  margin-top: -70px;
-  border-radius: 25px;
+  width: 98.5%;
 }
 
 /* footer */

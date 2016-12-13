@@ -10,8 +10,6 @@
 <body>
 <% unless current_page?(login_path) %>
   <%= render 'layouts/header' %>
-<% else %>
-  <%= render 'layouts/login_header' %>
 <% end %>
 <div class="container">
   <% flash.each do |message_type, message| %>
