@@ -3,5 +3,5 @@ before_script:
 
 build_image:
   script:
-    - docker build -t my-docker-image ./BHCDatabse/Dockerfile
+    - docker build -t my-docker-image ./BHCDatabase/
     - docker run my-docker-image /usr/src/app/bin/rails t
