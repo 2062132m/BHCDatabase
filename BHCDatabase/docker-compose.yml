@@ -1,26 +1,13 @@
 version: '2'
-
 services:
-  postgres:
-    image: 'postgres:9.5'
-    environment:
-      POSTGRES_USER: 'bhc'
-      POSTGRES_PASSWORD: 'bhc1234'
-    ports:
-      - '5432:5432'
-    volumes:
-      - 'postgres:/var/lib/postgresql/data'
-
-  website:
-    depends_on:
-      - 'postgres'
+  db:
+    image: postgres
+  web:
     build: .
-    ports:
-      - '3000:3000'
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - '.:/bhc'
-    env_file:
-      - '.env'
-
-volumes:
-  postgres:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
