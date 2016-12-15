@@ -51,6 +51,19 @@ textarea {
   resize: vertical;
 }
 
+.stdcontainer {
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid #61BB46;
+  h3 {
+    color: #118CC8;
+  }
+  h1 {
+    color: #118CC8
+  }
+}
+
 .center {
   background-color: white;
   text-align: center;
@@ -71,17 +84,15 @@ textarea {
   }
 }
 
-/* home */
+/* contact */
 
-#areainfo {
-  text-align: center;
-  background-color: white;
-  border-radius: 20px;
-  border: 2px solid #61BB46;
-  h3 {
-    color: #118CC8;
-  }
+#place-img {
+  margin-top: 40px;
+  width: 220px;
+  height: 140px;
 }
+
+/* home */
 
 #home-strap {
   margin-top: 50px;
