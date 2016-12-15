@@ -1,34 +1,33 @@
-# Use the docker hub ruby image as a base.
-# More on this image here: https://hub.docker.com/_/rails/
-FROM ruby:2.2.3
+# Base image:
+FROM ruby:2.3.3
 
-MAINTAINER David Brown <david_a_brown@mac.com>
+MAINTAINER David Brown <david_a_brown@mac.com
 
+# Install dependencies
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
-# Update and install stuff your app needs to run
-RUN apt-get update -qq
-RUN apt-get install -y build-essential curl git imagemagick libmagickwand-dev libcurl4-openssl-dev nodejs postgresql-client
+# Set an environment variable where the Rails app is installed to inside of Docker image:
+ENV RAILS_ROOT /var/www/bhc
+RUN mkdir -p $RAILS_ROOT
 
-# Installing your gems this way caches this step so you dont have to reintall your gems every time you rebuild your image.
-# More info on this here: http://ilikestuffblog.com/2014/01/06/how-to-skip-bundle-install-when-deploying-a-rails-app-to-docker/
-# Copy the Gemfile and Gemfile.lock into the image.
-# Temporarily set the working directory to where they are.
-WORKDIR /tmp
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
-RUN bundle install
+# Set working directory, where the commands will be ran:
+WORKDIR $RAILS_ROOT
 
-# Install and configure nginx
-RUN apt-get install -y nginx
-RUN rm -rf /etc/nginx/sites-available/default
-ADD container/nginx.conf /etc/nginx/nginx.conf
+# Gems:
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN gem install bundler
 
-# Add our source files precompile assets
-ENV APP_HOME /var/app/APPNAME
-RUN mkdir -p $APP_HOME
-ADD . $APP_HOME
-WORKDIR $APP_HOME
-RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
+ENV RAILS_ENV production
 
-# Start up foreman
-CMD ["foreman", "start"]
+RUN bundle install --without development test
+
+COPY config/puma.rb config/puma.rb
+
+# Copy the main application.
+COPY . .
+
+EXPOSE 3000
+
+# The default command that gets ran will be to start the Puma server.
+CMD bundle exec puma -C config/puma.rb
