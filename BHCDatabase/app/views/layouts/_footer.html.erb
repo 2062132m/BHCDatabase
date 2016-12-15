@@ -5,8 +5,12 @@
   </small>
   <nav>
     <ul>
-      <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Contact", contact_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to "Profile", current_user %></li>
+      <% end %>
+      <% if current_page?(login_path) %>
+        <li><%= link_to "Contact", contact_path %></li>
+      <% end %>
       <li><a href="http://bhcmachars.blogspot.co.uk/">Building Healthy Communities</a></li>
     </ul>
   </nav>
