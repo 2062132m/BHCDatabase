@@ -40,7 +40,11 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 100px;
-  background-color: #00B0D8;
+  background: #00B0D8;
+  background: -webkit-linear-gradient(#00B0D8, #118CC8); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#00B0D8, #118CC8); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#00B0D8, #118CC8); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#00B0D8, #118CC8);
 }
 
 section {
@@ -60,7 +64,7 @@ textarea {
     color: #118CC8;
   }
   h1 {
-    color: #118CC8
+    color: #118CC8;
   }
 }
 
