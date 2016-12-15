@@ -1,7 +1,16 @@
+stages:
+  - test
+  - build
+
 before_script:
   - docker info
 
-test:
+build:
+  stage: build
   script:
-    - docker build -t my-docker-image ./BHCDatabase/
-    - docker run my-docker-image ./bin/rails t
+    - docker build -t my-docker-test-image ./BHCDatabase/
+
+test:
+  stage: test
+  script:
+    - docker run my-docker-test-image ./bin/rails t
