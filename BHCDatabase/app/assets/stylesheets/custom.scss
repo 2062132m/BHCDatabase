@@ -88,8 +88,25 @@ textarea {
 
 #place-img {
   margin-top: 40px;
+  margin-bottom: 25px;
   width: 220px;
   height: 140px;
+}
+
+#contact {
+  h1 {
+    color: white;
+  }
+  p {
+    color: white;
+    text-align: center;
+  }
+  .stdcontainer {
+    margin-top: 40px;
+    p {
+      color: black;
+    }
+  }
 }
 
 /* home */
