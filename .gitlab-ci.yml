@@ -1,6 +1,6 @@
 stages:
-  - test
   - build
+  - test
 
 before_script:
   - docker info
