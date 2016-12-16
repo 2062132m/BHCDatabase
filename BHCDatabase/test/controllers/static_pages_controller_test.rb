@@ -1,18 +1,18 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  
+
   def setup
     @base_title = "Building Healthy Communities"
     @user = users(:david)
-    log_in_as(@user, remember_me: '1')
+    log_in_as(@user)
   end
-  
+
   test "should get root" do
     get root_url
     assert_response :success
   end
-  
+
   test "should get home" do
     get root_path
     assert_response :success
