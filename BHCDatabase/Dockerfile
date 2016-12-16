@@ -20,7 +20,7 @@ RUN gem install bundler
 
 ENV RAILS_ENV production
 
-RUN bundle install --without development test
+RUN bundle install
 
 COPY config/puma.rb config/puma.rb
 
