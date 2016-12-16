@@ -5,7 +5,7 @@ stages:
 
 before_script:
   - docker info
-  - docker-compose stop
+  - docker-compose -f ./BHCDatabase/docker-compose.yml stop
 
 build_test:
   stage: build
