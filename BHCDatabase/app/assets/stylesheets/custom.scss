@@ -38,6 +38,10 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+html {
+  min-height: 100%; /* Used to ensure background gradient doesn't repeat */
+}
+
 body {
   padding-top: 100px;
   background: #00B0D8;
