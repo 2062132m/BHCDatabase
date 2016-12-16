@@ -18,14 +18,12 @@ test:
 
 build_deploy:
   stage: deploy
-  context: ./BHCDatabase
   script:
-    - docker-compose build
+    - docker-compose -f ./BHCDatabase/docker-compose.yml build
     
 deploy:
   stage: deploy
-  context: ./BHCDatabase
   script:
-    - docker-compose up
+    - docker-compose -f ./BHCDatabase/docker-compose.yml up
   only:
     - master
