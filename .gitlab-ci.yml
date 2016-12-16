@@ -5,6 +5,7 @@ stages:
 
 before_script:
   - docker info
+  - docker-compse stop
 
 build_test:
   stage: build
@@ -25,5 +26,3 @@ deploy:
   stage: deploy
   script:
     - docker-compose -f ./BHCDatabase/docker-compose.yml up
-  only:
-    - master
