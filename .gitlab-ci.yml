@@ -6,6 +6,8 @@ stages:
 before_script:
   - docker info
   - docker-compose -f ./BHCDatabase/docker-compose.yml stop
+  only:
+    - master
 
 build_test:
   stage: build
@@ -15,14 +17,19 @@ build_test:
 test:
   stage: test
   script:
+    - ls
     - docker run my-docker-test-image ./bin/rails t
 
 build_deploy:
   stage: deploy
   script:
     - docker-compose -f ./BHCDatabase/docker-compose.yml build
+  only:
+    - master
     
 deploy:
   stage: deploy
   script:
     - docker-compose -f ./BHCDatabase/docker-compose.yml up -d
+  only:
+    - master
