@@ -9,7 +9,7 @@ before_script:
 build_test:
   stage: build
   script:
-    - docker build -t my-docker-test-image ./BHCDatabase/
+    - docker build -f ./BHCDatabase/Dockerfile-test -t my-docker-test-image ./BHCDatabase/
 
 test:
   stage: test
@@ -28,6 +28,7 @@ build_deploy:
 deploy:
   stage: deploy
   script:
+    - docker-compose -f ./BHCDatabase/docker-compose.yml run app rake db:migrate
     - docker-compose -f ./BHCDatabase/docker-compose.yml up -d
   only:
     - master
