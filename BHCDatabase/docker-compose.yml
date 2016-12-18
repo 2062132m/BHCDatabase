@@ -4,7 +4,9 @@ services:
     image: postgres
 
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-production
     command: bundle exec puma -C config/puma.rb
     volumes:
       - /var/www/bhc
