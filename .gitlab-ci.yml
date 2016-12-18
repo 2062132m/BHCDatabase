@@ -1,16 +1,34 @@
 stages:
   - build
   - test
+  - deploy
 
 before_script:
   - docker info
 
-build:
+build_test:
   stage: build
   script:
-    - docker build -t my-docker-test-image ./BHCDatabase/
+    - docker build -f ./BHCDatabase/Dockerfile-test -t my-docker-test-image ./BHCDatabase/
 
 test:
   stage: test
   script:
+    - ls
     - docker run my-docker-test-image ./bin/rails t
+
+build_deploy:
+  stage: deploy
+  script:
+    - docker-compose -f ./BHCDatabase/docker-compose.yml stop
+    - docker-compose -f ./BHCDatabase/docker-compose.yml build
+  only:
+    - master
+    
+deploy:
+  stage: deploy
+  script:
+    - docker-compose -f ./BHCDatabase/docker-compose.yml run app rake db:migrate
+    - docker-compose -f ./BHCDatabase/docker-compose.yml up -d
+  only:
+    - master

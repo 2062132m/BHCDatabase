@@ -1,0 +1,26 @@
+version: '2'
+services:
+  db:
+    image: postgres
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-production
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - /var/www/bhc
+    expose:
+      - "3000"
+    env_file:
+      - ".env"
+    depends_on:
+      - db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    links:
+      - app
+    ports:
+      - "81:80"
