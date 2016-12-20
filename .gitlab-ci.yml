@@ -21,6 +21,7 @@ build_deploy:
   stage: deploy
   script:
     - docker-compose -f ./BHCDatabase/docker-compose.yml stop
+    - docker-compose -f ./BHCDatabase/docker-compose.yml build --no-cache web
     - docker-compose -f ./BHCDatabase/docker-compose.yml build
   only:
     - master
