@@ -24,3 +24,5 @@ services:
       - app
     ports:
       - "81:80"
+    volumes_from:
+      - app
