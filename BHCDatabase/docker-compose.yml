@@ -16,8 +16,6 @@ services:
       - ".env"
     depends_on:
       - db
-    env_file:
-      - .env
   web:
     build:
       context: .
@@ -28,5 +26,3 @@ services:
       - "81:80"
     volumes_from:
       - app
-    env_file:
-      - .env
