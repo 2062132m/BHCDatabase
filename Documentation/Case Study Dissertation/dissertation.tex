@@ -65,6 +65,132 @@ As expected, the path that lead us to the creation of the program, wasn't easy. 
 
 Our dissertation is being divided..
 
+%==============================================================================
+\section{Case Study Background}
+
+Include details of 
+
+\begin{itemize}
+\item The customer organisation and background.
+\item The rationale and initial objectives for the project.
+\item The final software was delivered for the customer.
+\end{itemize}
+
+%==============================================================================
+\section{Agile programming and Team organisation}
+
+\subsubsection{Team organisation}
+\label{organisation}
+
+In our initial meetings, every team member pointed out his/her strong and weak parts so we can divide the work. Due to the fact that we were required to create and application and database from scratch, everyone had worked in the "backend" due to the workload but the hardest parts were performed by specific team members who were in a higher "backend/coding" level. For communication, we decided to avoid using common social media sites and to use the "slack" application, which provides a more organised and professional chat room. 
+
+\subsubsection{Agile Methods}
+\label{agile}
+
+In terms of project planning, agile methods are one of the most trusted methods to use. Particularly, they are suitable for small teams and they involve frequent customer meetings. Also, they are based on working in the code instead of working in the design which is suitable for our situation, since we were asked to develop a page from scratch requiring a database. Our project is based on one of the agile methods called "Extreme programming". Extreme programming was the most suitable decision. Due to the fact that, we are novice programmers, having "pair programming" in our practices would be very useful since we are lacking of experience and one can help another. Furthermore, user stories and prototyping helped us a lot to understand what really our application needed. Another important feature of Extreme programming was the automated testing because as I stated before we have a very small experience.
+
+\subsubsection{Technologies Used}
+\label{tech}
+
+As soon as we decided the methods we were going to use, we had to decide the technologies that we needed to use regarding project management. The university moodle page, suggested a series of technologies to use for handling our project such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what we are allowed to use and what we aren't we decided to use Gitlab for our project management and repository. Gitlab, provides every technology that is needed to handle our project repository, the permissions that each member has and provides an amasing GUI that organises the wiki page, the issues page and so on. Using Gitlab, was very helpful, since we had all our due dates clearly displayed, issues and request organised as milestones with the appropriate labels. The most useful feature that Gitlab provided to us was the Continuous Integration (CI) feature. CI is a tool that enables all the repository users to merge their work to a local repository. This was a huge organisational feature, since everyone could interact in the project code. Every team member, could assign a ticket to his/her self or even to other team members, as a result we had a highly organised page where we could track the workload that every member has done. This was very helpful in terms of assigning work to members that haven't done a lot in a specific week and assign less to members that done more work than needed.
+
+ After this discussion, the meeting wasn't over. We know needed to decide which technologies would be used for implementing the project it self. We needed to choose a web application framework. The first suggestion was Django due to the fact that every team member had a a previous experience to Django from the second year course. A team member suggested that Rails is a more powerful tool with better documentation. To put more depth in it, Rails is a web application framework. Its software design pattern is the "model-view-controller" and not "model-view-template" like Django which we were familiar. None of the six members coded on Rails before so we have postponed our meeting and created an issue in the Gitlab so every member in the team could study Rails in his/hers self time so we can vote. In the next meeting, every team member agreed to use Rails. Rails provides a massive help in the testing process. Moreover, the biggest factor that persuaded the team to work with rails was the automation of many tasks and the "gems" documentation that provides. "RubyGems", is a package manager. Using a tool called "gem" in your terminal you can install and work with different libraries. Gems, are previously tested libraries, this provided security and saved a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks.
+  Since Rails as previously stated is based in "model-view-controller" we needed to find a model, an application to manage our newly created database. SQLite was agreed to be used because the database would be a small with just a couple of thousand text records. SQLite is a self-contained, free to use relational database management system.
+ 
+ \subsubsection{Retrospective}
+\label{retrospective}
+ 
+ All these process, should be summarised in a page. Here is when we decided to use retrospectives. Retrospectives are a small summary of a past situation. In our course, retrospective is used to summarise our actions which were performed in a specific amount of time for progressing our project. Our retrospectives were created in "Trello". This was very helpful because we stated what we did good, what we were lacked of in knowledge and what we could improve. To be more specific, we decided to use 4L's: Liked, Lacked, Learned, Longed for. We also decided to create and fill a new retrospective every time we had a customer's meeting. Every team member, was filling at least one point in every box. This way, we would not only have time to improve, but also to learn new technologies or discover in more depth the needed technologies for accomplishing our tasks due for the next meeting.
+
+\subsubsection{Team roles}
+\label{roles}
+*** under construction, no clearly defined roles yet ***
+ 
+\subsubsection{Testing}
+\label{testing}
+***maybe move it in the back-end section ???****
+
+It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the first day that we started coding, every section that we completed, we had also provided the proper testings. Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. Our file was using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in your project. Then, every time you commit or merge something in the repository, tests are running to check whether there are issues.
+
+
+
+
+
+%==============================================================================
+\section{Alice}
+\label{sec:alice}
+
+
+
+%==============================================================================
+\section{Alice}
+\label{sec:alice}
+
+
+
+%==============================================================================
+\section{Alice}
+\label{sec:alice}
+
+
+
+%==============================================================================
+
+\section{Choice of Colours}
+\label{design}
+
+The following diagrams (especially figure \ref{fig:alice}) illustrate the
+process...
+
+%==============================================================================
+\section{Managing Dress Sense}
+\label{managing}
+
+In this chapter, we describe how the implemented the system.
+
+%------------------------------------------------------------------------------
+\section{Kangaroo Practices}
+
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\section{Knots and Bundles}
+\label{sec:managing}
+
+
+%------------------------------------------------------------------------------
+\section{Conclusions}
+
+Explain the wider lessons that you learned about software engineering,
+based on the specific issues discussed in previous sections.  Reflect
+on the extent to which these lessons could be generalised to other
+types of software project.  Relate the wider lessons to others
+reported in case studies in the software engineering literature.
+
+%==============================================================================
+\bibliographystyle{plain}
+\bibliography{dissertation}
+
+\label{tech}
+Rails
+https://en.wikipedia.org/wiki/Ruby_on_Rails
+
+Django
+https://en.wikipedia.org/wiki/Django_(web_framework)
+
+Rails vs Django
+http://www.skilledup.com/articles/battle-frameworks-django-vs-rails
+
+RubyGems
+https://en.wikipedia.org/wiki/RubyGems
+
+SQLite
+https://www.sqlite.org/about.html
+
+\label{testing}
+CI 
+https://docs.gitlab.com/ce/ci/quick_start/README.html
+
 
 
 \end{document}
