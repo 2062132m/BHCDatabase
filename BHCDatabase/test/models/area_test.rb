@@ -18,4 +18,14 @@ class AreaTest < ActiveSupport::TestCase
     @area.description = ""
     assert_not @area.valid?
   end
+
+  test "name should not be too long" do
+    @area.name = "a" * 51
+    assert_not @area.valid?
+  end
+
+  test "description should not be too long" do
+    @area.description = "a" * 256
+    assert_not @area.valid?
+  end
 end
