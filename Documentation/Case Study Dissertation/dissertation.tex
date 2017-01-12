@@ -117,9 +117,145 @@ It is well known, that the development of any type of application is incomplete 
 
 
 %==============================================================================
-\section{Alice}
-\label{sec:alice}
+\section{Documentation}
+\label{documentation}
 
+To begin with, we have divided our project to **number** different milestones which lasted a period between every customer meeting. In the following lines I will discuss the process that was taken in every milestone. On the first customer meeting, the day that we were assigned our project, the customers underlined their desired program which I have stated above. Our goal for the next customer meeting was to produce the some basic documentation to demonstrate to the clients.  
+
+\subsubsection{Requirements Gathering}
+\label{requirements}
+
+During the meeting, we have managed to outline some basic requirements. We have had developed a wiki page containing an outline of the meeting. We have used this page to identify the functional and non-functional requirements. Having continuous contact with the customers which stated some useful points we ended up with the final version of the functional and non-functional requirements. 
+
+The final version of the functional requirements is:
+\begin{itemize}
+
+\item An administrator should be able to view all information stored in the database.
+
+\item An administrator should be able to add/remove/modify volunteers, members and groups that are stored in the database.
+
+\item An administrator should be able to search and sort on specific fields belonging to tuples.
+
+\item An administrator should be able to view data metrics on how particular groups/initiatives are progressing.
+
+\item Different groups of users should have differing levels of permission to the data stored.
+
+\item Volunteers should be able to view the data associated with their specific group(s), that they are allowed to see, and no other groups.
+
+\item Volunteers should be able to record member attendance.
+
+\item Provide a facility to register attendance.
+
+\item Provide a facility to gather feedback from end users (members).
+
+\end{itemize}
+
+The final version of the non-functional requirements is:
+
+\begin{itemize}
+
+\item The system should be secure.
+
+\item The system has to conform to the Data Protection Act.
+
+\item The system should be stable whilst in use and have a high up time.
+
+\item The system should be able to operate for long periods of time without intervention from system admins.
+
+\item The system should be simple to use.
+
+\item The system should be modular and hence maintainable.
+
+\item The system should be lightweight.
+
+\item The site should be compatible with many platforms. (Portable.)
+
+\end{itemize}
+
+Identifying the requirements was an important step which enabled us to put in action some examples. The team got divided into groups and documented various things such us user stories, user scenarios and wireframes. 
+
+\subsubsection{User Stories}
+\label{user_stories}
+
+User stories play a critical role in the agile methods that we have chosen to follow. A user story formally describes the state of the application. The basic functions that a potential user expects it to do. We have managed to identify functional and non-functional user stories. User stories helped us to put in action the program and to fully understand how it will work.
+
+A couple of highly representative functional user stories are:
+\begin{itemize}
+
+\item As an administrator, I want to add a member to the database, so that they can join a group.
+
+	\begin{enumerate}
+  	\item Add an activity to add a person
+  	
+	\item Add an activity to enter their information
+
+	\item Add an activity for choosing groups
+
+	\item Create a query for retrieving groups
+	\end{enumerate}
+\item As a volunteer, I want to be able to register attendance at my group(s), so that I can contribute data.
+
+	\begin{enumerate}
+	\item Create a query to retrieve groups I run
+	
+	\item Add an activity to log attendance
+	
+	\item Create a query for members of the group
+	
+	\item Add an activity to enter attendance per member
+	
+	\end{enumerate}
+
+\item As a member, I want to be able to log in, so that I can view my information.
+
+	\begin{enumerate}
+	
+	\item Add an activity to log in
+	\item Add an activity to enter log in information
+	
+	\end{enumerate}
+
+\end{itemize}
+
+Thus, we had to record some non-functional user stories so that we can give practical examples about how the system will work. Some non-functional user stories are:
+
+\begin{itemize}
+
+\item  As an administrator, I want to replace a member's name with numbers in the database, so that I can find them easier.
+
+	\begin{enumerate}
+	
+	\item Create a query for retrieving a person
+	
+	\item Add an activity to update a person's information
+	
+	\item Create a warning message for wrong type of input
+	
+	\item Do not allow this modifications to be saved
+	\end{enumerate}
+	
+\item As a volunteer, I want to be able to have access to the database, so that I can add a new program that the administrators haven’t added yet.
+
+	\begin{enumerate}
+	\item Restrict the "Add a new page", "Add a new page", "Add a new member", etc buttons to can be only accessed from administrators
+	\end{enumerate}
+	
+\item As a member, I want to be able to add or delete a group that I am part to, so that I can register my self to new groups or delete me from the old ones.
+
+	\begin{enumerate}
+	\item Restrict the member's redirected page to do very basic tasks
+	\item Do not provide this functionality to members.
+	\end{enumerate}
+
+\end{itemize}
+
+
+
+
+
+\subsection{end of milestone}
+
+*** outline what we have improved after the second customer meeting happened in the october. ***
 
 
 %==============================================================================
@@ -190,6 +326,13 @@ https://www.sqlite.org/about.html
 \label{testing}
 CI 
 https://docs.gitlab.com/ce/ci/quick_start/README.html
+
+\label{user_stories}
+
+User stories
+http://www.agilemodeling.com/artifacts/userStory.htm
+
+
 
 
 
