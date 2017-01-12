@@ -1,0 +1,10 @@
+<% provide(:title, 'All areas') %>
+<h1>All areas</h1>
+
+<ul class="areas">
+  <% @areas.each do |area| %>
+      <li>
+        <%= link_to area.name, area %>
+      </li>
+  <% end %>
+</ul>
