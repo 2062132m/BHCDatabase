@@ -1,0 +1,12 @@
+<div id="area">
+  <h1>Home</h1>
+
+  <div class="stdcontainer">
+    <ul class="areas">
+      <% @areas.each do |area| %>
+          <%= link_to area.name, area %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

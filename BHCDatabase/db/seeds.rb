@@ -23,3 +23,8 @@ Area.create(name: "Dumfries & Lower Nithsdale", description: "blah")
 Area.create(name: "West Wigtownshire", description: "blah")
 Area.create(name: "The Machars", description: "blah")
 Area.create(name: "Upper Nithsdale", description: "blah")
+
+Initiative.create(name: "Dancercise", description: "blah")
+Initiative.create(name: "Scrimp and Sew", description: "blah")
+Initiative.create(name: "Inkspirations", description: "blah")
+Initiative.create(name: "Chair Based Exercise", description: "blah")
