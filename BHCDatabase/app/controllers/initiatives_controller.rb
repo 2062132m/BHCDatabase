@@ -5,7 +5,7 @@ class InitiativesController < ApplicationController
   end
 
   def show
-    @initiatives = Initiative.find(params[:id])
+    @initiative = Initiative.find(params[:id])
   end
 
   def new
