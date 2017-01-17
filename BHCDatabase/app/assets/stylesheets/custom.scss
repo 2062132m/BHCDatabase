@@ -101,7 +101,7 @@ textarea {
   height: 140px;
 }
 
-#contact {
+#contact, #area {
   h1 {
     color: white;
   }
@@ -258,7 +258,7 @@ input {
   }
 }
 
-/* Users index */
+/* Areas index */
 
 .areas {
   list-style: none;
@@ -266,6 +266,5 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
   }
 }

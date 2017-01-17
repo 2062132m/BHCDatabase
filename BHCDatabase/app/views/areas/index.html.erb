@@ -1,10 +1,14 @@
-<% provide(:title, 'All areas') %>
-<h1>All areas</h1>
+<% provide(:title, 'Areas') %>
+<div id="area">
+  <h1>Areas</h1>
 
-<ul class="areas">
-  <% @areas.each do |area| %>
-      <li>
-        <%= link_to area.name, area %>
-      </li>
-  <% end %>
-</ul>
+  <div class="stdcontainer">
+    <ul class="areas">
+      <% @areas.each do |area| %>
+          <li>
+            <h3><%= link_to area.name, area %></h3>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
