@@ -12,6 +12,12 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
+Alternatively, can instead run rails db:setup which will migrate but also populate the db with the 4 initial areas and 6 user accounts for each developer. Email: forename@forename.com. Password: forename123.
+
+```
+$ rails db:setup
+```
+
 Finally, run the test suite to verify that everything is working correctly:
 
 ```
