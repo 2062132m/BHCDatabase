@@ -27,6 +27,7 @@ Once you have the source cloned, you can set up the app by running...
 
     rails db:create
     rails db:migrate
+    (can instead run rails db:setup which will migrate but also populate the db with the 4 initial areas and 6 user accounts for each developer. Email: forename@forename.com. Password: forename123).
     rails start
     
 Following the link provided you will come to our web app! Please don't look directly at the bugs.
