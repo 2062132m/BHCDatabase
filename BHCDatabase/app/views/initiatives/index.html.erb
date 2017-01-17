@@ -1,0 +1,14 @@
+<% provide(:title, 'Initiatives') %>
+<div id="area">
+  <h1>Initiatives</h1>
+
+  <div class="stdcontainer">
+    <ul class="areas">
+      <% @initiatives.each do |initiative| %>
+          <li>
+            <h3><%= link_to initiative.name, initiative %></h3>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
