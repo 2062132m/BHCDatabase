@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'initiatives/new'
+
   get 'areas/new'
 
   get 'sessions/new'
