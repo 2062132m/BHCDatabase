@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get 'initiatives/new'
+
   get 'areas/new'
 
   get 'sessions/new'
 
   get 'users/new'
 
-  root 'static_pages#home'
+  root 'homepage#index'
   # get  '/help',    to: 'static_pages#help'
   # get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
@@ -14,5 +16,5 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users, :areas
+  resources :users, :areas, :initiatives
 end
