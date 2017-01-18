@@ -33,20 +33,21 @@ Jaklin Yordanova}
 
 \begin{abstract}
 
-Building Healthy Communities is a program which is aimed to create interventions in areas with the collaboration of the locals and generally various community groups. Its main goal is to improve the life o people by participating in various programs which will enable them to interact with other people and get a healthier approach in life. The program consist of three different types of people:
+Building Healthy Communities is a program which is aimed to create interventions in areas with the collaboration of the locals and generally various community groups. Its main goal is to improve the life of people by participating in different programs which will enable them to interact with each other and get a healthier approach in life. The program consist of three different types of participants:
 \begin{itemize}
 	\item Administrators
 	\item Volunteers
 	\item Members
 \end{itemize}
-Volunteers are responsible for tracking the members progress and attendance. They also have to inform administrators not only about process of the members but also about their process. Currently all these are being performed by hand. Administrators find all the process time consuming and difficult to generally track everything. 
+Volunteers are responsible for tracking the members progress and checking their attendance. They have to inform administrators not only about the progress of the members but also about the whole process. Currently all these are being performed by hand. Administrators find all the process time-consuming and difficult to keeping track of everything manually. 
 
-Our team was responsible building a software which will automate all that process. We designing and implemented a program that accepts a current database that could be modified and extended. The software has the following features:
+Our team was responsible for building a software, which will automate all that. We designed and implemented a program that accepts a current database that could be modified and extended. The software has the following features:
 \begin{itemize}
-	\item Register new members and delete ones that left the program
-	\item Keeping track their attendance
-	\item Keeping track the process not only  for the members but also for the volunteers
-	\item Delete and add programs
+	\item Registering new members and deleting ones that left the program
+	\item Keeping track of member's attendance
+	\item Keeping track of the process not only for the members but also for the volunteers
+	\item Deleting and adding programs
+	\item Searching for a particular member based on given specifications
 \end{itemize} 
 
 \end{abstract}
@@ -66,9 +67,9 @@ Software engineering
 
 The following presentation presents a case study of building a database for the public health program "Building Healthy Communities". By the expression "case study" we mean the investigation of a person, group of people or a situation. The following report investigates the situation of creating a database. The team that is involved in this case study is "Team N" which consists of six, third year colleagues studying Computing Science in the University of Glasgow.
 
-Through the following pages, we will explain in more depth, how we managed to successfully design, create and use the software that we have described above using not only our previous knowledge, but also the knowledge that we have managed to gain from the University's courses. More specifically, the "Professional Software Development and SIT" course and the "Interactive Systems 3" course played a critical role in every step that we have taken in creating the software. From the requirements gathering to the coding of the software, the lecture notes provided a step by step guide that lead to a perfect software.
+Through the following pages, we will explain in more depth, how we managed to successfully design, create and use the software that we have described above using not only our previous knowledge, but also the knowledge that we have managed to gain from the University's courses. More specifically, the "Professional Software Development and SIT" course and the "Interactive Systems 3" course played a critical role in every step that we have taken in creating the software. From the requirements gathering to the coding of the software, the lecture notes provided a step-by-step guide that lead to a perfect software.
 
-As expected, the path that lead us to the creation of the program, wasn't easy. The majority of the team members had a little previous knowledge in the technologies that we have used. As a result, we had many difficulties, many will be described in the following sections.
+As expected, the path that led us to the creation of the program, was far from easy. The majority of the team members had a little previous experience in the technologies that we have used. As a result, we had a lot of difficulties, many will be described in the following sections.
 
 %% Incomplete paragraph
 %%A paragraph written in the end describing the sructure of the paper
@@ -95,26 +96,26 @@ Building Healthy Communities is a NHS programme based in Dumfries and Galloway, 
 \subsubsection{Team organisation}
 \label{organisation}
 
-In our initial meetings, every team member pointed out his/her strong and weak parts so we can divide the work. Due to the fact that we were required to create and application and database from scratch, the workload was big so that everyone had to work in the "backend". Inevitable was for specific team members who were in a higher "backend/coding" level to execute some more advanced parts of the coding.
-The team started discussing for various means to communicate, we decided to avoid using common social media sites and to use the "slack" application, which provides a more organised and professional chat room. 
+In our initial meetings, every team member pointed out their strong and weak parts in order to divide the work. Due to the fact that we were required to create an application and database from scratch, the workload was huge. As a result of that, everyone had to work in the "backend". Inevitable was for specific team members who were in a higher "backend/coding" level to execute some more advanced parts of the coding.
+The team discussed various means of communication - we decided to avoid using common social media sites and to use the "slack" application, which provides a more organised and professional chat room with different channels. 
 
 \subsubsection{Agile Methods}
 \label{agile}
 
-In terms of project planning, agile methods are one of the most trusted methods to use. Particularly, they are suitable for small teams and they involve frequent customer meetings. Also, they are based on focusing on the code instead of the design which is suitable for our situation, since we were asked to develop a page from scratch requiring a database. Our project is based on one of the agile methods called "Extreme programming". Extreme programming was the most suitable decision. Due to the fact that we are novice programmers, a very useful feature that extreme programming has called "pair programming" was highly included in our practices. As students we lack of experience but when one student combine his/her knowledge with another they can create spectacular results. Furthermore, user stories and prototyping helped us a lot to understand what really our application needed. Another important feature of extreme programming was the automated testing because as I stated before we have a very small experience.
+In terms of project planning, agile methods are one of the most trusted methods to use. Particularly, they are suitable for small teams and they involve frequent customer meetings because the requirements cannot be fully collected at the beginning of the software development cycle. Also, they are based on focusing on the code instead of the design which is suitable for our situation, since we were asked to develop a page from scratch requiring a database. Our project is based on one of the agile methods called "Extreme programming". This was the most suitable decision, due to the fact that we are novice programmers. One of the most useful features that Extreme Programming offers is called "pair programming" , which is highly occureing in our practices. As students, we lack of experience but when one student combine their knowledge with another, they can create spectacular results. Furthermore, user stories and prototyping helped us a lot to understand what really our application needed. Another important feature of Extreme Programming is the automated testing because as stated before, we have little experience.
 
 \subsubsection{Technologies Used}
 \label{tech}
 
-As soon as we decided the methods we were going to use, we had to decide the technologies that we needed to use regarding project management. The university moodle page, suggested a series of technologies to use for handling our project such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what we are allowed to use and what we aren't, we decided to use Gitlab for our project management and repository. Gitlab, provides every technology that is needed to handle our project repository, the permissions that each member has and provides an amasing GUI that organises the wiki page, the 'issues" page and so on. Using Gitlab, was very helpful, since we had all our due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provided to us was the Continuous Integration (CI) feature. CI is a tool that enables all the repository users to merge their work to a local repository. This was a huge organisational feature, since everyone could interact in the project code. Every team member, could assign a ticket to his/her self or even to other team members, as a result we had a highly organised page where we could track the workload that every member has done. This was very helpful in terms of assigning work to members that haven't done a lot in a specific week and assign less to members that done more work than needed.
+As soon as we agreed on the methods we were going to use, we had to decide the technologies that we needed to use regarding project management. The university moodle page, suggested a series of technologies to use for handling our project such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what we are allowed to use and what we are not, we decided to use Gitlab for our project management and repository. Gitlab provides every technology that is needed to handle our project repository, the permissions that each member has as well as an amazing GUI that organises the "wiki" page and the "issues" page and so on. Using Gitlab, was very helpful, since we had all our due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provided to us was the Continuous Integration (CI) feature. CI is a tool that enables all the repository users to merge their work to a local repository. This was a huge organisational feature, since everyone could interact in the project code. Every team member, could assign a ticket to themselves or even to other team members, as a result we had a highly organised page where we could track the workload that every member has done. This was very helpful, in terms of assigning work to members that have not contribute as much as the others in a specific week and assign less to members that already have done more work than needed.
 
- After this discussion, the meeting wasn't over. We know needed to decide which technologies would be used for implementing the project it self. We needed to choose a web application framework. The first suggestion was Django this, every team member had previous experience to Django from the second year course. A team member suggested that Rails is a more powerful tool with better documentation. To put more depth in it, Rails is a web application framework. Its software design pattern is the "model-view-controller" and not "model-view-template" like Django which we were familiar. None of the six members coded on Rails before so we have postponed our meeting and created an issue in the Gitlab so every member in the team could study Rails in his/hers self time so we can vote. In the next meeting, every team member agreed to use Rails. Rails provides a massive help in the testing process. Moreover, the biggest factor that persuaded the team to work with rails was the automation of many tasks and the "gems" documentation that provides. "RubyGems", is a package manager. Using a tool called "gem" in your terminal you can install and work with different libraries. Gems, are previously tested libraries, this provided security and saved a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks.
-  Since Rails as previously stated is based in "model-view-controller" we needed to find a model, an application to manage our newly created database. SQLite was agreed to be used because the database would be a small with just a couple of thousand text records. SQLite is a self-contained, free to use relational database management system.
+ After this discussion, the meeting was not over. Therefore, we needed to decide which technologies would be used for implementing the project itself. We had to choose which web application framework to use. The first option we discussed was Django, due to the fact that every team member had previous experience with Django from our second year web application development course. Another option a team member suggested was Rails as more powerful tool with better documentation. To put more depth in it, Rails is a web application framework with "model-view-controller" software design pattern, not "model-view-template" like Django, which we were familiar with. None of the six members in our team coded on Rails before, so we have postponed our meeting and created an issue in the Gitlab - every member in the team had to study Rails in their time. In the next meeting, we voted and agreed to use Rails. Rails provides a massive help in the testing process. Moreover, the biggest factor that persuaded the team to work with Rails was the automation of many tasks and the "Gems" documentation that provides. "RubyGems" is a package manager. Using a tool called "Gem" in your terminal you can install and work with different libraries. Gems, are previously tested libraries, which provided security and saved a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks.
+  Since Rails, as previously stated, is based in "model-view-controller" we needed to find a model, an application to manage our newly created database. SQLite was our choice because the database would be small with just a couple of thousand text records. Furthermore, SQLite is a self-contained, free to use relational database management system.
  
  \subsubsection{Retrospective}
 \label{retrospective}
  
- All these process, should be summarised in a page. Here is when we decided to use retrospectives. Retrospectives are a small summary of a past situation. In our course, retrospective is used to summarise our actions which were performed in a specific amount of time for progressing our project. Our retrospectives were created in "Trello". This was very helpful because we stated what we did good, what we were lacked of in knowledge and what we could improve. To be more specific, we decided to use 4L's: Liked, Lacked, Learned, Longed for. We also decided to create and fill a new retrospective every time we had a customer's meeting. Every team member, was filling at least one point in every box. This way, we would not only have time to improve, but also to learn new technologies or discover in more depth the needed technologies for accomplishing our tasks due for the next meeting.
+ All these process, should be summarised in a page. Here is when we decided to use retrospectives. Retrospectives are a small summary of a past situation. In our course, retrospective is used to summarise our actions which were performed in a specific amount of time for progressing our project. Our retrospectives were created in "Trello". This was very helpful because we stated what we did good, what we were lacked of in knowledge and what we could improve. To be more specific, we decided to use 4L's: Liked, Lacked, Learned, Longed for. We also decided to create and fill a new retrospective every time we had a customer's meeting. Every team member, was filling at least one point in every box. This way, we not only had time to improve, but also to learn new technologies and discover in more depth the needed technologies for accomplishing our tasks due for the next meeting.
 
 \subsubsection{Team roles}
 \label{roles}
@@ -144,7 +145,7 @@ On the first customer meeting, the day that we were assigned our project, the cu
 \subsubsection{Requirements Gathering}
 \label{requirements}
 
-During the meeting, we have managed to outline some basic requirements. We have had developed a wiki page containing an outline of the meeting. We have used this page to identify the functional and non-functional requirements. Having continuous contact with the customers whom stated some useful points we ended up with the final version of the functional and non-functional requirements. 
+During the meeting, we have managed to outline some basic requirements. We have had developed a wiki page containing an outline of the meeting. We have used this page to identify the functional and non-functional requirements. Having an on-going contact with the customers, who stated some useful points we ended up with the final version of the functional and non-functional requirements. 
 
 The final version of the functional requirements is:
 \begin{itemize}
@@ -271,7 +272,7 @@ Thus, we had to record some non-functional user stories so that we can give prac
 \subsubsection{User Scenarios}
 \label{user_scenarios}
 
-Although,user stories provide a clear outline about what the users and system needs, there is nothing textual more representative than a scenario where an everyday user of the system will describe what he/she actually needs. Thus, a couple of team members wrote some representative scenarios of example users. 
+Although user stories provide a clear outline about what the users and system needs, there is nothing textual more representative than a scenario where an everyday user of the system will describe what they actually needs Thus, a couple of team members wrote some representative scenarios of example users. 
 Example scenarios can be find bellow:
 \begin{itemize}
 \item Carolyn is an administrator in the Building Healthy Communities program. She is in charge of tracking the volunteers progress and checking if they are doing their work correctly. It is important for the program to not only track members attendance and feedback but also to track volunteers one. This is vital for keeping the program works correctly and also would be an advantage in building the relationship between members and volunteers.
@@ -283,7 +284,7 @@ Example scenarios can be find bellow:
 \subsubsection{Wireframes}
 \label{wireframes}
 
-After collecting all these useful information, the team was ready to start developing some wireframes. Wireframes was the final goal of this milestone. Without completing them would be like we haven't worked at all. Having a small research during the meeting, we decided to use balsamiq for the creation of the wireframes. Balsamiq is a very useful application, easy to use and focus on the creation of the wireframes. Before we started sketching in the balsamiq, the team decided to go pen and paper to sketch our ideas. Pen and paper sketches are always the best plan, they give you the freedom to design exactly what you need. 
+After collecting all this useful information, the team was ready to start developing some wireframes. Wireframes were the final goal of this milestone. Without completing them would be like we have not worked at all. Having a small research during the meeting, we decided to use balsamiq for the creation of the wireframes. Balsamiq is a very useful application, easy to use and focus on the creation of the wireframes. Before we started sketching in the balsamiq, the team decided to go pen and paper to sketch our ideas. Pen and paper sketches are always the best plan, they give you the freedom to design exactly what you need. 
 
 The formal wireframes were ready for the presentation. A screenshot of the index page can be found in Figure 1.
 
@@ -298,9 +299,9 @@ The formal wireframes were ready for the presentation. A screenshot of the index
 \subsection{End of first milestone}
 \label{sec:milestone1}
 
-The second customer meeting was held on the 16th of November. In the meeting we have outlined some examples of user scenarios and a brief tour through our interactive wireframes. An amount of time was available for the customers in order to express their opinion about our current progress and what do they expect from the team to be done until the next meeting.
+The second customer meeting was held on the 16th November. In the meeting we have outlined some examples of user scenarios and a brief tour through our interactive wireframes. An amount of time was available for the customers in order to express their opinion about our current progress and what do they expect from the team to be done until the next meeting.
 
-An overall satisfaction kept from both the team and the customers. After the meeting, the team filled a retrospective. An outline of the retrospective was that the team during this period of time improved its knowledge on using an application such us "Gitlab" as a project management tool, that one project needs not only coding but first large amount of documentation to be produced. The team is also hoping to improve the communication with the customers since we didn't understand all the aspects of the application in the first place and the second customer meeting was very helpful on doing it so.
+An overall satisfaction was kept from both the team and the customers. After the meeting, the team filled a retrospective. An outline of the retrospective was that the team during this period of time improved its knowledge on using an application such us "Gitlab" as a project management tool. Moreover, we learnt that in order to complete the project successfully, we need not only coding skills but strongly organisational skills with the huge amount of the documentation. The team was also aiming to improve the communication with the customers, since we did not understand quite well all the aspects of the application in the first place. Therefore,the second customer meeting was very helpful on doing it so.
 
 
 %==============================================================================
@@ -310,12 +311,12 @@ An overall satisfaction kept from both the team and the customers. After the mee
 \subsection{Objectives}
 \label{sec:objectives}
 
-During the next iteration, the team, held a group meeting to decide the objectives for the next customer meeting. A small amount of documentation was still missing such as the ER (Entity-relationship) and Component diagrams. The team assigned to team members the diagrams. The team should not only create the diagrams but also to start designing and coding the application. Some team members also have been assigned to start the actual application.
+During the next iteration, the team held a group discussion to decide the objectives for the next customer meeting. Some pieces of documentation were still missing, such as the ER (Entity-relationship) and Component diagrams. The team assigned to particular team members the diagrams as new issues. The team had not only create the diagrams but also start designing and coding the application. Some team members also have been assigned to start the actual application.
 
 \subsection{ER Diagram}
 \label{sec:er}
 
-An entity-relationship diagram plays a critical role in the development of an application. In fact, the team was unable to start developing the application without such a diagram. An ER diagram presents the relationships between the entities in a diagram, without the diagram the team is unable to have a clear view of the structure of the database. Having an ER diagram presents clearly the relationships between the entities, the attributes that consist them and which entities are depended on others.
+An entity-relationship diagram plays a critical role in the development of an application. In fact, the team was unable to start developing the application without such a diagram. An ER diagram presents the relationships between the entities in a diagram, which is why without the diagram the team was unable to have a clear view of the structure of the database. Having an ER diagram presents clearly the relationships between the entities, the attributes that consist them and which entities are depended on others.
 
 Our ER diagram is expressed in figure 2.
 
@@ -325,24 +326,24 @@ Our ER diagram is expressed in figure 2.
   \label{fig:er}
 \end{figure}
 
-To give a brief explanation of the diagram. The main aspect of the diagram is the initiatives, the courses that the program provides which are specified with a specific name, id and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. The sessions have an id, a date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
+To give a brief explanation of the diagram: The main aspect of the diagram is the initiatives, the courses that the program provides which are specified with a specific name, id and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. The sessions have an id, a date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
 
 \subsection{Initial Prototype}
 \label{sec:prototype1}
 
-Having the basic database structure, the team created some basic prototypes of the page, so we can discuss potential design changes. The first version of the page can be found in Figure 3.
+Having the basic database structure, the team created some initial prototypes of the page, in order to discuss potential design changes. The first version of the page can be found in Figure 3.
 
 \begin{figure}
   \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
   \caption{Initial Prototype}
 \end{figure}
 
-The initial page is very basic, not very colourful and errors were included. It was created to point out the basic design and to have a vision of how the site would be. The team decided to add the colours and the basic feel of the blog that the program already had.
+The initial page is very basic, not very colourful and errors containing. It was created to point out the idea of the  design and to outline a vision of how the site would work. The team decided to add the colours and the feel of the blog that the program already had.
 
 \subsection{Final Prototype}
 \label{sec:prototype2} 
 
-Our second designed was more simplified in terms of account organisation. We were clarified that the members would not be able to sign up so we have deleted this feature. The team merged the home page with the login page so that we have a more simplified view. The new prototype can be found in Figure 4.
+Our second design was more simplified in terms of account organisation. The customers clarified that the members would not be able to sign up, which led to deleting this feature. Furthermore, we merged the home page with the login page, so that we can have a simple enough view. The new prototype can be found in Figure 4.
 
 \begin{figure}
   \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
@@ -375,11 +376,11 @@ Our second designed was more simplified in terms of account organisation. We wer
 
 *** maybe incorrectly positioned ***
 
-Our aim for browser compatibility is quite broad. From meetings with the customer, we have gathered that support for the most popular browsers are essential, and that the website should function on iOS and Android (Running in both tablet and mobile form).
+Our aim for browser compatibility is quite broad. From meetings with the customers, we have gathered the information that the support for the most popular browsers is essential, and that the website should function on iOS and Android (Running in both tablet and mobile form).
 
- A huge issue was raised at that point was the browser compatibility and more specifically the support of Internet explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' So we have taken the decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system.
+ A huge issue raised at that point, was the browser compatibility and more specifically the support of Internet Explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, we have taken the decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system.
 
-An important point of note is that Bootstrap only officially supports Internet Explorer 8-11.
+An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
 
 In commit 6b113433 we added the respond-js-rails gem. This uses Respond.js to fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)'. This immediately fixed many of the formatting issues with the site working on IE 8.
 
