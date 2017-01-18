@@ -298,7 +298,7 @@ The formal wireframes were ready for the presentation. A screenshot of the index
 \subsection{End of first milestone}
 \label{sec:milestone1}
 
-The second customer meeting was held in the 16th of November. In the meeting we have outlined some examples of user scenarios and a brief tour through our interactive wireframes. An amount of time was available for the customers in order to express their opinion about our current progress and what do they expect from the team to be done until the next meeting.
+The second customer meeting was held on the 16th of November. In the meeting we have outlined some examples of user scenarios and a brief tour through our interactive wireframes. An amount of time was available for the customers in order to express their opinion about our current progress and what do they expect from the team to be done until the next meeting.
 
 An overall satisfaction kept from both the team and the customers. After the meeting, the team filled a retrospective. An outline of the retrospective was that the team during this period of time improved its knowledge on using an application such us "Gitlab" as a project management tool, that one project needs not only coding but first large amount of documentation to be produced. The team is also hoping to improve the communication with the customers since we didn't understand all the aspects of the application in the first place and the second customer meeting was very helpful on doing it so.
 
@@ -325,10 +325,65 @@ Our ER diagram is expressed in figure 2.
   \label{fig:er}
 \end{figure}
 
-To give a brief explanation of the diagram. The main aspect of the diagram is the initiatives, the courses that the program provides which are specified with a specific name, id and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. The sessions have an id, a date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information i order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
+To give a brief explanation of the diagram. The main aspect of the diagram is the initiatives, the courses that the program provides which are specified with a specific name, id and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. The sessions have an id, a date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
+
+\subsection{Initial Prototype}
+\label{sec:prototype1}
+
+Having the basic database structure, the team created some basic prototypes of the page, so we can discuss potential design changes. The first version of the page can be found in Figure 3.
+
+\begin{figure}
+  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
+  \caption{Initial Prototype}
+\end{figure}
+
+The initial page is very basic, not very colourful and errors were included. It was created to point out the basic design and to have a vision of how the site would be. The team decided to add the colours and the basic feel of the blog that the program already had.
+
+\subsection{Final Prototype}
+\label{sec:prototype2} 
+
+Our second designed was more simplified in terms of account organisation. We were clarified that the members would not be able to sign up so we have deleted this feature. The team merged the home page with the login page so that we have a more simplified view. The new prototype can be found in Figure 4.
+
+\begin{figure}
+  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
+  \caption{Second version of the prototype}
+\end{figure}
+
+ 
+
+\subsection{Component Diagram}
+\label{sec:component}
+
+
+%==============================================================================
+\section{Working on the backend development}
+\label{sec:backend}
+
+
+\subsection{User Authentication}
+\label{sec:authentication} 
 
 
 
+
+
+
+
+
+\subsection{Browser Compatibility}
+\label{sec:compatibility} 
+
+*** maybe incorrectly positioned ***
+
+Our aim for browser compatibility is quite broad. From meetings with the customer, we have gathered that support for the most popular browsers are essential, and that the website should function on iOS and Android (Running in both tablet and mobile form).
+
+ A huge issue was raised at that point was the browser compatibility and more specifically the support of Internet explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' So we have taken the decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system.
+
+An important point of note is that Bootstrap only officially supports Internet Explorer 8-11.
+
+In commit 6b113433 we added the respond-js-rails gem. This uses Respond.js to fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)'. This immediately fixed many of the formatting issues with the site working on IE 8.
+
+** add mobile compatibility prototypes ***
 
 
 
