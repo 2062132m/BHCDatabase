@@ -20,9 +20,9 @@ User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
 "kiril123", password_confirmation: "kiril123")
 
 @area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: "this is dumfries")
-@area2 = Area.create(name: "West Wigtownshire", description: "this is west")
-@area3 = Area.create(name: "The Machars", description: "this is machars")
-@area4 = Area.create(name: "Upper Nithsdale", description: "this is upper")
+@area2 = Area.create(name: "West \n Wigtownshire", description: "this is west")
+@area3 = Area.create(name: "The \n Machars", description: "this is machars")
+@area4 = Area.create(name: "Upper \n Nithsdale", description: "this is upper")
 
 
 @area1.initiatives.create(name: "Dancerise", description: "Danc initiative", location: "Town Hall")

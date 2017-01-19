@@ -1,7 +1,7 @@
 <div class="row stdcontainer">
     <% @areas.each do |area| %>
       <div class="col-md-3">
-        <h3><%= link_to area.name, area %></h3>
+        <h3><%= link_to simple_format(area.name), area %></h3>
         <div class="list-group">
           <% Initiative.where(area_id: area.id).each do |initiative| %>
             <%= link_to initiative.name, initiative,
