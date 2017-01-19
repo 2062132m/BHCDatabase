@@ -25,8 +25,8 @@ User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
 @area4 = Area.create(name: "Upper Nithsdale", description: "this is upper")
 
 
-@area1.initiatives.create(name: "Dancerise", description: "Danc initiative")
-@area2.initiatives.create(name: "Scrimp and Sew", description: "Scrimp initiative")
-@area3.initiatives.create(name: "Inkspirations", description: "Ink initiative")
-@area4.initiatives.create(name: "Chair Based Exercise", description: "Chair initiative")
+@area1.initiatives.create(name: "Dancerise", description: "Danc initiative", location: "Town Hall")
+@area2.initiatives.create(name: "Scrimp and Sew", description: "Scrimp initiative", location: "Church Hall")
+@area3.initiatives.create(name: "Inkspirations", description: "Ink initiative", location: "Activity Centre")
+@area4.initiatives.create(name: "Chair Based Exercise", description: "Chair initiative", location: "Village Squarew")
 
