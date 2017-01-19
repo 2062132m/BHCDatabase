@@ -4,11 +4,12 @@
     <%= @initiative.name %>
   </h1>
   <div class="stdcontainer">
-    <h2>
+    <p>
       <%= @initiative.description %>
-    </h2>
-    Area: <%= link_to @area.name, @area %>
-    <br>
-    Location: <%= @initiative.location %>
+      <br>
+      Area: <%= link_to @area.name, @area %>
+      <br>
+      Location: <%= @initiative.location %>
+    </p>
   </div>
 </div>
