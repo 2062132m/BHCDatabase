@@ -4,7 +4,7 @@ class InitiativeTest < ActiveSupport::TestCase
   def setup
     @area = Area.new(name: "Example Area", description: "Example description")
     @initiative = Initiative.new(name: "Example Initiative",
-    description: "Example description.", area_id: @area.i)
+    description: "Example description.", area_id: @area.id)
   end
 
   test "should be valid" do
