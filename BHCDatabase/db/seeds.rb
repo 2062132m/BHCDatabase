@@ -19,12 +19,14 @@ User.create(name: "Chris Harris", email: "chris@chris.com", password:
 User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
 "kiril123", password_confirmation: "kiril123")
 
-@area = Area.create(name: "Dumfries & Lower Nithsdale", description: "blah")
-Area.create(name: "West Wigtownshire", description: "blah")
-Area.create(name: "The Machars", description: "blah")
-Area.create(name: "Upper Nithsdale", description: "blah")
+@area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: "this is dumfries")
+@area2 = Area.create(name: "West Wigtownshire", description: "this is west")
+@area3 = Area.create(name: "The Machars", description: "this is machars")
+@area4 = Area.create(name: "Upper Nithsdale", description: "this is upper")
 
-@area.initiatives.create(name: "Dancerise", description: "blah")
-Initiative.create(name: "Scrimp and Sew", description: "blah")
-Initiative.create(name: "Inkspirations", description: "blah")
-Initiative.create(name: "Chair Based Exercise", description: "blah")
+
+@area1.initiatives.create(name: "Dancerise", description: "Danc initiative", location: "Town Hall")
+@area2.initiatives.create(name: "Scrimp and Sew", description: "Scrimp initiative", location: "Church Hall")
+@area3.initiatives.create(name: "Inkspirations", description: "Ink initiative", location: "Activity Centre")
+@area4.initiatives.create(name: "Chair Based Exercise", description: "Chair initiative", location: "Village Squarew")
+
