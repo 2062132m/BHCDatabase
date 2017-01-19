@@ -82,7 +82,9 @@ Our dissertation is being divided..
 \subsection{Customer Organisation and Background}
 \label{customer}
 
-Building Healthy Communities is a NHS programme based in Dumfries and Galloway, which is part of the concept of Healthy Living Centres. The aim of the organisation is to influence health and wellbeing by social, economic and environmental factors, as well as to improve the quality of life of all people.The programme consists of a variety of Local Health Initiatives that address the needs of the local people.It requires partners outside health services to help address issues around health.  Individuals are given the opportunity to become Community Health Volunteers through training and one-to-one support. Building Healthy Communities develop an effective partnership between people as enabling individuals to be active citizens within their own community.
+Building Healthy Communities is a NHS programme based in Dumfries and Galloway, which is part of the concept of Healthy Living Centres. The aim of the organisation is to influence health and wellbeing by social, economic and environmental factors, as well as to improve the quality of life of all people.The programme consists of a variety of Local Health Initiatives that address the needs of the local people.It requires partners outside health services to help address issues around health.  Individuals are given the opportunity 
+
+to become Community Health Volunteers through training and one-to-one support. Building Healthy Communities develop an effective partnership between people as enabling individuals to be active citizens within their own community.
 
 \subsection{Initial Objectives for the project}
 \label{objectives}
@@ -121,11 +123,7 @@ As soon as we agreed on the methods we were going to use, we had to decide the t
 \label{roles}
 *** under construction, no clearly defined roles yet ***
  
-\subsection{Testing}
-\label{testing}
-***maybe move it in the back-end section ???****
 
-It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the first day that we started coding, every section that we completed, we had also provided the proper testings. Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. Our file was using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in your project. Then, every time you commit or merge something in the repository, tests are running to check whether there are issues.
 
 
 
@@ -370,8 +368,6 @@ Maybe the most important factor of the development of the site was the the prote
 \subsection{Browser and Mobile Compatibility}
 \label{sec:compatibility} 
 
-*** maybe incorrectly positioned ***
-
 Our aim for browser compatibility is quite broad. From meetings with the customers, we have gathered the information that the support for the most popular browsers is essential, and that the website should function on iOS and Android (Running in both tablet and mobile form).
 
  A huge issue raised at that point, was the browser compatibility and more specifically the support of Internet Explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, we have taken the decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system. An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
@@ -382,6 +378,19 @@ Our aim for browser compatibility is quite broad. From meetings with the custome
   \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{mobilePrototype.png}}
   \caption{Mobile Compatibility Prototype}
 \end{figure}
+
+\subsection{Testing}
+\label{testing}
+***maybe move it in the back-end section ???****
+
+It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the first day that we started coding, every section that we completed, we had also provided the proper testings. Providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in figure 6 displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
+
+\begin{figure}
+  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
+  \caption{Increasing rate of costs in different software development stages }
+\end{figure}
+
+ Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. Our file was using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in your project. Then, every time you commit or merge something in the repository, tests are running to check whether there are issues. Furthermore, the team developed their own tests using mutants. The program has an impressive percentage of testing coverage reaching more than 90$%$. 
 
 
 
