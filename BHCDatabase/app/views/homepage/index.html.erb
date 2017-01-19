@@ -1,12 +1,13 @@
-<div id="area">
-  <h1>Home</h1>
-
-  <div class="stdcontainer">
-    <ul class="areas">
-      <% @areas.each do |area| %>
-          <%= link_to area.name, area %>
-      <% end %>
-    </ul>
-  </div>
+<div class="row stdcontainer">
+    <% @areas.each do |area| %>
+      <div class="col-md-3">
+        <h3><%= link_to area.name, area %></h3>
+        <div class="list-group">
+          <% Initiative.where(area_id: area.id).each do |initiative| %>
+            <%= link_to initiative.name, initiative,
+             class: "list-group-item list-group-item-action" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 </div>
-

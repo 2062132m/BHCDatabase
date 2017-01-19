@@ -29,4 +29,11 @@ User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
 @area2.initiatives.create(name: "Scrimp and Sew", description: "Scrimp initiative", location: "Church Hall")
 @area3.initiatives.create(name: "Inkspirations", description: "Ink initiative", location: "Activity Centre")
 @area4.initiatives.create(name: "Chair Based Exercise", description: "Chair initiative", location: "Village Squarew")
-
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
+@area4.initiatives.create(name: "Singing group", description: "Singing Group initative", location: "Placeyplace")
