@@ -1,10 +1,12 @@
 <% provide(:title, @initiative.name) %>
-<h1>
-  <%= @initiative.name %>
-</h1>
-<h2>
-  <%= @initiative.description %>
-</h2>
-<h3>
-  <%= @area.name %>
-</h3>
+<div id="initiative">
+  <h1>
+    <%= @initiative.name %>
+  </h1>
+  <div class="stdcontainer">
+    <h2>
+      <%= @initiative.description %>
+    </h2>
+      Area: <%= link_to @area.name, @area %>
+  </div>
+</div>
