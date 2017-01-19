@@ -2,7 +2,9 @@ require 'test_helper'
 
 class InitiativeTest < ActiveSupport::TestCase
   def setup
-    @initiative = Initiative.new(name: "Example Initiative", description: "Example description.")
+    @area = Area.new(name: "Example Area", description: "Example description")
+    @initiative = Initiative.new(name: "Example Initiative",
+    description: "Example description.", area_id: @area.i)
   end
 
   test "should be valid" do
