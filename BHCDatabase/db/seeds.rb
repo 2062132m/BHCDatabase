@@ -72,3 +72,8 @@ dob: "1111-11-11", privilege: "true")
 @area4.initiatives.create(name:"Criss Cross", description: "this is a description", location: "Town Hall")
 @area4.initiatives.create(name:"Tai Chi Kirconnel", description: "this is a description", location: "Town Hall")
 @area4.initiatives.create(name:"Walk for Health", description: "this is a description", location: "Town Hall")
+
+@testinitiative = @area1.initiatives.create(name:"I am a test.",
+                                    description: "I am test description.",
+                                    location: "I am a test location.")
+@testinitiative.meetings.create(datetime:Time.now)

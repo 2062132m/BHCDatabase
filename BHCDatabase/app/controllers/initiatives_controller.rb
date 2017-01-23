@@ -7,6 +7,7 @@ class InitiativesController < ApplicationController
   def show
     @initiative = Initiative.find(params[:id])
     @area = Area.find(@initiative.area_id)
+    @meetings = Meeting.where(initiative_id: @initiative)
   end
 
   def new
