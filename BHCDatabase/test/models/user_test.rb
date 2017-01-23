@@ -33,11 +33,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "privilege should be present" do
-    @user.privilege = ""
-    assert_not @user.valid?
-  end
-
 test "name should not be too long" do
     @user.name = "a" * 51
     assert_not @user.valid?
