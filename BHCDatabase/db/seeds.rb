@@ -25,6 +25,10 @@ User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
 "kiril123", password_confirmation: "kiril123", telephone: "0123456789",
 dob: "1111-11-11", privilege: "true")
 
+User.create(name: "Volunteer", email: "volunteer@volunteer.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+
 @area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: "this is dumfries")
 @area1.initiatives.create(name:"Scrimp and sew", description: "this is a description", location: "Town Hall")
 @area1.initiatives.create(name:"Writing Group", description: "Crafternoons", location: "Town Hall")
