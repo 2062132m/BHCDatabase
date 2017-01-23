@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'meetings/new'
+
   get 'initiatives/new'
 
   get 'areas/new'
