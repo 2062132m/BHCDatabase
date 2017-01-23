@@ -7,17 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(name: "David Robertson", email: "david@david.com", password:
-"david123", password_confirmation: "david123")
+"david123", password_confirmation: "david123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "true")
 User.create(name: "David Brown", email: "david@david.com", password:
-"david123", password_confirmation: "david123")
+"david123", password_confirmation: "david123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "true")
 User.create(name: "Maria Papadopoulou", email: "maria@maria.com", password:
-"maria123", password_confirmation: "maria123")
+"maria123", password_confirmation: "maria123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "true")
 User.create(name: "Jaklin Yordanova", email: "jaklin@jaklin.com", password:
-"jaklin123", password_confirmation: "jaklin123")
+"jaklin123", password_confirmation: "jaklin123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "true")
 User.create(name: "Chris Harris", email: "chris@chris.com", password:
-"chris123", password_confirmation: "chris123")
+"chris123", password_confirmation: "chris123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "true")
 User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
-"kiril123", password_confirmation: "kiril123")
+"kiril123", password_confirmation: "kiril123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "true")
 
 @area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: "this is dumfries")
 @area1.initiatives.create(name:"Scrimp and sew", description: "this is a description", location: "Town Hall")
