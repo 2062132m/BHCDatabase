@@ -1,8 +1,13 @@
+<style>
+  h1 {
+    text-shadow: 1px 1px #008000;
+  }
+</style>
 <% provide(:title, @area.name) %>
 <div id="area">
-  <h1>
+  <h1><em>
     <%= @area.name %>
-  </h1>
+  </em></h1>
   <div class="stdcontainer">
     <h2>
       <%= @area.description %>
