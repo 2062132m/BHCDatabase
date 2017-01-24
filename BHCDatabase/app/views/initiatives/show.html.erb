@@ -6,28 +6,24 @@
 <div class="stdcontainer">
 <div class="container-fluid">
   	<div class="row">
-		
-		<div class="col-md-6">
- 			 
-   			
-      			<br>
-     			 Area: <%= link_to @area.name, @area %>
-     			 <br>
-      			Location: <%= @initiative.location %>
-			<br>
-			Number of Members: 16
-    			</p>
-		</div>
-		<div class="col-md-6">
-			 <p>
-     			 <%= @initiative.description %>
-		</div>
-
-    			
+      <div class="col-md-6">
+        <div align="left">
+           <icon class="glyphicon glyphicon-list-alt">Area: <%= link_to @area.name, @area %></icon>
+        <br>
+           <icon class="glyphicon glyphicon-map-marker">Location: <%= @initiative.location %></icon>
+			  <br>
+          <icon class="glyphicon glyphicon-user">Number of Members: 16</icon>
+        </div>
+		  </div>
+		  <div class="col-md-6">
+        <div align="left">
+          <icon class ="glyphicon glyphicon-info-sign">Description : <%= @initiative.description %></icon>
+        </div>
+		  </div>
   	</div>
 </div>
-
-
+</div>
+  <div class="stdcontainer">
 <ul class="areas">
       			<% @meetings.each do |meeting| %>
           		<li>
@@ -35,6 +31,7 @@
           		</li>
       			<% end %>
     			</ul>
+guuuu
+  </div>
 </div>
 
-</div>
