@@ -1,10 +1,22 @@
 <% provide(:title, @initiative.name) %>
-<h1>
-  <%= @initiative.name %>
-</h1>
-<h2>
-  <%= @initiative.description %>
-</h2>
-<h3>
-  <%= @area.name %>
-</h3>
+<div id="initiative">
+  <h1>
+    <%= @initiative.name %>
+  </h1>
+  <div class="stdcontainer">
+    <p>
+      <%= @initiative.description %>
+      <br>
+      Area: <%= link_to @area.name, @area %>
+      <br>
+      Location: <%= @initiative.location %>
+    </p>
+    <ul class="areas">
+      <% @meetings.each do |meeting| %>
+          <li>
+            <h3><%= link_to meeting.datetime, meeting %></h3>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

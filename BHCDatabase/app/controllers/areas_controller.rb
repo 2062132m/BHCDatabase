@@ -6,6 +6,7 @@ class AreasController < ApplicationController
 
   def show
     @area = Area.find(params[:id])
+    @initiatives = Initiative.where(area_id: @area)
   end
 
   def new

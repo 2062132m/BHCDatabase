@@ -4,7 +4,7 @@ class InitiativeTest < ActiveSupport::TestCase
   def setup
     @area = Area.create(name: "Example Area", description: "Example description")
     @initiative = Initiative.new(name: "Example Initiative",
-    description: "Example description.", area_id: @area.id)
+    description: "Example description.", area_id: @area.id, location: "TestTest")
   end
 
   test "should be valid" do
@@ -18,6 +18,16 @@ class InitiativeTest < ActiveSupport::TestCase
 
   test "description should be present" do
     @initiative.description = ""
+    assert_not @initiative.valid?
+  end
+
+  test "location should be present" do
+    @initiative.location = ""
+    assert_not @initiative.valid?
+  end
+
+  test "location should not be too long" do
+    @initiative.location = "a" * 51
     assert_not @initiative.valid?
   end
 

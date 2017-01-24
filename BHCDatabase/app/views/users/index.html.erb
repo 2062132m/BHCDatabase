@@ -1,0 +1,14 @@
+<% provide(:title, 'Volunteers') %>
+<div id="indexcontainer">
+  <h1>Volunteers</h1>
+
+  <div class="stdcontainer">
+    <ul class="areas">
+      <% User.where(privilege: "f").each do |user| %>
+          <li>
+            <h3><%= link_to user.name, user %></h3>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

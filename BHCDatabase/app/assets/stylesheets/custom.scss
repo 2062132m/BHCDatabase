@@ -101,7 +101,7 @@ textarea {
   height: 140px;
 }
 
-#contact, #area {
+#contact, #area, #initiative, #meeting {
   h1 {
     color: white;
   }
@@ -267,5 +267,11 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
+  }
+}
+
+#indexcontainer {
+  h1 {
+    color: white;
   }
 }

@@ -1,7 +1,19 @@
 <% provide(:title, @area.name) %>
-<h1>
-  <%= @area.name %>
-</h1>
-<h2>
-  <%= @area.description %>
-</h2>
+<div id="area">
+  <h1>
+    <%= @area.name %>
+  </h1>
+  <div class="stdcontainer">
+    <h2>
+      <%= @area.description %>
+    </h2>
+    <h3><%= @initiatives.count %> initiative(s) in this area</h3>
+    <ul class="areas">
+      <% @initiatives.each do |initiative| %>
+          <li>
+            <h3><%= link_to initiative.name, initiative %></h3>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
