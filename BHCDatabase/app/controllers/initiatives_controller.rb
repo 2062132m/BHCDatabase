@@ -2,6 +2,9 @@ class InitiativesController < ApplicationController
 
   def index
     @initiatives = Initiative.all
+    @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|
+      scope.page(params[:page])
+    end
   end
 
   def show
@@ -12,4 +15,18 @@ class InitiativesController < ApplicationController
 
   def new
   end
+end
+
+class InitiativesGrid
+
+  include Datagrid
+
+  scope do
+    Initiative
+  end
+
+  column(:id, :mandatory => true)
+  column(:name, :mandatory => true)
+  column(:location, :mandatory => true)
+
 end
