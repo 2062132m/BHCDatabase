@@ -3,6 +3,11 @@
   h1 {
     text-shadow: 1px 1px #008000;
   }
+  h2{
+    font-size: 25px;
+    text-align: left;
+    color: black;
+  }
 </style>
 <div id="initiative">
   <h1><em>
@@ -13,16 +18,16 @@
   	<div class="row">
       <div class="col-md-6">
         <div align="left">
-           <icon class="glyphicon glyphicon-list-alt">Area: <%= link_to @area.name, @area %></icon>
-        <br>
-           <icon class="glyphicon glyphicon-map-marker">Location: <%= @initiative.location %></icon>
-			  <br>
+          <h2><icon class="glyphicon glyphicon-list-alt">Area: <%= link_to @area.name, @area %></icon></h2>
+
+          <h2> <icon class="glyphicon glyphicon-map-marker">Location: <%= @initiative.location %></icon></h2>
+
          <!-- <icon class="glyphicon glyphicon-user">Number of Members: <%= User.count(params[:id]) %></icon> -->
-        </div>
+           </div>
 		  </div>
 		  <div class="col-md-6">
         <div align="left">
-          <icon class ="glyphicon glyphicon-info-sign">Description : <%= @initiative.description %></icon>
+          <h2> <icon class ="glyphicon glyphicon-info-sign">Description : <%= @initiative.description %></icon></h2>
         </div>
 		  </div>
   	</div>
