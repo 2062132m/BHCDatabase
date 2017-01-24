@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
+      scope.page(params[:page])
+    end
   end
 
   def show
@@ -29,4 +32,21 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+end
+
+class UsersGrid
+
+  include Datagrid
+
+  scope do
+    User.where(:privilege => false)
+  end
+
+  column(:id, :mandatory => true)
+  column(:name, :mandatory => true)
+  column(:email, :mandatory => true)
+  column(:telephone, :mandatory => true)
+  column(:dob, :mandatory => true)
+  column(:privilege, :mandatory => true)
+
 end
