@@ -3,13 +3,6 @@
   <h1>Initiatives</h1>
 
   <div class="stdcontainer">
-    <!-- <ul class="areas">
-      <% @initiatives.each do |initiative| %>
-          <li>
-            <h3><%= link_to initiative.name, initiative %></h3>
-          </li>
-      <% end %>
-    </ul> -->
     <%= datagrid_form_for @initiatives_grid, url: initiatives_path %>
     <%= datagrid_table(@initiatives_grid) %>
     <%= will_paginate @initiatives_grid.assets %>

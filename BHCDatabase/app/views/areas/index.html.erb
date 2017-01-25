@@ -3,6 +3,7 @@
   <h1>Areas</h1>
 
   <div class="stdcontainer">
+    <%= datagrid_form_for @areas_grid, url: areas_path %>
     <%= datagrid_table(@areas_grid) %>
     <%= will_paginate @areas_grid.assets %>
   </div>
