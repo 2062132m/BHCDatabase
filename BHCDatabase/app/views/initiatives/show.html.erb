@@ -33,11 +33,9 @@
     <ul class="areas">
       <% @meetings.each do |meeting| %>
           <li>
-            <h3><%= link_to meeting.datetime, meeting %></h3>
+            <h3><%= link_to meeting.datetime.strftime("%B %d, %Y - %H:%M"), meeting %></h3>
           </li>
       <% end %>
     </ul>
-    guuuu
   </div>
 </div>
-
