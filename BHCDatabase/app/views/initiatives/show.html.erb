@@ -4,13 +4,32 @@
     <%= @initiative.name %>
   </h1>
   <div class="stdcontainer">
-    <p>
-      <%= @initiative.description %>
-      <br>
-      Area: <%= link_to @area.name, @area %>
-      <br>
-      Location: <%= @initiative.location %>
-    </p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              <icon class="glyphicon glyphicon-list-alt">Area: <%= link_to @area.name, @area %></icon>
+            </h2>
+
+            <h2>
+              <icon class="glyphicon glyphicon-map-marker">Location: <%= @initiative.location %></icon>
+            </h2>
+
+            <!-- <icon class="glyphicon glyphicon-user">Number of Members: <%= User.count(params[:id]) %></icon> -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              <icon class="glyphicon glyphicon-info-sign">Description : <%= @initiative.description %></icon>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stdcontainer">
     <ul class="areas">
       <% @meetings.each do |meeting| %>
           <li>
@@ -18,5 +37,7 @@
           </li>
       <% end %>
     </ul>
+    guuuu
   </div>
 </div>
+
