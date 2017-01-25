@@ -39,5 +39,10 @@ class InitiativesGrid
   end
   column(:location, :mandatory => true)
   column(:description, :mandatory => true)
+  column(:area_id, :header => "Area", :mandatory => true) do |model|
+    format(model.area_id) do |value|
+      Area.find(value).name
+    end
+  end
 
 end
