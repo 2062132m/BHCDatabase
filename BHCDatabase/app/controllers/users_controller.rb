@@ -42,8 +42,16 @@ class UsersGrid
     User.where(:privilege => false)
   end
 
-  column(:id, :mandatory => true)
-  column(:name, :mandatory => true)
+  column(:id, :mandatory => true) do |model|
+    format(model.id) do |value|
+      link_to value, model
+    end
+  end
+  column(:name, :mandatory => true) do |model|
+    format(model.name) do |value|
+      link_to value, model
+    end
+  end
   column(:email, :mandatory => true)
   column(:telephone, :mandatory => true)
   column(:dob, :mandatory => true)
