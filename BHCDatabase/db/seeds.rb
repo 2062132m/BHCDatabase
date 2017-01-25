@@ -5,100 +5,84 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Faker::Config.locale = 'en-GB'
 
-User.create(name: "David Robertson", email: "david@david.com", password:
-"david123", password_confirmation: "david123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "true")
-User.create(name: "David Brown", email: "david@david.com", password:
-"david123", password_confirmation: "david123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "true")
-User.create(name: "Maria Papadopoulou", email: "maria@maria.com", password:
-"maria123", password_confirmation: "maria123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "true")
-User.create(name: "Jaklin Yordanova", email: "jaklin@jaklin.com", password:
-"jaklin123", password_confirmation: "jaklin123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "true")
-User.create(name: "Chris Harris", email: "chris@chris.com", password:
-"chris123", password_confirmation: "chris123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "true")
-User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password:
-"kiril123", password_confirmation: "kiril123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "true")
+User.create(name: "David Robertson", email: "david@david.com", password: "david123", password_confirmation: "david123",
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+User.create(name: "David Brown", email: "david@david.com", password: "david123", password_confirmation: "david123",
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+User.create(name: "Maria Papadopoulou", email: "maria@maria.com", password: "maria123", password_confirmation: "maria123",
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+User.create(name: "Jaklin Yordanova", email: "jaklin@jaklin.com", password: "jaklin123", password_confirmation: "jaklin123",
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+User.create(name: "Chris Harris", email: "chris@chris.com", password: "chris123", password_confirmation: "chris123",
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password: "kiril123", password_confirmation: "kiril123",
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
 
-User.create(name: "Volunteer", email: "volunteer@volunteer.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer1", email: "volunteer1@volunteer1.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer2", email: "volunteer2@volunteer2.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer4", email: "volunteer3@volunteer3.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer5", email: "volunteer4@volunteer4.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer6", email: "volunteer5@volunteer5.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer7", email: "volunteer6@volunteer6.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
-User.create(name: "Volunteer8", email: "volunteer7@volunteer7.com", password:
-"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
-dob: "1111-11-11", privilege: "false")
+Faker::Number.between(20, 50).times do
+  password = Faker::Internet.password
+  User.create(name: Faker::Name.name, email: Faker::Internet.email, password: password, password_confirmation: password, telephone: Faker::PhoneNumber.phone_number, dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: false)
+end
 
-@area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: "this is dumfries")
-@area1.initiatives.create(name:"Scrimp and sew", description: "this is a description", location: "Town Hall")
-@area1.initiatives.create(name:"Writing Group", description: "Crafternoons", location: "Town Hall")
-@area1.initiatives.create(name:"Inkspirations", description: "this is a description", location: "Town Hall")
-@area1.initiatives.create(name:"Arts and crafts", description: "this is a description", location: "Town Hall")
-@area1.initiatives.create(name:"Drop in craft", description: "this is a description", location: "Town Hall")
-@area1.initiatives.create(name:"Tai chi Heathall", description: "this is a description", location: "Heathall")
-@area1.initiatives.create(name:"Tai chi Cumberland day centre", description: "this is a description", location: "Cumberland day centre")
-@area1.initiatives.create(name:"Tai chi NWRC", description: "this is a description", location: "NWRC")
-@area1.initiatives.create(name:"Tai chi Summerhill", description: "this is a description", location: "Summerhill")
-@area1.initiatives.create(name:"Tai chi Lincluden", description: "this is a description", location: "Lincluden")
-@area1.initiatives.create(name:"Tai chi Hollywood", description: "this is a description", location: "Hollywood")
+@area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: Faker::Lorem.sentence)
+@area1.initiatives.create(name: "Scrimp and sew", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: "Writing Group", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: "Inkspirations", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: "Arts and crafts", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: "Drop in craft", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: "Tai chi Heathall", description: Faker::Lorem.sentence, location: "Heathall")
+@area1.initiatives.create(name: "Tai chi Cumberland day centre", description: Faker::Lorem.sentence, location: "Cumberland day centre")
+@area1.initiatives.create(name: "Tai chi NWRC", description: Faker::Lorem.sentence, location: "NWRC")
+@area1.initiatives.create(name: "Tai chi Summerhill", description: Faker::Lorem.sentence, location: "Summerhill")
+@area1.initiatives.create(name: "Tai chi Lincluden", description: Faker::Lorem.sentence, location: "Lincluden")
+@area1.initiatives.create(name: "Tai chi Hollywood", description: Faker::Lorem.sentence, location: "Hollywood")
 
-@area2 = Area.create(name: "West \n Wigtownshire", description: "this is west")
-@area2.initiatives.create(name:"Chair based exercise", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"Tai Chi 50+", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"SHAWL group", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"Tai chi for health", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"Tai chi Potters", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"Tai chi Phoenix", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"SHAWL Group art", description: "this is a description", location: "Hollywood")
-@area2.initiatives.create(name:"Boccia & NAC", description: "this is a description", location: "Hollywood")
+@area2 = Area.create(name: "West \n Wigtownshire", description: Faker::Lorem.sentence)
+@area2.initiatives.create(name: "Chair based exercise", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "Tai Chi 50+", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "SHAWL group", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "Tai chi for health", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "Tai chi Potters", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "Tai chi Phoenix", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "SHAWL Group art", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area2.initiatives.create(name: "Boccia & NAC", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
 
-@area3 = Area.create(name: "The \n Machars", description: "this is machars")
-@area3.initiatives.create(name:"Monday Club", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Boccia/NAC", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Dancercise", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Jills of all trades", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Jills in the community", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"I.O.W. Arts", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Login &Connect", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Gentle Exercise", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"IOW Youth", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Vol Drop in", description: "this is a description", location: "Town Hall")
-@area3.initiatives.create(name:"Scrabble4fun", description: "this is a description", location: "Town Hall")
+@area3 = Area.create(name: "The \n Machars", description: Faker::Lorem.sentence)
+@area3.initiatives.create(name: "Monday Club", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Boccia/NAC", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Dancercise", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Jills of all trades", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Jills in the community", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "I.O.W. Arts", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Login &Connect", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Gentle Exercise", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "IOW Youth", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Vol Drop in", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area3.initiatives.create(name: "Scrabble4fun", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
 
-@area4 = Area.create(name: "Upper \n Nithsdale", description: "this is upper")
-@area4.initiatives.create(name:"Singing group", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Qijong", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Monday Munchers", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Hard of hearing", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Tai chi Sanquar", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Lifestyles", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Drop in", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Criss Cross", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Tai Chi Kirconnel", description: "this is a description", location: "Town Hall")
-@area4.initiatives.create(name:"Walk for Health", description: "this is a description", location: "Town Hall")
+@area4 = Area.create(name: "Upper \n Nithsdale", description: Faker::Lorem.sentence)
+@area4.initiatives.create(name: "Singing group", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Qijong", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Monday Munchers", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Hard of hearing", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Tai chi Sanquar", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Lifestyles", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Drop in", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Criss Cross", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Tai Chi Kirconnel", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+@area4.initiatives.create(name: "Walk for Health", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
 
-@testinitiative = @area1.initiatives.create(name:"I am a test.",
-                                    description: "I am test description.",
-                                    location: "I am a test location.")
-@testinitiative.meetings.create(datetime:Time.now)
+@testinitiative = @area1.initiatives.create(name: "I am a test.",
+                                            description: "I am test description.",
+                                            location: "I am a test location.")
+
+Faker::Number.between(5, 10).times do
+  @testinitiative.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
