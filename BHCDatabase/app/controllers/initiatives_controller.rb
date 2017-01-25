@@ -66,7 +66,7 @@ class MeetingsInInitiativesGrid
   end
   column(:datetime, :mandatory => true) do |model|
     format(model.datetime) do |value|
-      link_to value, model
+      link_to value.strftime("%B %d, %Y - %H:%M"), model
     end
   end
 
