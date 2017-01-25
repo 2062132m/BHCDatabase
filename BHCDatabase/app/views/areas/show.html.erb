@@ -1,19 +1,21 @@
-<% provide(:title, @area.name) %>
+<% provide(:title, $area.name) %>
 <div id="area">
   <h1>
-    <%= @area.name %>
+    <%= $area.name %>
   </h1>
   <div class="stdcontainer">
     <h2>
-      <%= @area.description %>
+      <%= $area.description %>
     </h2>
-    <h3><%= @initiatives.count %> initiative(s) in this area</h3>
+    <!-- <h3><%= @initiatives.count %> initiative(s) in this area</h3>
     <ul class="areas">
       <% @initiatives.each do |initiative| %>
           <li>
             <h3><%= link_to initiative.name, initiative %></h3>
           </li>
       <% end %>
-    </ul>
+    </ul> -->
+    <%= datagrid_table(@initiatives_in_area_grid) %>
+    <%= will_paginate @initiatives_in_area_grid.assets %>
   </div>
 </div>
