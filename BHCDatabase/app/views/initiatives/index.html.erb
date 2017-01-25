@@ -1,25 +1,16 @@
-<style>
-  h1 {
-    text-shadow: 1px 1px #008000;
-  }
-</style>
 <% provide(:title, 'Initiatives') %>
 <div id="indexcontainer">
-  <h1><em>Initiatives</em></h1>
+  <h1>Initiatives</h1>
 
   <div class="stdcontainer">
-  
-  <div class="container-fluid"; align="center">
-
-        <% @initiatives.in_groups_of(3, false) do |initiative| %>
-        <div class="row">
-            <% for initiative in initiative %>
-            <div class="col-md-4"><h3><%= link_to initiative.name, initiative %></h3></div>
-            <% end %>
-       </div>
-       <% end %>
-    </div>
-
-    
+    <!-- <ul class="areas">
+      <% @initiatives.each do |initiative| %>
+          <li>
+            <h3><%= link_to initiative.name, initiative %></h3>
+          </li>
+      <% end %>
+    </ul> -->
+    <%= datagrid_table(@initiatives_grid) %>
+    <%= will_paginate @initiatives_grid.assets %>
   </div>
 </div>

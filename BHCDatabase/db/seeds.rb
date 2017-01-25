@@ -28,6 +28,27 @@ dob: "1111-11-11", privilege: "true")
 User.create(name: "Volunteer", email: "volunteer@volunteer.com", password:
 "volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
 dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer1", email: "volunteer1@volunteer1.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer2", email: "volunteer2@volunteer2.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer4", email: "volunteer3@volunteer3.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer5", email: "volunteer4@volunteer4.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer6", email: "volunteer5@volunteer5.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer7", email: "volunteer6@volunteer6.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
+User.create(name: "Volunteer8", email: "volunteer7@volunteer7.com", password:
+"volunteer123", password_confirmation: "volunteer123", telephone: "0123456789",
+dob: "1111-11-11", privilege: "false")
 
 @area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: "this is dumfries")
 @area1.initiatives.create(name:"Scrimp and sew", description: "this is a description", location: "Town Hall")
