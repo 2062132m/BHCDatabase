@@ -25,6 +25,8 @@ class InitiativesGrid
     Initiative
   end
 
+  filter(:condition, :dynamic, :header => "Filter")
+
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
       link_to value, model
@@ -36,5 +38,6 @@ class InitiativesGrid
     end
   end
   column(:location, :mandatory => true)
+  column(:description, :mandatory => true)
 
 end

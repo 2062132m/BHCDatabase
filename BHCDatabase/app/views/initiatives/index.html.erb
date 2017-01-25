@@ -10,6 +10,7 @@
           </li>
       <% end %>
     </ul> -->
+    <%= datagrid_form_for @initiatives_grid, url: initiatives_path %>
     <%= datagrid_table(@initiatives_grid) %>
     <%= will_paginate @initiatives_grid.assets %>
   </div>
