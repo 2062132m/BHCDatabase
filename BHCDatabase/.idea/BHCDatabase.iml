@@ -272,6 +272,7 @@
     <orderEntry type="library" scope="PROVIDED" name="docile (v1.1.5, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v1.7.2, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.17, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formatador (v0.2.5, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.3.7, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
