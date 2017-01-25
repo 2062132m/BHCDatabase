@@ -32,17 +32,50 @@ Faker::Number.between(20, 50).times do
 end
 
 @area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: Faker::Lorem.sentence)
-@area1.initiatives.create(name: "Scrimp and sew", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: "Writing Group", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: "Inkspirations", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: "Arts and crafts", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: "Drop in craft", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: "Tai chi Heathall", description: Faker::Lorem.sentence, location: "Heathall")
-@area1.initiatives.create(name: "Tai chi Cumberland day centre", description: Faker::Lorem.sentence, location: "Cumberland day centre")
-@area1.initiatives.create(name: "Tai chi NWRC", description: Faker::Lorem.sentence, location: "NWRC")
-@area1.initiatives.create(name: "Tai chi Summerhill", description: Faker::Lorem.sentence, location: "Summerhill")
-@area1.initiatives.create(name: "Tai chi Lincluden", description: Faker::Lorem.sentence, location: "Lincluden")
-@area1.initiatives.create(name: "Tai chi Hollywood", description: Faker::Lorem.sentence, location: "Hollywood")
+@init1 = @area1.initiatives.create(name: "Scrimp and sew", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+Faker::Number.between(5, 10).times do
+  @init1.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init2 = @area1.initiatives.create(name: "Writing Group", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+Faker::Number.between(5, 10).times do
+  @init2.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init3 = @area1.initiatives.create(name: "Inkspirations", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+Faker::Number.between(5, 10).times do
+  @init3.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init4 = @area1.initiatives.create(name: "Arts and crafts", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+Faker::Number.between(5, 10).times do
+  @init4.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init5 = @area1.initiatives.create(name: "Drop in craft", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
+Faker::Number.between(5, 10).times do
+  @init5.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init6 = @area1.initiatives.create(name: "Tai chi Heathall", description: Faker::Lorem.sentence, location: "Heathall")
+Faker::Number.between(5, 10).times do
+  @init6.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init7 = @area1.initiatives.create(name: "Tai chi Cumberland day centre", description: Faker::Lorem.sentence, location: "Cumberland day centre")
+Faker::Number.between(5, 10).times do
+  @init7.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init8 = @area1.initiatives.create(name: "Tai chi NWRC", description: Faker::Lorem.sentence, location: "NWRC")
+Faker::Number.between(5, 10).times do
+  @init8.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init9 = @area1.initiatives.create(name: "Tai chi Summerhill", description: Faker::Lorem.sentence, location: "Summerhill")
+Faker::Number.between(5, 10).times do
+  @init9.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init10 = @area1.initiatives.create(name: "Tai chi Lincluden", description: Faker::Lorem.sentence, location: "Lincluden")
+Faker::Number.between(5, 10).times do
+  @init10.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
+@init1 = @area1.initiatives.create(name: "Tai chi Hollywood", description: Faker::Lorem.sentence, location: "Hollywood")
+Faker::Number.between(5, 10).times do
+  @init10.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+end
 
 @area2 = Area.create(name: "West \n Wigtownshire", description: Faker::Lorem.sentence)
 @area2.initiatives.create(name: "Chair based exercise", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
@@ -78,11 +111,3 @@ end
 @area4.initiatives.create(name: "Criss Cross", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
 @area4.initiatives.create(name: "Tai Chi Kirconnel", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
 @area4.initiatives.create(name: "Walk for Health", description: Faker::Lorem.sentence, location: Faker::StarWars.planet)
-
-@testinitiative = @area1.initiatives.create(name: "I am a test.",
-                                            description: "I am test description.",
-                                            location: "I am a test location.")
-
-Faker::Number.between(5, 10).times do
-  @testinitiative.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
