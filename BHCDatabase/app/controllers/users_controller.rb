@@ -42,6 +42,8 @@ class UsersGrid
     User.where(:privilege => false)
   end
 
+  filter(:condition, :dynamic, :header => "Filter")
+
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
       link_to value, model
