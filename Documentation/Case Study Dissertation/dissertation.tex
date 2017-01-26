@@ -110,7 +110,7 @@ In terms of project planning, agile methods are one of the most trusted methods 
 As soon as we agreed on the methods we were going to use, we had to decide the technologies that we needed to use regarding project management. The university moodle page, suggested a series of technologies to use for handling our project such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what we are allowed to use and what we are not, we decided to use Gitlab for our project management and repository. Gitlab provides every technology that is needed to handle our project repository, the permissions that each member has as well as an amazing GUI that organises the "wiki" page and the "issues" page and so on. Using Gitlab, was very helpful, since we had all our due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provided to us was the Continuous Integration (CI) feature. CI is a tool that enables all the repository users to merge their work to a local repository. This was a huge organisational feature, since everyone could interact in the project code. Every team member, could assign a ticket to themselves or even to other team members, as a result we had a highly organised page where we could track the workload that every member has done. This was very helpful, in terms of assigning work to members that have not contribute as much as the others in a specific week and assign less to members that already have done more work than needed.
 
  After this discussion, the meeting was not over. Therefore, we needed to decide which technologies would be used for implementing the project itself. We had to choose which web application framework to use. The first option we discussed was Django, due to the fact that every team member had previous experience with Django from our second year web application development course. Another option a team member suggested was Rails as more powerful tool with better documentation. To put more depth in it, Rails is a web application framework with "model-view-controller" software design pattern, not "model-view-template" like Django, which we were familiar with. None of the six members in our team coded on Rails before, so we have postponed our meeting and created an issue in the Gitlab - every member in the team had to study Rails in their time. In the next meeting, we voted and agreed to use Rails. Rails provides a massive help in the testing process. Moreover, the biggest factor that persuaded the team to work with Rails was the automation of many tasks and the "Gems" documentation that provides. "RubyGems" is a package manager. Using a tool called "Gem" in your terminal you can install and work with different libraries. Gems, are previously tested libraries, which provided security and saved a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks.
-  Since Rails, as previously stated, is based in "model-view-controller" we needed to find a model, an application to manage our newly created database. SQLite was our choice because the database would be small with just a couple of thousand text records. Furthermore, SQLite is a self-contained, free to use relational database management system.
+  Since Rails, as previously stated, is based in "model-view-controller" we needed to find a model, an application to manage our newly created database. PostgreSQL was our choice because the database would be small with just a couple of thousand text records. Furthermore, PostgreSQL is a self-contained, free to use object-relational database management system.
  
  \subsection{Retrospective}
 \label{retrospective}
@@ -417,6 +417,22 @@ One other important thing that we needed to create was the user documentation. D
 
 %==============================================================================
 
+\section{Challenges}
+\label{challenges}
+
+Developing a site from scratch, always creates some major challenges. The second and third retrospective were pretty representative for stating what challenges the team faced and some suggestions of how they were solved. Usually a team has a major issue developing test. Tests were mainly time consuming since we needed enormous amounts of tests. Surprisingly, the tests had a very high coverage of an approximate 90% .
+
+The organisation of the database was another thing worth mentioning. Although the database was characterised by its simplicity, retrieving the information was tricky since a member of a team could be a volunteer in another team and a general admin. This raised some authentication issues whether where that specific user is allowed to alternate information and where is not.
+
+As in every project developing process, programmers will face some last-minute demands from the customers. One of these demands were the creation of some type of flag pointing which users are funded from specific organisations. The current demand raised some issues in in the database development since this is an addition very specific information regarding every member of every group. The team assigned that as an extra feature which would be developed if there was time, something that was stated clear from the very first day that it was suggested. The team managed to create the feature and successfully add it to the site.
+
+
+
+
+
+
+%==============================================================================
+
 \section{Choice of Colours}
 \label{design}
 
@@ -471,8 +487,8 @@ Technology
 \item "wikipedia.org: RubyGems"
 \newline https://en.wikipedia.org/wiki/RubyGems [Accessed 14 December 2016]
 
-\item "sqlite.org: SQLite"
-\newline https://www.sqlite.org/about.html [Accessed 14 December 2016]
+\item "postgresql.org: PostgreSQL"
+\newline https://www.postgresql.org/ [Accessed 14 December 2016]
 
 
 \end{itemize}
