@@ -26,6 +26,11 @@ class InitiativeTest < ActiveSupport::TestCase
     assert_not @initiative.valid?
   end
 
+  test "area_id should be present" do
+    @initiative.area_id = nil
+    assert_not @initiative.valid?
+  end
+
   test "location should not be too long" do
     @initiative.location = "a" * 51
     assert_not @initiative.valid?
