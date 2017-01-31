@@ -27,8 +27,6 @@ COPY config/puma.rb config/puma.rb
 # Copy the main application.
 COPY . .
 
-RUN rake assets:precompile
-
 EXPOSE 3000
 
 # The default command that gets ran will be to start the Puma server.
