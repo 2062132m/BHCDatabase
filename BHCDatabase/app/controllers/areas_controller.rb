@@ -30,6 +30,20 @@ class AreasController < ApplicationController
     end
   end
 
+  def edit
+    @area = Area.find(params[:id])
+  end
+
+  def update
+    @area = Area.find(params[:id])
+    if @area.update_attributes(area_params)
+      flash[:success] = "Area updated"
+      redirect_to @area
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def area_params
