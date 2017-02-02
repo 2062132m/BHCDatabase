@@ -30,6 +30,12 @@ class AreasController < ApplicationController
     end
   end
 
+  def destroy
+    Area.find(params[:id]).destroy
+    flash[:success] = "Area deleted"
+    redirect_to areas_url
+  end
+
   private
 
     def area_params

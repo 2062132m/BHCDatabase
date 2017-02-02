@@ -17,5 +17,8 @@
     </ul> -->
     <%= datagrid_table(@initiatives_in_area_grid) %>
     <%= will_paginate @initiatives_in_area_grid.assets %>
+    <%= link_to "Delete Area", @area, method: :delete,
+                                data: { confirm: "Are you sure you want to delete this area?" },
+                                  class: "btn btn-default" %>
   </div>
 </div>
