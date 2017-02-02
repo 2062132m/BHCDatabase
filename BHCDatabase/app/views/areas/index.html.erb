@@ -3,8 +3,12 @@
   <h1>Areas</h1>
 
   <div class="stdcontainer">
+
+    <%= link_to 'New Area', new_area_path, class: 'btn btn-default' %>
+
     <%= datagrid_form_for @areas_grid, url: areas_path %>
     <%= datagrid_table(@areas_grid) %>
     <%= will_paginate @areas_grid.assets %>
+
   </div>
 </div>
