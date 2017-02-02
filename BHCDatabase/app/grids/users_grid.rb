@@ -3,7 +3,7 @@ class UsersGrid
   include Datagrid
 
   scope do
-    User.where(:privilege => false)
+    User
   end
 
   filter(:condition, :dynamic, :header => "Filter")
