@@ -1,7 +1,11 @@
 require 'simplecov'
+require 'faker'
+
 SimpleCov.start do
   add_filter '/test/'
 end
+
+Faker::Config.locale = 'en-GB'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
