@@ -6,11 +6,11 @@ class MedicalConditionTest < ActiveSupport::TestCase
     @valid_condition = MedicalCondition.new(name: Faker::Lorem.word, description: Faker::Lorem.paragraph)
   end
 
-  test "should be valid" do
+  test 'should be valid' do
     assert @valid_condition.valid?
   end
 
-  test "name should be present" do
+  test 'name should be present' do
     @valid_condition.name = ''
     assert_not @valid_condition.valid?
   end
