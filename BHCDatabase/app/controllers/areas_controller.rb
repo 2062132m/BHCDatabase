@@ -19,6 +19,21 @@ class AreasController < ApplicationController
   def new
     @area = Area.new
   end
+
+  def create
+    @area = Area.new(area_params)
+    if @area.save
+      # Handle a successful save
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def area_params
+      params.require(:area).permit(:name, :description)
+    end
 end
 
 class AreasGrid
