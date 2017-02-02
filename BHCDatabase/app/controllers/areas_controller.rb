@@ -17,7 +17,24 @@ class AreasController < ApplicationController
   end
 
   def new
+    @area = Area.new
   end
+
+  def create
+    @area = Area.new(area_params)
+    if @area.save
+      flash[:success] = 'Created the new area!'
+      redirect_to @area
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def area_params
+      params.require(:area).permit(:name, :description)
+    end
 end
 
 class AreasGrid
