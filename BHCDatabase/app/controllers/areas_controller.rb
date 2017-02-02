@@ -14,7 +14,6 @@ class AreasController < ApplicationController
     new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
     end
-    @initiatives_in_area_grid.assets
   end
 
   def new
