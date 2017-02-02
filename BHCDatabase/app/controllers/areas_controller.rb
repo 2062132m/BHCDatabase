@@ -11,7 +11,7 @@ class AreasController < ApplicationController
     @area = Area.find(params[:id])
     @initiatives = Initiative.where(area_id: @area)
     @initiatives_in_area_grid = InitiativesInAreaGrid.
-    new(params[:initiatives_in_area_grid]) do |scope|
+        new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
     end
   end
@@ -30,6 +30,20 @@ class AreasController < ApplicationController
     end
   end
 
+  def edit
+    @area = Area.find(params[:id])
+  end
+
+  def update
+    @area = Area.find(params[:id])
+    if @area.update_attributes(area_params)
+      flash[:success] = "Area updated"
+      redirect_to @area
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     Area.find(params[:id]).destroy
     flash[:success] = "Area deleted"
@@ -38,7 +52,7 @@ class AreasController < ApplicationController
 
   private
 
-    def area_params
-      params.require(:area).permit(:name, :description)
-    end
+  def area_params
+    params.require(:area).permit(:name, :description)
+  end
 end
