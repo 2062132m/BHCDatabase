@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170123132001) do
     t.string   "password_digest"
     t.string   "telephone"
     t.date     "dob"
-    t.boolean  "privilege"
+    t.integer  "privilege"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
