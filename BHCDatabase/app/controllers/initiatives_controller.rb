@@ -24,6 +24,7 @@ class InitiativesController < ApplicationController
 
   def create
     @initiative = Initiative.new(initiative_params)
+    @areas = Area.all
     if @initiative.save
       flash[:success] = 'Created the new initiative!'
       redirect_to @initiative
