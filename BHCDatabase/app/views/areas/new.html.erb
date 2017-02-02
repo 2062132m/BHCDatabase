@@ -1,3 +1,17 @@
-<% provide(:title, 'Areas') %>
-<h1>Areas</h1>
-<p>This will contain the areas</p>
+<% provide(:title, 'Create a new Area') %>
+<h1>Create a new Area</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@area) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <%= f.submit 'Create the new Area', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

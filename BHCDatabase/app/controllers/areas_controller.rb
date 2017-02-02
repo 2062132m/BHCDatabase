@@ -17,6 +17,7 @@ class AreasController < ApplicationController
   end
 
   def new
+    @area = Area.new
   end
 end
 
