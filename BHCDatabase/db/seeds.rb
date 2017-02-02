@@ -9,26 +9,33 @@ Faker::Config.locale = 'en-GB'
 
 User.create(name: "David Robertson", email: "david@david.com", password: "david123", password_confirmation: "david123",
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: "David Brown", email: "david@david.com", password: "david123", password_confirmation: "david123",
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: "Maria Papadopoulou", email: "maria@maria.com", password: "maria123", password_confirmation: "maria123",
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: "Jaklin Yordanova", email: "jaklin@jaklin.com", password: "jaklin123", password_confirmation: "jaklin123",
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: "Chris Harris", email: "chris@chris.com", password: "chris123", password_confirmation: "chris123",
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: "Kiril Mihaylov", email: "kiril@kiril.com", password: "kiril123", password_confirmation: "kiril123",
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: "true")
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 
+# Add volunteers to the database
 Faker::Number.between(20, 50).times do
   password = Faker::Internet.password
-  User.create(name: Faker::Name.name, email: Faker::Internet.email, password: password, password_confirmation: password, telephone: Faker::PhoneNumber.phone_number, dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: false)
+  User.create(name: Faker::Name.name,
+              email: Faker::Internet.email,
+              password: password,
+              password_confirmation: password,
+              telephone: Faker::PhoneNumber.phone_number,
+              dob: Faker::Date.between(70.years.ago, 18.years.ago),
+              privilege: 1)
 end
 
 @area1 = Area.create(name: "Dumfries & Lower Nithsdale", description: Faker::Lorem.sentence)
