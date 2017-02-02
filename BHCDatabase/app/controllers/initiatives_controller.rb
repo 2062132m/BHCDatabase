@@ -18,7 +18,25 @@ class InitiativesController < ApplicationController
   end
 
   def new
+    @initiative = Initiative.new
+    @areas = Area.all
   end
+
+  def create
+    @initiative = Initiative.new(initiative_params)
+    if @initiative.save
+      flash[:success] = 'Created the new initiative!'
+      redirect_to @initiative
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def initiative_params
+      params.require(:initiative).permit(:name, :description, :area_id, :location)
+    end
 end
 
 class InitiativesGrid

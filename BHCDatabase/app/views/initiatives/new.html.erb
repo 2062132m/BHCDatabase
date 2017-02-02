@@ -1,3 +1,28 @@
-<% provide(:title, 'Initiatives') %>
-<h1>Initiatives</h1>
-<p>This will contain the initiatives</p>
+<% provide(:title, 'New Initiative') %>
+<div id="newcontainer">
+  <h1>Create a new Initiative</h1>
+
+  <div class="stdcontainer">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@initiative) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control' %>
+
+            <%= f.label :location %>
+            <%= f.text_field :location, class: 'form-control' %>
+
+            <%= f.label :area %>
+            <%= f.select :area_id, options_for_select(@areas.map{|s|[s.name, s.id]}) %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
