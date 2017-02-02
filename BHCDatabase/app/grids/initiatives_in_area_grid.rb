@@ -1,12 +1,10 @@
-class AreasGrid
+class InitiativesInAreaGrid
 
   include Datagrid
 
   scope do
-    Area
+    Initiative
   end
-
-  filter(:condition, :dynamic, :header => "Filter")
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
@@ -18,6 +16,6 @@ class AreasGrid
       link_to value, model
     end
   end
-  column(:description, :mandatory => true)
+  column(:location, :mandatory => true)
 
 end
