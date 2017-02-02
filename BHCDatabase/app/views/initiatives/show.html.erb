@@ -1,7 +1,7 @@
-<% provide(:title, $initiative.name) %>
+<% provide(:title, @initiative.name) %>
 <div id="initiative">
   <h1>
-    <%= $initiative.name %>
+    <%= @initiative.name %>
   </h1>
   <div class="stdcontainer">
     <div class="container-fluid">
@@ -13,7 +13,7 @@
             </h2>
 
             <h2>
-              <icon class="glyphicon glyphicon-map-marker">Location: <%= $initiative.location %></icon>
+              <icon class="glyphicon glyphicon-map-marker">Location: <%= @initiative.location %></icon>
             </h2>
 
             <!-- <icon class="glyphicon glyphicon-user">Number of Members: <%= User.count(params[:id]) %></icon> -->
@@ -22,7 +22,7 @@
         <div class="col-md-6">
           <div align="left">
             <h2>
-              <icon class="glyphicon glyphicon-info-sign">Description : <%= $initiative.description %></icon>
+              <icon class="glyphicon glyphicon-info-sign">Description : <%= @initiative.description %></icon>
             </h2>
           </div>
         </div>
