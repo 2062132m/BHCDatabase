@@ -23,7 +23,8 @@ class AreasController < ApplicationController
   def create
     @area = Area.new(area_params)
     if @area.save
-      # Handle a successful save
+      flash[:success] = 'Created the new area!'
+      redirect_to @area
     else
       render 'new'
     end
