@@ -28,7 +28,7 @@ build_deploy:
 deploy:
   stage: deploy
   script:
-    - docker-compose -f ./BHCDatabase/docker-compose.yml run app rails db:migrate
+    - docker-compose -f ./BHCDatabase/docker-compose.yml run app rails db:setup
     - docker-compose -f ./BHCDatabase/docker-compose.yml run app rails assets:precompile
     - docker-compose -f ./BHCDatabase/docker-compose.yml up -d
   only:
