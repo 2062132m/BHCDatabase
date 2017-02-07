@@ -5,12 +5,17 @@
   </h1>
 
   <div class="stdcontainer">
+    <div class="container-fluid">
 
     <h2>
       <%= @area.description %>
     </h2>
 
-    <%= link_to 'Edit', edit_area_path, class: 'btn btn-default' %>
+    <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @area, method: :delete,
+                                data: { confirm: "Are you sure you want to delete this area?
+                                                  \nNote: All associated initiatives will be deleted!" },
+                                  class: "btn btn-default delete-btn" %>
+    <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_area_path, class: 'btn btn-default edit-btn' %>
 
     <%= datagrid_table(@initiatives_in_area_grid) %>
     <%= will_paginate @initiatives_in_area_grid.assets %>
@@ -18,5 +23,6 @@
                                 data: { confirm: "Are you sure you want to delete this area?
                                                   \nNote: All associated initiatives will be deleted!" },
                                   class: "btn btn-default" %>
+  </div>
   </div>
 </div>
