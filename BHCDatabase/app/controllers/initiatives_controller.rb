@@ -48,6 +48,12 @@ class InitiativesController < ApplicationController
     end
   end
 
+  def destroy
+    Initiative.find(params[:id]).destroy
+    flash[:success] = "Initiative deleted"
+    redirect_to initiatives_url
+  end
+
   private
 
     def initiative_params
