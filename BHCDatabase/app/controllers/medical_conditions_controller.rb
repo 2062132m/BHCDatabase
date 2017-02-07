@@ -25,6 +25,20 @@ class MedicalConditionsController < ApplicationController
     @medical_condition = MedicalCondition.find(params[:id])
   end
 
+  def edit
+    @medical_condition = MedicalCondition.find(params[:id])
+  end
+
+  def update
+    @medical_condition = MedicalCondition.find(params[:id])
+    if @medical_condition.update_attributes(medical_condition_params)
+      flash[:success] = 'Medical Condition Updated'
+      redirect_to @medical_condition
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def medical_condition_params
