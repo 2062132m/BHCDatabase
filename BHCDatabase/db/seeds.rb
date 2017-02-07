@@ -33,7 +33,7 @@ User.create(name: 'Volunteer', email:'volunteer@volunteer.com', password: 'volun
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
 User.create(name: 'User', email:'user@user.com', password: 'user123', password_confirmation:'user123',
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2)
 
 Faker::Number.between(20, 50).times do
   password = Faker::Internet.password

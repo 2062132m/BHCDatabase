@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :admin?, except: [:show]
+
   def index
     # @users = User.all
     @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
