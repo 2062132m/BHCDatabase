@@ -27,6 +27,14 @@ User.create(name: 'Kiril Mihaylov', email: 'kiril@kiril.com', password: 'kiril12
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 
 # Add volunteers to the database
+
+User.create(name: 'Volunteer', email:'volunteer@volunteer.com', password: 'volunteer123', password_confirmation:'volunteer123',
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
+User.create(name: 'User', email:'user@user.com', password: 'user123', password_confirmation:'user123',
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
+
 Faker::Number.between(20, 50).times do
   password = Faker::Internet.password
   User.create(name: Faker::Name.name,
