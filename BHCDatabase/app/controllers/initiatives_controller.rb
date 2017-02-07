@@ -22,11 +22,6 @@ class InitiativesController < ApplicationController
     @areas = Area.all
   end
 
-  def edit
-    @initiative = Initiative.find(params[:id])
-    @areas = Area.all
-  end
-
   def create
     @initiative = Initiative.new(initiative_params)
     @areas = Area.all
@@ -35,6 +30,21 @@ class InitiativesController < ApplicationController
       redirect_to @initiative
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @initiative = Initiative.find(params[:id])
+    @areas = Area.all
+  end
+
+  def update
+    @initiative = Initiative.find(params[:id])
+    if @initiative.update_attributes(initiative_params)
+      flash[:success] = "Initiative updated"
+      redirect_to @initiative
+    else
+      render 'edit'
     end
   end
 
