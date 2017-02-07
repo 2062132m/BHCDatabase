@@ -4,9 +4,10 @@
 
   <div class="stdcontainer">
 
-    <%= link_to 'New Initiative', new_initiative_path, class: 'btn btn-default' %>
-
     <%= datagrid_form_for @initiatives_grid, url: initiatives_path %>
+
+    <%= link_to "<i class='glyphicon glyphicon-plus'></i> New".html_safe, new_initiative_path, class: 'btn btn-default new-btn' %>
+
     <%= datagrid_table(@initiatives_grid) %>
     <%= will_paginate @initiatives_grid.assets %>
   </div>

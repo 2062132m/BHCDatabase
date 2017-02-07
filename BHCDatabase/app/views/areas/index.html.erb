@@ -3,10 +3,10 @@
   <h1>Areas</h1>
 
   <div class="stdcontainer">
-
-    <%= link_to 'New Area', new_area_path, class: 'btn btn-default' %>
-
     <%= datagrid_form_for @areas_grid, url: areas_path %>
+
+    <%= link_to "<i class='glyphicon glyphicon-plus'></i> New".html_safe, new_area_path, class: 'btn btn-default new-btn' %>
+
     <%= datagrid_table(@areas_grid) %>
     <%= will_paginate @areas_grid.assets %>
 
