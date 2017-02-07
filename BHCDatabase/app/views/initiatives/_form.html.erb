@@ -1,0 +1,17 @@
+<%= form_for(@initiative) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+
+    <%= f.label :location %>
+    <%= f.text_field :location, class: 'form-control' %>
+
+    <%= f.label :area %>
+    <%= f.select :area_id, options_for_select(@areas.map{|s|[s.name, s.id]}) %>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

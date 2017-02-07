@@ -1,6 +1,6 @@
 class Initiative < ApplicationRecord
   belongs_to :area
-  has_many :meetings
+  has_many :meetings, :dependent => :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 255 }

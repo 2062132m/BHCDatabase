@@ -33,6 +33,27 @@ class InitiativesController < ApplicationController
     end
   end
 
+  def edit
+    @initiative = Initiative.find(params[:id])
+    @areas = Area.all
+  end
+
+  def update
+    @initiative = Initiative.find(params[:id])
+    if @initiative.update_attributes(initiative_params)
+      flash[:success] = "Initiative updated"
+      redirect_to @initiative
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Initiative.find(params[:id]).destroy
+    flash[:success] = "Initiative deleted"
+    redirect_to initiatives_url
+  end
+
   private
 
     def initiative_params
