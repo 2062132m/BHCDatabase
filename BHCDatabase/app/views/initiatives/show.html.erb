@@ -38,9 +38,5 @@
   <div class="stdcontainer">
     <%= datagrid_table(@meetings_in_initiatives_grid) %>
     <%= will_paginate @meetings_in_initiatives_grid.assets %>
-    <%= link_to "Delete Initiative", @initiative, method: :delete,
-                                data: { confirm: "Are you sure you want to delete this initiative?
-                                                  \nNote: All associated meetings will be deleted!" },
-                                  class: "btn btn-default" %>
   </div>
 </div>
