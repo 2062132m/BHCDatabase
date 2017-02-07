@@ -1,5 +1,17 @@
 class MedicalConditionsController < ApplicationController
+
   def new
+    @medical_condition = MedicalCondition.new
+  end
+
+  def create
+    @medical_condition = MedicalCondition.new(medical_condition_params)
+    if @medical_condition.save
+      flash[:success] = 'Created the new medical condition!'
+      redirect_to @medical_condition
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -11,5 +23,11 @@ class MedicalConditionsController < ApplicationController
 
   def show
     @medical_condition = MedicalCondition.find(params[:id])
+  end
+
+  private
+
+  def medical_condition_params
+    params.require(:medical_condition).permit(:name, :description)
   end
 end
