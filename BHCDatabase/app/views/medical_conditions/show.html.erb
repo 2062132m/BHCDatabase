@@ -1,2 +1,19 @@
-<h1>MedicalConditions#show</h1>
-<p>Find me in app/views/medical_conditions/show.html.erb</p>
+<% provide(:title, @medical_condition.name) %>
+<div id="medical_condition">
+  <h1>
+    <%= @medical_condition.name %>
+  </h1>
+
+  <div class="stdcontainer">
+
+    <h2>
+      <%= @medical_condition.description %>
+    </h2>
+
+    <%= link_to 'Edit', edit_medical_condition_path, class: 'btn btn-default' %>
+
+    <%= link_to "Delete Medical Condition", @medical_condition, method: :delete,
+                data: { confirm: "Are you sure you want to delete this medical condition?" },
+                class: "btn btn-default" %>
+  </div>
+</div>

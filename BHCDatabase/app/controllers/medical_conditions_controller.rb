@@ -10,5 +10,6 @@ class MedicalConditionsController < ApplicationController
   end
 
   def show
+    @medical_condition = MedicalCondition.find(params[:id])
   end
 end
