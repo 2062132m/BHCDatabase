@@ -1,5 +1,7 @@
 class MedicalConditionsController < ApplicationController
 
+  before_action :admin?
+
   def new
     @medical_condition = MedicalCondition.new
   end
