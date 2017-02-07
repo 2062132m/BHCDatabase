@@ -37,7 +37,7 @@ class AreasController < ApplicationController
   def update
     @area = Area.find(params[:id])
     if @area.update_attributes(area_params)
-      flash[:success] = "Area updated"
+      flash[:success] = 'Area updated'
       redirect_to @area
     else
       render 'edit'
@@ -46,7 +46,7 @@ class AreasController < ApplicationController
 
   def destroy
     Area.find(params[:id]).destroy
-    flash[:success] = "Area deleted"
+    flash[:success] = 'Area deleted'
     redirect_to areas_url
   end
 

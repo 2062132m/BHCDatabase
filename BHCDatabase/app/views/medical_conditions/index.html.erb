@@ -1,0 +1,14 @@
+<% provide(:title, 'Medical Conditions') %>
+<div id="indexcontainer">
+  <h1>Medical Conditions</h1>
+
+  <div class="stdcontainer">
+
+    <%= link_to 'New Medical Condition', new_medical_condition_path, class: 'btn btn-default' %>
+
+    <%= datagrid_form_for @medical_conditions_grid, url: medical_conditions_path %>
+    <%= datagrid_table(@medical_conditions_grid) %>
+    <%= will_paginate @medical_conditions_grid.assets %>
+
+  </div>
+</div>
