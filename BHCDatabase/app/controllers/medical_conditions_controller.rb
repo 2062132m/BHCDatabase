@@ -3,6 +3,10 @@ class MedicalConditionsController < ApplicationController
   end
 
   def index
+    @conditions = MedicalCondition.all
+    @medical_conditions_grid = MedicalConditionsGrid.new(params[:medical_conditions_grid]) do |scope|
+      scope.page(params[:page])
+    end
   end
 
   def show
