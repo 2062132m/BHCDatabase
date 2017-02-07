@@ -22,6 +22,11 @@ class InitiativesController < ApplicationController
     @areas = Area.all
   end
 
+  def edit
+    @initiative = Initiative.find(params[:id])
+    @areas = Area.all
+  end
+
   def create
     @initiative = Initiative.new(initiative_params)
     @areas = Area.all
