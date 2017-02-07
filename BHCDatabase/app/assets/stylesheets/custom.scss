@@ -290,6 +290,22 @@ table.datagrid {
   @include box_sizing;
 }
 
+.delete-btn {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  background-color: #c43c35;
+  border-color: #c43c35;
+  margin-bottom: 10px;
+}
+
+.edit-btn {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  background-color: #57a957;
+  border-color: #57a957;
+  margin-bottom: 10px;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
