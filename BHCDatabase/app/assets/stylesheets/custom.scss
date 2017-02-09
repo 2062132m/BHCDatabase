@@ -257,7 +257,8 @@ table.datagrid {
 	
         text-decoration: none;
 	color: white;
-        font-weight: normal;
+        font-size: 150%;
+        font-weight: bold;
       }
     }
     &.ordered {
@@ -346,28 +347,38 @@ input, textarea, select, .uneditable-input {
   background-color: #0f98ab;
   color: white;
   text-align:center;
- /* display: inline-block;
+  display: inline-block;
   font-size: 20px;
-  width:250px;*/
+  width:250px;
 
    
 }
 
 /* reset button */
 .datagrid-reset{
-  border: 1px solid #bbb;
-  border-style: hidden;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  background-color: #c43c35;
+  border-color: #c43c35;
+
+/* position adjustments */
+  position: absolute;
+  right: 30%;
+  top: 30%;
+
+/* box adjustments */
   border-radius: 4px;
-  background-color: #0f98ab;
   color:white;
-  font-size: 20px;
+  font-size: 17px;
   display: inline-block;
-  width:100px;
-  height:30px;
+  width:80px;
+  height:33px;
 
 
   link, visited, hover, active {
-    text-decoration: none;   
+   color: white; 
+   text-decoration: none;  
+     
   } 
 }
 
