@@ -5,7 +5,7 @@
     <%= f.text_field :name, class: 'form-control' %>
 
     <%= f.label :email %>
-    <%= f.email_area :email, class: 'form-control' %>
+    <%= f.email_field :email, class: 'form-control' %>
 
     <%= f.label :telephone %>
     <%= f.telephone_field :telephone, class: 'form-control' %>
@@ -14,7 +14,7 @@
     <%= f.date_field :dob, class: 'form-control' %>
 
     <%= f.label :password %>
-    <%= f.text_field :password, class: 'form-control' %>
+    <%= f.password_field :password, class: 'form-control' %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
