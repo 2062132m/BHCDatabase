@@ -4,8 +4,8 @@
     <%= @meeting.datetime.strftime("%B %d, %Y - %H:%M") %>
   </h1>
   <div class="stdcontainer">
-    <p>
-      This is a test.
-    </p>
+    <% @users.each do |user| %>
+        <h3><%= link_to user.name, user %></h3>
+    <% end %>
   </div>
 </div>
