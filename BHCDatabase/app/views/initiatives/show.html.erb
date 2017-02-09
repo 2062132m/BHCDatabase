@@ -24,12 +24,6 @@
             <h2>
               <icon class="glyphicon glyphicon-info-sign"> Description: <%= @initiative.description %></icon>
             </h2>
-            <h2>
-              <icon class="glyphicon glyphicon-info-sign"> Members (temp):</icon>
-            </h2>
-            <% @initiative.enrolments.each do |e| %>
-              <p><%= link_to e.user.name, e.user %></p>
-            <% end %>
           </div>
         </div>
       </div>
@@ -39,6 +33,10 @@
                                     class: "btn btn-default delete-btn" %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
     </div>
+  </div>
+  <h1 id="meetingtitle">Members</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@users_grid) %>
   </div>
   <h1 id="meetingtitle">Meetings</h1>
   <div class="stdcontainer">
