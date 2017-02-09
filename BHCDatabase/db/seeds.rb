@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = 'en-GB'
 
-@user = User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
+@david = User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: 'David Brown', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
@@ -87,9 +87,9 @@ end
 Faker::Number.between(5, 10).times do
   @init10.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
 end
-@init1 = @area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::StarWars.quote, location: 'Hollywood')
+@init11 = @area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::StarWars.quote, location: 'Hollywood')
 Faker::Number.between(5, 10).times do
-  @init10.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+  @init11.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
 end
 
 @area2 = Area.create(name: "West \n Wigtownshire", description: Faker::StarWars.quote)
@@ -144,4 +144,5 @@ MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
 
-@user.enrolment.create(initiative: @init1)
+@david.enrolments.create(initiative: @init1)
+@david.enrolments.create(initiative: @init2)
