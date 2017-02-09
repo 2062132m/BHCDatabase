@@ -2,8 +2,8 @@
   <div class="container">
     <div class="navbar-header">
       <div id="logo">
-        <%= link_to image_tag("BHC Logo.jpg", alt: "BHC Logo"), root_path %>
-        <%= link_to image_tag("BHC Lettering.png", alt: "Building Healthy Communities in Dumfries and Galloway", id: "logotext"),
+        <%= link_to image_tag('BHC Logo.jpg', alt: 'BHC Logo'), root_path %>
+        <%= link_to image_tag('BHC Lettering.png', alt: 'Building Healthy Communities in Dumfries and Galloway', id: 'logotext'),
                     root_path %>
       </div>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
@@ -20,15 +20,19 @@
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-              <li><%= link_to "Home", root_path %></li>
-              <li><%= link_to "Search", '#' %></li>
-              <li><%= link_to "Areas", areas_path %></li>
-              <li><%= link_to "Initiatives", initiatives_path%></li>
-              <li><%= link_to "Users", users_path %></li>
-              <li><%= link_to "Medical Conditons", medical_conditions_path%></li>
-              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              <li><%= link_to 'Home', root_path %></li>
+              <li><%= link_to 'Areas', areas_path %></li>
+              <li><%= link_to 'Initiatives', initiatives_path %></li>
+              <li><%= link_to 'Users', users_path %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Medical Conditions', medical_conditions_path %></li>
+                  <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+                </ul>
+              </li>
           <% else %>
-              <li><%= link_to "Log in", login_path %></li>
+              <li><%= link_to 'Log in', login_path %></li>
           <% end %>
         </ul>
       </div>
