@@ -6,7 +6,22 @@ class UsersGrid
     User
   end
 
-  filter(:condition, :dynamic, :header => "Filter")
+
+  #
+  # Filters
+  #
+  
+  filter(:id, :string, :multiple => ',')
+  filter(:name, :string)
+  filter(:email, :string)
+  filter(:telephone, :integer)
+  filter(:dob, :date, :range => true)
+  
+
+  #
+  # Columns
+  #
+ 
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
