@@ -1,2 +1,14 @@
-<h1>Enrolments#index</h1>
-<p>Find me in app/views/enrolments/index.html.erb</p>
+<% provide(:title, 'User Enrolment') %>
+<div id="indexcontainer">
+  <h1> User Enrolment </h1>
+
+  <div class="stdcontainer">
+
+    <%= link_to 'New Enrolment', new_enrolment_path, class: 'btn btn-default' %>
+
+    <%= datagrid_form_for @enrolments_grid, url: enrolments_path %>
+    <%= datagrid_table(@enrolments_grid) %>
+    <%= will_paginate @enrolments_grid.assets %>
+
+  </div>
+</div>
