@@ -64,13 +64,6 @@ ActiveRecord::Schema.define(version: 20170209133417) do
     t.index ["user_id"], name: "index_medical_conditions_on_user_id"
   end
 
-  create_table "medical_conditions_users", force: :cascade do |t|
-    t.integer "medical_conditions_id"
-    t.integer "users_id"
-    t.index ["medical_conditions_id"], name: "index_medical_conditions_users_on_medical_conditions_id"
-    t.index ["users_id"], name: "index_medical_conditions_users_on_users_id"
-  end
-
   create_table "meetings", force: :cascade do |t|
     t.datetime "datetime"
     t.datetime "created_at",    null: false
