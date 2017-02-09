@@ -11,7 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # debugger
+    @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|
+      scope.find(@user.initiatives.ids)
+    end
   end
 
   def new
