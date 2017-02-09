@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209112404) do
+ActiveRecord::Schema.define(version: 20170209133417) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20170209112404) do
     t.datetime "updated_at", null: false
     t.index ["meeting_id"], name: "index_attendances_on_meeting_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.integer  "medical_condition_id"
+    t.integer  "user_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["medical_condition_id"], name: "index_conditions_on_medical_condition_id"
+    t.index ["user_id"], name: "index_conditions_on_user_id"
   end
 
   create_table "enrolments", force: :cascade do |t|
@@ -51,6 +60,15 @@ ActiveRecord::Schema.define(version: 20170209112404) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_medical_conditions_on_user_id"
+  end
+
+  create_table "medical_conditions_users", force: :cascade do |t|
+    t.integer "medical_conditions_id"
+    t.integer "users_id"
+    t.index ["medical_conditions_id"], name: "index_medical_conditions_users_on_medical_conditions_id"
+    t.index ["users_id"], name: "index_medical_conditions_users_on_users_id"
   end
 
   create_table "meetings", force: :cascade do |t|
