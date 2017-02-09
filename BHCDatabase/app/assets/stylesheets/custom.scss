@@ -239,18 +239,24 @@ footer {
 table.datagrid {
   margin: 10px auto;
   border-collapse: collapse;
+  border-style: hidden;
   min-width: 95%;
   th {
-    background-color: #eee;
-    text-align: left;
+    background-color: #0f98ab;
+    color: white;
+    text-align: center;
   }
+   /* styling of the main big table */
   td, th {
     border: 1px solid #d6d6d6;
+    border-radius: 4px;
     padding: 5px 10px;
 
     .order {
       a.asc, a.desc {
+	
         text-decoration: none;
+	color: white;
         font-weight: normal;
       }
     }
@@ -265,6 +271,8 @@ table.datagrid {
       }
     }
   }
+
+/* results column -- body */
   .noresults {
     text-align: center;
   }
@@ -324,10 +332,48 @@ table.datagrid {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
+  border-style: hidden;
+  border-radius: 4px;
+  background-color: #e8fafd;
+  color: black;
+  text-align: left;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
+
+.datagrid-submit{
+  background-color: #0f98ab;
+  color: white;
+  text-align:center;
+ /* display: inline-block;
+  font-size: 20px;
+  width:250px;*/
+
+   
+}
+
+/* reset button */
+.datagrid-reset{
+  border: 1px solid #bbb;
+  border-style: hidden;
+  border-radius: 4px;
+  background-color: #0f98ab;
+  color:white;
+  font-size: 20px;
+  display: inline-block;
+  width:100px;
+  height:30px;
+
+
+  link, visited, hover, active {
+    text-decoration: none;   
+  } 
+}
+
+/* end of reset button */
+
+
 
 input {
   height: auto !important;
