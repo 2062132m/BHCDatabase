@@ -7,13 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = 'en-GB'
 
-@david = User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
+# Add admins to the database
+
+User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: 'David Brown', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-@maria = User.create(name: 'Maria Papadopoulou', email: 'maria@maria.com', password: 'maria123', password_confirmation: 'maria123',
+User.create(name: 'Maria Papadopoulou', email: 'maria@maria.com', password: 'maria123', password_confirmation: 'maria123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: 'Jaklin Yordanova', email: 'jaklin@jaklin.com', password: 'jaklin123', password_confirmation: 'jaklin123',
@@ -31,9 +33,6 @@ User.create(name: 'Kiril Mihaylov', email: 'kiril@kiril.com', password: 'kiril12
 User.create(name: 'Volunteer', email:'volunteer@volunteer.com', password: 'volunteer123', password_confirmation:'volunteer123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
-User.create(name: 'User', email:'user@user.com', password: 'user123', password_confirmation:'user123',
-            telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2)
 
 Faker::Number.between(20, 50).times do
   password = Faker::Internet.password
@@ -46,51 +45,39 @@ Faker::Number.between(20, 50).times do
               privilege: 1)
 end
 
+# Add users to the database
+
+User.create(name: 'User', email:'user@user.com', password: 'user123', password_confirmation:'user123',
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2)
+
+Faker::Number.between(20, 50).times do
+  password = Faker::Internet.password
+  User.create(name: Faker::Name.name,
+              email: Faker::Internet.email,
+              password: password,
+              password_confirmation: password,
+              telephone: Faker::PhoneNumber.phone_number,
+              dob: Faker::Date.between(70.years.ago, 18.years.ago),
+              privilege: 2)
+end
+
+# Create area1 with initiatives
+
 @area1 = Area.create(name: 'Dumfries & Lower Nithsdale', description: Faker::StarWars.quote)
-@init1 = @area1.initiatives.create(name: 'Scrimp and sew', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-Faker::Number.between(5, 10).times do
-  @init1.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init2 = @area1.initiatives.create(name: 'Writing Group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-Faker::Number.between(5, 10).times do
-  @init2.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init3 = @area1.initiatives.create(name: 'Inkspirations', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-Faker::Number.between(5, 10).times do
-  @init3.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init4 = @area1.initiatives.create(name: 'Arts and crafts', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-Faker::Number.between(5, 10).times do
-  @init4.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init5 = @area1.initiatives.create(name: 'Drop in craft', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-Faker::Number.between(5, 10).times do
-  @init5.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init6 = @area1.initiatives.create(name: 'Tai chi Heathall', description: Faker::StarWars.quote, location: 'Heathall')
-Faker::Number.between(5, 10).times do
-  @init6.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init7 = @area1.initiatives.create(name: 'Tai chi Cumberland day centre', description: Faker::StarWars.quote, location: 'Cumberland day centre')
-Faker::Number.between(5, 10).times do
-  @init7.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init8 = @area1.initiatives.create(name: 'Tai chi NWRC', description: Faker::StarWars.quote, location: 'NWRC')
-Faker::Number.between(5, 10).times do
-  @init8.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init9 = @area1.initiatives.create(name: 'Tai chi Summerhill', description: Faker::StarWars.quote, location: 'Summerhill')
-Faker::Number.between(5, 10).times do
-  @init9.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init10 = @area1.initiatives.create(name: 'Tai chi Lincluden', description: Faker::StarWars.quote, location: 'Lincluden')
-Faker::Number.between(5, 10).times do
-  @init10.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
-@init11 = @area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::StarWars.quote, location: 'Hollywood')
-Faker::Number.between(5, 10).times do
-  @init11.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
-end
+@area1.initiatives.create(name: 'Scrimp and sew', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: 'Writing Group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: 'Inkspirations', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: 'Arts and crafts', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: 'Drop in craft', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
+@area1.initiatives.create(name: 'Tai chi Heathall', description: Faker::StarWars.quote, location: 'Heathall')
+@area1.initiatives.create(name: 'Tai chi Cumberland day centre', description: Faker::StarWars.quote, location: 'Cumberland day centre')
+@area1.initiatives.create(name: 'Tai chi NWRC', description: Faker::StarWars.quote, location: 'NWRC')
+@area1.initiatives.create(name: 'Tai chi Summerhill', description: Faker::StarWars.quote, location: 'Summerhill')
+@area1.initiatives.create(name: 'Tai chi Lincluden', description: Faker::StarWars.quote, location: 'Lincluden')
+@area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::StarWars.quote, location: 'Hollywood')
+
+# Create other areas with their initiatives
 
 @area2 = Area.create(name: "West \n Wigtownshire", description: Faker::StarWars.quote)
 @area2.initiatives.create(name: 'Chair based exercise', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -127,6 +114,32 @@ end
 @area4.initiatives.create(name: 'Tai Chi Kirconnel', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area4.initiatives.create(name: 'Walk for Health', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 
+
+# Add meetings to all initiatives
+
+Initiative.all.each do |init|
+  Faker::Number.between(5, 10).times do
+    init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+  end
+end
+
+# Add attendance and enrolment to users
+
+User.where(privilege: 2).each do |user|
+  Faker::Number.between(1,3).times do
+    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+  end
+
+  user.initiatives.each do |init|
+    init.meetings.each do |meet|
+      user.attendances.create(meeting: meet)
+    end
+  end
+
+end
+
+# Add medical conditions
+
 MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Learning Disability', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Mental Health', description: Faker::StarWars.quote)
@@ -143,7 +156,3 @@ MedicalCondition.create(name: 'Chronic Obstructive Pulmonary Disease', descripti
 MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
-
-@david.enrolments.create(initiative: @init1)
-@maria.enrolments.create(initiative: @init1)
-@david.enrolments.create(initiative: @init2)
