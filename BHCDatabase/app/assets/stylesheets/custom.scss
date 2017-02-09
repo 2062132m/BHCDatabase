@@ -103,7 +103,7 @@ textarea {
 
 #contact, #area, #initiative, #meeting, #medical_condition {
 
-  
+
   h1 {
     color: white;
   }
@@ -122,7 +122,6 @@ textarea {
 #initiative {
   h2 {
     font-size: 35px;
-    font-family: "Comic Sans MS";
     text-align: left;
     color: black;
   }
@@ -263,7 +262,7 @@ table.datagrid {
 
     .order {
       a.asc, a.desc {
-	
+
         text-decoration: none;
 	color: white;
         font-size: 150%;
@@ -360,7 +359,7 @@ input, textarea, select, .uneditable-input {
   font-size: 20px;
   width:250px;
 
-   
+
 }
 
 /* reset button */
@@ -385,8 +384,8 @@ input, textarea, select, .uneditable-input {
 
   link, visited, focus, hover, active {
    background-color: white;
-   text-color: white !important; 
-   text-decoration: none;  
+   text-color: white !important;
+   text-decoration: none;
 
   }
 
