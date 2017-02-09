@@ -13,7 +13,7 @@ Faker::Config.locale = 'en-GB'
 User.create(name: 'David Brown', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-User.create(name: 'Maria Papadopoulou', email: 'maria@maria.com', password: 'maria123', password_confirmation: 'maria123',
+@maria = User.create(name: 'Maria Papadopoulou', email: 'maria@maria.com', password: 'maria123', password_confirmation: 'maria123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: 'Jaklin Yordanova', email: 'jaklin@jaklin.com', password: 'jaklin123', password_confirmation: 'jaklin123',
@@ -145,4 +145,5 @@ MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
 
 @david.enrolments.create(initiative: @init1)
+@maria.enrolments.create(initiative: @init1)
 @david.enrolments.create(initiative: @init2)
