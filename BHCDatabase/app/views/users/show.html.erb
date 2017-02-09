@@ -14,6 +14,9 @@
             <h2>
               DOB: <%= @user.dob %>
             </h2>
+            <% @user.conditions.each do |c| %>
+              <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
+            <% end %>
           </div>
         </div>
       </div>
