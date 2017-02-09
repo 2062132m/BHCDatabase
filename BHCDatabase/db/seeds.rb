@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = 'en-GB'
 
-User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
+@user = User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
 User.create(name: 'David Brown', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
@@ -144,7 +144,4 @@ MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
 
-
-
-
-
+@user.enrolment.create(initiative: @init1)
