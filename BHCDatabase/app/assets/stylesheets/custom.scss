@@ -63,6 +63,7 @@ textarea {
   background-color: white;
   border-radius: 20px;
   border: 2px solid #61BB46;
+  font-family: arial;
   h3 {
     color: #118CC8;
   }
@@ -101,6 +102,8 @@ textarea {
 }
 
 #contact, #area, #initiative, #meeting, #medical_condition {
+
+  
   h1 {
     color: white;
   }
@@ -118,9 +121,15 @@ textarea {
 
 #initiative {
   h2 {
-    font-size: 25px;
+    font-size: 35px;
+    font-family: "Comic Sans MS";
     text-align: left;
     color: black;
+  }
+
+  ht {
+    font-size: 22px;
+
   }
 }
 
@@ -257,7 +266,8 @@ table.datagrid {
 	
         text-decoration: none;
 	color: white;
-        font-weight: normal;
+        font-size: 150%;
+        font-weight: bold;
       }
     }
     &.ordered {
@@ -346,29 +356,41 @@ input, textarea, select, .uneditable-input {
   background-color: #0f98ab;
   color: white;
   text-align:center;
- /* display: inline-block;
+  display: inline-block;
   font-size: 20px;
-  width:250px;*/
+  width:250px;
 
    
 }
 
 /* reset button */
 .datagrid-reset{
-  border: 1px solid #bbb;
-  border-style: hidden;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  background-color: #c43c35;
+  border-color: #c43c35;
+  margin-bottom: 10px;
+  margin-right: 7px;
+  float: right;
+
+
+/* box adjustments */
   border-radius: 4px;
-  background-color: #0f98ab;
   color:white;
-  font-size: 20px;
+  font-size: 17px;
   display: inline-block;
-  width:100px;
+  width:70px;
   height:30px;
 
 
-  link, visited, hover, active {
-    text-decoration: none;   
-  } 
+  link, visited, focus, hover, active {
+   background-color: white;
+   text-color: white !important; 
+   text-decoration: none;  
+
+  }
+
+
 }
 
 /* end of reset button */
