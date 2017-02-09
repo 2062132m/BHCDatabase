@@ -4,6 +4,9 @@
 
   <div class="stdcontainer">
     <%= datagrid_form_for @users_grid, url: users_path %>
+
+    <%= link_to "<i class='glyphicon glyphicon-plus'></i> New".html_safe, new_user_path, class: 'btn btn-default new-btn' %>
+
     <%= datagrid_table(@users_grid) %>
     <%= will_paginate @users_grid.assets %>
   </div>
