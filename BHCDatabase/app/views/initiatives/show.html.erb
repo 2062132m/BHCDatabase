@@ -22,8 +22,14 @@
         <div class="col-md-6">
           <div align="left">
             <h2>
-              <icon class="glyphicon glyphicon-info-sign"> Description : <%= @initiative.description %></icon>
+              <icon class="glyphicon glyphicon-info-sign"> Description: <%= @initiative.description %></icon>
             </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-info-sign"> Members (temp):</icon>
+            </h2>
+            <% @initiative.enrolments.each do |e| %>
+              <p><%= link_to e.user.name, e.user %></p>
+            <% end %>
           </div>
         </div>
       </div>
