@@ -63,6 +63,7 @@ textarea {
   background-color: white;
   border-radius: 20px;
   border: 2px solid #61BB46;
+  font-family: arial;
   h3 {
     color: #118CC8;
   }
@@ -101,6 +102,8 @@ textarea {
 }
 
 #contact, #area, #initiative, #meeting, #medical_condition {
+
+  
   h1 {
     color: white;
   }
@@ -119,6 +122,7 @@ textarea {
 #initiative {
   h2 {
     font-size: 25px;
+    font-family: "Comic Sans MS";
     text-align: left;
     color: black;
   }
@@ -371,14 +375,17 @@ input, textarea, select, .uneditable-input {
   font-size: 17px;
   display: inline-block;
   width:70px;
-  height:33px;
+  height:30px;
 
 
-  link, visited, hover, active {
-   color: white; 
+  link, visited, focus, hover, active {
+   background-color: white;
+   text-color: white !important; 
    text-decoration: none;  
 
   }
+
+
 }
 
 /* end of reset button */
