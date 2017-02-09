@@ -7,16 +7,16 @@
         <div class="col-md-6">
           <div align="left">
             <h2>
-              Name: <%= @user.name %><br>
+              <icon class="glyphicon glyphicon-user">Name: </icon> <%= @user.name %><br>
             </h2>
             <h2>
-              Telephone: <%= @user.telephone %><br>
+              <icon class="glyphicon glyphicon-earphone">Telephone: </icon> <%= @user.telephone %><br>
             </h2>
             <h2>
-              Email: <%= @user.email %>
+              <icon class="glyphicon glyphicon-envelope">Email: </icon> <%= @user.email %><br>
             </h2>
             <h2>
-              DOB: <%= @user.dob %>
+              <icon class="glyphicon glyphicon-calendar">DOB: </icon> <%= @user.dob %><br>
             </h2>
             <% @user.conditions.each do |c| %>
               <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
