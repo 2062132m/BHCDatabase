@@ -1,12 +1,29 @@
 <% provide(:title, @user.name) %>
-<h1>
-  <%= @user.name %><br>
-  <%= @user.telephone %><br>
-  <%= @user.dob %>
-  <% @user.enrolments.each do |e| %>
-      <p><%= link_to e.initiative.name, e.initiative %></p>
-  <% end %>
-  <% @user.conditions.each do |c| %>
-      <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
-  <% end %>
-</h1>
+<div id="initiative">
+  <div class="stdcontainer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              Name: <%= @user.name %><br>
+            </h2>
+            <h2>
+              Telephone: <%= @user.telephone %><br>
+            </h2>
+            <h2>
+              DOB: <%= @user.dob %>
+            </h2>
+            <% @user.conditions.each do |c| %>
+              <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 id="meetingtitle">Initiatives</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@initiatives_grid) %>
+  </div>
+</div>
