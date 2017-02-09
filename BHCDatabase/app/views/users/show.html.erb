@@ -4,6 +4,9 @@
   <%= @user.telephone %><br>
   <%= @user.dob %>
   <% @user.enrolments.each do |e| %>
-    <p><%= link_to e.initiative.name, e.initiative %></p>
+      <p><%= link_to e.initiative.name, e.initiative %></p>
+  <% end %>
+  <% @user.conditions.each do |c| %>
+      <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
   <% end %>
 </h1>

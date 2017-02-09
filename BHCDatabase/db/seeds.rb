@@ -123,21 +123,6 @@ Initiative.all.each do |init|
   end
 end
 
-# Add attendance and enrolment to users
-
-User.where(privilege: 2).each do |user|
-  Faker::Number.between(1,3).times do
-    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-  end
-
-  user.initiatives.each do |init|
-    init.meetings.each do |meet|
-      user.attendances.create(meeting: meet)
-    end
-  end
-
-end
-
 # Add medical conditions
 
 MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
@@ -156,3 +141,19 @@ MedicalCondition.create(name: 'Chronic Obstructive Pulmonary Disease', descripti
 MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
+
+# Add attendance, enrollment and medical conditions to users
+
+User.where(privilege: 2).each do |user|
+  Faker::Number.between(1,3).times do
+    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+    user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+  end
+
+  user.initiatives.each do |init|
+    init.meetings.each do |meet|
+      user.attendances.create(meeting: meet)
+    end
+  end
+
+end
