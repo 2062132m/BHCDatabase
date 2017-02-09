@@ -8,23 +8,23 @@
       <div class="row">
         <div class="col-md-6">
           <div align="left">
-            <h2><icon class="glyphicon glyphicon-list-alt"> Area: </icon></h2><%= link_to @area.name, @area %>
+            <h2><icon class="glyphicon glyphicon-list-alt"> Area: </icon></h2><ht><%= link_to @area.name, @area %></ht>
 
             <h2>
-              <icon class="glyphicon glyphicon-map-marker"> Location: </icon></h2><%= @initiative.location %>
+              <icon class="glyphicon glyphicon-map-marker"> Location: </icon></h2><ht><%= @initiative.location %></ht>
 
             <!-- <icon class="glyphicon glyphicon-user">Number of Members: <%= User.count(params[:id]) %></icon> -->
           </div>
         </div>
         <div class="col-md-6">
           <div align="left">
-            <h2> <icon class="glyphicon glyphicon-info-sign"> Description:</icon></h2>  <%= @initiative.description %>
+            <h2> <icon class="glyphicon glyphicon-info-sign"> Description:</icon></h2><ht><%= @initiative.description %></ht>
 
             <h2><icon class="glyphicon glyphicon-user"> Members (temp):</icon></h2>
 
-            <% @initiative.enrolments.each do |e| %>
+            <ht><% @initiative.enrolments.each do |e| %>
               <p><%= link_to e.user.name, e.user %></p>
-            <% end %>
+            <% end %></ht>
           </div>
         </div>
       </div>
