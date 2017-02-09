@@ -19,12 +19,6 @@
         <div class="col-md-6">
           <div align="left">
             <h2> <icon class="glyphicon glyphicon-info-sign"> Description:</icon></h2><ht><%= @initiative.description %></ht>
-
-            <h2><icon class="glyphicon glyphicon-user"> Members (temp):</icon></h2>
-
-            <ht><% @initiative.enrolments.each do |e| %>
-              <p><%= link_to e.user.name, e.user %></p>
-            <% end %></ht>
           </div>
         </div>
       </div>
