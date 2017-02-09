@@ -142,7 +142,7 @@ MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
 
-# Add attendance and enrolment to users
+# Add attendance, enrollment and medical conditions to users
 
 User.where(privilege: 2).each do |user|
   Faker::Number.between(1,3).times do
