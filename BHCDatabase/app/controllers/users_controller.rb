@@ -11,7 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # debugger
+    @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|
+      scope.find(@user.initiatives.ids)
+    end
   end
 
   def new
@@ -27,6 +29,26 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = 'User updated'
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = 'User deleted'
+    redirect_to users_url
   end
 
   private

@@ -35,6 +35,10 @@
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
     </div>
   </div>
+  <h1 id="meetingtitle">Members</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@users_grid) %>
+  </div>
   <h1 id="meetingtitle">Meetings</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@meetings_in_initiatives_grid) %>

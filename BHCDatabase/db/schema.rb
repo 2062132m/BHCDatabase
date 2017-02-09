@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209103829) do
+ActiveRecord::Schema.define(version: 20170209133417) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "meeting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meeting_id"], name: "index_attendances_on_meeting_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.integer  "medical_condition_id"
+    t.integer  "user_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["medical_condition_id"], name: "index_conditions_on_medical_condition_id"
+    t.index ["user_id"], name: "index_conditions_on_user_id"
   end
 
   create_table "enrolments", force: :cascade do |t|
@@ -42,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170209103829) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_medical_conditions_on_user_id"
   end
 
   create_table "meetings", force: :cascade do |t|

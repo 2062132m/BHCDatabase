@@ -1,9 +1,37 @@
 <% provide(:title, @user.name) %>
-<h1>
-  <%= @user.name %><br>
-  <%= @user.telephone %><br>
-  <%= @user.dob %>
-  <% @user.enrolments.each do |e| %>
-    <p><%= link_to e.initiative.name, e.initiative %></p>
-  <% end %>
-</h1>
+<div id="initiative">
+  <h1>User</h1>
+  <div class="stdcontainer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              Name: <%= @user.name %><br>
+            </h2>
+            <h2>
+              Telephone: <%= @user.telephone %><br>
+            </h2>
+            <h2>
+              Email: <%= @user.email %>
+            </h2>
+            <h2>
+              DOB: <%= @user.dob %>
+            </h2>
+            <% @user.conditions.each do |c| %>
+              <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @user, method: :delete,
+                                  data: { confirm: "Are you sure you want to delete this user?" },
+                                    class: "btn btn-default delete-btn" %>
+      <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
+    </div>
+  </div>
+  <h1 id="meetingtitle">Initiatives</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@initiatives_grid) %>
+  </div>
+</div>
