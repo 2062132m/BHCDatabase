@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214113946) do
+ActiveRecord::Schema.define(version: 20170214120545) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -76,8 +76,9 @@ ActiveRecord::Schema.define(version: 20170214113946) do
     t.text     "question"
     t.boolean  "visible"
     t.integer  "sort"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.boolean  "multiple_choice"
     t.index ["sort"], name: "index_questions_on_sort", unique: true
   end
 
