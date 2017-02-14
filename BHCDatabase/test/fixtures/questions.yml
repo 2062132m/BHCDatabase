@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyText
+  visible: false
+  sort: 1
+
+two:
+  question: MyText
+  visible: false
+  sort: 2

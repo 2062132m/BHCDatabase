@@ -1,0 +1,17 @@
+<%= form_for(@question) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :question %>
+    <%= f.text_field :question, class: 'form-control' %>
+
+    <%= f.label :visible %>
+    <%= f.check_box :visible, class: 'form-control' %>
+
+    <%= f.label :multiple_choice %>
+    <%= f.check_box :multiple_choice, class: 'form-control' %>
+
+    <%= f.label :sort %>
+    <%= f.number_field :sort, class: 'form_control' %>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>
