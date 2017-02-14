@@ -8,12 +8,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get questions_index_url
-    assert_response :success
-  end
-
-  test "should get show" do
-    get questions_show_url
+    get questions_path
     assert_response :success
   end
 
