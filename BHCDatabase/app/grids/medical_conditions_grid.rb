@@ -6,7 +6,11 @@ class MedicalConditionsGrid
     MedicalCondition
   end
 
-  filter(:condition, :dynamic, :header => "Filter")
+   filter(:id, :string, :multiple => ',')
+   filter(:name, :string, :multiple => ',')
+ # filter(:created_at, :date, :range => true, :header => "Creation date")
+ # filter(:updated_at, :date, :range => true, :header => "Updated date")
+ # filter(:user, :string, :multiple => ',')
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
