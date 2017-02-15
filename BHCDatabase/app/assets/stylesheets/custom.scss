@@ -375,21 +375,13 @@ input, textarea, select, .uneditable-input {
 
 /* box adjustments */
   border-radius: 4px;
-  color:white;
   font-size: 17px;
-  display: inline-block;
   width:70px;
-  height:30px;
+}
 
-
-  link, visited, focus, hover, active {
-   background-color: white;
-   text-color: white !important;
-   text-decoration: none;
-
-  }
-
-
+.datagrid-reset:hover {
+  color: white;
+  text-decoration: none;
 }
 
 /* end of reset button */

@@ -41,6 +41,12 @@ class MedicalConditionsController < ApplicationController
     end
   end
 
+  def destroy
+    MedicalCondition.find(params[:id]).destroy
+    flash[:success] = 'Medical Condition deleted'
+    redirect_to medical_conditions_url
+  end
+
   private
 
   def medical_condition_params
