@@ -16,7 +16,7 @@ class EnrolmentsController < ApplicationController
     @initiatives = Initiative.all
     @users = User.all
     if @enrolment.save
-      flash[:success] = 'Created the new area!'
+      flash[:success] = 'Created the new enrolment!'
       redirect_to @enrolment.user
     else
       render 'new'
