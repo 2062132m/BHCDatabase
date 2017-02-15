@@ -264,14 +264,12 @@ table.datagrid {
       a.asc, a.desc {
 
         text-decoration: none;
-	color: white;
+	      color: white;
         font-size: 150%;
         font-weight: bold;
       }
     }
     &.ordered {
-      background-color: #fff7d5;
-
       &.asc {
         a.asc {
           font-weight: bold;
