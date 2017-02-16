@@ -1,1 +1,16 @@
-<h1> Hello world. </h1>
+<% provide(:title, @user.name) %>
+
+<h1>Home</h1>
+
+<div class="stdcontainer">
+  <% @user.initiatives.each do |i| %>
+
+      <h3><%= link_to i.name, i %></h3>
+      <% i.users.each do |x| %>
+          <%= link_to x.name, x %>
+          <%= x.telephone %>
+      <% end %>
+      <h2><%= i.location %></h2>
+      <h2><%= i.description %></h2>
+  <% end %>
+</div>
