@@ -1,7 +1,5 @@
 class AreasController < ApplicationController
 
-  before_action :admin?
-
   def index
     @areas = Area.all
     @areas_grid = AreasGrid.new(params[:areas_grid]) do |scope|

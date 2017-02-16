@@ -41,11 +41,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def service_user?
     if current_user
       if @current_user.privilege == 2
-        flash[:info] = 'You are a service user.'
+        # flash[:info] = 'You are a service user.'
       end
     end
   end
@@ -53,15 +52,15 @@ class ApplicationController < ActionController::Base
   def volunteer?
     if current_user
       if @current_user.privilege == 1
-        flash[:info] = 'You are a volunteer.'
+        # flash[:info] = 'You are a volunteer.'
       end
     end
   end
 
   def admin?
     if current_user
-      if @current_user.privilege == 2
-        flash[:info] = 'You are an admin'
+      if @current_user.privilege == 0
+        # flash[:info] = 'You are an admin'
       end
     end
   end

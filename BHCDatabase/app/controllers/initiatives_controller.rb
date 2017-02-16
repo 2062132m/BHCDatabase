@@ -1,7 +1,5 @@
 class InitiativesController < ApplicationController
 
-  before_action :admin?
-
   def index
     @initiatives = Initiative.all
     @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|

@@ -10,8 +10,12 @@ class HomepageController < ApplicationController
   private
 
   def redirect
-    if volunteer?
-      redirect_to volunteershome_path
+    unless admin?
+      if volunteer?
+        redirect_to volunteershome_path
+      else service_user?
+        redirect_to serviceusershome_path
+      end
     end
   end
 
