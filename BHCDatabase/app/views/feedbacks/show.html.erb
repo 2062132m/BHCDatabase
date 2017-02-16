@@ -1,0 +1,10 @@
+<% provide(:title, @feedback.id) %>
+<div id="initiative">
+  <h1>Feedback</h1>
+  <div class="stdcontainer">
+    <% @feedback.answers.each do |answer| %>
+        <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
+        <%= answer.response %>
+    <% end %>
+  </div>
+</div>

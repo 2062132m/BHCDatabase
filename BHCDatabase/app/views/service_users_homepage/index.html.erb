@@ -15,12 +15,4 @@
       <h2><%= i.location %></h2>
       <h2><%= i.description %></h2>
   <% end %>
-
-  <% @user.feedbacks.each do |y| %>
-    <h2><%= y.id %></h2>
-      <% y.answers.each do |a| %>
-          <h2><%= a.question.question %></h2>
-          <%= a.response %>
-      <% end %>
-  <% end %>
 </div>

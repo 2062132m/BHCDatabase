@@ -152,7 +152,7 @@ Question.create(question:"I've been dealing with problems well", visible: true, 
 Question.create(question:"I've been thinking clearly", visible: true, sort:5, multiple_choice: true)
 Question.create(question:"I've been feeling close to other people", visible: true, sort:6, multiple_choice: true)
 Question.create(question:"I've been able to make up my own mind about things", visible: true, sort:7, multiple_choice: true)
-Question.create(question:'I exercise on a regular basis", visible: true', visible:true, sort:8, multiple_choice: true)
+Question.create(question:'I exercise on a regular basis', visible:true, sort:8, multiple_choice: true)
 Question.create(question:'My daily life is filled with things that interest me', visible: true, sort:9, multiple_choice: true)
 Question.create(question:'I feel strongly connected to the neighbourhood that I live in', visible: true, sort:10, multiple_choice: true)
 Question.create(question:'I can influence decisions affecting my local area', visible: true, sort:11, multiple_choice: true)
