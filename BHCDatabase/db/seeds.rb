@@ -53,13 +53,14 @@ User.create(name: 'User', email:'user@user.com', password: 'user123', password_c
 
 Faker::Number.between(20, 50).times do
   password = Faker::Internet.password
-  User.create(name: Faker::Name.name,
+  @user = User.create(name: Faker::Name.name,
               email: Faker::Internet.email,
               password: password,
               password_confirmation: password,
               telephone: Faker::PhoneNumber.phone_number,
               dob: Faker::Date.between(70.years.ago, 18.years.ago),
-              privilege: 2)
+              privilege: 2,
+              feedback_due: Time.now)
 end
 
 # Create area1 with initiatives
