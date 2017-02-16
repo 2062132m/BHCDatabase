@@ -1,5 +1,8 @@
 class MeetingsController < ApplicationController
 
+  skip_before_action :admin_only, only: [:show]
+  before_action :correct_meeting_only
+
   def index
     @meetings = Meeting.all
   end
