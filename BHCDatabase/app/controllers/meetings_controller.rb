@@ -8,4 +8,9 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @users = @meeting.users
   end
+
+  def new
+    @meeting = Meeting.new
+    @initiatives = Initiative.all
+  end
 end
