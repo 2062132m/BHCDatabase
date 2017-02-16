@@ -13,4 +13,20 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new
     @initiatives = Initiative.all
   end
+
+  def create
+    @meeting = Meeting.new(meeting_params)
+    if @meeting.save
+      flash[:success] = 'Created the new initiative!'
+      redirect_to @meeting
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def meeting_params
+      params.require(:meeting).permit(:datetime, :initiative_id)
+    end
 end
