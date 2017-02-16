@@ -27,6 +27,7 @@
                                                     \nNote: All associated meetings will be deleted!" },
                                     class: "btn btn-default delete-btn" %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
+      <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Session".html_safe, new_meeting_path(initiative_id: @initiative.id), class: 'btn btn-default new-session-btn' %>
     </div>
   </div>
   <h1 id="meetingtitle">Members</h1>

@@ -14,6 +14,57 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def correct_user_only
+    unless @current_user.privilege == 0
+      if @current_user != User.find(params[:id])
+          flash[:danger] = 'You are not allowed to access that page.'
+          redirect_to current_user
+      end
+    end
+  end
+
+  def correct_initiative_only
+    unless @current_user.privilege == 0
+      if @current_user.privilege == 2
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+      unless @current_user.initiatives.include?(Initiative.find(params[:id]))
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
+  def correct_initiative_only_on_creation
+    unless @current_user.privilege == 0
+      if @current_user.privilege == 2
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+      unless @current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
+  def correct_meeting_only
+    unless @current_user.privilege == 0
+      if @current_user.privilege == 2
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+      @current_user.initiatives.each do |init|
+        if init.meetings.include?(Meeting.find(params[:id]))
+          return
+        end
+      end
+      flash[:danger] = 'You are not allowed to access that page.'
+      redirect_to current_user
+    end
+  end
+
   def service_user_only
     unless @current_user.privilege == 2
       flash[:danger] = 'You are not allowed to access that page.'
