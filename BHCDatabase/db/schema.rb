@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170216145158) do
     t.string   "telephone"
     t.date     "dob"
     t.integer  "privilege"
+    t.date     "feedback_due"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
