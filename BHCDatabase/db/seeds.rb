@@ -158,6 +158,21 @@ User.where(privilege: 2).each do |user|
 
 end
 
+# Add attendance and enrolment to volunteers
+
+User.where(privilege: 1).each do |user|
+  Faker::Number.between(1,3).times do
+    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+  end
+
+  user.initiatives.each do |init|
+    init.meetings.each do |meet|
+      user.attendances.create(meeting: meet)
+    end
+  end
+
+end
+
 # Questions
 
 Question.create(question:"I've been feeling optimistic about the future", visible: true, sort:1, multiple_choice: true)
