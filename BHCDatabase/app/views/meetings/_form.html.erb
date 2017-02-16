@@ -2,7 +2,7 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :initiative %>
-    <%= f.select :initiative_id, options_for_select(@initiatives.map{|s|[s.name, s.id]}) %>
+    <%= f.hidden_field(:initiative_id, :value => 1) %>
 
     <%= f.label :date %>
     <%= f.date_field :datetime, class: 'form-control' %>

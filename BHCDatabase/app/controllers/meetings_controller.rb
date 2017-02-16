@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
-      flash[:success] = 'Created the new initiative!'
+      flash[:success] = 'Created the new meeting!'
       redirect_to @meeting
     else
       render 'new'
