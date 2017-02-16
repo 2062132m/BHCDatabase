@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :require_login, :except => :contact
-  before_action :user_only?, :volunteer_only?
+  before_action :admin_only, :except => :contact
 
   private
 
@@ -14,29 +14,54 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def user_only?
+  def service_user_only
     if current_user
-      if @current_user.privilege == 2
-        flash[:danger] = 'You are only a user.'
-        redirect_to contact_path
+      unless @current_user.privilege == 2
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
       end
     end
   end
 
-  def volunteer_only?
+  def volunteer_only
+    if current_user
+      unless @current_user.privilege == 1
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
+  def admin_only
+    if current_user
+      unless @current_user.privilege == 0
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
+
+  def service_user?
+    if current_user
+      if @current_user.privilege == 2
+        flash[:info] = 'You are a service user.'
+      end
+    end
+  end
+
+  def volunteer?
     if current_user
       if @current_user.privilege == 1
-        flash[:danger] = 'You are only a volunteer.'
-        redirect_to contact_path
+        flash[:info] = 'You are a volunteer.'
       end
     end
   end
 
   def admin?
     if current_user
-      unless @current_user.privilege == 0
-        # flash[:success] = 'You are not an admin!'
-        redirect_to current_user
+      if @current_user.privilege == 2
+        flash[:info] = 'You are an admin'
       end
     end
   end
