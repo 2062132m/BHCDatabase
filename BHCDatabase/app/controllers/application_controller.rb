@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_if_service_user
+  def correct_user_only
     unless @current_user.privilege == 0
       if @current_user != User.find(params[:id])
           flash[:danger] = 'You are not allowed to access that page.'
