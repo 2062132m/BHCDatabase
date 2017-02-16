@@ -1,7 +1,5 @@
 class MeetingsController < ApplicationController
 
-  before_action :admin?
-
   def index
     @meetings = Meeting.all
   end

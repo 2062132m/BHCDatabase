@@ -1,0 +1,2 @@
+module VolunteersHomepageHelper
+end

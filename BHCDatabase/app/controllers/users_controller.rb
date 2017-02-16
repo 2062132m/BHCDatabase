@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :admin?, except: [:show]
+  skip_before_action :admin_only, only: [:show]
 
   def index
     # @users = User.all
