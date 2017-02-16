@@ -13,11 +13,11 @@ class InitiativesGrid
  # filter(:condition, :dynamic, :header => "Filter")
 
   filter(:id, :string, :multiple => ',')
-  filter(:name, :string, :multiple => ',')
+  filter(:name, :string) { |value| where('name like ?', "%#{value}%") }
   #filter(:created_at, :date, :range => true, :header => "Creation date")
   #filter(:updated_at, :date, :range => true, :header => "Updated date")
   filter(:area, :string, :multiple => ',')
-  filter(:location, :string, :multiple => ',')
+  filter(:location, :string) { |value| where('location like ?', "%#{value}%") }
 
 
   #

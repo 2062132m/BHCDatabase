@@ -6,7 +6,18 @@ class EnrolmentsGrid
     Enrolment
   end
 
-  filter(:condition, :dynamic, :header => "Filter")
+  #
+  # Filters
+  #
+
+  
+  filter(:id, :string, :multiple => ',')
+  filter(:user, :integer, :multiple => ',')
+  filter(:initiative, :integer, :multiple => ',')
+
+  #
+  # Columns
+  #
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
