@@ -142,37 +142,6 @@ MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
 
-# Add attendance, enrollment and medical conditions to users
-
-User.where(privilege: 2).each do |user|
-  Faker::Number.between(1,3).times do
-    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-    user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
-  end
-
-  user.initiatives.each do |init|
-    init.meetings.each do |meet|
-      user.attendances.create(meeting: meet)
-    end
-  end
-
-end
-
-# Add attendance and enrolment to volunteers
-
-User.where(privilege: 1).each do |user|
-  Faker::Number.between(1,3).times do
-    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-  end
-
-  user.initiatives.each do |init|
-    init.meetings.each do |meet|
-      user.attendances.create(meeting: meet)
-    end
-  end
-
-end
-
 # Questions
 
 Question.create(question:"I've been feeling optimistic about the future", visible: true, sort:1, multiple_choice: true)
@@ -200,3 +169,43 @@ Question.create(question:'Is someone available to help you if you are feeling ne
 Question.create(question:'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending?', visible: true, sort:23, multiple_choice: true)
 Question.create(question:'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending?', visible: true, sort:24, multiple_choice: false)
 Question.create(question:'How do you think attending BHC initiatives or activities has affected your health and wellbeing over the last 3 – 6 months?  This may include visits to doctors,  making new friends, new interests etc...', visible: true, sort:25, multiple_choice: false)
+
+# Add attendance, feedback/answers, enrollment and medical conditions to users
+
+User.where(privilege: 2).each do |user|
+  Faker::Number.between(1,3).times do
+    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+    user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+    Feedback.create(user: user)
+  end
+
+  user.initiatives.each do |init|
+    init.meetings.each do |meet|
+      user.attendances.create(meeting: meet)
+    end
+  end
+
+  user.feedbacks.each do |feed|
+    Question.all.each do |question|
+      Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote)
+    end
+
+  end
+end
+
+# Add attendance and enrolment to volunteers
+
+User.where(privilege: 1).each do |user|
+  Faker::Number.between(1,3).times do
+    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+  end
+
+  user.initiatives.each do |init|
+    init.meetings.each do |meet|
+      user.attendances.create(meeting: meet)
+    end
+  end
+
+end
+
+# Answer.create(feedback:Feedback.create(user: user), question: Question.find(Faker::Number.between(1, Question.count)), response: "This is a test")
