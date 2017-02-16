@@ -36,6 +36,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def correct_initiative_only_on_creation
+    unless @current_user.privilege == 0
+      if @current_user.privilege == 2
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+      unless @current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
   def correct_meeting_only
     unless @current_user.privilege == 0
       if @current_user.privilege == 2
