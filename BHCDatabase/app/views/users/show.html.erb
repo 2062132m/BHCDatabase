@@ -7,31 +7,40 @@
         <div class="col-md-6">
           <div align="left">
             <h2>
-              <icon class="glyphicon glyphicon-user">Name: </icon> <%= @user.name %><br>
+              <icon class="glyphicon glyphicon-user">Name:</icon> <%= @user.name %><br>
             </h2>
             <h2>
-              <icon class="glyphicon glyphicon-earphone">Telephone: </icon> <%= @user.telephone %><br>
+              <icon class="glyphicon glyphicon-earphone">Telephone:</icon> <%= @user.telephone %><br>
             </h2>
             <h2>
-              <icon class="glyphicon glyphicon-envelope">Email: </icon> <%= @user.email %><br>
+              <icon class="glyphicon glyphicon-envelope">Email:</icon> <%= @user.email %><br>
             </h2>
             <h2>
-              <icon class="glyphicon glyphicon-calendar">DOB: </icon> <%= @user.dob %><br>
+              <icon class="glyphicon glyphicon-calendar">DOB:</icon> <%= @user.dob %><br>
             </h2>
-            <% @user.conditions.each do |c| %>
-              <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
-            <% end %>
           </div>
         </div>
       </div>
       <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @user, method: :delete,
-                                  data: { confirm: "Are you sure you want to delete this user?" },
-                                    class: "btn btn-default delete-btn" %>
+                  data: {confirm: "Are you sure you want to delete this user?"},
+                  class: "btn btn-default delete-btn" %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
     </div>
   </div>
   <h1 id="meetingtitle">Initiatives</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@initiatives_grid) %>
+  </div>
+  <h1> Feedbacks </h1>
+  <div class="stdcontainer">
+    <% @user.feedbacks.each do |feedback| %>
+        <%= link_to feedback.created_at, feedback %><br>
+    <% end %>
+  </div>
+  <h1> Medical Conditions </h1>
+  <div class="stdcontainer">
+    <% @user.conditions.each do |c| %>
+        <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
+    <% end %>
   </div>
 </div>
