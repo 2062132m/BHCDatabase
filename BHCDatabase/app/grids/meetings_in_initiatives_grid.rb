@@ -6,6 +6,10 @@ class MeetingsInInitiativesGrid
     Meeting
   end
 
+  #
+  # Columns
+  #
+
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
       link_to value, model
