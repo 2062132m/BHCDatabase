@@ -3,8 +3,8 @@
 
     <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
 
-    <%= f.label :date %>
-    <%= f.date_field :datetime, class: 'form-control' %>
+    <%= f.label :datetime %>
+    <%= f.datetime_field :datetime, class: 'form-control' %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
