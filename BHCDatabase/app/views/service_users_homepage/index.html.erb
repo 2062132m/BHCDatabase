@@ -7,10 +7,10 @@
 
       <h3><%= link_to i.name, i %></h3>
       <% i.users.each do |x| %>
-          <h2>
-            <%= link_to x.name, x %>
-            <%= x.telephone %>
-          </h2>
+          <%= link_to x.name, x %>
+          <% if x.privilege == 1 %>
+              <%= x.telephone %>
+          <% end %>
       <% end %>
       <h2><%= i.location %></h2>
       <h2><%= i.description %></h2>
