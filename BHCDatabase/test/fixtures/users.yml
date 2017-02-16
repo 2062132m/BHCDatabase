@@ -3,3 +3,15 @@ david:
   email: david@example.com
   password_digest: <%= User.digest('password') %>
   privilege: 0
+
+volunteer:
+  name: Volunteer Example
+  email: volunteer@example.com
+  password_digest: <%= User.digest('password') %>
+  privilege: 1
+
+member:
+  name: Member Example
+  email: member@example.com
+  password_digest: <%= User.digest('password') %>
+  privilege: 2
