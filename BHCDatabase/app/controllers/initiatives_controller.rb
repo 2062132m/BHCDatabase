@@ -1,5 +1,8 @@
 class InitiativesController < ApplicationController
 
+  skip_before_action :admin_only, only: [:show]
+  before_action :correct_initiative_only
+
   def index
     @initiatives = Initiative.all
     @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|
