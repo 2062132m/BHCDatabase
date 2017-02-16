@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   skip_before_action :admin_only, only: [:show]
+  before_action :redirect_if_service_user
 
   def index
     # @users = User.all
