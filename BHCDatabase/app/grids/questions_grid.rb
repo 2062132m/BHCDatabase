@@ -6,7 +6,19 @@ class QuestionsGrid
     Question
   end
 
-  filter(:condition, :dynamic, :header => "Filter")
+  #
+  # Filters
+  #
+
+  filter(:id, :string, :multiple => ',')
+  filter(:question, :string) { |value| where('question like ?', "%#{value}%") }
+  filter(:visible, :boolean)
+  filter(:multiple_choice, :boolean)
+  filter(:sort, :integer, :multiple => ',')
+
+  #
+  # Columns
+  #
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
