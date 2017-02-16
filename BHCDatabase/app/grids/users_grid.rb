@@ -13,10 +13,10 @@ class UsersGrid
   
   filter(:id, :string, :multiple => ',')
   #filter(:name, :string, :multiple => ',')
+  filter(:name, :string) { |value| where('name like ? ',"%#{value}%") }
   filter(:email, :string)
   filter(:telephone, :integer)
   filter(:dob, :date, :range => true)
-  filter(:name, :string) { |value| where('name like ? ',"%#{value}%") }
   
 
   #
