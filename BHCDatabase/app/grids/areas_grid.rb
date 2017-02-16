@@ -16,7 +16,7 @@ class AreasGrid
   #filter(:name, :string, :multiple => ',')
   #filter(:created_at, :date, :range => true, :header => "Creation date")
   #filter(:updated_at, :date, :range => true, :header => "Updated date")
-  filter(:name, :string) { |value| where('name like ?', "%#{value}%") }
+  filter(:name, :string) { |value| where('name like ? ',"%#{value}%") }
   #
   # Columns
   #
