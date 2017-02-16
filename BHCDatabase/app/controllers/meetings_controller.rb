@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-  skip_before_action :admin_only, only: [:show, :new]
+  skip_before_action :admin_only, only: [:show, :new, :create]
   before_action :correct_meeting_only, only: [:show]
   before_action :correct_initiative_only_on_creation, only: [:new]
 
