@@ -5,7 +5,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:david)
     @volunteer = users(:volunteer)
-    @member = users(:member)
+    @service_user = users(:service_user)
   end
 
   test "layout links when logged out" do
@@ -41,8 +41,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     log_in_as(@volunteer)
     get root_path
     follow_redirect!
-    assert_template 'static_pages/contact'
-    assert_select "title", full_title("Contact")
+    assert_template 'volunteers_homepage/index'
     assert_select "a[href=?]", root_path,       count: 3
     assert_select "a[href=?]", logout_path,      count: 1
     assert_select "a[href=?]", users_path,      count: 0
@@ -51,11 +50,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   end
 
   test "layout links when logged in as user" do
-    log_in_as(@member)
+    log_in_as(@service_user)
     get root_path
     follow_redirect!
-    assert_template 'static_pages/contact'
-    assert_select "title", full_title("Contact")
+    assert_template 'service_users_homepage/index'
     assert_select "a[href=?]", root_path,       count: 3
     assert_select "a[href=?]", logout_path,      count: 1
     assert_select "a[href=?]", users_path,      count: 0

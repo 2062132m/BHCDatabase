@@ -10,8 +10,8 @@ volunteer:
   password_digest: <%= User.digest('password') %>
   privilege: 1
 
-member:
-  name: Member Example
-  email: member@example.com
+service_user:
+  name: Service-User Example
+  email: serviceuser@example.com
   password_digest: <%= User.digest('password') %>
   privilege: 2
