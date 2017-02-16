@@ -15,13 +15,11 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_service_user
-    if @current_user.privilege == 2
-      flash[:danger] = 'You are not allowed to access that page.'
-      redirect_to current_user
-    end
-    if @current_user != User.find(params[:id])
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
+    unless @current_user.privilege == 0
+      if @current_user != User.find(params[:id])
+          flash[:danger] = 'You are not allowed to access that page.'
+          redirect_to current_user
+      end
     end
   end
 
