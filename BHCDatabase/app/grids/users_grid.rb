@@ -12,10 +12,11 @@ class UsersGrid
   #
   
   filter(:id, :string, :multiple => ',')
-  filter(:name, :string)
+  filter(:name, :string, :multiple => ',')
   filter(:email, :string)
   filter(:telephone, :integer)
   filter(:dob, :date, :range => true)
+
   
 
   #

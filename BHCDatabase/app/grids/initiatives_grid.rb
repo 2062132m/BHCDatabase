@@ -6,7 +6,23 @@ class InitiativesGrid
     Initiative
   end
 
-  filter(:condition, :dynamic, :header => "Filter")
+  #
+  # Filters
+  #
+
+ # filter(:condition, :dynamic, :header => "Filter")
+
+  filter(:id, :string, :multiple => ',')
+  filter(:name, :string, :multiple => ',')
+  #filter(:created_at, :date, :range => true, :header => "Creation date")
+  #filter(:updated_at, :date, :range => true, :header => "Updated date")
+  filter(:area, :string, :multiple => ',')
+  filter(:location, :string, :multiple => ',')
+
+
+  #
+  # Conditions
+  #
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
