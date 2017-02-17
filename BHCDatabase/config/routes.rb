@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'attendances/new'
+
   get 'feedbacks/show'
 
   get 'service_users_homepage/index'
