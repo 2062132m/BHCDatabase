@@ -1,8 +1,23 @@
+
+<% @feedback.errors.full_messages.each do |message| %>
+    <%= message %><br>
+<% end %>
+
 <%= form_for(@feedback) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :user %>
-    <%= f.select :user_id, options_for_select(@users.map { |s| [s.name, s.id] }) %>
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
 
-    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <%= f.fields_for :answers do |a| %>
+        <p>
+          <%= a.label :question %><br>
+          <%= a.select :question_id, options_for_select(@questions.map { |s| [s.question, s.id] }) %>
+
+          <%= a.select :feedback_id, options_for_select(@feedbacks.map { |s| [s.id, s.id] }) %>
+
+          <%= a.label :response %>
+          <%= a.text_field :response, :value => Faker::Lorem.sentence %>
+        </p>
+    <% end %>
+
+    <%= f.submit %>
 <% end %>
