@@ -1,7 +1,4 @@
 class AttendancesController < ApplicationController
-  def new
-  end
-
   def create
     meeting_id = 0
     unless params[:attendance].nil?
