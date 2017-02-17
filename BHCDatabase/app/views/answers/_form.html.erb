@@ -1,0 +1,27 @@
+<%= form_tag new_answer_path do %>
+    <% @feed.each do |answer| %>
+        <%= fields_for 'answers[]', answer do |a| %>
+
+            <div class="field">
+              <%= a.label :feedback %>
+              <%= a.select :feedback_id, options_for_select(@feedbacks.map { |s| [s.user_id, s.id] }) %>
+            </div>
+
+            <div class="field">
+              <%= a.label :question %><br>
+              <%= a.select :question_id, options_for_select(@questions.map { |s| [s.question, s.id] }) %>
+            </div>
+
+            <div class="field">
+              <%= a.label :response %>
+              <%= a.text_field :response %>
+            </div>
+
+        <% end %>
+
+    <% end %>
+
+    <div class="actions">
+      <%= submit_tag %>
+    </div>
+<% end %>

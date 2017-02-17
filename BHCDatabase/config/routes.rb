@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/volunteershome', to: 'volunteers_homepage#index'
   get '/serviceusershome', to: 'service_users_homepage#index'
-  resources :users, :areas, :initiatives, :meetings, :medical_conditions, :enrolments, :questions, :feedbacks
+  resources :users, :areas, :initiatives, :meetings, :medical_conditions, :enrolments, :questions, :feedbacks, :answers
 end
