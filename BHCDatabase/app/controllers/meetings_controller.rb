@@ -12,6 +12,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @initiative = Meeting.find(params[:id]).initiative
     @users = @meeting.users
+    @attendance = Attendance.new
   end
 
   def new

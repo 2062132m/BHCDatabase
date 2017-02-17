@@ -9,8 +9,12 @@
           <h3><%= link_to user.name, user %></h3>
       <% end %>
     <% else %>
-      <% @initiative.users.each do |user| %>
-        <h3><%= user.name %></h3>
+      <%= form_for @attendance do %>
+        <% @initiative.users.each do |user| %>
+          <h3><%= user.name %></h3>
+          <%= check_box_tag('attendance[]', {:user_id => user.id, :meeting_id => @meeting.id}) %>
+        <% end %>
+        <%= submit_tag "Submit", class: "btn btn-primary" %>
       <% end %>
     <% end %>
   </div>
