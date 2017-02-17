@@ -1,4 +1,7 @@
 class AttendancesController < ApplicationController
+
+  skip_before_action :admin_only
+
   def create
     meeting_id = 0
     unless params[:attendance].nil?
