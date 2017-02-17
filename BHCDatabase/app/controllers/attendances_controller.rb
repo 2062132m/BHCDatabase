@@ -12,13 +12,15 @@ class AttendancesController < ApplicationController
         unless @attendance.save
           flash[:danger] = "Something went wrong."
           redirect_to Meeting.find(meeting_id)
+          return
         end
         meeting_id = words[1][0...-1].scan( /\d+$/ ).first
       end
     flash[:success] = "Attendance saved!"
     redirect_to Meeting.find(meeting_id)
+    return
     end
-    flash[:success] = "Please select at least one attendant"
+    flash[:danger] = "Please select at least one attendant"
     redirect_to(:back)
   end
 

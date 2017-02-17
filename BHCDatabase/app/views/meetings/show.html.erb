@@ -9,13 +9,18 @@
           <h3><%= link_to user.name, user %></h3>
       <% end %>
     <% else %>
-      <%= form_for @attendance do %>
-        <% @initiative.users.each do |user| %>
-          <h3><%= user.name %></h3>
-          <%= check_box_tag('attendance[]', {:user_id => user.id, :meeting_id => @meeting.id}) %>
-        <% end %>
-        <%= submit_tag "Submit", class: "btn btn-primary" %>
-      <% end %>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Register</h3>
+          <%= form_for @attendance do %>
+            <% @initiative.users.each do |user| %>
+              <h2 class="enrol"><%= user.name %></h2>
+              <%= check_box_tag('attendance[]', {:user_id => user.id, :meeting_id => @meeting.id}) %>
+            <% end %>
+            <%= submit_tag "Submit", class: "btn btn-default enrol-btn" %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

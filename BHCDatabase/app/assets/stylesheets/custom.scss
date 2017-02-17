@@ -346,6 +346,16 @@ table.datagrid {
   float: right;
 }
 
+.enrol-btn {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  background-color: #57a957;
+  border-color: #57a957;
+  width: 50%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -367,8 +377,6 @@ input, textarea, select, .uneditable-input {
   display: inline-block;
   font-size: 20px;
   width:250px;
-
-
 }
 
 /* reset button */
@@ -438,4 +446,17 @@ input {
   h1 {
     color:white;
   }
+}
+
+.new_attendance {
+  h2 {
+    float: left;
+    width: 40%;
+    margin-right: 0;
+  }
+}
+
+#attendance_ {
+  float: right;
+  width: 20%;
 }
