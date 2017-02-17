@@ -8,16 +8,12 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new
-    @feedbacks = Feedback.all
     @questions = Question.where(:visible => true)
-    @user = User.find(@current_user)
     @questions.count.times {@feedback.answers.build}
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
-    @user = User.find(@current_user)
-    @feedbacks = Feedback.all
     @questions = Question.where(:visible => true)
     if @feedback.save
       flash[:success] = 'Created a new feedback!'
