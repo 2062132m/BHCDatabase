@@ -12,8 +12,6 @@
           <%= a.label :question %><br>
           <%= a.select :question_id, options_for_select(@questions.map { |s| [s.question, s.id] }) %>
 
-          <%= a.select :feedback_id, options_for_select(@feedbacks.map { |s| [s.id, s.id] }) %>
-
           <%= a.label :response %>
           <%= a.text_field :response, :value => Faker::Lorem.sentence %>
         </p>
