@@ -16,13 +16,13 @@
               <icon class="glyphicon glyphicon-map-marker"> Location: </icon>
             </h2>
             <ht><%= @meeting.initiative.location %></ht>
+          </div>
             <% if @meeting.attendances.count != 0 %>
-              <h2>Attendance: <%= @meeting.attendance %>%</h2>
+              <h3>Attendance: <%= @meeting.attendance %>%</h3>
               <% @users.each do |user| %>
-                  <h3><%= link_to user.name, user %></h3>
+                  <h2 class="enrol"><%= link_to user.name, user %></h2>
               <% end %>
             <% else %>
-          </div>
             <h3>Attendance</h3>
             <%= form_for @attendance do %>
               <% @initiative.users.each do |user| %>
@@ -40,7 +40,7 @@
           </h2>
           <ht><%= @meeting.initiative.description %></ht>
           <h2>
-            <icon class="glyphicon glyphicon-info-sign"> Volunteers:</icon>
+            <icon class="glyphicon glyphicon-user"> Volunteers:</icon>
           </h2>
           <% @initiative.users.each do |user| %>
             <% if user.privilege == 1 %>
@@ -48,6 +48,9 @@
             <% end %>
           <% end %>
         </div>
+        <% if @meeting.attendances.count != 0 %>
+          <%= pie_chart({"Attended" => @meeting.attendance, "Not Attended" => 100 - @meeting.attendance}) %>
+        <% end %>
         </div>
       </div>
   </div>
