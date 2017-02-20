@@ -2,7 +2,7 @@ class FeedbacksController < ApplicationController
 
   skip_before_action :admin_only
   before_action :service_user_only, only: [:new, :create]
-  before_action :allowed?
+  before_action :correct_users_feedback?, only: [:show]
 
 
   def show
@@ -39,7 +39,7 @@ class FeedbacksController < ApplicationController
     params.require(:feedback).permit(:user_id, answers_attributes: [:id, :response, :question_id, :feedback_id])
   end
 
-  def allowed?
+  def correct_users_feedback?
     @feedback = Feedback.find(params[:id])
     unless @current_user.privilege == 0
       if @feedback.user != @current_user
