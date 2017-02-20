@@ -5,6 +5,7 @@
   </h1>
   <div class="stdcontainer">
     <% if @meeting.attendances.count != 0 %>
+      <h2>Attendance: <%= @meeting.attendance %>%</h2>
       <% @users.each do |user| %>
           <h3><%= link_to user.name, user %></h3>
       <% end %>

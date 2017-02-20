@@ -120,7 +120,7 @@ end
 
 Initiative.all.each do |init|
   Faker::Number.between(5, 10).times do
-    init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now))
+    init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
   end
 end
 
