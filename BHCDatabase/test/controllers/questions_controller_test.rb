@@ -12,4 +12,16 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show_one" do
+    one = questions(:one)
+    get question_url(one)
+    assert_response :success
+  end
+
+  test 'should show two' do
+    two = questions(:two)
+    get question_url(two)
+    assert_response :success
+  end
+
 end
