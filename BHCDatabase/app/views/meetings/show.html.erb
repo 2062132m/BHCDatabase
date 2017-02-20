@@ -1,7 +1,7 @@
 <% provide(:title, @meeting.datetime) %>
 <div id="initiative">
   <h1>
-    <%= @meeting.datetime.strftime("%B %d, %Y - %H:%M") %>
+    <%= @meeting.initiative.name %> - <%= @meeting.datetime.strftime("%B %d, %Y - %H:%M") %>
   </h1>
   <div class="stdcontainer">
     <div class="container-fluid">
