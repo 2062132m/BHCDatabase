@@ -1,6 +1,9 @@
 class FeedbacksController < ApplicationController
 
   skip_before_action :admin_only
+  before_action :service_user_only, only: [:new, :create]
+  before_action :allowed?
+
 
   def show
     @feedback = Feedback.find(params[:id])
@@ -34,5 +37,15 @@ class FeedbacksController < ApplicationController
 
   def feedback_params
     params.require(:feedback).permit(:user_id, answers_attributes: [:id, :response, :question_id, :feedback_id])
+  end
+
+  def allowed?
+    @feedback = Feedback.find(params[:id])
+    unless @current_user.privilege == 0
+      if @feedback.user != @current_user
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to @current_user
+      end
+    end
   end
 end
