@@ -120,7 +120,7 @@ textarea {
 }
 
 #initiative {
-  h2 {
+  h2:not(.enrol) {
     font-size: 35px;
     text-align: left;
     color: black;
@@ -128,7 +128,7 @@ textarea {
 
   ht {
     font-size: 22px;
-
+    text-align: left;
   }
 }
 
