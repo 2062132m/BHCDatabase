@@ -370,6 +370,20 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+.new_attendance {
+  h2 {
+    float: left;
+    width: 70%;
+    margin: 0;
+    margin: 10px 0;
+  }
+
+  #attendance_ {
+    width: 30%;
+    margin: 10px 0;
+  }
+}
+
 .datagrid-submit{
   background-color: #0f98ab;
   color: white;
