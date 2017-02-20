@@ -49,7 +49,7 @@ end
 
 User.create(name: 'User', email: 'user@user.com', password: 'user123', password_confirmation: 'user123',
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2)
+            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2, feedback_due: 1.months.ago)
 
 Faker::Number.between(20, 50).times do
   password = Faker::Internet.password
@@ -60,7 +60,7 @@ Faker::Number.between(20, 50).times do
                       telephone: Faker::PhoneNumber.phone_number,
                       dob: Faker::Date.between(70.years.ago, 18.years.ago),
                       privilege: 2,
-                      feedback_due: Time.now)
+                      feedback_due: 6.months.from_now)
 end
 
 # Create area1 with initiatives
