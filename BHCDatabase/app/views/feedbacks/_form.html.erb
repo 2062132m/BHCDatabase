@@ -1,0 +1,19 @@
+<% @feedback.errors.full_messages.each do |message| %>
+    <%= message %><br>
+<% end %>
+
+<%= form_for(@feedback) do |f| %>
+
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+
+    <%= f.fields_for :answers do |a| %>
+        <p>
+          <%= a.label @questions.find(a.object.question_id).question %>
+          <%= a.hidden_field :question_id, :value => a.object.question_id %>
+
+          <%= a.text_field :response, :value => Faker::Lorem.sentence %>
+        </p>
+    <% end %>
+
+    <%= f.submit %>
+<% end %>
