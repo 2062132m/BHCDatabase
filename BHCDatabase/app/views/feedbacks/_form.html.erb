@@ -1,4 +1,3 @@
-
 <% @feedback.errors.full_messages.each do |message| %>
     <%= message %><br>
 <% end %>
@@ -9,10 +8,9 @@
 
     <%= f.fields_for :answers do |a| %>
         <p>
-          <%= a.label :question %><br>
-          <%= a.select :question_id, options_for_select(@questions.map { |s| [s.question, s.id] }) %>
+          <%= a.label @questions.find(a.object.question_id).question %>
+          <%= a.hidden_field :question_id, :value => a.object.question_id %>
 
-          <%= a.label :response %>
           <%= a.text_field :response, :value => Faker::Lorem.sentence %>
         </p>
     <% end %>

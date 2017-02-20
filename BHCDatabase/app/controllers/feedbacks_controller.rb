@@ -9,7 +9,9 @@ class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
     @questions = Question.where(:visible => true)
-    @questions.count.times {@feedback.answers.build}
+    @questions.each do |question|
+      @feedback.answers.build(:question_id => question.id)
+    end
   end
 
   def create
