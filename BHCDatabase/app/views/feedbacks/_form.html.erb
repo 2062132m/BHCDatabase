@@ -9,10 +9,10 @@
         <tbody>
         <%= f.fields_for :answers do |a| %>
             <tr>
-              <td class="col-md-1">
+              <td class="col-md-0.5">
                 <%= a.label @questions.find(a.object.question_id).sort %>
               </td>
-              <td class="col-md-6">
+              <td class="col-md-6.5">
                 <%= a.label @questions.find(a.object.question_id).question %>
               </td>
 
