@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|
       scope.find(@user.initiatives.ids)
     end
+    @feedbacks_grid = FeedbacksGrid.new(params[:feedbacks_grid]) do |scope|
+      scope.find(@user.feedbacks.ids)
+    end
+    @conditions_grid = ConditionsGrid.new(params[:conditions_grid]) do |scope|
+      scope.find(@user.conditions.ids)
+    end
   end
 
   def new
