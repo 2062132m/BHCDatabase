@@ -2,9 +2,16 @@
 <div id="initiative">
   <h1>Feedback</h1>
   <div class="stdcontainer">
-    <% @feedback.answers.each do |answer| %>
-        <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
-        <%= answer.response %>
-    <% end %>
+    <div class="panel panel-default">
+      <% @feedback.answers.each do |answer| %>
+          <div class="panel-heading">
+            <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
+          </div>
+          <div class="panel-body">
+            <%= answer.response %>
+          </div>
+
+      <% end %>
+    </div>
   </div>
 </div>
