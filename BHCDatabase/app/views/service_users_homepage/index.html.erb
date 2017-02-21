@@ -14,7 +14,7 @@
     <div class="row">
       <% @user.initiatives.each do |i| %>
         <div class="col-md-8">
-          <h3><%= link_to i.name, i %></h3>
+          <h3><%= i.name %></h3>
           <div id="details">
             <h2>
               <icon class="glyphicon glyphicon-map-marker"> Location:</icon>
@@ -32,7 +32,7 @@
             <% i.users.each do |x| %>
               <% if x.privilege == 1 %>
                 <h4>
-                  <%= link_to x.name, x %>
+                  <%= x.name %> - 
                   <%= x.telephone %>
                 </h4>
               <% end %>
