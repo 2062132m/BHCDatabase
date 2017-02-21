@@ -469,6 +469,28 @@ input {
   margin: 30px 0;
 }
 
-.userhome {
+#userhome {
+  h1 {
+    color: white;
+  }
+}
 
+#userhomecontainer {
+  h1 {
+    color: #118CC8;
+  }
+  h2 {
+    font-size: 25px;
+    text-align: left;
+    color: black;
+  }
+  #volunteer-list {
+    margin-top: 50px;
+  }
+  #details {
+    margin-left: 50px;
+    h4 {
+      text-align: left;
+    }
+  }
 }
