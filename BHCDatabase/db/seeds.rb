@@ -51,7 +51,7 @@ User.create(name: 'User', email: 'user@user.com', password: 'user123', password_
             telephone: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2, feedback_due: 1.months.ago)
 
-Faker::Number.between(20, 50).times do
+Faker::Number.between(100, 200).times do
   password = Faker::Internet.password
   @user = User.create(name: Faker::Name.name,
                       email: Faker::Internet.email,
@@ -119,7 +119,7 @@ end
 # Add meetings to all initiatives
 
 Initiative.all.each do |init|
-  Faker::Number.between(5, 10).times do
+  Faker::Number.between(5, 50).times do
     init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
   end
 end
@@ -180,11 +180,11 @@ User.where(privilege: 2).each do |user|
     Feedback.create(user: user)
   end
 
-  user.initiatives.each do |init|
-    init.meetings.each do |meet|
-      user.attendances.create(meeting: meet)
-    end
-  end
+  # user.initiatives.each do |init|
+  #   init.meetings.each do |meet|
+  #     user.attendances.create(meeting: meet)
+  #   end
+  # end
 
   user.feedbacks.each do |feed|
     Question.all.each do |question|
@@ -197,15 +197,15 @@ end
 # Add attendance and enrolment to volunteers
 
 User.where(privilege: 1).each do |user|
-  Faker::Number.between(1, 3).times do
+  Faker::Number.between(1, 2).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
   end
 
-  user.initiatives.each do |init|
-    init.meetings.each do |meet|
-      user.attendances.create(meeting: meet)
-    end
-  end
+  # user.initiatives.each do |init|
+  #   init.meetings.each do |meet|
+  #     user.attendances.create(meeting: meet)
+  #   end
+  # end
 
 end
 
