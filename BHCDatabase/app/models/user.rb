@@ -22,9 +22,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :telephone, presence: true, length: { maximum: 16 }
   validates :dob, presence: true
-  validates :privilege, presence: true, numericality: { only_integer: true,
-                                                        greater_than_or_equal_to: 0,
-                                                        less_than_or_equal_to: 3 }
+  validates :privilege, presence: true, numericality: {only_integer: true,
+                                                       greater_than_or_equal_to: 0,
+                                                       less_than_or_equal_to: 2}
 
   # Returns the hash digest of the given string.
   def User.digest(string)
