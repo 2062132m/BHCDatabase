@@ -1,31 +1,34 @@
-<% @feedback.errors.full_messages.each do |message| %>
-    <%= message %><br>
-<% end %>
-
 <%= form_for(@feedback) do |f| %>
 
-    <%= f.hidden_field :user_id, :value => @current_user.id %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.fields_for :answers do |a| %>
-        <%= a.label @questions.find(a.object.question_id).question %>
-        <%= a.hidden_field :question_id, :value => a.object.question_id %>
-        <br>
-        <% if @questions.find(a.object.question_id).multiple_choice %>
-            <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
-                                           :first,
-                                           :last do |b| %>
-                <div class="radio-inline">
-                  <%= b.label do %>
-                      <%= b.radio_button + b.text %>
-                  <% end %>
-                </div>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+
+    <div class="panel panel-default">
+      <%= f.fields_for :answers do |a| %>
+          <div class="panel-heading">
+            <%= a.label @questions.find(a.object.question_id).sort %>
+            <br><%= a.label @questions.find(a.object.question_id).question %>
+          </div>
+          <%= a.hidden_field :question_id, :value => a.object.question_id %>
+          <div class="panel-body">
+            <% if @questions.find(a.object.question_id).multiple_choice %>
+                <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+                                               :first,
+                                               :last do |b| %>
+                    <div class="radio-inline">
+                      <%= b.label do %>
+                          <%= b.radio_button + b.text %>
+                      <% end %>
+                    </div>
+                <% end %>
+
+            <% else %>
+                <%= a.text_field :response, :value => Faker::Lorem.sentence %>
             <% end %>
-            <br>
+          </div>
+      <% end %>
+    </div>
 
-        <% else %>
-            <%= a.text_field :response, :value => Faker::Lorem.sentence %>
-        <% end %>
-    <% end %>
-
-    <%= f.submit %>
+    <%= f.submit 'Submit Feedback', class: 'btn btn-success' %>
 <% end %>
