@@ -4,26 +4,19 @@
   <div class="feedbackcontainer">
     <table class="table table-striped">
       <thead>
-        <tr>
-          <td>
-            <h3>Question :</h3>
-          </td>
-          <td>
-            <h3>
-              <h3>Answer :</h3>
-            </h3>
-          </td>
-        </tr>
+      <tr>
+        <th class="col-md-0.5"><h4> N: </h4></th>
+        <th class="col-md-7.5"><h4> Question : </h4></th>
+        <th class="col-md-3"><h4> Answer : </h4></th>
+      </tr>
       </thead>
+
       <tbody>
         <% @feedback.answers.sort.each do |answer| %>
           <tr>
-            <td>
-              <%= answer.question.sort %>. <%= answer.question.question %>
-            </td>
-            <td>
-             <%= answer.response %>
-           </td>
+            <td class="col-md-0.5"><%= answer.question.sort %>. </td>
+            <td class="col-md-7.5"><%= answer.question.question %></td>
+            <td class="col-md-3"><%= answer.response %></td>
 
       <% end %>
       </tr>
