@@ -3,14 +3,26 @@
   <h1>Feedback</h1>
   <div class="feedbackcontainer">
     <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>
+            <h3>Question :</h3>
+          </td>
+          <td>
+            <h3>
+              <h3>Answer :</h3>
+            </h3>
+          </td>
+        </tr>
+      </thead>
       <tbody>
         <% @feedback.answers.sort.each do |answer| %>
           <tr>
             <td>
-              <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
+              <%= answer.question.sort %>. <%= answer.question.question %>
             </td>
             <td>
-             <h3><%= answer.response %></h3>
+             <%= answer.response %>
            </td>
 
       <% end %>

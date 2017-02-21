@@ -6,17 +6,23 @@
 
     <div class="feedbackcontainer">
       <table class="table table-striped">
+
+        <thead>
+          <tr>
+            <th class="col-md-0.5"><h3> N: </h3></th>
+            <th class="col-md-6.5"><h3> Question : </h3></th>
+            <th class="col-md-5"><h3> Answer : </h3></th>
+          </tr>
+        </thead>
+
         <tbody>
         <%= f.fields_for :answers do |a| %>
             <tr>
-              <td class="col-md-0.5">
-                <%= a.label @questions.find(a.object.question_id).sort %>
-              </td>
-              <td class="col-md-6.5">
-                <%= a.label @questions.find(a.object.question_id).question %>
-              </td>
+              <td class="col-md-0.5"><%= a.label @questions.find(a.object.question_id).sort %></td>
+              <td class="col-md-6.5"><%= a.label @questions.find(a.object.question_id).question %></td>
 
               <%= a.hidden_field :question_id, :value => a.object.question_id %>
+
               <td class="col-md-5">
                 <% if @questions.find(a.object.question_id).multiple_choice %>
                     <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
