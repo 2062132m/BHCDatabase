@@ -22,6 +22,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :telephone, presence: true, length: { maximum: 16 }
   validates :dob, presence: true
+  validate :dob_before_today
+
   validates :privilege, presence: true, numericality: {only_integer: true,
                                                        greater_than_or_equal_to: 0,
                                                        less_than_or_equal_to: 2}
@@ -31,5 +33,11 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  def dob_before_today
+    if dob.present? && dob >= Date.today
+      errors.add(:dob, 'DOB is today or in the future')
+    end
   end
 end

@@ -18,13 +18,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test 'email should be present' do
-    @user.email = '     '
-    assert_not @user.valid?
-  end
-
-  test 'telephone should be present' do
-    @user.telephone = ''
+  test 'name should not be too long' do
+    @user.name = 'a' * 51
     assert_not @user.valid?
   end
 
@@ -33,18 +28,30 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-test 'name should not be too long' do
-    @user.name = 'a' * 51
+  test 'dob should be before today' do
+    @user.dob = Date.today
+    assert_not @user.valid?
+    @user.dob = Date.today >> 6
     assert_not @user.valid?
   end
 
-  test 'email should not be too long' do
-    @user.email = 'a' * 244 + '@example.com'
+  test 'telephone should be present' do
+    @user.telephone = ''
     assert_not @user.valid?
   end
 
   test 'telephone should not be too long' do
     @user.telephone = '1' * 17
+    assert_not @user.valid?
+  end
+
+  test 'email should be present' do
+    @user.email = '     '
+    assert_not @user.valid?
+  end
+
+  test 'email should not be too long' do
+    @user.email = 'a' * 244 + '@example.com'
     assert_not @user.valid?
   end
 
@@ -79,5 +86,4 @@ test 'name should not be too long' do
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
-
 end
