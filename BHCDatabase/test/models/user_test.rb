@@ -35,6 +35,20 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test 'privilege should be present' do
+    @user.privilege = nil
+    assert_not @user.valid?
+  end
+
+  test 'invalid privilege level' do
+    @user.privilege = -1
+    assert_not @user.valid?
+    @user.privilege = 3
+    assert_not @user.valid?
+    @user.privilege = Faker::Lorem.word
+    assert_not @user.valid?
+  end
+
   test 'telephone should be present' do
     @user.telephone = ''
     assert_not @user.valid?
