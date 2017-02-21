@@ -16,7 +16,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                        password_confirmation: "bar",
                                        telephone: Faker::PhoneNumber.phone_number,
                                        dob: Faker::Date.between(70.years.ago, 18.years.ago),
-                                       privilege: 2}}
+                                       privilege: 1}}
     end
     assert_template 'users/new'
     assert_select 'div.alert.alert-danger'
