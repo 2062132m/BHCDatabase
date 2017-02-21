@@ -1,17 +1,21 @@
 <% provide(:title, @feedback.id) %>
 <div id="initiative">
   <h1>Feedback</h1>
-  <div class="stdcontainer">
-    <div class="panel panel-default">
-      <% @feedback.answers.sort.each do |answer| %>
-          <div class="panel-heading">
-            <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
-          </div>
-          <div class="panel-body">
-            <%= answer.response %>
-          </div>
+  <div class="feedbackcontainer">
+    <table class="table table-striped">
+      <tbody>
+        <% @feedback.answers.sort.each do |answer| %>
+          <tr>
+            <td>
+              <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
+            </td>
+            <td>
+             <h3><%= answer.response %></h3>
+           </td>
 
       <% end %>
-    </div>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
