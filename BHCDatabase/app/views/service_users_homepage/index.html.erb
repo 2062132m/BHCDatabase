@@ -4,12 +4,12 @@
 
 <div class="stdcontainer">
 
-  <%= @user.feedback_due %>
   <% if @user.feedback_due <= Date.today %>
       Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago <br>
-      <%= link_to 'Leave feedback', new_feedback_path %>
+      <%= link_to 'Leave feedback', new_feedback_path, class: 'btn btn-success' %>
   <% else %>
-      Your feedback is due in <%= (@user.feedback_due - Date.today).to_i %> day(s)
+      Your feedback is due in... <br>
+      <%= link_to (Date.today - @user.feedback_due).to_i.to_s + ' days', new_feedback_path, class: 'btn btn-warning disabled' %>
   <% end %>
 
   <% @user.initiatives.each do |i| %>
