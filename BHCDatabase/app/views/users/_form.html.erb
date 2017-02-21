@@ -2,25 +2,25 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
 
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control" %>
 
     <%= f.label :telephone %>
-    <%= f.text_field :telephone %>
+    <%= f.text_field :telephone, class: "form-control" %>
 
     <%= f.label :dob %>
     <%= f.date_select :dob, :start_year => 1900, :end_year => Date.today.year %>
 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-control" %>
 
     <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
 
     <%= f.label :privilege %>
-    <%= f.number_field :privilege, in: 0.0..2.0, step: 1.0 %>
+    <%= f.number_field :privilege, in: 0.0..2.0, step: 1.0, class: "form-control" %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
