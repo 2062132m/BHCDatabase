@@ -7,11 +7,12 @@
     <div class="feedbackcontainer">
       <table class="table table-striped">
         <tbody>
-
         <%= f.fields_for :answers do |a| %>
             <tr>
-              <td class="col-md-7">
+              <td class="col-md-1">
                 <%= a.label @questions.find(a.object.question_id).sort %>
+              </td>
+              <td class="col-md-6">
                 <%= a.label @questions.find(a.object.question_id).question %>
               </td>
 
