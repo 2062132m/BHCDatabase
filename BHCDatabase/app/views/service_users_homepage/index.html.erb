@@ -2,26 +2,41 @@
 
 <h1>Home</h1>
 
-<div class="stdcontainer">
+<div class="stdcontainer userhome">
+  <div class="row">
+    <% if @user.feedback_due <= Date.today %>
+        Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago <br>
+        <%= link_to 'Leave feedback', new_feedback_path, class: 'btn btn-success' %>
+    <% else %>
+        Your feedback is due in... <br>
+        <%= link_to (@user.feedback_due - Date.today).to_i.to_s + ' days', new_feedback_path, class: 'btn btn-warning disabled' %>
+    <% end %>
 
-  <% if @user.feedback_due <= Date.today %>
-      Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago <br>
-      <%= link_to 'Leave feedback', new_feedback_path, class: 'btn btn-success' %>
-  <% else %>
-      Your feedback is due in... <br>
-      <%= link_to (@user.feedback_due - Date.today).to_i.to_s + ' days', new_feedback_path, class: 'btn btn-warning disabled' %>
-  <% end %>
+    <h1>Your Initiatives</h1>
 
-  <% @user.initiatives.each do |i| %>
-
-      <h3><%= link_to i.name, i %></h3>
-      <% i.users.each do |x| %>
-          <%= link_to x.name, x %>
+    <% @user.initiatives.each do |i| %>
+      <div class="col-md-8">
+        <h3><%= link_to i.name, i %></h3>
+        <h2>
+          <icon class="glyphicon glyphicon-map-marker"> Location:</icon>
+        </h2>
+        <h2><%= i.location %></h2>
+        <h2>
+          <icon class="glyphicon glyphicon-info-sign"> Description:</icon>
+        </h2>
+        <h2><%= i.description %></h2>
+      </div>
+      <div class="col-md-4">
+        <h2>Initative Volunteers:</h2>
+        <% i.users.each do |x| %>
           <% if x.privilege == 1 %>
+            <h2>
+              <%= link_to x.name, x %>
               <%= x.telephone %>
+            </h2>
           <% end %>
-      <% end %>
-      <h2><%= i.location %></h2>
-      <h2><%= i.description %></h2>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
