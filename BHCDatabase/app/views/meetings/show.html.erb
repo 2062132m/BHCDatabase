@@ -26,8 +26,10 @@
               <h3>Attendance</h3>
               <%= form_for @attendance do %>
                   <% @initiative.users.each do |user| %>
+                    <% if user.privilege == 2 %>
                       <h2 class="enrol"><%= user.name %></h2>
                       <%= check_box_tag('attendance[]', {:user_id => user.id, :meeting_id => @meeting.id}) %>
+                    <% end %>
                   <% end %>
                   <%= submit_tag "Submit", class: "btn btn-default enrol-btn" %>
               <% end %>
@@ -44,7 +46,7 @@
             </h2>
             <% @initiative.users.each do |user| %>
                 <% if user.privilege == 1 %>
-                    <ht><%= user.name %></ht>
+                    <ht><%= link_to user.name, user %></ht>
                     <br>
                 <% end %>
             <% end %>
