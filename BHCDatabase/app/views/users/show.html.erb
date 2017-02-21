@@ -38,9 +38,7 @@
     <% if @user.feedbacks.count == 0 %>
       <p>This user has not yet left any feedback.</p>
     <% else %>
-      <% @user.feedbacks.each do |feedback| %>
-          <%= link_to feedback.created_at, feedback %><br>
-      <% end %>
+      <%= datagrid_table(@feedbacks_grid) %>
     <% end %>
   </div>
   <h1> Medical Conditions </h1>
