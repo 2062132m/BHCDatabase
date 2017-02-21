@@ -20,7 +20,7 @@ class AttendancesController < ApplicationController
       end
       meeting = Meeting.find(meeting_id)
       @initiative = meeting.initiative
-      @totalAttendees = Enrolment.where(:initiative_id => @initiative).count
+      @totalAttendees = Enrolment.where(:initiative_id => @initiative, :user_id => (User.where(:privilege => 2).ids)).count
       meeting.update_attribute(:attendance, @numAttendees/@totalAttendees.to_f * 100)
       meeting.save
       flash[:success] = "Attendance saved!"
