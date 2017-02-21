@@ -1,8 +1,6 @@
-<% @feedback.errors.full_messages.each do |message| %>
-    <%= message %><br>
-<% end %>
-
 <%= form_for(@feedback) do |f| %>
+
+    <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.hidden_field :user_id, :value => @user.id %>
 
