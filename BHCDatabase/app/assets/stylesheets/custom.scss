@@ -469,6 +469,16 @@ input {
   margin: 30px 0;
 }
 
+.feedbackcontainer {
+  margin-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #61BB46;
+  h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+}
+
 #userhome {
   h1 {
     color: white;
@@ -492,5 +502,8 @@ input {
     h4 {
       text-align: left;
     }
+  }
+  .row {
+    margin-bottom: 20px;
   }
 }
