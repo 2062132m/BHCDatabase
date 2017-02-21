@@ -5,44 +5,43 @@
   <div class="stdcontainer" id="userhomecontainer">
     <div class="feedbackcontainer">
       <% if @user.feedback_due <= Date.today %>
-          <h3>Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago</h3>
-          <%= link_to 'Leave feedback', new_feedback_path, class: 'btn btn-success' %>
+      <h3>Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago</h3>
+      <%= link_to 'Leave feedback', new_feedback_path, class: 'btn btn-success' %>
       <% else %>
-          <h3>Your feedback is due in...</h3>
-          <%= link_to (@user.feedback_due - Date.today).to_i.to_s + ' days', new_feedback_path, class: 'btn btn-warning disabled' %>
+      <h3>Your feedback is due in...</h3>
+      <%= link_to (@user.feedback_due - Date.today).to_i.to_s + ' days', new_feedback_path, class: 'btn btn-warning disabled' %>
       <% end %>
     </div>
     <h1>Your Initiatives</h1>
-      <% @user.initiatives.each do |i| %>
-        <div class="row">
-          <div class="col-md-8">
-            <h3><%= i.name %></h3>
-            <div id="details">
-              <h2>
-                <icon class="glyphicon glyphicon-map-marker"> Location:</icon>
-              </h2>
-              <h4><%= i.location %></h4>
-              <h2>
-                <icon class="glyphicon glyphicon-info-sign"> Description:</icon>
-              </h2>
-              <h4><%= i.description %></h4>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div id="volunteer-list">
-              <h4>Initiative Volunteers:</h4>
-              <% i.users.each do |x| %>
-                <% if x.privilege == 1 %>
-                  <h4>
-                    <%= x.name %> -
-                    <%= x.telephone %>
-                  </h4>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
+    <% @user.initiatives.each do |i| %>
+    <div class="row">
+      <div class="col-md-8">
+        <h3><%= i.name %></h3>
+        <div id="details">
+          <h2>
+            <icon class="glyphicon glyphicon-map-marker"> Location:</icon>
+          </h2>
+          <h4><%= i.location %></h4>
+          <h2>
+            <icon class="glyphicon glyphicon-info-sign"> Description:</icon>
+          </h2>
+          <h4><%= i.description %></h4>
         </div>
-      <% end %>
+      </div>
+      <div class="col-md-4">
+        <div id="volunteer-list">
+          <h4>Initiative Volunteers:</h4>
+          <% i.users.each do |x| %>
+          <% if x.privilege == 1 %>
+          <h4>
+            <%= x.name %> -
+            <%= x.telephone %>
+          </h4>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
+    <% end %>
   </div>
 </div>
