@@ -46,7 +46,7 @@
             </h2>
             <% @initiative.users.each do |user| %>
                 <% if user.privilege == 1 %>
-                    <ht><%= user.name %></ht>
+                    <ht><%= link_to user.name, user %></ht>
                     <br>
                 <% end %>
             <% end %>
