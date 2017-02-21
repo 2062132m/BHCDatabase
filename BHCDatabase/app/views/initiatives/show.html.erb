@@ -34,11 +34,19 @@
   </div>
   <h1 id="meetingtitle">Members</h1>
   <div class="stdcontainer">
-    <%= datagrid_table(@users_grid) %>
+    <% if @initiative.users.count == 0 %>
+      <p>This initative does not yet have any members.</p>
+    <% else %>
+      <%= datagrid_table(@users_grid) %>
+    <% end %>
   </div>
   <h1 id="meetingtitle">Meetings</h1>
   <div class="stdcontainer">
-    <%= datagrid_table(@meetings_in_initiatives_grid) %>
-    <%= will_paginate @meetings_in_initiatives_grid.assets %>
+    <% if @initiative.meetings.count == 0 %>
+      <p>This initiative has not yet had any meetings.</p>
+    <% else %>
+      <%= datagrid_table(@meetings_in_initiatives_grid) %>
+      <%= will_paginate @meetings_in_initiatives_grid.assets %>
+    <% end %>
   </div>
 </div>

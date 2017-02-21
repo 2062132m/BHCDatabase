@@ -35,14 +35,22 @@
   </div>
   <h1> Feedbacks </h1>
   <div class="stdcontainer">
-    <% @user.feedbacks.each do |feedback| %>
-        <%= link_to feedback.created_at, feedback %><br>
+    <% if @user.feedbacks.count == 0 %>
+      <p>This user has not yet left any feedback.</p>
+    <% else %>
+      <% @user.feedbacks.each do |feedback| %>
+          <%= link_to feedback.created_at, feedback %><br>
+      <% end %>
     <% end %>
   </div>
   <h1> Medical Conditions </h1>
   <div class="stdcontainer">
-    <% @user.conditions.each do |c| %>
-        <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
+    <% if @user.conditions.count == 0 %>
+      <p>This user does not have any medical conditions.</p>
+    <% else %>
+      <% @user.conditions.each do |c| %>
+          <p><%= link_to c.medical_condition.name, c.medical_condition %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
