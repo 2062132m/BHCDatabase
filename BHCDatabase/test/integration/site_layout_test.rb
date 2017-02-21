@@ -33,7 +33,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get root_path
     assert_template 'homepage/index'
     assert_select "a[href=?]", root_path, count: 3
-    get signup_path
+    get new_user_path
     assert_select "title", full_title("New User")
   end
 
