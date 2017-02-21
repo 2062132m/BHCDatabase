@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    @questions_grid = QuestionsGrid.new(params[:question_grid]) do |scope|
+    @questions_grid = QuestionsGrid.new(params[:questions_grid]) do |scope|
       scope.page(params[:page])
     end
   end
