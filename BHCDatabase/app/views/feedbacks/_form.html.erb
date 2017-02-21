@@ -4,7 +4,7 @@
 
 <%= form_for(@feedback) do |f| %>
 
-    <%= f.hidden_field :user_id, :value => @current_user.id %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
 
     <%= f.fields_for :answers do |a| %>
         <%= a.label @questions.find(a.object.question_id).question %>
