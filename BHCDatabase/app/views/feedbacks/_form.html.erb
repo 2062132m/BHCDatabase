@@ -7,6 +7,7 @@
     <%= f.hidden_field :user_id, :value => @user.id %>
 
     <%= f.fields_for :answers do |a| %>
+        <%= a.label @questions.find(a.object.question_id).sort %> <br>
         <%= a.label @questions.find(a.object.question_id).question %>
         <%= a.hidden_field :question_id, :value => a.object.question_id %>
         <br>

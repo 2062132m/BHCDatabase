@@ -12,7 +12,7 @@ class FeedbacksController < ApplicationController
   def new
     @user = @current_user
     @feedback = Feedback.new
-    @questions = Question.where(:visible => true)
+    @questions = Question.where(:visible => true).order(:sort)
     @questions.each do |question|
       @feedback.answers.build(:question_id => question.id)
     end
