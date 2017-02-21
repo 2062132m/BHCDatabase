@@ -3,7 +3,7 @@
   <h1>Feedback</h1>
   <div class="stdcontainer">
     <div class="panel panel-default">
-      <% @feedback.answers.each do |answer| %>
+      <% @feedback.answers.sort.each do |answer| %>
           <div class="panel-heading">
             <h3><%= answer.question.sort %>. <%= answer.question.question %></h3>
           </div>
