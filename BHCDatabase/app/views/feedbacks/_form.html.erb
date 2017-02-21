@@ -11,7 +11,7 @@
         <%= a.hidden_field :question_id, :value => a.object.question_id %>
         <br>
         <% if @questions.find(a.object.question_id).multiple_choice %>
-            <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9']],
+            <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
                                            :first,
                                            :last do |b| %>
                 <div class="radio-inline">
