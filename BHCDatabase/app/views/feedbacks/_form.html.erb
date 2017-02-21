@@ -24,7 +24,7 @@
                 <% end %>
 
             <% else %>
-                <%= a.text_field :response, :value => Faker::Lorem.sentence %>
+                <%= a.text_field :response, :value => Faker::Lorem.sentence, class: "form-control" %>
             <% end %>
           </div>
       <% end %>
