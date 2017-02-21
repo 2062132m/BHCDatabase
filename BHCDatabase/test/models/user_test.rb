@@ -49,6 +49,18 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test 'should have feedback_due' do
+    @user.privilege = 2
+    @user.feedback_due = nil
+    assert_not @user.valid?
+  end
+
+  test 'should not have feedback_due' do
+    @user.privilege = 1
+    @user.feedback_due = Date.today >> 6
+    assert_not @user.valid?
+  end
+
   test 'telephone should be present' do
     @user.telephone = ''
     assert_not @user.valid?
