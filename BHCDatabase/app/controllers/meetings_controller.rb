@@ -30,6 +30,17 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def destroy
+    @meeting = Meeting.find(params[:id])
+    puts @meeting.attendances.ids
+    @meeting.attendances.each do |attendance|
+      attendance.destroy
+    end
+    @meeting.update_attribute(:attendance, 0)
+    flash[:success] = "Attendance cleared"
+    redirect_to meeting_url
+  end
+
   private
 
     def meeting_params
