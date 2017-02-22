@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-  skip_before_action :admin_only, only: [:show, :new, :create]
+  skip_before_action :admin_only, only: [:show, :new, :create, :destroy]
   before_action :correct_meeting_only, only: [:show]
   before_action :correct_initiative_only_on_creation, only: [:new]
 
@@ -28,6 +28,17 @@ class MeetingsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @meeting = Meeting.find(params[:id])
+    puts @meeting.attendances.ids
+    @meeting.attendances.each do |attendance|
+      attendance.destroy
+    end
+    @meeting.update_attribute(:attendance, 0)
+    flash[:success] = "Attendance cleared"
+    redirect_to meeting_url
   end
 
   private
