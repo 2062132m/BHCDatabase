@@ -21,19 +21,19 @@ $gray-medium-light: #eaeaea;
 }
 
 @media (max-width:767px){
-    .navbar-nav li {
-      font-size: 30px;
+  .navbar-nav li {
+    font-size: 30px;
+    text-align: center;
+  }
+  .footer {
+    small, ul, li {
+      display: block;
+      float: none;
       text-align: center;
+      margin: 0;
+      padding: 0;
     }
-    .footer {
-      small, ul, li {
-        display: block;
-        float: none;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-    }
+  }
 }
 
 /* universal */
@@ -186,8 +186,8 @@ p {
 
 header {
   .navbar-nav {
-      a {
-        line-height: 32px;
+    a {
+      line-height: 32px;
     }
   }
 }
@@ -259,7 +259,7 @@ table.datagrid {
     color: white;
     text-align: center;
   }
-   /* styling of the main big table */
+  /* styling of the main big table */
   td, th {
     border: 1px solid #d6d6d6;
     border-radius: 4px;
@@ -269,7 +269,7 @@ table.datagrid {
       a.asc, a.desc {
 
         text-decoration: none;
-	      color: white;
+        color: white;
         font-size: 150%;
         font-weight: bold;
       }
@@ -284,7 +284,7 @@ table.datagrid {
     }
   }
 
-/* results column -- body */
+  /* results column -- body */
   .noresults {
     text-align: center;
   }
@@ -407,7 +407,7 @@ input, textarea, select, .uneditable-input {
   float: right;
 
 
-/* box adjustments */
+  /* box adjustments */
   border-radius: 4px;
   font-size: 17px;
   width:70px;
@@ -472,10 +472,21 @@ input {
 .feedbackcontainer {
   margin-top: 15px;
   padding-bottom: 10px;
+  background-color: white;
   border-bottom: 1px solid #61BB46;
+  font-size: 17px;
+
   h3 {
     font-size: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
+    margin-top: 1px;
+    text-align: center;
+  }
+  h4 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    text-align: left;
   }
 }
 
@@ -496,10 +507,6 @@ input {
   }
   #volunteer-list {
     margin-top: 50px;
-    h3 {
-      font-size: 22px;
-      margin-bottom: 5px;
-    }
   }
   #details {
     margin-left: 50px;
