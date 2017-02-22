@@ -15,7 +15,7 @@ class InitiativesController < ApplicationController
     @area = Area.find(@initiative.area_id)
     @meetings = Meeting.where(initiative_id: @initiative)
     @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
-      scope.find(@initiative.users.ids)
+      scope.where(:id=>@initiative.users.ids)
     end
     @meetings_in_initiatives_grid = MeetingsInInitiativesGrid.
     new(params[:meetings_in_initiatives_grid]) do |scope|
