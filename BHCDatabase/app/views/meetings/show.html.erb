@@ -22,10 +22,10 @@
               <% @users.each do |user| %>
                   <h2 class="enrol"><%= link_to user.name, user %></h2>
               <% end %>
-              <%= link_to "<i class='glyphicon glyphicon-edit'></i> Re-take Attendance".html_safe, @meeting, method: :delete,
+              <%= link_to "<i class='glyphicon glyphicon-edit'></i> Retake Attendance".html_safe, @meeting, method: :delete,
                                           data: { confirm: "Are you sure you want to retake the attendance?
                                                             \nNote: This action cannot be undone!" },
-                                            class: "btn btn-default edit-btn" %>
+                                            class: "btn btn-default edit-btn", id: "attendance-btn" %>
           <% else %>
               <h3>Attendance</h3>
               <%= form_for @attendance do %>
