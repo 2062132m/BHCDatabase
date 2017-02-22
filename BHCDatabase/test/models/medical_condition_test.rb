@@ -15,8 +15,18 @@ class MedicalConditionTest < ActiveSupport::TestCase
     assert_not @valid_condition.valid?
   end
 
-  test 'email should be present' do
+  test 'name cannot be too long' do
+    @valid_condition.name = 'a' * 51
+    assert_not @valid_condition.valid?
+  end
+
+  test 'description should be present' do
     @valid_condition.description = ''
+    assert_not @valid_condition.valid?
+  end
+
+  test 'description cannot be too long' do
+    @valid_condition.description = 'a' * 256
     assert_not @valid_condition.valid?
   end
 
