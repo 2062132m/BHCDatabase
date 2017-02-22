@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class QuestionsNewTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
 
   def setup
     @user = users(:david)
