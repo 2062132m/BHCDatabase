@@ -6,6 +6,7 @@
     <div class="feedbackcontainer">
       <% if @user.feedback_due <= Date.today %>
       <h3>Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago</h3>
+      <br>
       <%= link_to 'Leave feedback', new_feedback_path, class: 'btn btn-success' %>
       <% else %>
       <h3>Your feedback is due in...</h3>
@@ -15,22 +16,22 @@
     <h1>Your Initiatives</h1>
     <% @user.initiatives.each do |i| %>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-4">
         <h3><%= i.name %></h3>
         <div id="details">
           <h2>
-            <icon class="glyphicon glyphicon-map-marker"> Location:</icon>
+            <icon class="glyphicon glyphicon-map-marker"></icon> Location:
           </h2>
           <h4><%= i.location %></h4>
           <h2>
-            <icon class="glyphicon glyphicon-info-sign"> Description:</icon>
+            <icon class="glyphicon glyphicon-info-sign"></icon> Description:
           </h2>
           <h4><%= i.description %></h4>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-8">
         <div id="volunteer-list">
-          <h4>Initiative Volunteers:</h4>
+          <h3>Initiative Volunteers:</h3>
           <% i.users.each do |x| %>
           <% if x.privilege == 1 %>
           <h4>
