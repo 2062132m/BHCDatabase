@@ -63,7 +63,7 @@ textarea {
   background-color: white;
   border-radius: 20px;
   border: 2px solid #61BB46;
-  font-family: arial;
+
   h3 {
     color: #118CC8;
   }
@@ -390,6 +390,8 @@ input, textarea, select, .uneditable-input {
 .datagrid-submit{
   background-color: #0f98ab;
   color: white;
+  position: relative;
+  left: 3.5%;
   text-align:center;
   display: inline-block;
   font-size: 20px;
@@ -505,6 +507,7 @@ input {
     text-align: left;
     color: black;
   }
+
   #volunteer-list {
     margin-top: 50px;
   }

@@ -9,15 +9,39 @@
         <div class="col-md-6">
           <div align="left">
             <h2>
-              <icon class="glyphicon glyphicon-list-alt"> Area:</icon>
+              <icon class="glyphicon glyphicon-list-alt"></icon> Area:
             </h2>
             <ht><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %></ht>
             <h2>
-              <icon class="glyphicon glyphicon-map-marker"> Location:</icon>
+              <icon class="glyphicon glyphicon-map-marker"></icon> Location:
             </h2>
             <ht><%= @meeting.initiative.location %></ht>
           </div>
-          <% if @meeting.attendances.count != 0 %>
+         </div>
+
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              <icon class="glyphicon glyphicon-info-sign"></icon> Description:
+            </h2>
+            <ht><%= @meeting.initiative.description %></ht>
+            <h2>
+              <icon class="glyphicon glyphicon-user"></icon> Volunteers:
+            </h2>
+            <% @initiative.users.each do |user| %>
+                <% if user.privilege == 1 %>
+                    <ht><%= link_to user.name, user %></ht>
+                    <br>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+          <div align="center">
+           <% if @meeting.attendances.count != 0 %>
               <h3>Attendance: <%= @meeting.attendance %>%</h3>
               <% @users.each do |user| %>
                   <h2 class="enrol"><%= link_to user.name, user %></h2>
@@ -38,23 +62,10 @@
                   <%= submit_tag "Submit", class: "btn btn-default enrol-btn" %>
               <% end %>
           <% end %>
+          </div>
         </div>
         <div class="col-md-6">
           <div align="left">
-            <h2>
-              <icon class="glyphicon glyphicon-info-sign"> Description:</icon>
-            </h2>
-            <ht><%= @meeting.initiative.description %></ht>
-            <h2>
-              <icon class="glyphicon glyphicon-user"> Volunteers:</icon>
-            </h2>
-            <% @initiative.users.each do |user| %>
-                <% if user.privilege == 1 %>
-                    <ht><%= link_to user.name, user %></ht>
-                    <br>
-                <% end %>
-            <% end %>
-          </div>
           <% if @meeting.attendances.count != 0 %>
               <%= pie_chart({"Attended" => @meeting.attendance, "Not Attended" => 100 - @meeting.attendance}) %>
           <% end %>
