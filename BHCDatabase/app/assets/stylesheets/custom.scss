@@ -119,22 +119,7 @@ textarea {
   }
 }
 
-#initiative {
-  h2:not(.enrol) {
-    font-size: 35px;
-    text-align: left;
-    color: black;
-  }
 
-  ht {
-    font-size: 22px;
-    text-align: left;
-  }
-
-  h3 {
-    margin-top: 50px;
-  }
-}
 
 /* home */
 
@@ -492,35 +477,7 @@ input {
   }
 }
 
-#userhome {
-  h1 {
-    color: white;
-  }
-}
 
-#userhomecontainer {
-  h1 {
-    color: #118CC8;
-  }
-  h2 {
-    font-size: 25px;
-    text-align: left;
-    color: black;
-  }
-
-  #volunteer-list {
-    margin-top: 50px;
-  }
-  #details {
-    margin-left: 50px;
-    h4 {
-      text-align: left;
-    }
-  }
-  .row {
-    margin-bottom: 20px;
-  }
-}
 
 #attendance-btn {
   float: none;
