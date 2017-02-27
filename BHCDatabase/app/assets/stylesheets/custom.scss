@@ -1,9 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 /* mixins, media, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -59,10 +61,11 @@ textarea {
 }
 
 .stdcontainer {
+  padding-top: 8px;
   text-align: center;
   background-color: white;
-  border-radius: 20px;
-  border: 2px solid #61BB46;
+  border-radius: 15px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5); 
 
   h3 {
     color: #118CC8;
@@ -84,8 +87,8 @@ textarea {
 
 #login {
   background-color: white;
-  border-radius: 20px;
-  border: 2px solid #61BB46;
+  border-radius: 15px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5); 
   padding: 10px 10px 30px;
   h1 {
     color: #118CC8
@@ -179,7 +182,7 @@ header {
 
 .navbar-default {
   background-color: white;
-  border-bottom: 2px solid #61BB46;
+  border-bottom: 2px #008ED4;
 }
 
 #logo {
@@ -206,7 +209,7 @@ header {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #61BB46;
+  border-top: 1px solid #d6d6d6;
   color: white;
   a {
     color: white;
@@ -430,15 +433,7 @@ input {
 
 /* Areas index */
 
-.areas {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-  }
-}
+
 
 #indexcontainer {
   h1 {
@@ -454,27 +449,6 @@ input {
 
 #chart-1 {
   margin: 30px 0;
-}
-
-.feedbackcontainer {
-  margin-top: 15px;
-  padding-bottom: 10px;
-  background-color: white;
-  border-bottom: 1px solid #61BB46;
-  font-size: 17px;
-
-  h3 {
-    font-size: 25px;
-    margin-bottom: 2px;
-    margin-top: 1px;
-    text-align: center;
-  }
-  h4 {
-    font-size: 25px;
-    margin-bottom: 5px;
-    margin-top: 2px;
-    text-align: left;
-  }
 }
 
 
