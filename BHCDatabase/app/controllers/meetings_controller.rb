@@ -21,6 +21,7 @@ class MeetingsController < ApplicationController
     @meetings = Initiative.find(params[:initiative_id]).meetings
     unless @meetings.count == 0
       @lastmeetingtime = Initiative.find(params[:initiative_id]).meetings.last.datetime
+      @lastmeetingtime += 1.week
     else
       @lastmeetingtime = DateTime.now
     end
