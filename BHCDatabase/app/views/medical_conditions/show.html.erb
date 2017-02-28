@@ -16,6 +16,7 @@
                                     class: "btn btn-default delete-btn" %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_medical_condition_path, class: 'btn btn-default edit-btn' %>
 
+      <h3><br><br>Users with this condition</h3>
       <%= datagrid_table(@conditions_grid) %>
     </div>
   </div>
