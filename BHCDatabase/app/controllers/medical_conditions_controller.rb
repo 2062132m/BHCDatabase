@@ -23,6 +23,14 @@ class MedicalConditionsController < ApplicationController
 
   def show
     @medical_condition = MedicalCondition.find(params[:id])
+    @conditions = @medical_condition.conditions
+    @ids = []
+    @conditions.each do |cond|
+      @ids.push(cond.user_id)
+    end
+    @conditions_grid = UsersGrid.new(params[:users_grid]) do |scope|
+      scope.where(:id=>@ids)
+    end
   end
 
   def edit

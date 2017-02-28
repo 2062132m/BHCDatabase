@@ -15,6 +15,8 @@
                                   data: { confirm: "Are you sure you want to delete this medical condition?" },
                                     class: "btn btn-default delete-btn" %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_medical_condition_path, class: 'btn btn-default edit-btn' %>
+
+      <%= datagrid_table(@conditions_grid) %>
     </div>
   </div>
 </div>
