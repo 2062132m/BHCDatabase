@@ -28,13 +28,20 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    @meeting = Meeting.new(meeting_params)
-    if @meeting.save
-      flash[:success] = 'Created the new session!'
-      redirect_to @meeting
-    else
-      render 'new'
+    @i = 0
+    @weeks = params[:weeks].to_i
+    while @i < @weeks do
+      @meeting = Meeting.new(meeting_params)
+      @meeting.update_attribute(:datetime, @meeting.datetime + @i.weeks)
+      unless @meeting.save
+        flash[:danger] = 'Something went wrong'
+        render 'new'
+        return
+      end
+      @i += 1
     end
+    flash[:success] = 'Created the new session!'
+    redirect_to @meeting
   end
 
   def destroy

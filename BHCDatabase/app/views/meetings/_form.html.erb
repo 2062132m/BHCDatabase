@@ -6,5 +6,8 @@
     <%= f.label :datetime %>
     <%= f.datetime_select :datetime, { :default => @lastmeetingtime, :required => true }, { class: "form-control" } %>
 
+    <%= label_tag "Run for" %>
+    <%= select_tag :weeks, "<option>1</option><option>2</option><option>3</option>".html_safe, { class: "form-control" } %>
+
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
