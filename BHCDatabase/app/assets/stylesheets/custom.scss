@@ -6,12 +6,12 @@
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
-  -moz-box-sizing:    border-box;
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+  box-sizing: border-box;
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width: 991px) {
   #logotext {
     display: none;
   }
@@ -20,7 +20,7 @@ $gray-medium-light: #eaeaea;
   }
 }
 
-@media (max-width:767px){
+@media (max-width: 767px) {
   .navbar-nav li {
     font-size: 30px;
     text-align: center;
@@ -45,8 +45,8 @@ html {
 body {
   padding-top: 100px;
   background: #0986BD; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #43C6AC , #191654); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #43C6AC , #191654); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to left, #43C6AC, #191654); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #43C6AC, #191654); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -59,10 +59,12 @@ textarea {
 }
 
 .stdcontainer {
+  padding-top: 8px;
+  padding-bottom: 5px;
   text-align: center;
   background-color: white;
-  border-radius: 20px;
-  border: 2px solid #61BB46;
+  border-radius: 15px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
 
   h3 {
     color: #118CC8;
@@ -84,8 +86,8 @@ textarea {
 
 #login {
   background-color: white;
-  border-radius: 20px;
-  border: 2px solid #61BB46;
+  border-radius: 15px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
   padding: 10px 10px 30px;
   h1 {
     color: #118CC8
@@ -103,7 +105,6 @@ textarea {
 
 #contact, #area, #initiative, #meeting, #medical_condition, #question {
 
-
   h1 {
     color: white;
   }
@@ -116,23 +117,6 @@ textarea {
     p {
       color: black;
     }
-  }
-}
-
-#initiative {
-  h2:not(.enrol) {
-    font-size: 35px;
-    text-align: left;
-    color: black;
-  }
-
-  ht {
-    font-size: 22px;
-    text-align: left;
-  }
-
-  h3 {
-    margin-top: 50px;
   }
 }
 
@@ -194,7 +178,8 @@ header {
 
 .navbar-default {
   background-color: white;
-  border-bottom: 2px solid #61BB46;
+  border-bottom: 2px #008ED4;
+  box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 #logo {
@@ -203,7 +188,7 @@ header {
   #logotext {
     font-size: 1.7em;
     color: #008ED4;
-    letter-spacing: -1px;       // Don't think this does anything anymore...
+    letter-spacing: -1px; // Don't think this does anything anymore...
     font-weight: bold;
     &:hover {
       color: #008ED4;
@@ -221,7 +206,7 @@ header {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #61BB46;
+  border-top: 1px solid #d6d6d6;
   color: white;
   a {
     color: white;
@@ -292,6 +277,7 @@ table.datagrid {
     background-color: white;
   }
 }
+
 table.datagrid {
   td, th {
     &.id {
@@ -312,7 +298,7 @@ table.datagrid {
 
 .delete-btn {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #c43c35;
   border-color: #c43c35;
   margin-bottom: 10px;
@@ -322,7 +308,7 @@ table.datagrid {
 
 .edit-btn {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #269CE9;
   border-color: #269CE9;
   margin-bottom: 10px;
@@ -332,7 +318,7 @@ table.datagrid {
 
 .new-btn {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
   margin-bottom: 10px;
@@ -342,7 +328,7 @@ table.datagrid {
 
 .new-session-btn {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
   margin-bottom: 10px;
@@ -352,7 +338,7 @@ table.datagrid {
 
 .enrol-btn {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
   width: 50%;
@@ -374,45 +360,31 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-.new_attendance {
-  h2 {
-    float: left;
-    width: 70%;
-    margin: 10px 0;
-  }
-
-  #attendance_ {
-    width: 30%;
-    margin: 11.5px 0;
-  }
-}
-
-.datagrid-submit{
+.datagrid-submit {
   background-color: #0f98ab;
   color: white;
   position: relative;
   left: 3.5%;
-  text-align:center;
+  text-align: center;
   display: inline-block;
   font-size: 20px;
-  width:250px;
+  width: 250px;
 }
 
 /* reset button */
-.datagrid-reset{
+.datagrid-reset {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #c43c35;
   border-color: #c43c35;
   margin-bottom: 10px;
   margin-right: 7px;
   float: right;
 
-
   /* box adjustments */
   border-radius: 4px;
   font-size: 17px;
-  width:70px;
+  width: 70px;
 }
 
 .datagrid-reset:hover {
@@ -421,8 +393,6 @@ input, textarea, select, .uneditable-input {
 }
 
 /* end of reset button */
-
-
 
 input {
   height: auto !important;
@@ -445,16 +415,6 @@ input {
 
 /* Areas index */
 
-.areas {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-  }
-}
-
 #indexcontainer {
   h1 {
     color: white;
@@ -463,33 +423,12 @@ input {
 
 #newcontainer {
   h1 {
-    color:white;
+    color: white;
   }
 }
 
 #chart-1 {
   margin: 30px 0;
-}
-
-.feedbackcontainer {
-  margin-top: 15px;
-  padding-bottom: 10px;
-  background-color: white;
-  border-bottom: 1px solid #61BB46;
-  font-size: 17px;
-
-  h3 {
-    font-size: 25px;
-    margin-bottom: 2px;
-    margin-top: 1px;
-    text-align: center;
-  }
-  h4 {
-    font-size: 25px;
-    margin-bottom: 5px;
-    margin-top: 2px;
-    text-align: left;
-  }
 }
 
 #userhome {

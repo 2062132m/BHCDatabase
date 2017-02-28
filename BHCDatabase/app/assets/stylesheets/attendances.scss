@@ -1,3 +1,16 @@
 // Place all the styles related to the attendances controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_attendance {
+  h2 {
+    float: left;
+    width: 70%;
+    margin: 10px 0;
+  }
+
+  #attendance_ {
+    width: 30%;
+    margin: 11.5px 0;
+  }
+}
