@@ -12,6 +12,11 @@
             <h2>
               <icon class="glyphicon glyphicon-earphone"></icon> Telephone: <%= @user.telephone %><br>
             </h2>
+            <% unless @user.privilege == 0 %>
+              <h2>
+                <icon class="glyphicon glyphicon-phone-alt"></icon> Emergency Contact: <%= @user.emergency_contact %><br>
+              </h2>
+            <% end %>
             <h2>
               <icon class="glyphicon glyphicon-envelope"></icon> Email: <%= @user.email %><br>
             </h2>
