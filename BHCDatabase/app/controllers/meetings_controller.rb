@@ -18,6 +18,12 @@ class MeetingsController < ApplicationController
   def new
     @meeting = Meeting.new
     @initiatives = Initiative.all
+    @meetings = Initiative.find(params[:initiative_id]).meetings
+    unless @meetings.count == 0
+      @lastmeetingtime = Initiative.find(params[:initiative_id]).meetings.last.datetime
+    else
+      @lastmeetingtime = DateTime.now
+    end
   end
 
   def create

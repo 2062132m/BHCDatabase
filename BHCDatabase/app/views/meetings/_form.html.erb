@@ -4,7 +4,7 @@
     <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
 
     <%= f.label :datetime %>
-    <%= f.datetime_select :datetime, { :end_year => Date.today.year, :required => true }, { class: "form-control" } %>
+    <%= f.datetime_select :datetime, { :default => @lastmeetingtime, :required => true }, { class: "form-control" } %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
