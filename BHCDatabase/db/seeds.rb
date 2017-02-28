@@ -31,7 +31,7 @@ User.create(name: 'Kiril Mihaylov', email: 'kiril@kiril.com', password: 'kiril12
 # Add volunteers to the database
 
 User.create(name: 'Volunteer', email: 'volunteer@volunteer.com', password: 'volunteer123', password_confirmation: 'volunteer123',
-            telephone: Faker::PhoneNumber.phone_number,
+            telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
 
 Faker::Number.between(20, 50).times do
