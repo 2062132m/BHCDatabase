@@ -15,6 +15,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                        password: "foo",
                                        password_confirmation: "bar",
                                        telephone: Faker::PhoneNumber.phone_number,
+                                       emergency_contact: Faker::PhoneNumber.phone_number,
                                        dob: Faker::Date.between(70.years.ago, 18.years.ago),
                                        privilege: 1}}
     end
@@ -30,6 +31,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                        password: "password",
                                        password_confirmation: "password",
                                        telephone: Faker::PhoneNumber.phone_number,
+                                       emergency_contact: Faker::PhoneNumber.phone_number,
                                        dob: Faker::Date.between(70.years.ago, 18.years.ago),
                                        privilege: 2}}
     end

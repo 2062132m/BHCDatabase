@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}
   validates :telephone, presence: true, length: {maximum: 16}
+  validates :emergency_contact, presence: true, length: {maximum: 16}, :unless => :is_admin?
 
   validates :dob, presence: true
 
@@ -60,5 +61,9 @@ class User < ApplicationRecord
       end
     end
 
+  end
+
+  def is_admin?
+    privilege == 0
   end
 end
