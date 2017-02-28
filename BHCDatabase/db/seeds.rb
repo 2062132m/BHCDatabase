@@ -145,8 +145,8 @@ MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars
 MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
 
-# Questions
-
+# Main bulk of questions, these are the questions that a user is asked upon registration, and can leave at any time they
+#   wish.
 Question.create(question: "I've been feeling optimistic about the future", visible: true, sort: 1, multiple_choice: true)
 Question.create(question: "I've been feeling useful", visible: true, sort: 2, multiple_choice: true)
 Question.create(question: "I've been feeling relaxed", visible: true, sort: 3, multiple_choice: true)
@@ -169,9 +169,11 @@ Question.create(question: "How much are drugs a part of your life? (This include
 Question.create(question: 'How often do you see your friends or your neighbours?', visible: true, sort: 20, multiple_choice: true)
 Question.create(question: 'How often do you see your family?', visible: true, sort: 21, multiple_choice: true)
 Question.create(question: 'Is someone available to help you if you are feeling nervous, sick, need to talk, or need help with chores or caring for yourself?', visible: true, sort: 22, multiple_choice: true)
-Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending?', visible: true, sort: 23, multiple_choice: true)
-Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending?', visible: true, sort: 24, multiple_choice: false)
-Question.create(question: 'How do you think attending BHC initiatives or activities has affected your health and wellbeing over the last 3 – 6 months?  This may include visits to doctors,  making new friends, new interests etc...', visible: true, sort: 25, multiple_choice: false)
+
+# These are the questions that are included in a "3 or 6 month follow up evaluation"
+Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, sort: 23, multiple_choice: true)
+Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, sort: 24, multiple_choice: false)
+Question.create(question: 'How do you think attending BHC initiatives or activities has affected your health and well being over the last 3 – 6 months?  This may include visits to doctors,  making new friends, new interests etc...', visible: true, sort: 25, multiple_choice: false)
 
 # Add attendance, feedback/answers, enrollment and medical conditions to users
 
