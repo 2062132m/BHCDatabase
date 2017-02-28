@@ -5,7 +5,8 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: Faker::Name.name, email: 'user@example.com',
                      password: 'foobar', password_confirmation: 'foobar',
-                     telephone: Faker::PhoneNumber.phone_number, dob: Faker::Date.between(70.years.ago, 18.years.ago),
+                     telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
+                     dob: Faker::Date.between(70.years.ago, 18.years.ago),
                      privilege: 1)
   end
 
@@ -68,6 +69,18 @@ class UserTest < ActiveSupport::TestCase
 
   test 'telephone should not be too long' do
     @user.telephone = '1' * 17
+    assert_not @user.valid?
+  end
+
+  test 'emergency_contact should be present' do
+    @user.privilege = 2
+    @user.emergency_contact = ''
+    assert_not @user.valid?
+  end
+
+  test 'emergency_contact should not be too long' do
+    @user.privilege = 2
+    @user.emergency_contact = '1' * 17
     assert_not @user.valid?
   end
 
