@@ -1,0 +1,8 @@
+<%= form_for(@service_request) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :Request %>
+    <%= f.text_field :request, class: "form-control" %>
+
+    <%= f.submit 'Submit Request', class: 'btn btn-primary' %>
+<% end %>
