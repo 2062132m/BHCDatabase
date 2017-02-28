@@ -32,6 +32,9 @@ class MeetingsController < ApplicationController
     @weeks = params[:weeks].to_i
     while @i < @weeks do
       @meeting = Meeting.new(meeting_params)
+      if @i == 0
+        @firstMeeting = @meeting
+      end
       @meeting.update_attribute(:datetime, @meeting.datetime + @i.weeks)
       unless @meeting.save
         flash[:danger] = 'Something went wrong'
@@ -41,7 +44,7 @@ class MeetingsController < ApplicationController
       @i += 1
     end
     flash[:success] = 'Created the new session!'
-    redirect_to @meeting
+    redirect_to @firstMeeting
   end
 
   def destroy
