@@ -18,16 +18,33 @@ class MeetingsController < ApplicationController
   def new
     @meeting = Meeting.new
     @initiatives = Initiative.all
+    @meetings = Initiative.find(params[:initiative_id]).meetings
+    unless @meetings.count == 0
+      @lastmeetingtime = Initiative.find(params[:initiative_id]).meetings.last.datetime
+      @lastmeetingtime += 1.week
+    else
+      @lastmeetingtime = DateTime.now
+    end
   end
 
   def create
-    @meeting = Meeting.new(meeting_params)
-    if @meeting.save
-      flash[:success] = 'Created the new session!'
-      redirect_to @meeting
-    else
-      render 'new'
+    @i = 0
+    @weeks = params[:weeks].to_i
+    while @i < @weeks do
+      @meeting = Meeting.new(meeting_params)
+      if @i == 0
+        @firstMeeting = @meeting
+      end
+      @meeting.update_attribute(:datetime, @meeting.datetime + @i.weeks)
+      unless @meeting.save
+        flash[:danger] = 'Something went wrong'
+        render 'new'
+        return
+      end
+      @i += 1
     end
+    flash[:success] = 'Created the new session!'
+    redirect_to @firstMeeting
   end
 
   def destroy

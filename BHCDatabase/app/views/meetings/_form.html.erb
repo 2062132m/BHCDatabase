@@ -3,8 +3,15 @@
 
     <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
 
-    <%= f.label :datetime %>
-    <%= f.datetime_select :datetime, { :end_year => Date.today.year, :required => true }, { class: "form-control" } %>
+    <%= f.label "Date & Time" %>
+    <%= f.datetime_select :datetime, { :default => @lastmeetingtime, :required => true }, { class: "form-control" } %>
+
+    <%= label_tag "Weeks to Run For:" %>
+    <%= select_tag :weeks, "<option>1</option><option>2</option><option>3</option>
+                            <option>4</option><option>5</option><option>6</option>
+                            <option>7</option><option>8</option><option>9</option>
+                            <option>10</option>"
+                            .html_safe, { class: "form-control" } %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
