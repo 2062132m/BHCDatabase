@@ -2,7 +2,7 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :Request %>
-    <%= f.text_field :request, class: "form-control" %>
+    <%= f.text_area :request, class: "form-control", size: "10x10" %>
 
     <%= f.submit 'Submit Request', class: 'btn btn-primary' %>
 <% end %>

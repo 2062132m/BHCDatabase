@@ -32,8 +32,8 @@
                     class: "btn btn-default delete-btn" %>
         <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
       <% end %>
-      <% if current_user.privilege != 0 %>
-          <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, service_request_path, class: 'btn btn-default edit-btn' %>
+      <% if current_user.privilege >= 1 %>
+          <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
       <% end %>
     </div>
   </div>
