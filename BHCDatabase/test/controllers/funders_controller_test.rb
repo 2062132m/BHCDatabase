@@ -8,32 +8,24 @@ class FundersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get funders_index_url
+    get funders_url
     assert_response :success
   end
 
-  test "should get show" do
-    get funders_show_url
+  test "should get one" do
+    one = funders(:one)
+    get funder_url(one)
     assert_response :success
   end
 
   test "should get new" do
-    get funders_new_url
-    assert_response :success
-  end
-
-  test "should get create" do
-    get funders_create_url
+    get new_funder_url
     assert_response :success
   end
 
   test "should get edit" do
-    get funders_edit_url
-    assert_response :success
-  end
-
-  test "should get update" do
-    get funders_update_url
+    one = funders(:one)
+    get edit_funder_url(one)
     assert_response :success
   end
 
