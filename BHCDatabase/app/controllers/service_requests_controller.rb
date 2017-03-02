@@ -16,16 +16,18 @@ class ServiceRequestsController < ApplicationController
       flash[:success] = 'Created a new service request!'
       redirect_to @current_user
     else
-      flash[:danger] = 'Oh no!'
-      redirect_to @current_user
+      puts @service_request.valid?
+      render 'new'
 
     end
 
 
   end
-
+  def set_service_request
+    @service_request = ServiceRequest.find(params[:id])
+  end
   def service_request_params
-    params.require(:service_request).permit(:user_id, :request)
+    params.require(:service_request).permit(:@current_user, :request)
   end
 
 
