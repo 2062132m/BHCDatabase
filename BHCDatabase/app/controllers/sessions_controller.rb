@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  skip_before_action :require_login, :admin_only, :is_archived
+  skip_before_action :require_login, :admin_only
 
   def new
     if logged_in?
