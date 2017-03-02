@@ -384,13 +384,18 @@ The second design was more simplified in terms of account organisation. The cust
 \subsection{End of second and third milestone}
 \label{sec:milestone23}
 
-The above section was generally outlining the progress in the second and third milestone. The progress was steady and specific. By the 7th of December, the team had their third customer meeting was again used for further clarifications about the software implementation and navigation to some more complete wireframes. Furthermore, after the Christmas break and before the fourth customer meeting at the 26th of January, the team managed to create an initial version of the application. The application was presented to the customers on its current point and their opinion was asked. The customers were impressed with the amount of progress since in the previous customer meeting the back end development was not even started. Further clarifications were made about the navigation of the page, since know the customers had a visualisation of the application.
+The above section was generally outlining the progress in the second and third milestone. The progress was steady and specific. By the 7th of December, the team had their third customer meeting was again used for further clarifications about the software implementation and navigation to some more complete wireframes. Furthermore, after the Christmas break and before the fourth customer meeting at the 26th of January, the team managed to create an initial version of the application. The application was presented to the customers on its current point and their opinion was asked. The customers were impressed with the amount of progress since in the previous customer meeting the back end development was not even started. Further clarifications were made about the navigation of the page, since know the customers had a visualisation of the application. Additionally, the customers requested a new feature which was never discussed before. The addition of a funding flag which represents which funding is from what organisation and where in which groups it is applied. Furthermore, different funding's apply to a specifying group of people and different funding's are applying to specified initiatives group.
 
 The retrospective performed by the end of the second milestone, showed some lack of communication. The team did not consider this as a major issue since there was a three week holiday gap were everyone were focused on self studying about how to develop and deploy the application. Additionally, the team lacked on clarifying some basic features of the website with the customers. All the issues outlined on the second retrospective, they were clearly solved during the next. The team was more organised and communicative. Due to the fact that an initial stage of the application was presented on the fourth customer meeting lack of clarification of the features that was raised as an issue in the previous retrospective was know clearly solved.
 
 %==============================================================================
 \section{Working on the backend development}
 \label{sec:backend}
+
+\subsection{Objectives}
+\label{objectives}
+
+Before the beginning of the fourth milestone the team performed a meeting where the next objectives were outlined. Due to the fact that by the end of the current milestone the team should deliver a working version of the website the main focus was on resolving any opened issues that were raised from the previous retrospective and customer meeting. In the following weeks the website had all the added functionality created. The most critical issues that were raised is the newest demands that the customers were requested including the flag feature described above. The team had to discuss how this addition will be implemented.
 
 
 \subsection{User Authentication}
@@ -424,6 +429,13 @@ It is well known, that the development of any type of application is incomplete 
 \end{figure}
 
  Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. Our file was using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in your project. Then, every time you commit or merge something in the repository, tests are running to check whether there are issues. Furthermore, the team developed their own tests using mutants. The program has an impressive percentage of testing coverage reaching more than 90\%. 
+ 
+ 
+\subsection{Website Deployment}
+\label{sec:deployment}
+
+\subsection{End of fourth milestone}
+\label{sec:milestone4}
 
 
 
@@ -476,7 +488,7 @@ Developing a site from scratch, always creates some major challenges. The second
 
 The organisation of the database was another big challenge that the team have encountered. Although the database was characterised by its simplicity, retrieving the information was tricky since a member of a team could be a volunteer in another team and a general admin. This raised some authentication issues whether where that specific user is allowed to alternate information and where is not.
 
-As in every project developing process, programmers will face some last-minute demands from the customers. One of these demands were the creation of some type of flag pointing which users are funded from specific organisations. The current demand raised some issues in in the database development since this is an addition very specific information regarding every member of every group. The team assigned that as an extra feature which would be developed if there was time, something that was stated clear from the very first day that it was suggested. The team managed to create the feature and successfully add it to the site.
+As in every project developing process, programmers will face some last-minute demands from the customers. One of these demands were the creation of some type of flag pointing which members or groups are funded from specific organisations. The current demand raised some issues in in the database development since this is an addition very specific information regarding every member of every group. The team assigned that as an extra feature which would be developed if there was time, something that was stated clear from the very first day that it was suggested. The feature caused last minute additions to the ER diagram. The team managed to create the feature and successfully add it to the site.
 
 Since we are Agile team, we had another change of the initial requirements regarding the deadline for delivering the final product - we were asked to be ready one month before the due date. In that way the customers would have a month to test the application and to give us feedback.This was quite a challenge for the team because there still was a lot of work to be done. The team managed to deliver the software on time but without same minor features which were progressively added in the software.
 
