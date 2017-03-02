@@ -332,6 +332,7 @@ To give a brief explanation of the diagram: The main aspect of the diagram is th
 \label{sec:component}
 
 Since Ruby on Rails uses Model-View-Controller architecture pattern, it allows our team to develop Agile application. The Model layer represents the logic of the application and the management of interactions with elements in the database. The View is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation. 
+In addition we decided to use Docker to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
 All of those are illustrated in Figure ?? which demonstrates visually the component architecture of our application.
 
 
