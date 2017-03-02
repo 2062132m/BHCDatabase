@@ -15,6 +15,7 @@ class MedicalConditionDeleteTest < ActionDispatch::IntegrationTest
     assert_difference 'MedicalCondition.count', -1 do
       delete medical_condition_url(@condition_one)
     end
+    assert_redirected_to medical_conditions_url
   end
 
 end
