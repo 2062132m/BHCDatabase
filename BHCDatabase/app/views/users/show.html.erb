@@ -23,6 +23,10 @@
             <h2>
               <icon class="glyphicon glyphicon-calendar"></icon> DOB: <%= @user.dob %><br>
             </h2>
+            <% if @user.archived == true %>
+              <h4>This user has been archived.</h4>
+              <h4>Reason: <%= @user.reason_archived %></h4>
+            <% end %>
           </div>
         </div>
       </div>

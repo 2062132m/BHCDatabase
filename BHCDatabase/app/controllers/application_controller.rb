@@ -99,9 +99,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_archived
-    puts "DASFSDFSDF"
     if self.is_archived? == true
-      puts "FARTTTTT"
       if @current_user.privilege > 0
         flash[:danger] = 'Sorry, this page no longer exists.'
         redirect_to current_user

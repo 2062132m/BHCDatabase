@@ -81,7 +81,6 @@ class UsersController < ApplicationController
       redirect_to @user
       return
     end
-    flash[:success] = 'User Archived'
     redirect_to @user
   end
 
