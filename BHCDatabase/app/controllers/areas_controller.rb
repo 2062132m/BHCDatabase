@@ -50,9 +50,51 @@ class AreasController < ApplicationController
     redirect_to areas_url
   end
 
+  def archive
+    @area = Area.find(params[:id])
+  end
+
+  def update_archive
+    @area = Area.find(params[:id])
+    unless @area.update_attribute(:archived, archive_params[:archived])
+      flash[:danger] = 'Something went wrong'
+      redirect_to @area
+      return
+    end
+    unless @area.update_attribute(:reason_archived, archive_params[:reason_archived])
+      flash[:danger] = 'Something went wrong'
+      redirect_to @area
+      return
+    end
+    redirect_to @area
+  end
+
+  def unarchive
+    @area = Area.find(params[:id])
+    unless @area.update_attribute(:archived, false)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @area
+      return
+    end
+    unless @area.update_attribute(:reason_archived, nil)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @area
+      return
+    end
+    flash[:success] = 'User is no longer archived'
+    redirect_to @area
+  end
+
+  def is_archived?
+    Area.find(params[:id]).archived
+  end
+
   private
 
   def area_params
     params.require(:area).permit(:name, :description, :archived, :reason_archived)
+  end
+  def archive_params
+    params.require(:area).permit(:archived, :reason_archived)
   end
 end
