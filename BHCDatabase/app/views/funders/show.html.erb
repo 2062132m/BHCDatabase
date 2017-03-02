@@ -4,6 +4,7 @@
   <h1><%= @funder.name %></h1>
 
   <div class="stdcontainer">
+    <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_funder_path, class: 'btn btn-default edit-btn' %>
     <h3><%= @funder.description %></h3>
     <h3><%= @funder.address %></h3>
     <h3><%= @funder.telephone %></h3>

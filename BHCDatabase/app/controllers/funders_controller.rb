@@ -23,9 +23,17 @@ class FundersController < ApplicationController
   end
 
   def edit
+    @funder = Funder.find(params[:id])
   end
 
   def update
+    @funder = Funder.find(params[:id])
+    if @funder.update_attributes(funder_params)
+      flash[:success] = 'Funder updated successfully'
+      redirect_to @funder
+    else
+      render 'edit'
+    end
   end
 
   private
