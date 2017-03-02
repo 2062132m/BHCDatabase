@@ -15,7 +15,7 @@ class FundersNewTest < ActionDispatch::IntegrationTest
                                            email: Faker::Internet.email,
                                            telephone: Faker::PhoneNumber.phone_number,
                                            url: Faker::Internet.url,
-                                           address: Faker::Lorem.sentence}}
+                                           address: Faker::Address.full_address}}
     end
     assert_template 'funders/new'
     assert_select 'div#error_explanation'
@@ -30,7 +30,7 @@ class FundersNewTest < ActionDispatch::IntegrationTest
                                            email: Faker::Internet.email,
                                            telephone: Faker::PhoneNumber.phone_number,
                                            url: Faker::Internet.url,
-                                           address: Faker::Lorem.sentence}}
+                                           address: Faker::Address.full_address}}
     end
     follow_redirect!
     assert_template 'funders/show'

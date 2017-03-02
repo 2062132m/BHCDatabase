@@ -10,7 +10,7 @@ class Funder < ApplicationRecord
 
   validates :telephone, length: {maximum: 16}, allow_blank: true
 
-  validates :address, length: {maximum: 50}, allow_blank: true
+  validates :address, length: {maximum: 255}, allow_blank: true
 
   validates_format_of :url, :with => URI::regexp(%w(http https)), allow_blank: true
 

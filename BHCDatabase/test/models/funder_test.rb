@@ -31,12 +31,12 @@ class FunderTest < ActiveSupport::TestCase
   end
 
   test "address shouldn't be too long" do
-    @funder.address = 'a' * 51
+    @funder.address = 'a' * 256
     assert_not @funder.valid?
   end
 
   test "description shouldn't be too long" do
-    @funder.description = 'a' * 266
+    @funder.description = 'a' * 256
     assert_not @funder.valid?
   end
 
