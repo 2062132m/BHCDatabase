@@ -38,5 +38,19 @@ Rails.application.routes.draw do
       patch :update_archive
     end
   end
+  resources :areas do
+    member do
+      get :archive
+      get :unarchive
+      patch :update_archive
+    end
+  end
+  resources :medical_conditions do
+    member do
+      get :archive
+      get :unarchive
+      patch :update_archive
+    end
+  end
   resources :users, :areas, :initiatives, :meetings, :medical_conditions, :enrolments, :questions, :feedbacks, :attendances
 end
