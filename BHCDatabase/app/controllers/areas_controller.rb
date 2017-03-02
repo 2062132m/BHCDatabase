@@ -53,6 +53,6 @@ class AreasController < ApplicationController
   private
 
   def area_params
-    params.require(:area).permit(:name, :description)
+    params.require(:area).permit(:name, :description, :archived, :reason_archived)
   end
 end

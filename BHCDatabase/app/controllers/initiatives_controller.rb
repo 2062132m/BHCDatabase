@@ -63,6 +63,6 @@ class InitiativesController < ApplicationController
   private
 
     def initiative_params
-      params.require(:initiative).permit(:name, :description, :area_id, :location)
+      params.require(:initiative).permit(:name, :description, :area_id, :location, :archived, :reason_archived)
     end
 end

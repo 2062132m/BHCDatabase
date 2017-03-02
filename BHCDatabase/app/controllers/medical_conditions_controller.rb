@@ -56,6 +56,6 @@ class MedicalConditionsController < ApplicationController
   private
 
   def medical_condition_params
-    params.require(:medical_condition).permit(:name, :description)
+    params.require(:medical_condition).permit(:name, :description, :archived, :reason_archived)
   end
 end
