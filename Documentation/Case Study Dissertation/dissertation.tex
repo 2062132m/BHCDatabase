@@ -90,9 +90,6 @@ While initiative events are run by volunteers from the local communities, the pr
 \label{objectives}
 
 The initial objectives for the project were to develop a software, which will be used from the members, volunteers and administrators of the programme. All of those different groups of users have different level of access to the Database. The members would use the software to  complete a small questionnaire and give a regular feedback for the initiatives they attend. Volunteers, on the other hand, would be able to view that feedback and check the attendance of the members for the initiative they are assigned to. Administrators have the access and rights to do everything : they can see all the information about both volunteers and members, the can add or delete an initiative and review feedback and attendance as well. Since we are working in a Agile Team Organisation, the initial requirements could be slightly changed in the following customer meetings as explained later in the dissertation.
-\begin{itemize}
-\item The final software was delivered for the customer.
-\end{itemize}
 
 %==============================================================================
 \section{Agile programming and Team organisation}
@@ -333,9 +330,13 @@ To give a brief explanation of the diagram: The main aspect of the diagram is th
 
 Since Ruby on Rails uses Model-View-Controller architecture pattern, it allows our team to develop Agile application. The Model layer represents the logic of the application and the management of interactions with elements in the database. The View is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation. 
 In addition we decided to use Docker to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
-All of those are illustrated in Figure ?? which demonstrates visually the component architecture of our application.
+All of those are illustrated in Figure 3 which demonstrates visually the component architecture of our application.
 
-
+\begin{figure}
+  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
+  \caption{Component Architecturem}
+  \label{fig:ca}
+\end{figure}
 
 \subsection{Initial Prototype}
 \label{sec:prototype1}
