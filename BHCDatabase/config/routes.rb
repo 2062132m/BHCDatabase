@@ -33,5 +33,5 @@ Rails.application.routes.draw do
             :questions,
             :feedbacks,
             :attendances,
-            :founders
+            :funders
 end

@@ -1,2 +1,13 @@
-<h1>Funders#show</h1>
-<p>Find me in app/views/funders/show.html.erb</p>
+<% provide(:title, @funder.name) %>
+
+<div id="initiative">
+  <h1><%= @funder.name %></h1>
+
+  <div class="stdcontainer">
+    <h3><%= @funder.description %></h3>
+    <h3><%= @funder.address %></h3>
+    <h3><%= @funder.telephone %></h3>
+    <h3><%= @funder.email %></h3>
+    <h3><%= @funder.url %></h3>
+  </div>
+</div>

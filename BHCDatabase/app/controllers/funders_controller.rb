@@ -1,8 +1,10 @@
 class FundersController < ApplicationController
+
   def index
   end
 
   def show
+    @funder = Funder.find(params[:id])
   end
 
   def new
