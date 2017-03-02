@@ -1,0 +1,10 @@
+<%= form_for @medical_condition, :url => { :action => "update_archive" } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.hidden_field(:archived, :value => true) %>
+
+    <%= f.label :reason_archived %>
+    <%= f.text_field :reason_archived, class: "form-control" %>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

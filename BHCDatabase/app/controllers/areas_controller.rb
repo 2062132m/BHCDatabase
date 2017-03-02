@@ -1,5 +1,7 @@
 class AreasController < ApplicationController
 
+  before_action :is_archived, only: [:show]
+
   def index
     @areas = Area.all
     @areas_grid = AreasGrid.new(params[:areas_grid]) do |scope|
@@ -81,7 +83,7 @@ class AreasController < ApplicationController
       redirect_to @area
       return
     end
-    flash[:success] = 'User is no longer archived'
+    flash[:success] = 'Area is no longer archived'
     redirect_to @area
   end
 
