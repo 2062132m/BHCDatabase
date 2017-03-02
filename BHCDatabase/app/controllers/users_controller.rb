@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   skip_before_action :admin_only, only: [:show]
   before_action :correct_user_only
+  before_action :is_archived, only: [:show]
 
   def index
     # @users = User.all
@@ -98,6 +99,10 @@ class UsersController < ApplicationController
     end
     flash[:success] = 'User is no longer archived'
     redirect_to @user
+  end
+
+  def is_archived?
+    User.find(params[:id]).archived
   end
 
   private
