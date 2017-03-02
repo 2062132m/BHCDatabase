@@ -5,6 +5,9 @@
 
   <div class="stdcontainer">
     <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_funder_path, class: 'btn btn-default edit-btn' %>
+    <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @funder, method: :delete,
+                data: {confirm: "Are you sure you want to delete this funder?"},
+                class: "btn btn-default delete-btn" %>
     <h3><%= @funder.description %></h3>
     <h3><%= @funder.address %></h3>
     <h3><%= @funder.telephone %></h3>

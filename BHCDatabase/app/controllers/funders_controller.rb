@@ -36,6 +36,12 @@ class FundersController < ApplicationController
     end
   end
 
+  def destroy
+    Funder.find(params[:id]).destroy
+    flash[:success] = 'Funder was successfully deleted'
+    redirect_to funders_url
+  end
+
   private
 
   def funder_params
