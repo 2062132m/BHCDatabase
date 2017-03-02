@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302145003) do
+ActiveRecord::Schema.define(version: 20170302145416) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20170302145003) do
   create_table "areas", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "archived",    default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "archived",        default: false
+    t.string   "reason_archived"
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -78,19 +79,21 @@ ActiveRecord::Schema.define(version: 20170302145003) do
   create_table "initiatives", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "area_id"
     t.string   "location"
-    t.boolean  "archived",    default: false
+    t.boolean  "archived",        default: false
+    t.string   "reason_archived"
   end
 
   create_table "medical_conditions", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "archived",    default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "archived",        default: false
+    t.string   "reason_archived"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -124,6 +127,7 @@ ActiveRecord::Schema.define(version: 20170302145003) do
     t.date     "feedback_due"
     t.string   "emergency_contact"
     t.boolean  "archived",          default: false
+    t.string   "reason_archived"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
