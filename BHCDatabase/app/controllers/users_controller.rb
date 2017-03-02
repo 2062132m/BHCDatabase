@@ -64,9 +64,34 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def archive
+    @user = User.find(params[:id])
+  end
+
+  def update_archive
+    @user = User.find(params[:id])
+    puts archive_params[:archived]
+    puts archive_params[:reason_archived]
+    unless @user.update_attribute(:archived, archive_params[:archived])
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+      return
+    end
+    unless @user.update_attribute(:reason_archived, archive_params[:reason_archived])
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+      return
+    end
+    flash[:success] = 'User Archived'
+    redirect_to @user
+  end
+
   private
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :telephone, :emergency_contact, :dob, :privilege, :feedback_due, :archived, :reason_archived)
+    end
+    def archive_params
+      params.require(:user).permit(:archived, :reason_archived)
     end
 end
