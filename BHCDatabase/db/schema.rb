@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228102235) do
+ActiveRecord::Schema.define(version: 20170302111035) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(version: 20170228102235) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "funders", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "url"
+    t.text "description"
+    t.string "email"
+    t.string "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "initiatives", force: :cascade do |t|
