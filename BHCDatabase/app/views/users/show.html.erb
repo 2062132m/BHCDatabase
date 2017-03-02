@@ -33,7 +33,7 @@
         <% if @user.archived == false %>
           <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_user_path, class: 'btn btn-default archive-btn' %>
         <% else %>
-          <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, archive_user_path, class: 'btn btn-default archive-btn' %>
+          <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
         <% end %>
         <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
       <% end %>

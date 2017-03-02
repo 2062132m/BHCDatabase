@@ -70,8 +70,6 @@ class UsersController < ApplicationController
 
   def update_archive
     @user = User.find(params[:id])
-    puts archive_params[:archived]
-    puts archive_params[:reason_archived]
     unless @user.update_attribute(:archived, archive_params[:archived])
       flash[:danger] = 'Something went wrong'
       redirect_to @user
@@ -83,6 +81,22 @@ class UsersController < ApplicationController
       return
     end
     flash[:success] = 'User Archived'
+    redirect_to @user
+  end
+
+  def unarchive
+    @user = User.find(params[:id])
+    unless @user.update_attribute(:archived, false)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+      return
+    end
+    unless @user.update_attribute(:reason_archived, nil)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+      return
+    end
+    flash[:success] = 'User is no longer archived'
     redirect_to @user
   end
 
