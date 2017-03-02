@@ -1,0 +1,2 @@
+class Funder < ApplicationRecord
+end
