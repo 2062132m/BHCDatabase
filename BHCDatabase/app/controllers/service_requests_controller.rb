@@ -23,11 +23,15 @@ class ServiceRequestsController < ApplicationController
 
 
   end
-  def set_service_request
-    @service_request = ServiceRequest.find(params[:id])
+  def destroy
+    ServiceRequest.find(params[:id]).destroy
+    flash[:success] = "Service request deleted"
+    redirect_to @current_user
   end
+
   def service_request_params
-    params.require(:service_request).permit(:@current_user, :request)
+    @user = @current_user
+    params.require(:service_request).permit(:user_id, :request)
   end
 
 

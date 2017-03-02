@@ -10,15 +10,18 @@ class ServiceRequestsGrid
   # Columns
   #
 
-  column(:id, :mandatory => true) do |model|
-    format(model.id) do |value|
-      link_to value, model
-    end
+
+
+  column(:user_id, :mandatory => true) do |model|
+    format(model.user_id) do |value|
+     User.find(value).name
   end
+end
+
   column(:request, :mandatory => true)
   column(:created_at, :mandatory => true) do |model|
     format(model.created_at) do |value|
-      link_to value.strftime("%B %d, %Y - %H:%M"), model
+      value.strftime("%B %d, %Y - %H:%M")
     end
   end
 

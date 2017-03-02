@@ -1,4 +1,4 @@
 class ServiceRequest < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
   validates :request, presence: true
 end
