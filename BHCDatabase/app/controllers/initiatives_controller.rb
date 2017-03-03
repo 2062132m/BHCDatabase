@@ -67,33 +67,23 @@ class InitiativesController < ApplicationController
 
   def update_archive
     @initiative = Initiative.find(params[:id])
-    unless @initiative.update_attribute(:archived, archive_params[:archived])
+    unless @initiative.update_attributes(archive_params)
       flash[:danger] = 'Something went wrong'
       redirect_to @initiative
-      return
-    end
-    unless @initiative.update_attribute(:reason_archived, archive_params[:reason_archived])
-      flash[:danger] = 'Something went wrong'
+    else
       redirect_to @initiative
-      return
     end
-    redirect_to @initiative
   end
 
   def unarchive
     @initiative = Initiative.find(params[:id])
-    unless @initiative.update_attribute(:archived, false)
+    unless @initiative.update_attributes(:archived => false, :reason_archived => nil)
       flash[:danger] = 'Something went wrong'
       redirect_to @initiative
-      return
-    end
-    unless @initiative.update_attribute(:reason_archived, nil)
-      flash[:danger] = 'Something went wrong'
+    else
+      flash[:success] = 'Initiative is no longer archived'
       redirect_to @initiative
-      return
     end
-    flash[:success] = 'Initiative is no longer archived'
-    redirect_to @initiative
   end
 
   def is_archived?

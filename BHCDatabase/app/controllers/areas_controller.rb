@@ -58,33 +58,23 @@ class AreasController < ApplicationController
 
   def update_archive
     @area = Area.find(params[:id])
-    unless @area.update_attribute(:archived, archive_params[:archived])
+    unless @area.update_attributes(archive_params)
       flash[:danger] = 'Something went wrong'
       redirect_to @area
-      return
-    end
-    unless @area.update_attribute(:reason_archived, archive_params[:reason_archived])
-      flash[:danger] = 'Something went wrong'
+    else
       redirect_to @area
-      return
     end
-    redirect_to @area
   end
 
   def unarchive
     @area = Area.find(params[:id])
-    unless @area.update_attribute(:archived, false)
+    unless @area.update_attributes(:archived => false, :reason_archived => nil)
       flash[:danger] = 'Something went wrong'
       redirect_to @area
-      return
-    end
-    unless @area.update_attribute(:reason_archived, nil)
-      flash[:danger] = 'Something went wrong'
+    else
+      flash[:success] = 'Area is no longer archived'
       redirect_to @area
-      return
     end
-    flash[:success] = 'Area is no longer archived'
-    redirect_to @area
   end
 
   def is_archived?

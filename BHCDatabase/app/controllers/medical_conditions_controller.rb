@@ -61,33 +61,23 @@ class MedicalConditionsController < ApplicationController
 
   def update_archive
     @medical_condition = MedicalCondition.find(params[:id])
-    unless @medical_condition.update_attribute(:archived, archive_params[:archived])
+    unless @medical_condition.update_attributes(archive_params)
       flash[:danger] = 'Something went wrong'
       redirect_to @medical_condition
-      return
-    end
-    unless @medical_condition.update_attribute(:reason_archived, archive_params[:reason_archived])
-      flash[:danger] = 'Something went wrong'
+    else
       redirect_to @medical_condition
-      return
     end
-    redirect_to @medical_condition
   end
 
   def unarchive
     @medical_condition = MedicalCondition.find(params[:id])
-    unless @medical_condition.update_attribute(:archived, false)
+    unless @medical_condition.update_attributes(:archived => false, :reason_archived => nil)
       flash[:danger] = 'Something went wrong'
       redirect_to @medical_condition
-      return
-    end
-    unless @medical_condition.update_attribute(:reason_archived, nil)
-      flash[:danger] = 'Something went wrong'
+    else
+      flash[:success] = 'Medical condition is no longer archived'
       redirect_to @medical_condition
-      return
     end
-    flash[:success] = 'Medical condition is no longer archived'
-    redirect_to @medical_condition
   end
 
   def is_archived?
