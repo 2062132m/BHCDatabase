@@ -54,5 +54,5 @@ Rails.application.routes.draw do
       patch :update_archive
     end
   end
-  resources :users, :areas, :initiatives, :meetings, :medical_conditions, :enrolments, :questions, :feedbacks, :attendances
+  resources :users, :areas, :initiatives, :meetings, :medical_conditions, :enrolments, :questions, :feedbacks, :attendances, :archives
 end

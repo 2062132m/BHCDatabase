@@ -1,2 +1,19 @@
-<h1>Archives#index</h1>
-<p>Find me in app/views/archives/index.html.erb</p>
+<% provide(:title, 'Archives') %>
+<div id="indexcontainer">
+  <h1>Archived Users</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@users_grid) %>
+  </div>
+  <h1>Archived Initiatives</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@initiatives_grid) %>
+  </div>
+  <h1>Archived Areas</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@areas_grid) %>
+  </div>
+  <h1>Archived Medical Conditions</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@medical_conditions_grid) %>
+  </div>
+</div>
