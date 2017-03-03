@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = 'en-GB'
 
+random = Random.new
+
 # Add admins to the database
 
 User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
@@ -34,7 +36,7 @@ User.create(name: 'Volunteer', email: 'volunteer@volunteer.com', password: 'volu
             telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
 
-Faker::Number.between(20, 50).times do
+random.rand(20..50).times do
   password = Faker::Internet.password
   User.create(name: Faker::Name.name,
               email: Faker::Internet.email,
@@ -52,7 +54,7 @@ User.create(name: 'User', email: 'user@user.com', password: 'user123', password_
             telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2, feedback_due: 1.months.ago)
 
-Faker::Number.between(100, 200).times do
+random.rand(100..200).times do
   password = Faker::Internet.password
   @user = User.create(name: Faker::Name.name,
                       email: Faker::Internet.email,
@@ -121,7 +123,7 @@ end
 # Add meetings to all initiatives
 
 Initiative.all.each do |init|
-  Faker::Number.between(5, 50).times do
+  random.rand(5..50).times do
     init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
   end
 end
@@ -178,7 +180,7 @@ Question.create(question: 'How do you think attending BHC initiatives or activit
 # Add attendance, feedback/answers, enrollment and medical conditions to users
 
 User.where(privilege: 2).each do |user|
-  Faker::Number.between(1, 3).times do
+  random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
     user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
     Feedback.create(user: user)
@@ -201,7 +203,7 @@ end
 # Add attendance and enrolment to volunteers
 
 User.where(privilege: 1).each do |user|
-  Faker::Number.between(1, 2).times do
+  random.rand(1..2).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
   end
 
@@ -213,4 +215,13 @@ User.where(privilege: 1).each do |user|
 
 end
 
-# Answer.create(feedback:Feedback.create(user: user), question: Question.find(Faker::Number.between(1, Question.count)), response: "This is a test")
+# Generate random funders
+
+random.rand(1..10).times do
+  Funder.create(name: Faker::Company.name,
+                address: Faker::StarWars.planet,
+                url: Faker::Internet.url,
+                description: Faker::ChuckNorris.fact,
+                email: Faker::Internet.email,
+                telephone: Faker::PhoneNumber.phone_number)
+end

@@ -5,14 +5,15 @@ class Funder < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
-            uniqueness: {case_sensitive: false}
+            uniqueness: {case_sensitive: false},
+            allow_blank: true
 
-  validates :telephone, length: {maximum: 16}
+  validates :telephone, length: {maximum: 16}, allow_blank: true
 
-  validates :address, length: {maximum: 50}
+  validates :address, length: {maximum: 255}, allow_blank: true
 
-  validates_format_of :url, :with => URI::regexp(%w(http https))
+  validates_format_of :url, :with => URI::regexp(%w(http https)), allow_blank: true
 
-  validates :description, length: {maximum: 255}
+  validates :description, length: {maximum: 255}, allow_blank: true
 
 end
