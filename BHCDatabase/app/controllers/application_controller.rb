@@ -102,7 +102,7 @@ class ApplicationController < ActionController::Base
     if self.is_archived? == true
       if @current_user.privilege > 0
         flash[:danger] = 'Sorry, this page no longer exists.'
-        redirect_to current_user
+        redirect_to :back
         return
       end
       flash[:danger] = 'This page has been archived and is only visible to admins.'
