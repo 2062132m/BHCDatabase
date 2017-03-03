@@ -22,7 +22,7 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, presence: true, length: {minimum: 6}, :if => :password_validation_required?
   validates :telephone, presence: true, length: {maximum: 16}
   validates :emergency_contact, presence: true, length: {maximum: 16}, :unless => :is_admin?
 
@@ -43,6 +43,10 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  def password_validation_required?
+    password_digest.blank? || !password.blank?
   end
 
   def dob_before_today
