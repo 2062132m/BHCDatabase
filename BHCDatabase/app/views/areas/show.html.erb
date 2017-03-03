@@ -1,4 +1,10 @@
 <% provide(:title, @area.name) %>
+<div id="modalcontainer" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <%= render 'archive_form' %>
+  </div>
+</div>
 <div id="area">
   <h1>
     <%= @area.name %>
@@ -21,7 +27,7 @@
                                                   \nNote: All associated initiatives will be deleted!" },
                                   class: "btn btn-default delete-btn" %>
     <% if @area.archived == false %>
-      <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_area_path, class: 'btn btn-default archive-btn' %>
+      <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>
     <% else %>
       <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_area_path, class: 'btn btn-default archive-btn' %>
     <% end %>
