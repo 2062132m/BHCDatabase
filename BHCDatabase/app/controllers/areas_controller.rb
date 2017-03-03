@@ -1,5 +1,7 @@
 class AreasController < ApplicationController
 
+  before_action :is_archived, only: [:show]
+
   def index
     @areas = Area.all
     @areas_grid = AreasGrid.new(params[:areas_grid]) do |scope|
@@ -50,9 +52,41 @@ class AreasController < ApplicationController
     redirect_to areas_url
   end
 
+  def archive
+    @area = Area.find(params[:id])
+  end
+
+  def update_archive
+    @area = Area.find(params[:id])
+    unless @area.update_attributes(archive_params)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @area
+    else
+      redirect_to @area
+    end
+  end
+
+  def unarchive
+    @area = Area.find(params[:id])
+    unless @area.update_attributes(:archived => false, :reason_archived => nil)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @area
+    else
+      flash[:success] = 'Area is no longer archived'
+      redirect_to @area
+    end
+  end
+
+  def is_archived?
+    Area.find(params[:id]).archived
+  end
+
   private
 
   def area_params
-    params.require(:area).permit(:name, :description)
+    params.require(:area).permit(:name, :description, :archived, :reason_archived)
+  end
+  def archive_params
+    params.require(:area).permit(:archived, :reason_archived)
   end
 end

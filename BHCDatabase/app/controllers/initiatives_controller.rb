@@ -2,6 +2,7 @@ class InitiativesController < ApplicationController
 
   skip_before_action :admin_only, only: [:show]
   before_action :correct_initiative_only
+  before_action :is_archived, only: [:show]
 
   def index
     @initiatives = Initiative.all
@@ -60,9 +61,41 @@ class InitiativesController < ApplicationController
     redirect_to initiatives_url
   end
 
+  def archive
+    @initiative = Initiative.find(params[:id])
+  end
+
+  def update_archive
+    @initiative = Initiative.find(params[:id])
+    unless @initiative.update_attributes(archive_params)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @initiative
+    else
+      redirect_to @initiative
+    end
+  end
+
+  def unarchive
+    @initiative = Initiative.find(params[:id])
+    unless @initiative.update_attributes(:archived => false, :reason_archived => nil)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @initiative
+    else
+      flash[:success] = 'Initiative is no longer archived'
+      redirect_to @initiative
+    end
+  end
+
+  def is_archived?
+    Initiative.find(params[:id]).archived
+  end
+
   private
 
     def initiative_params
-      params.require(:initiative).permit(:name, :description, :area_id, :location)
+      params.require(:initiative).permit(:name, :description, :area_id, :location, :archived, :reason_archived)
+    end
+    def archive_params
+      params.require(:initiative).permit(:archived, :reason_archived)
     end
 end
