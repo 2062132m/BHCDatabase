@@ -108,7 +108,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :telephone, :emergency_contact, :dob, :privilege, :feedback_due, :archived, :reason_archived)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :telephone, :emergency_contact, :dob, :privilege, :feedback_due, :archived, :reason_archived)
     end
     def archive_params
       params.require(:user).permit(:archived, :reason_archived)
