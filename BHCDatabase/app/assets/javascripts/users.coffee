@@ -25,11 +25,6 @@ ready = ->
       pmodal.style.display = 'none'
       return
 
-    window.onclick = (event) ->
-      if event.target == pmodal
-        pmodal.style.display = 'none'
-      return
-
     btn.onclick = ->
       modal.style.display = 'block'
       return
