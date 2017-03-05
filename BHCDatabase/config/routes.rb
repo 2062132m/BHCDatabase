@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get :archive
       get :unarchive
       patch :update_archive
+      patch :update_password
     end
   end
   resources :initiatives do

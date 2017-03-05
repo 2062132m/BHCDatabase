@@ -94,6 +94,17 @@ class UsersController < ApplicationController
     User.find(params[:id]).archived
   end
 
+  def update_password
+    @user = User.find(params[:id])
+    unless @user.update_attributes(password_params)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+    else
+      flash[:success] = 'Password updated!'
+      redirect_to @user
+    end
+  end
+
   private
 
     def user_params
@@ -101,5 +112,8 @@ class UsersController < ApplicationController
     end
     def archive_params
       params.require(:user).permit(:archived, :reason_archived)
+    end
+    def password_params
+      params.require(:user).permit(:password, :password_confirmation)
     end
 end

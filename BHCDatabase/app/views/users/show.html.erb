@@ -5,6 +5,14 @@
     <%= render 'archive_form' %>
   </div>
 </div>
+<div id="passwordmodalcontainer" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Update Password</h3>
+    <p>Password must be atleast 6 characters.</p><br>
+    <%= render 'update_password_form' %>
+  </div>
+</div>
 <div id="initiative">
   <h1>User</h1>
   <div class="stdcontainer">
@@ -37,13 +45,14 @@
         </div>
       </div>
       <% if current_user.privilege == 0 %>
+        <button id="openpasswordmodal" class="btn btn-default password-btn"><span class="glyphicon glyphicon-lock"></span> Change Password</button>
         <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @user, method: :delete,
                     data: {confirm: "Are you sure you want to delete this user?"},
                     class: "btn btn-default delete-btn" %>
         <% if @user.archived == false %>
-          <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>
+          <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close"></span> Archive</button>
         <% else %>
-          <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
+          <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
         <% end %>
         <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
       <% end %>
