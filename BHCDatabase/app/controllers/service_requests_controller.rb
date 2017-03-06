@@ -1,7 +1,7 @@
 class ServiceRequestsController < ApplicationController
   skip_before_action :admin_only
   def show
-    @service_request = ServiceRequest.find(params[:id])
+    @service_request = ServiceRequest.find(params[:user_id])
   end
 
   def new
@@ -23,14 +23,13 @@ class ServiceRequestsController < ApplicationController
 
 
   end
-  def destroy
-    ServiceRequest.find(params[:id]).destroy
-    flash[:success] = "Service request deleted"
-    redirect_to @current_user
-  end
+  #def destroy
+   # ServiceRequest.find(params[:id]).destroy
+    #flash[:success] = "Service request deleted"
+    #redirect_to @current_user
+ # end
 
   def service_request_params
-    @user = @current_user
     params.require(:service_request).permit(:user_id, :request)
   end
 
