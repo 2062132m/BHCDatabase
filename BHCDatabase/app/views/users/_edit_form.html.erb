@@ -1,0 +1,23 @@
+<%= form_for @user, :url => { :action => "update" } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
+
+    <%= f.label :telephone %>
+    <%= f.text_field :telephone, class: "form-control" %>
+
+    <%= f.label :emergency_contact %>
+    <%= f.text_field :emergency_contact, class: "form-control" %>
+
+    <%= f.label :dob %>
+    <%= f.date_select :dob, { :start_year => 1900, :end_year => Date.today.year }, { class: "form-control" } %>
+
+    <%= f.label :privilege %>
+    <%= f.number_field :privilege, in: 0.0..2.0, step: 1.0, class: "form-control" %>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

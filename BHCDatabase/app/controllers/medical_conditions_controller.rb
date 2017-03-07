@@ -1,5 +1,7 @@
 class MedicalConditionsController < ApplicationController
 
+  before_action :is_archived, only: [:show]
+
   def new
     @medical_condition = MedicalCondition.new
   end
@@ -23,6 +25,14 @@ class MedicalConditionsController < ApplicationController
 
   def show
     @medical_condition = MedicalCondition.find(params[:id])
+    @conditions = @medical_condition.conditions
+    @ids = []
+    @conditions.each do |cond|
+      @ids.push(cond.user_id)
+    end
+    @conditions_grid = UsersGrid.new(params[:users_grid]) do |scope|
+      scope.where(:id=>@ids)
+    end
   end
 
   def edit
@@ -45,9 +55,41 @@ class MedicalConditionsController < ApplicationController
     redirect_to medical_conditions_url
   end
 
+  def archive
+    @medical_condition = MedicalCondition.find(params[:id])
+  end
+
+  def update_archive
+    @medical_condition = MedicalCondition.find(params[:id])
+    unless @medical_condition.update_attributes(archive_params)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @medical_condition
+    else
+      redirect_to @medical_condition
+    end
+  end
+
+  def unarchive
+    @medical_condition = MedicalCondition.find(params[:id])
+    unless @medical_condition.update_attributes(:archived => false, :reason_archived => nil)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @medical_condition
+    else
+      flash[:success] = 'Medical condition is no longer archived'
+      redirect_to @medical_condition
+    end
+  end
+
+  def is_archived?
+    MedicalCondition.find(params[:id]).archived
+  end
+
   private
 
   def medical_condition_params
-    params.require(:medical_condition).permit(:name, :description)
+    params.require(:medical_condition).permit(:name, :description, :archived, :reason_archived)
+  end
+  def archive_params
+    params.require(:medical_condition).permit(:archived, :reason_archived)
   end
 end

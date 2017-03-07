@@ -4,46 +4,52 @@
 
     <%= f.hidden_field :user_id, :value => @user.id %>
 
-    <div class="feedbackcontainer">
-      <table class="table table-striped">
 
-        <thead>
-          <tr>
-            <th class="col-md-0.5"><h3> N: </h3></th>
-            <th class="col-md-6.5"><h3> Question : </h3></th>
-            <th class="col-md-5"><h3> Answer : </h3></th>
-          </tr>
-        </thead>
+    <%= f.fields_for :answers do |a| %>
+        <br>
 
-        <tbody>
-        <%= f.fields_for :answers do |a| %>
-            <tr>
-              <td class="col-md-0.5"><%= a.label @questions.find(a.object.question_id).sort %></td>
-              <td class="col-md-6.5"><%= a.label @questions.find(a.object.question_id).question %></td>
-
-              <%= a.hidden_field :question_id, :value => a.object.question_id %>
-
-              <td class="col-md-5">
-                <% if @questions.find(a.object.question_id).multiple_choice %>
-                    <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
-                                                   :first,
-                                                   :last do |b| %>
-                        <div class="radio-inline">
-                          <%= b.label do %>
-                              <%= b.radio_button + b.text %>
-                          <% end %>
-                        </div>
-                    <% end %>
-
-                <% else %>
-                    <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
-                <% end %>
-              </td>
+        <% case @questions.find(a.object.question_id).id
+             when 1 %>
+            <h1>Please indicate how you feel - where 1 is “none of the time” and 10 is “all the time”. (Please click the
+              number)</h1>
+            <div class="stdcontainer">
+        <% when 13 %>
+            <h1>Please indicate how you would answer the following questions - where 1 is “very unhappy” and 10 is “very
+              happy”. (Please click the number)</h1>
+            <div class="stdcontainer">
+        <% when 17 %>
+            <h1>In the following, please indicate how you would answer - where 1 is “not at all” and 10 is “all of the
+              time”</h1>
+            <div class="stdcontainer">
         <% end %>
-        </tr>
-        </tbody>
-      </table>
-    </div>
 
+        <%= a.label @questions.find(a.object.question_id).id %>
+        <%= a.label @questions.find(a.object.question_id).question %>
+        <br>
+
+        <%= a.hidden_field :question_id, :value => a.object.question_id %>
+
+        <% if @questions.find(a.object.question_id).multiple_choice %>
+            <%= a.collection_radio_buttons :response, [['1', ' 1'], ['2', ' 2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+                                           :first,
+                                           :last do |b| %>
+                <div class="radio-inline">
+                  <%= b.label do %>
+                      <%= b.radio_button + b.text %>
+                  <% end %>
+                </div>
+            <% end %>
+
+        <% else %>
+            <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
+        <% end %>
+
+        <% case @questions.find(a.object.question_id).id
+             when 12 %> </div>
+        <% when 16 %> </div>
+        <% when 22 %> </div>
+        <% end %>
+
+    <% end %>
     <%= f.submit 'Submit Feedback', class: 'btn btn-success' %>
 <% end %>

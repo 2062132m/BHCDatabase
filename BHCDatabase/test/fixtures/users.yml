@@ -7,12 +7,18 @@ david:
 volunteer:
   name: Volunteer Example
   email: volunteer@example.com
+  telephone: 0123456789
+  emergency_contact: 0123456789
+  dob: 12-12-12
   password_digest: <%= User.digest('password') %>
   privilege: 1
 
 service_user:
   name: Service-User Example
   email: serviceuser@example.com
+  telephone: 0123456789
+  emergency_contact: 0123456789
+  dob: 12-12-12
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>

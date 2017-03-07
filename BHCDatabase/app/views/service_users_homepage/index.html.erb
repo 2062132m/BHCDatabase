@@ -15,34 +15,38 @@
     </div>
     <h1>Your Initiatives</h1>
     <% @user.initiatives.each do |i| %>
-    <div class="row">
-      <div class="col-md-4">
-        <h3><%= i.name %></h3>
-        <div id="details">
-          <h2>
-            <icon class="glyphicon glyphicon-map-marker"></icon> Location:
-          </h2>
-          <h4><%= i.location %></h4>
-          <h2>
-            <icon class="glyphicon glyphicon-info-sign"></icon> Description:
-          </h2>
-          <h4><%= i.description %></h4>
+      <% unless i.archived %>
+        <div class="row">
+          <div class="col-md-4">
+            <h3><%= i.name %></h3>
+            <div id="details">
+              <h2>
+                <icon class="glyphicon glyphicon-map-marker"></icon> Location:
+              </h2>
+              <h4><%= i.location %></h4>
+              <h2>
+                <icon class="glyphicon glyphicon-info-sign"></icon> Description:
+              </h2>
+              <h4><%= i.description %></h4>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div id="volunteer-list">
+              <h3>Initiative Volunteers:</h3>
+              <% i.users.each do |x| %>
+                <% unless x.archived %>
+                  <% if x.privilege == 1 %>
+                    <h4>
+                      <%= x.name %> -
+                      <%= x.telephone %>
+                    </h4>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-8">
-        <div id="volunteer-list">
-          <h3>Initiative Volunteers:</h3>
-          <% i.users.each do |x| %>
-          <% if x.privilege == 1 %>
-          <h4>
-            <%= x.name %> -
-            <%= x.telephone %>
-          </h4>
-          <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+      <% end %>
     <% end %>
   </div>
 </div>

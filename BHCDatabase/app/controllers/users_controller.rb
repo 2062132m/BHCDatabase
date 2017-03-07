@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   skip_before_action :admin_only, only: [:show]
   before_action :correct_user_only
+  before_action :is_archived, only: [:show]
 
   def index
     # @users = User.all
@@ -50,11 +51,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = 'User updated'
+    unless @user.update_attributes(user_params)
+      flash[:danger] = 'Something went wrong'
       redirect_to @user
     else
-      render 'edit'
+      flash[:success] = 'User updated'
+      redirect_to @user
     end
   end
 
@@ -64,9 +66,55 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def archive
+    @user = User.find(params[:id])
+  end
+
+  def update_archive
+    @user = User.find(params[:id])
+    unless @user.update_attributes(archive_params)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+    else
+      redirect_to @user
+    end
+  end
+
+  def unarchive
+    @user = User.find(params[:id])
+    unless @user.update_attributes(:archived => false, :reason_archived => nil)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+    else
+      flash[:success] = 'User is no longer archived'
+      redirect_to @user
+    end
+  end
+
+  def is_archived?
+    User.find(params[:id]).archived
+  end
+
+  def update_password
+    @user = User.find(params[:id])
+    unless @user.update_attributes(password_params)
+      flash[:danger] = 'Something went wrong'
+      redirect_to @user
+    else
+      flash[:success] = 'Password updated!'
+      redirect_to @user
+    end
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :telephone, :emergency_contact, :dob, :privilege, :feedback_due)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :telephone, :emergency_contact, :dob, :privilege, :feedback_due, :archived, :reason_archived)
+    end
+    def archive_params
+      params.require(:user).permit(:archived, :reason_archived)
+    end
+    def password_params
+      params.require(:user).permit(:password, :password_confirmation)
     end
 end

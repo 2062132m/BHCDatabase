@@ -1,14 +1,18 @@
 <div class="row stdcontainer">
     <% @areas.each do |area| %>
-      <div class="col-md-3">
-        <h3><%= link_to simple_format(area.name), area %></h3>
-        <div class="list-group">
-          <% Initiative.where(area_id: area.id).each do |initiative| %>
-            <%= link_to initiative.name, initiative,
-             class: "list-group-item list-group-item-action" %>
-          <% end %>
+      <% unless area.archived %>
+        <div class="col-md-3">
+          <h3><%= link_to simple_format(area.name), area %></h3>
+          <div class="list-group">
+            <% Initiative.where(area_id: area.id).each do |initiative| %>
+              <% unless initiative.archived %>
+                <%= link_to initiative.name, initiative,
+                 class: "list-group-item list-group-item-action" %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
 </div>
 <h1 id="meetingtitle">Service Requests</h1>

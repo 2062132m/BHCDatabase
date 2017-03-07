@@ -1,4 +1,10 @@
 <% provide(:title, @area.name) %>
+<div id="modalcontainer" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <%= render 'archive_form' %>
+  </div>
+</div>
 <div id="area">
   <h1>
     <%= @area.name %>
@@ -7,18 +13,36 @@
   <div class="stdcontainer">
     <div class="container-fluid">
 
-    <h2>
-      <%= @area.description %>
-    </h2>
+      <h2>
+        <%= @area.description %>
+      </h2>
 
-    <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @area, method: :delete,
-                                data: { confirm: "Are you sure you want to delete this area?
-                                                  \nNote: All associated initiatives will be deleted!" },
-                                  class: "btn btn-default delete-btn" %>
-    <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_area_path, class: 'btn btn-default edit-btn' %>
+      <% if @area.archived %>
+          <h4>This area has been archived.</h4>
+          <h4>Reason: <%= @area.reason_archived %></h4>
+      <% end %>
 
-    <%= datagrid_table(@initiatives_in_area_grid) %>
-    <%= will_paginate @initiatives_in_area_grid.assets %>
+      <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @area, method: :delete,
+                  data: {confirm: "Are you sure you want to delete this area?
+                                                  \nNote: All associated initiatives will be deleted!"},
+                  class: "btn btn-default delete-btn" %>
+      <% if !@area.archived %>
+          <button id="openmodal" class="btn btn-default archive-btn">
+            <span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive
+          </button>
+      <% else %>
+          <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_area_path, class: 'btn btn-default archive-btn' %>
+      <% end %>
+      <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_area_path, class: 'btn btn-default edit-btn' %>
+
+      <%= datagrid_table(@initiatives_in_area_grid) %>
+      <%= will_paginate @initiatives_in_area_grid.assets %>
+    </div>
   </div>
+
+  <h1><%=	@users.count %> Users in this area</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@users_grid) %>
+    <%= will_paginate @users_grid.assets %>
   </div>
 </div>
