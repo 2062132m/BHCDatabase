@@ -51,11 +51,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = 'User updated'
+    unless @user.update_attributes(user_params)
+      flash[:danger] = 'Something went wrong'
       redirect_to @user
     else
-      render 'edit'
+      flash[:success] = 'User updated'
+      redirect_to @user
     end
   end
 
