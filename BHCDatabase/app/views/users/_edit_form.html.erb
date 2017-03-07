@@ -19,11 +19,5 @@
     <%= f.label :privilege %>
     <%= f.number_field :privilege, in: 0.0..2.0, step: 1.0, class: "form-control" %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %>
-    
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
-
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
