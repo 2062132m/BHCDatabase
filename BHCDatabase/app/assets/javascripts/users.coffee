@@ -17,6 +17,21 @@ ready = ->
     pbtn = document.getElementById('openpasswordmodal')
     pspan = document.getElementsByClassName('close')[1]
 
+    ebtn = undefined
+    emodal = undefined
+    espan = undefined
+    emodal = document.getElementById('editmodalcontainer')
+    ebtn = document.getElementById('openeditmodal')
+    espan = document.getElementsByClassName('close')[2]
+
+    ebtn.onclick = ->
+      emodal.style.display = 'block'
+      return
+
+    espan.onclick = ->
+      emodal.style.display = 'none'
+      return
+
     pbtn.onclick = ->
       pmodal.style.display = 'block'
       return
@@ -38,6 +53,8 @@ ready = ->
         modal.style.display = 'none'
       if event.target == pmodal
         pmodal.style.display = 'none'
+      if event.target == emodal
+        emodal.style.display = 'none'
       return
 
 
