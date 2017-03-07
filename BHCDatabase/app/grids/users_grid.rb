@@ -38,7 +38,12 @@ class UsersGrid
   column(:email, :mandatory => true)
   column(:telephone, :mandatory => true)
   column(:emergency_contact, :mandatory => true)
-  column(:dob, :mandatory => true)
+  column(:dob, :mandatory => true) do |model|
+    format(model.dob) do |value|
+       value.strftime("%d/%m/%Y")
+    end
+  end
+
   column(:privilege, :mandatory => true)
 
 end

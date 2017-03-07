@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user_only
   before_action :is_archived, only: [:show]
 
+
   def index
     # @users = User.all
     @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
