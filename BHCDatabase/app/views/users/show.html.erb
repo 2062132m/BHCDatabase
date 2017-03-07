@@ -13,6 +13,13 @@
     <%= render 'update_password_form' %>
   </div>
 </div>
+<div id="editmodalcontainer" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Edit User</h3>
+    <%= render 'edit_form' %>
+  </div>
+</div>
 <div id="initiative">
   <h1>User</h1>
   <div class="stdcontainer">
@@ -54,7 +61,7 @@
         <% else %>
           <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
         <% end %>
-        <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
+        <button id="openeditmodal" class="btn btn-default edit-btn"><span class="glyphicon glyphicon-edit"></span> Edit</button>
       <% end %>
     </div>
   </div>
