@@ -14,7 +14,6 @@ class QuestionsGrid
   filter(:question, :string) { |value| where('question like ?', "%#{value}%") }
   filter(:visible, :boolean)
   filter(:multiple_choice, :boolean)
-  filter(:sort, :integer, :multiple => ',')
 
   #
   # Columns
@@ -32,6 +31,5 @@ class QuestionsGrid
   end
   column(:visible, :mandatory => true)
   column(:multiple_choice, :mandatory => true)
-  column(:sort, :mandatory => true)
 
 end
