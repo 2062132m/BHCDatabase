@@ -10,12 +10,21 @@ class AreasController < ApplicationController
   end
 
   def show
+
     @area = Area.find(params[:id])
     @initiatives = Initiative.where(area_id: @area)
     @initiatives_in_area_grid = InitiativesInAreaGrid.
         new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
     end
+
+    @users = User.joins(:enrolments).
+        where(enrolments: {initiative: @initiatives.joins(:enrolments)})
+
+    @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
+      scope.where(:id => @users).page(params[:page])
+    end
+
   end
 
   def new
@@ -86,6 +95,7 @@ class AreasController < ApplicationController
   def area_params
     params.require(:area).permit(:name, :description, :archived, :reason_archived)
   end
+
   def archive_params
     params.require(:area).permit(:archived, :reason_archived)
   end
