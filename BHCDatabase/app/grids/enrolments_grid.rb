@@ -36,5 +36,19 @@ class EnrolmentsGrid
       link_to init.name, init
     end
   end
+  column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
+    format(model.created_at) do |value|
+      value
+    end
+  end
+  column(:created_at, :header => 'Un-Enrolled', :mandatory => true) do |model|
+    format(model.updated_at) do |value|
+      if value == model.created_at
+        'Still enrolled'
+      else
+        value
+      end
+    end
+  end
 
 end
