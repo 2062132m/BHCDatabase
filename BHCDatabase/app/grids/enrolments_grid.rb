@@ -38,7 +38,7 @@ class EnrolmentsGrid
   end
   column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
     format(model.created_at) do |value|
-      value
+      value.strftime("%d/%m/%Y - %H:%M")
     end
   end
   column(:created_at, :header => 'Un-Enrolled', :mandatory => true) do |model|
@@ -46,7 +46,7 @@ class EnrolmentsGrid
       if value == model.created_at
         'Still enrolled'
       else
-        value
+        value.strftime("%d/%m/%Y - %H:%M")
       end
     end
   end

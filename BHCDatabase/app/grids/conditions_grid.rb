@@ -22,7 +22,7 @@ class ConditionsGrid
   end
   column(:created_at, :mandatory => true, :header => 'Assigned Condition') do |model|
     format(model.created_at) do |value|
-      value
+      value.strftime("%d/%m/%Y - %H:%M")
     end
   end
   column(:updated_at, :mandatory => true, :header => 'Unassigned Condition') do |model|
@@ -30,7 +30,7 @@ class ConditionsGrid
       if model.updated_at == model.created_at
         'Still have this condition'
       else
-        value
+         value.strftime("%d/%m/%Y - %H:%M")
       end
     end
   end
