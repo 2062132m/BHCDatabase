@@ -5,7 +5,10 @@ class HomepageController < ApplicationController
 
   def index
     @areas = Area.all
-  end
+    @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
+      scope.page(params[:page])
+    end
+    end
 
   private
 

@@ -63,6 +63,9 @@
         <% end %>
         <button id="openeditmodal" class="btn btn-default edit-btn"><span class="glyphicon glyphicon-edit"></span> Edit</button>
       <% end %>
+      <% if current_user.privilege > 0 %>
+          <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
+      <% end %>
     </div>
   </div>
   <h1 id="meetingtitle">Initiatives</h1>

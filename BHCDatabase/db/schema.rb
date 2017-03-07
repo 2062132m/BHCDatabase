@@ -113,6 +113,14 @@ ActiveRecord::Schema.define(version: 20170307142657) do
     t.boolean  "multiple_choice"
   end
 
+  create_table "service_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "request"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_service_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"

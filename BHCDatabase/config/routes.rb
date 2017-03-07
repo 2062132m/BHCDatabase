@@ -65,5 +65,6 @@ Rails.application.routes.draw do
             :feedbacks,
             :attendances,
             :archives,
-            :funders
+            :funders,
+            :service_requests
 end
