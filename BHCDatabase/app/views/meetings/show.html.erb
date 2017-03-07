@@ -9,24 +9,28 @@
         <div class="col-md-6">
           <div align="left">
             <h2>
-              <icon class="glyphicon glyphicon-list-alt"></icon> Area:
+              <icon class="glyphicon glyphicon-list-alt"></icon>
+              Area:
             </h2>
             <ht><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %></ht>
             <h2>
-              <icon class="glyphicon glyphicon-map-marker"></icon> Location:
+              <icon class="glyphicon glyphicon-map-marker"></icon>
+              Location:
             </h2>
             <ht><%= @meeting.initiative.location %></ht>
           </div>
-         </div>
+        </div>
 
         <div class="col-md-6">
           <div align="left">
             <h2>
-              <icon class="glyphicon glyphicon-info-sign"></icon> Description:
+              <icon class="glyphicon glyphicon-info-sign"></icon>
+              Description:
             </h2>
             <ht><%= @meeting.initiative.description %></ht>
             <h2>
-              <icon class="glyphicon glyphicon-user"></icon> Volunteers:
+              <icon class="glyphicon glyphicon-user"></icon>
+              Volunteers:
             </h2>
             <% @initiative.users.each do |user| %>
                 <% if user.privilege == 1 %>
@@ -36,39 +40,40 @@
             <% end %>
           </div>
         </div>
-    </div>
-    <br>
-    <div class="row">
+      </div>
+      <br>
+      <div class="row">
         <div class="col-md-6">
           <div align="center">
-           <% if @meeting.attendances.count != 0 %>
-              <h3>Attendance: <%= @meeting.attendance %>%</h3>
-              <% @users.each do |user| %>
-                  <h2 class="enrol"><%= link_to user.name, user %></h2>
-              <% end %>
-              <%= link_to "<i class='glyphicon glyphicon-edit'></i> Retake Attendance".html_safe, @meeting, method: :delete,
-                                          data: { confirm: "Are you sure you want to retake the attendance?
-                                                            \nNote: This action cannot be undone!" },
-                                            class: "btn btn-default edit-btn", id: "attendance-btn" %>
-          <% else %>
-              <h3>Attendance</h3>
-              <%= form_for @attendance do %>
-                  <% @initiative.users.each do |user| %>
-                    <% if user.privilege == 2 %>
-                      <h2 class="enrol"><%= user.name %></h2>
-                      <%= check_box_tag('attendance[]', {:user_id => user.id, :meeting_id => @meeting.id}) %>
+            <% if @meeting.attendances.count != 0 %>
+                <h3>Attendance: <%= @meeting.attendance %>%</h3>
+                <% @users.each do |user| %>
+                    <h2 class="enrol"><%= link_to user.name, user %></h2>
+                <% end %>
+                <%= link_to "<i class='glyphicon glyphicon-edit'></i> Retake Attendance".html_safe, @meeting, method: :delete,
+                            data: {confirm: "Are you sure you want to retake the attendance?
+                                                            \nNote: This action cannot be undone!"},
+                            class: "btn btn-default edit-btn", id: "attendance-btn" %>
+            <% else %>
+                <h3>Attendance</h3>
+                <%= form_for @attendance do %>
+                    <% @initiative.users.each do |user| %>
+                        <% if user.privilege == 2 %>
+                            <h2 class="enrol"><%= user.name %></h2>
+                            <%= check_box_tag('attendance[]', {:user_id => user.id, :meeting_id => @meeting.id}) %>
+                        <% end %>
                     <% end %>
-                  <% end %>
-                  <%= submit_tag "Submit", class: "btn btn-default enrol-btn" %>
-              <% end %>
-          <% end %>
+                    <%= submit_tag "Submit", class: "btn btn-default enrol-btn" %>
+                <% end %>
+            <% end %>
           </div>
         </div>
         <div class="col-md-6">
           <div align="left">
-          <% if @meeting.attendances.count != 0 %>
-              <%= pie_chart({"Attended" => @meeting.attendance, "Not Attended" => 100 - @meeting.attendance}) %>
-          <% end %>
+            <% if @meeting.attendances.count != 0 %>
+                <%= pie_chart({"Attended" => @meeting.attendance, "Not Attended" => 100 - @meeting.attendance}) %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) do |scope|
-      scope.where(:id=>@user.initiatives.ids)
+    @enrolments_grid = EnrolmentsInUsersGrid.new(params[:enrolments_grid]) do |scope|
+      scope.where(:id=>@user.enrolments)
     end
     @feedbacks_grid = FeedbacksGrid.new(params[:feedbacks_grid]) do |scope|
       scope.where(:id=>@user.feedbacks.ids)
