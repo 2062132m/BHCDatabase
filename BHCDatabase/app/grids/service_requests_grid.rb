@@ -21,9 +21,11 @@ class ServiceRequestsGrid
   column(:request, :mandatory => true)
   column(:created_at, :mandatory => true) do |model|
     format(model.created_at) do |value|
-      value.strftime("%B %d, %Y - %H:%M")
+      value.strftime("%d/%m/%Y - %H:%M")
     end
   end
+
+
 
   column(:id, :header => "Delete", :mandatory => true) do |model|
     format(model.id) do |value|

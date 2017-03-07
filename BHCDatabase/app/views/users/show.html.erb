@@ -46,8 +46,7 @@
               Email: <%= @user.email %><br>
             </h2>
             <h2>
-              <icon class="glyphicon glyphicon-calendar"></icon>
-              DOB: <%= @user.dob %><br>
+              <icon class="glyphicon glyphicon-calendar"></icon> DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
             </h2>
             <% if @user.archived %>
                 <h4>This user has been archived.</h4>

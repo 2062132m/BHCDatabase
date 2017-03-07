@@ -17,7 +17,7 @@ class FeedbacksGrid
   end
   column(:created_at, :mandatory => true, :header => 'Date') do |model|
     format(model.created_at) do |value|
-      link_to value.strftime("%B %d, %Y - %H:%M"), model
+      link_to value.strftime("%d/%m/%Y - %H:%M"), model
     end
   end
 
