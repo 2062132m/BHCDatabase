@@ -4,7 +4,7 @@
         <div class="col-md-3">
           <h3><%= link_to simple_format(area.name), area %></h3>
           <div class="list-group">
-            <% Initiative.where(area_id: area.id).each do |initiative| %>
+            <% Initiative.where(area_id: area.id).order("LOWER (name) ASC").each do |initiative| %>
               <% unless initiative.archived %>
                 <%= link_to initiative.name, initiative,
                  class: "list-group-item list-group-item-action" %>
