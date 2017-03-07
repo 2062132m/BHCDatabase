@@ -30,7 +30,7 @@ class ServiceRequestsGrid
   column(:id, :header => "Delete", :mandatory => true) do |model|
     format(model.id) do |value|
      # unless value == nil
-     link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, service_request_path(value), method: :delete, class: "btn btn-default delete-btn"
+     link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, service_request_path(value), method: :delete, class: "btn btn-default delete-btn2"
      end
    end
 

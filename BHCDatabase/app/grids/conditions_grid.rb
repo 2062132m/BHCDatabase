@@ -20,5 +20,19 @@ class ConditionsGrid
       link_to MedicalCondition.find(model.medical_condition_id).name, MedicalCondition.find(model.medical_condition_id)
     end
   end
+  column(:created_at, :mandatory => true, :header => 'Assigned Condition') do |model|
+    format(model.created_at) do |value|
+      value
+    end
+  end
+  column(:updated_at, :mandatory => true, :header => 'Unassigned Condition') do |model|
+    format(model.updated_at) do |value|
+      if model.updated_at == model.created_at
+        'Still have this condition'
+      else
+        value
+      end
+    end
+  end
 
 end
