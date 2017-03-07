@@ -130,6 +130,7 @@ end
 
 # Add medical conditions
 
+MedicalCondition.create(name: 'Asthma', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Learning Disability', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Mental Health', description: Faker::StarWars.quote)
