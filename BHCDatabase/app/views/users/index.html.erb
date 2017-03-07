@@ -1,11 +1,26 @@
 <% provide(:title, 'Users') %>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $('[data-toggle="popover"]').popover({
+              placement : 'top'
+          });
+      });
+  </script>
+</head>
+
 <div id="indexcontainer">
   <h1>Users</h1>
 
   <div class="stdcontainer">
+
     <%= datagrid_form_for @users_grid, url: users_path %>
 
     <%= link_to "<i class='glyphicon glyphicon-plus'></i> New".html_safe, new_user_path, class: 'btn btn-default new-btn' %>
+
+    <button type="button" class="btn btn-info" data-toggle="popover" title="Privileges Levels Summary" data-content="A larger popover to demonstrate the max-width of the Bootstrap popover.">?</button>
 
     <%= datagrid_table(@users_grid) %>
     <%= will_paginate @users_grid.assets %>
