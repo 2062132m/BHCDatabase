@@ -12,25 +12,25 @@
   </div>
 </div>
 <script>
+// Bloodhound object used to parse JSON object
 var users = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   identify: function(obj) { return obj.name; },
-  prefetch: '/user.json'
+  prefetch: '/user.json'  // get the user JSON object
 });
 
 function namesWithDefaults(q, sync) {
-  if (q === '') {
+  if (q === '') {   // if the search field is empty, return all results
     sync(users.index.all());
   }
 
-  else {
+  else {   // otherwise, search as normal
     users.search(q, sync);
   }
 }
 
-// passing in `null` for the `options` arguments will result in the default
-// options being used
+// initialise typeahead UI
 $('#user-scrollable-dropdown-menu .typeahead').typeahead({
   minLength: 0,
   highlight: true

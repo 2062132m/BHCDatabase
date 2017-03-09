@@ -12,25 +12,25 @@
   </div>
 </div>
 <script>
+// Bloodhound object used to parse JSON object
 var initiatives = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   identify: function(obj) { return obj.name; },
-  prefetch: '/initiative.json'
+  prefetch: '/initiative.json'  //get the initiative JSON object
 });
 
 function namesWithDefaults(q, sync) {
-  if (q === '') {
+  if (q === '') {   // if the search field is empty, return all results
     sync(initiatives.index.all());
   }
 
-  else {
+  else {    // otherwise, search as normal
     initiatives.search(q, sync);
   }
 }
 
-// passing in `null` for the `options` arguments will result in the default
-// options being used
+// initialise typeahead UI
 $('#init-scrollable-dropdown-menu .typeahead').typeahead({
   minLength: 0,
   highlight: true
