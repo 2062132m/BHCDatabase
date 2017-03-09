@@ -2,7 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  # As this is in ApplicationController, all pages on the website require a login EXCEPT the contact page
   before_action :require_login, :except => :contact
+  # Admin_Only here specifics that all pages, except contact, require a login to access. Where a service_user or
+  #   a volunteer requires access, you must specifically skip_before_action this to allow access.
   before_action :admin_only, :except => :contact
 
   private
@@ -15,72 +18,74 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_user_only
-    unless @current_user.privilege == 0
+    unless admin?
       if @current_user != User.find(params[:id])
-          flash[:danger] = 'You are not allowed to access that page.'
-          redirect_to current_user
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
       end
     end
   end
 
+  # Ensure that only a user enrolled for the particular initiative can access it
   def correct_initiative_only
-    unless @current_user.privilege == 0
-      if @current_user.privilege == 2
+    unless admin?
+      if service_user?
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to current_user
-      end
-      unless @current_user.initiatives.include?(Initiative.find(params[:id]))
+      elsif !@current_user.initiatives.include?(Initiative.find(params[:id]))
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to current_user
       end
     end
   end
+
 
   def correct_initiative_only_on_creation
-    unless @current_user.privilege == 0
-      if @current_user.privilege == 2
+    unless admin?
+      if service_user?
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to current_user
-      end
-      unless @current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
+      elsif !@current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to current_user
       end
     end
   end
 
+  # Ensure that a user enrolled for the initiative belonging to the meeting can access the meeting(s) page
   def correct_meeting_only
-    unless @current_user.privilege == 0
-      if @current_user.privilege == 2
+    unless admin?
+      if service_user?
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      else
+        @current_user.initiatives.each do |init|
+          if init.meetings.include?(Meeting.find(params[:id]))
+            return
+          end
+        end
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to current_user
       end
-      @current_user.initiatives.each do |init|
-        if init.meetings.include?(Meeting.find(params[:id]))
-          return
-        end
-      end
-      flash[:danger] = 'You are not allowed to access that page.'
-      redirect_to current_user
     end
   end
 
   def service_user_only
-    unless @current_user.privilege == 2
+    unless service_user?
       flash[:danger] = 'You are not allowed to access that page.'
       redirect_to current_user
     end
   end
 
   def volunteer_only
-    unless @current_user.privilege == 1
+    unless volunteer?
       flash[:danger] = 'You are not allowed to access that page.'
       redirect_to current_user
     end
   end
 
   def admin_only
-    unless @current_user.privilege == 0
+    unless admin?
       flash[:danger] = 'You are not allowed to access that page.'
       redirect_to current_user
     end
@@ -99,7 +104,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_archived
-    if self.is_archived? == true
+    if self.is_archived?
       if @current_user.privilege > 0
         flash[:danger] = 'Sorry, this page no longer exists.'
         redirect_to :back
