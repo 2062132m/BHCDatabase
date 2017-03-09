@@ -23,3 +23,13 @@ service_user:
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>
+
+service_user2:
+  name: Service-User Example2
+  email: serviceuser@example2.com
+  telephone: 0123456789
+  emergency_contact: 0123456789
+  dob: <%=Faker::Date.between(70.years.ago, 18.years.ago) %>
+  password_digest: <%= User.digest('password') %>
+  privilege: 2
+  feedback_due: <%= Date.today %>
