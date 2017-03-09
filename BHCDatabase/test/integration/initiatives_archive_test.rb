@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InitiativeArchiveTest < ActionDispatch::IntegrationTest
+class InitiativesArchiveTest < ActionDispatch::IntegrationTest
   def setup
     @admin = users(:admin)
     @initiative = initiatives(:one)
