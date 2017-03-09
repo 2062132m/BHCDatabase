@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserArchiveTest < ActionDispatch::IntegrationTest
   def setup
-    @admin = users(:david)
+    @admin = users(:admin)
     @service_user = users(:service_user)
     log_in_as(@admin)
   end

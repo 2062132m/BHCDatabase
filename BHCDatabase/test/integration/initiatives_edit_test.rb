@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InitiativesEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @initiative = initiatives(:one)
     @area = areas(:one)
     log_in_as(@user)

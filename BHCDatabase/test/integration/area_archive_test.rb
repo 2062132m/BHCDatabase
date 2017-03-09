@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AreaArchiveTest < ActionDispatch::IntegrationTest
   def setup
-    @admin = users(:david)
+    @admin = users(:admin)
     @area = areas(:one)
     log_in_as(@admin)
   end

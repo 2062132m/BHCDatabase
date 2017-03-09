@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InitiativeArchiveTest < ActionDispatch::IntegrationTest
   def setup
-    @admin = users(:david)
+    @admin = users(:admin)
     @initiative = initiatives(:one)
     log_in_as(@admin)
   end

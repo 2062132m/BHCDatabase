@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AreasEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @area = areas(:one)
     log_in_as(@user)
   end

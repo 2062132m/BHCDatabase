@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QuestionsEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @question_one = questions(:one)
     @question_two = questions(:two)
     log_in_as @user

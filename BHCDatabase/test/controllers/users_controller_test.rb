@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     log_in_as(@user)
   end
 
@@ -37,7 +37,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get david' do
-    david = users(:david)
+    david = users(:admin)
     get user_url(david)
     assert_response :success
     assert_template 'users/show'

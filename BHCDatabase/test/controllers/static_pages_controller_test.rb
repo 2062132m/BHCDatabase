@@ -4,7 +4,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @base_title = "Building Healthy Communities"
-    @user = users(:david)
+    @user = users(:admin)
     log_in_as(@user)
   end
 
