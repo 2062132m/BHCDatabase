@@ -10,14 +10,16 @@ class AreasController < ApplicationController
   end
 
   def show
-
     @area = Area.find(params[:id])
+
+    # Builds a DataGrid using initiatives only belonging to this particular area
     @initiatives = Initiative.where(area_id: @area)
     @initiatives_in_area_grid = InitiativesInAreaGrid.
         new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
     end
 
+    # Builds a DataGrid using users only enrolled in initiatives in this area
     @users = User.joins(:enrolments).
         where(enrolments: {initiative: @initiatives.joins(:enrolments)})
 
@@ -65,21 +67,18 @@ class AreasController < ApplicationController
     @area = Area.find(params[:id])
     unless @area.update_attributes(archive_params)
       flash[:danger] = 'Something went wrong'
-      redirect_to @area
-    else
-      redirect_to @area
     end
+    redirect_to @area
   end
 
   def unarchive
     @area = Area.find(params[:id])
-    unless @area.update_attributes(:archived => false, :reason_archived => nil)
-      flash[:danger] = 'Something went wrong'
-      redirect_to @area
-    else
+    if @area.update_attributes(:archived => false, :reason_archived => nil)
       flash[:success] = 'Area is no longer archived'
-      redirect_to @area
+    else
+      flash[:danger] = 'Something went wrong'
     end
+    redirect_to @area
   end
 
   def is_archived?
