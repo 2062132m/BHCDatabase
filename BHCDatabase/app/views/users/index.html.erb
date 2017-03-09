@@ -5,11 +5,11 @@
   <script>
       $(document).ready(function(){
 
-          $('.privilege').first().append('<button id="pop" data-trigger="focus" data-toggle="popover" ' +
+          $('.privilege').first().append('<button id="pop" data-trigger="hover" data-toggle="popover" ' +
               'title="Levels of Privileges:"' +
               ' data-content="<b>LEVEL 0: </b>Admin <br>' +
               '<b>LEVEL 1: </b>Volunteer <br>' +
-              '<b>LEVEL 2: </b>User <br>">?</button>');
+              '<b>LEVEL 2: </b>User <br>"><span class="glyphicon glyphicon-question-sign"></span> </button>');
 
           $('#pop').popover({
               html : true
