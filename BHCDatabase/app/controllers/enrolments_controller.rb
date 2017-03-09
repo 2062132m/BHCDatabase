@@ -16,15 +16,20 @@ class EnrolmentsController < ApplicationController
     # screwed if anyone has the same name
     @user = User.where(:name => enrolment_params[:user_id]).first
     @initiative = Initiative.where(:name => enrolment_params[:initiative_id]).first
-    @enrolment = Enrolment.new(initiative_id: @initiative.id,
-                               user_id: @user.id)
+    unless @initiative == nil || @user == nil
+      @enrolment = Enrolment.new(initiative_id: @initiative.id,
+                                 user_id: @user.id)
+    else
+      @enrolment = Enrolment.new
+    end
     @initiatives = Initiative.all
     @users = User.all
     if @enrolment.save
       flash[:success] = 'Created the new enrolment!'
       redirect_to @enrolment.user
     else
-      render 'new'
+      flash[:danger] = 'This activity/user does not exist'
+      redirect_to :back
     end
   end
 
