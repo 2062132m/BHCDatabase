@@ -316,9 +316,14 @@ table.datagrid {
   float: right;
 }
 
-.popover{
-  color: black;
+.popover-title{
+  color: #008ED4;
+  font-size: 20px;
 }
+.popover-content{
+  color: #000000;
+}
+
 .new-btn {
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
