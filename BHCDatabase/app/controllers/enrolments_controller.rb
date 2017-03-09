@@ -6,12 +6,6 @@ class EnrolmentsController < ApplicationController
     end
   end
 
-  def new
-    @enrolment = Enrolment.new
-    @initiatives = Initiative.all
-    @users = User.all
-  end
-
   def create
     # screwed if anyone has the same name
     @user = User.where(:name => enrolment_params[:user_id]).first
