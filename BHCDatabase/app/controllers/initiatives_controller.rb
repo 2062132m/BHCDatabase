@@ -47,6 +47,7 @@ class InitiativesController < ApplicationController
 
   def update
     @initiative = Initiative.find(params[:id])
+    @areas = Area.all
     if @initiative.update_attributes(initiative_params)
       flash[:success] = "Initiative updated"
       redirect_to @initiative
@@ -59,10 +60,6 @@ class InitiativesController < ApplicationController
     Initiative.find(params[:id]).destroy
     flash[:success] = "Initiative deleted"
     redirect_to initiatives_url
-  end
-
-  def archive
-    @initiative = Initiative.find(params[:id])
   end
 
   def update_archive

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MedicalConditionArchiveTest < ActionDispatch::IntegrationTest
   def setup
-    @admin = users(:david)
+    @admin = users(:admin)
     @medical_condition = medical_conditions(:one)
     log_in_as(@admin)
   end

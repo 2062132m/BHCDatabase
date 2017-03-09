@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QuestionsEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @question_one = questions(:one)
     @question_two = questions(:two)
     log_in_as @user
@@ -12,6 +12,10 @@ class QuestionsEditTest < ActionDispatch::IntegrationTest
     get edit_question_url(@question_one)
     assert_template 'questions/edit'
     patch question_path(@question_one), params: {question: {question: '', visible: -1, multiple_choice: -1}}
+
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
+
     assert_template 'questions/edit'
   end
 

@@ -255,7 +255,7 @@
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.11, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.3.6, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.3, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.13.6, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.13.7, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v9.0.0, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="chartkick (v2.2.2, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coderay (v1.1.1, RVM: ruby-2.3.3 [bhc]) [gem]" level="application" />

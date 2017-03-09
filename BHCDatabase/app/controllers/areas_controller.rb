@@ -61,10 +61,6 @@ class AreasController < ApplicationController
     redirect_to areas_url
   end
 
-  def archive
-    @area = Area.find(params[:id])
-  end
-
   def update_archive
     @area = Area.find(params[:id])
     unless @area.update_attributes(archive_params)

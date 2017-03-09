@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AreasEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @area = areas(:one)
     log_in_as(@user)
   end
@@ -12,6 +12,8 @@ class AreasEditTest < ActionDispatch::IntegrationTest
     assert_template 'areas/edit'
     patch area_path(@area), params: { area: { name:  '', description: ''} }
 
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
     assert_template 'areas/edit'
   end
 

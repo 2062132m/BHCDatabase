@@ -11,3 +11,11 @@ two:
   description: MyText
   area: one
   location: MyLocation
+
+archived_initiative:
+  name: MyString
+  description: MyTest
+  area: two
+  location: MyLocation
+  archived: t
+  reason_archived: My Reason
