@@ -56,6 +56,12 @@ Rails.application.routes.draw do
       patch :update_archive
     end
   end
+  resources :enrolments do
+    member do
+      get :enrol_initiative
+      get :enrol_user
+    end
+  end
   resources :users,
             :areas,
             :initiatives,
