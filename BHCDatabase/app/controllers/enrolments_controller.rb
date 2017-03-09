@@ -10,6 +10,12 @@ class EnrolmentsController < ApplicationController
     @enrolment = Enrolment.new
     @initiatives = Initiative.all
     @users = User.all
+    @usernames = User.select('name').map(&:name)
+    @initiativenames = Initiative.select('name').map(&:name)
+    respond_to do |format|
+      format.html
+      format.json { render :json => {:user => @users,:initiative => @initiatives }}
+    end
   end
 
   def create

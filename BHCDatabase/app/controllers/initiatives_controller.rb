@@ -22,13 +22,6 @@ class InitiativesController < ApplicationController
     new(params[:meetings_in_initiatives_grid]) do |scope|
       scope.where(:initiative_id => @initiative).page(params[:page])
     end
-    @users = User.all
-    @usernames = User.select('name').map(&:name)
-    respond_to do |format|
-      format.html
-      format.json { render json: @usernames }
-    end
-
   end
 
   def new
