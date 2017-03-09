@@ -2,19 +2,21 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <% if params[:initiative_id] == nil %>
+    <div id="init-scrollable-dropdown-menu" class="scrollable-dropdown-menu">
       <%= f.label :initiative %>
-      <%= f.select :initiative_id, options_for_select(@initiatives.map { |s| [s.name, s.id] }), {}, { class: "form-control" } %>
+      <%= f.text_field :initiative_id, placeholder: 'Initiative', class: 'typeahead form-control' %>
+    </div>
     <% else %>
-      <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
+      <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).name) %>
     <% end %>
 
     <% if params[:user_id] == nil %>
-      <div id="scrollable-dropdown-menu">
+      <div id="user-scrollable-dropdown-menu" class="scrollable-dropdown-menu">
         <%= f.label :user %>
-        <%= f.text_field :user_id, placeholder: 'Username', class: 'typeahead form-control' %>
+        <%= f.text_field :user_id, placeholder: 'User', class: 'typeahead form-control' %>
       </div>
     <% else %>
-      <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).id) %>
+      <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).name) %>
     <% end %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/volunteershome', to: 'volunteers_homepage#index'
   get '/serviceusershome', to: 'service_users_homepage#index'
   get '/user.json', to: 'enrolments#enrol_user'
+  get '/initiative.json', to: 'enrolments#enrol_initiative'
   resources :users do
     member do
       get :archive

@@ -13,7 +13,11 @@ class EnrolmentsController < ApplicationController
   end
 
   def create
-    @enrolment = Enrolment.new(enrolment_params)
+    # screwed if anyone has the same name
+    @user = User.where(:name => enrolment_params[:user_id]).first
+    @initiative = Initiative.where(:name => enrolment_params[:initiative_id]).first
+    @enrolment = Enrolment.new(initiative_id: @initiative.id,
+                               user_id: @user.id)
     @initiatives = Initiative.all
     @users = User.all
     if @enrolment.save
@@ -35,10 +39,10 @@ class EnrolmentsController < ApplicationController
 
   def enrol_initiative
     @enrolment = Enrolment.new
-    @users = User.all
+    @initiatives = Initiative.all
     respond_to do |format|
       format.html
-      format.json { render json: @users }
+      format.json { render json: @initiatives }
     end
   end
 
