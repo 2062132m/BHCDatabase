@@ -19,11 +19,9 @@ class UsersGrid
   filter(:emergency_contact, :integer)
   filter(:dob, :date, :range => true)
 
-
   #
   # Columns
   #
-
 
   column(:id, :mandatory => true) do |model|
     format(model.id) do |value|
@@ -39,6 +37,6 @@ class UsersGrid
   column(:telephone, :mandatory => true)
   column(:emergency_contact, :mandatory => true)
   column(:dob, :mandatory => true)
-  column(:privilege, :mandatory => true)
+  column(:privilege, :mandatory => true, :html => true,)
 
 end
