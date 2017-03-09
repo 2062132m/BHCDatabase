@@ -2,6 +2,7 @@ david:
   name: David Example
   email: david@example.com
   password_digest: <%= User.digest('password') %>
+  dob: <%= Faker::Date.between(70.years.ago, 18.years.ago) %>
   privilege: 0
 
 volunteer:
@@ -9,7 +10,7 @@ volunteer:
   email: volunteer@example.com
   telephone: 0123456789
   emergency_contact: 0123456789
-  dob: 12-12-12
+  dob: <%= Faker::Date.between(70.years.ago, 18.years.ago) %>
   password_digest: <%= User.digest('password') %>
   privilege: 1
 
@@ -18,7 +19,7 @@ service_user:
   email: serviceuser@example.com
   telephone: 0123456789
   emergency_contact: 0123456789
-  dob: 12-12-12
+  dob: <%=Faker::Date.between(70.years.ago, 18.years.ago) %>
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>
