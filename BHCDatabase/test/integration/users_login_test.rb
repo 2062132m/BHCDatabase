@@ -30,6 +30,18 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user)
   end
 
+  test 'login when already logged in' do
+    volunteer = users(:volunteer)
+    log_in_as volunteer
+
+    get login_path
+    post login_path, params: { session: { email:    volunteer.email,
+                                          password: 'password' } }
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_not flash.empty?
+  end
+
   test "login with valid information followed by logout" do
     get login_path
     post login_path, params: { session: { email:    @user.email,
