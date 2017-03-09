@@ -4,20 +4,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script>
       $(document).ready(function(){
-
-          $('.privilege').first().append('<button id="p" data-toggle="popover" title="Levels of Privileges:" data-content="LEVEL 0: LEVEL1: LEVEL2:">?</button>');
-
-          $('#p').popover({
+          $('.privilege').first().append('<button id="popover" data-trigger="focus" data-toggle="popover" ' +
+              'title="Levels of Privileges:"' +
+              ' data-content="LEVEL 0: LEVEL1: LEVEL2:">?</button>');
+          $('#popover').popover({
               html : true
 
           });
       });
   </script>
-  <style>
-    #p{
-      color: red;
-    }
-  </style>
+
 </head>
 
 <div id="indexcontainer">
