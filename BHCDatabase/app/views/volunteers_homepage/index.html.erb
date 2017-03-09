@@ -22,8 +22,10 @@
               <% i.users.each do |x| %>
                 <% unless x.archived %>
                   <h4>
-                    <%= x.name %> -
-                    <%= x.telephone %>
+                    <%= x.name %> 
+		    <br>
+		    Emergency Contact -
+                    <%= x.emergency_contact %>
                   </h4>
                 <% end %>
               <% end %>
