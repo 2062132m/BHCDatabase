@@ -10,3 +10,34 @@
     </div>
   </div>
 </div>
+<script>
+  var users = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    identify: function(obj) { return obj.name; },
+    prefetch: '/user.json'
+  });
+
+  function namesWithDefaults(q, sync) {
+    if (q === '') {
+      sync(users.index.all());
+    }
+
+    else {
+      users.search(q, sync);
+    }
+  }
+
+  // passing in `null` for the `options` arguments will result in the default
+  // options being used
+  $('#scrollable-dropdown-menu .typeahead').typeahead({
+    minLength: 0,
+    highlight: true
+  },
+  {
+    name: 'user',
+    displayKey: 'name',
+    limit: 500, // hard coded value, not sure how to get actual length of the json file
+    source: namesWithDefaults
+  });
+</script>
