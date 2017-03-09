@@ -4,7 +4,7 @@ class AttendancesController < ApplicationController
 
   def create
     meeting_id = 0
-    @numAttendees = 0
+    @num_attendees = 0
     unless params[:attendance].nil?
       params[:attendance].each do |a|
         words = a.split(',')
@@ -15,13 +15,13 @@ class AttendancesController < ApplicationController
           redirect_to Meeting.find(meeting_id)
           return
         end
-        @numAttendees += 1
+        @num_attendees += 1
         meeting_id = words[1][0...-1].scan(/\d+$/).first
       end
       meeting = Meeting.find(meeting_id)
       @initiative = meeting.initiative
-      @totalAttendees = Enrolment.where(:initiative_id => @initiative, :user_id => (User.where(:privilege => 2).ids)).count
-      meeting.update_attribute(:attendance, @numAttendees/@totalAttendees.to_f * 100)
+      @total_attendees = Enrolment.where(:initiative_id => @initiative, :user_id => (User.where(:privilege => 2).ids)).count
+      meeting.update_attribute(:attendance, @num_attendees/@total_attendees.to_f * 100)
       meeting.save
       flash[:success] = "Attendance saved!"
       redirect_to Meeting.find(meeting_id)

@@ -1,5 +1,6 @@
 class AreasController < ApplicationController
 
+  # Checks to see if the area is archived before the #show action is called
   before_action :is_archived, only: [:show]
 
   def index
