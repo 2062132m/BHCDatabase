@@ -69,7 +69,7 @@
           <% else %>
               <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
           <% end %>
-          <%= link_to "<i class='glyphicon glyphicon-edit'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default edit-btn' %>
+          <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
           <button id="openeditmodal" class="btn btn-default edit-btn"><span class="glyphicon glyphicon-edit"></span>
             Edit
           </button>

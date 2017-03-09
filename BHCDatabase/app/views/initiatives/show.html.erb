@@ -39,7 +39,7 @@
         <% else %>
           <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_initiative_path, class: 'btn btn-default archive-btn' %>
         <% end %>
-        <%= link_to "<i class='glyphicon glyphicon-edit'></i> Enrol".html_safe, enrol_user_enrolment_path(initiative_id: @initiative.id), class: 'btn btn-default edit-btn' %>
+        <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_user_enrolment_path(initiative_id: @initiative.id), class: 'btn btn-default enrolment-btn' %>
         <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
       <% end %>
       <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Session".html_safe, new_meeting_path(initiative_id: @initiative.id), class: 'btn btn-default new-session-btn' %>
