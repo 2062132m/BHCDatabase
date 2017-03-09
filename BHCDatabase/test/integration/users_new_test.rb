@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class UsersSignupTest < ActionDispatch::IntegrationTest
+class UsersNewTest < ActionDispatch::IntegrationTest
 
   def setup
-    @david = users(:admin)
-    log_in_as @david
+    @admin = users(:admin)
+    log_in_as @admin
   end
 
   test "invalid signup information" do

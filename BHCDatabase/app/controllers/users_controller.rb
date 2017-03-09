@@ -67,10 +67,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def archive
-    @user = User.find(params[:id])
-  end
-
   def update_archive
     @user = User.find(params[:id])
     unless @user.update_attributes(archive_params)
