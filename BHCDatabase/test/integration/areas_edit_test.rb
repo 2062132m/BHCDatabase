@@ -12,6 +12,8 @@ class AreasEditTest < ActionDispatch::IntegrationTest
     assert_template 'areas/edit'
     patch area_path(@area), params: { area: { name:  '', description: ''} }
 
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
     assert_template 'areas/edit'
   end
 
