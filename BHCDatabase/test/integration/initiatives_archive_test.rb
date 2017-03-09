@@ -7,7 +7,7 @@ class InitiativesArchiveTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
   end
 
-  test "unsuccessful initiative archive" do
+  test 'unsuccessful initiative archive' do
     get initiative_path(@initiative)
     assert_template 'initiatives/show'
     reason = 'a' * 50
@@ -18,7 +18,7 @@ class InitiativesArchiveTest < ActionDispatch::IntegrationTest
     assert_not_equal reason,  @initiative.reason_archived
   end
 
-  test "successful initiative archive" do
+  test 'successful initiative archive' do
     get initiative_path(@initiative)
     assert_template 'initiatives/show'
     reason = "example reason"
@@ -29,7 +29,7 @@ class InitiativesArchiveTest < ActionDispatch::IntegrationTest
     assert_equal reason,  @initiative.reason_archived
   end
 
-  test "successful initiative unarchive" do
+  test 'successful initiative unarchive' do
     get initiative_path(@initiative)
     assert_template 'initiatives/show'
     reason = "example reason"

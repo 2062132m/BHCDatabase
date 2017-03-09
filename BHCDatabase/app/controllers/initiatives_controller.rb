@@ -62,10 +62,6 @@ class InitiativesController < ApplicationController
     redirect_to initiatives_url
   end
 
-  def archive
-    @initiative = Initiative.find(params[:id])
-  end
-
   def update_archive
     @initiative = Initiative.find(params[:id])
     unless @initiative.update_attributes(archive_params)
