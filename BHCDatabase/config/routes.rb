@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'conditions/new'
+
   get 'archives/index'
 
   get 'attendances/new'
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   # make JSON files available on these pages
   get '/user.json', to: 'enrolments#enrol_user'
   get '/initiative.json', to: 'enrolments#enrol_initiative'
+  get '/medical_condition.json', to: 'conditions#new'
   # define routes for controllers
   # custom methods for users
   resources :users do
@@ -82,5 +85,6 @@ Rails.application.routes.draw do
             :attendances,
             :archives,
             :funders,
-            :service_requests
+            :service_requests,
+            :conditions
 end
