@@ -43,8 +43,8 @@ class User < ApplicationRecord
   end
 
   def only_service_user_has_feedback
-    errors.add(:feedback_due, "A non service user can't have a feedback due") unless privilege 2 && feedback_due.present?
-    errors.add(:feedback_due, 'A service user must have a feedback') unless feedback_due.present?
+    errors.add(:feedback_due, "A non service user can't have a feedback due") if privilege != 2 && feedback_due.present?
+    errors.add(:feedback_due, 'A service user must have a feedback') if privilege == 2 && !feedback_due.present?
   end
 
   def is_admin?
