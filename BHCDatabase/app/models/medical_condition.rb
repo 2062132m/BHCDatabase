@@ -1,5 +1,4 @@
 class MedicalCondition < ApplicationRecord
-
   validates :name, presence: true, uniqueness: {case_sensitive: false}, length: {maximum: 50}
   validates :description, presence: true, length: {maximum: 255}
   validates :reason_archived, length: {maximum: 30}

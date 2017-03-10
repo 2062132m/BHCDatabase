@@ -1,5 +1,6 @@
 class AreasController < ApplicationController
 
+  # Checks to see if the area is archived before the #show action is called
   before_action :is_archived, only: [:show]
 
   def index
@@ -19,20 +20,19 @@ class AreasController < ApplicationController
   end
 
   def show
-
     @area = Area.find(params[:id])
     @initiatives = Initiative.where(area_id: @area)
-    @initiatives_in_area_grid = InitiativesInAreaGrid.
-        new(params[:initiatives_in_area_grid]) do |scope|
+
+    # Builds a DataGrid using initiatives only belonging to this particular area
+    @initiatives_in_area_grid = InitiativesInAreaGrid.new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
     end
 
-    @users = User.joins(:enrolments).
-        where(enrolments: {initiative: @initiatives.joins(:enrolments)})
+    # Builds a DataGrid using users only enrolled in initiatives in this area
+    @users = User.joins(:enrolments).where(enrolments: {initiative: @initiatives.joins(:enrolments)})
 
-    @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
-      scope.where(:id => @users).page(params[:page])
-    end
+    # Builds a DataGrid that shows only users that belong to initiatives in this area
+    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @users).page(params[:page]) }
 
   end
 
@@ -72,23 +72,18 @@ class AreasController < ApplicationController
 
   def update_archive
     @area = Area.find(params[:id])
-    unless @area.update_attributes(archive_params)
-      flash[:danger] = 'Something went wrong'
-      redirect_to @area
-    else
-      redirect_to @area
-    end
+    flash[:danger] = 'Something went wrong' unless @area.update_attributes(archive_params)
+    redirect_to @area
   end
 
   def unarchive
     @area = Area.find(params[:id])
-    unless @area.update_attributes(:archived => false, :reason_archived => nil)
-      flash[:danger] = 'Something went wrong'
-      redirect_to @area
-    else
+    if @area.update_attributes(:archived => false, :reason_archived => nil)
       flash[:success] = 'Area is no longer archived'
-      redirect_to @area
+    else
+      flash[:danger] = 'Something went wrong'
     end
+    redirect_to @area
   end
 
   def is_archived?
