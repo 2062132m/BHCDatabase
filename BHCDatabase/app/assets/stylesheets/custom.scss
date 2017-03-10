@@ -408,6 +408,15 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+.datagrid-filter {
+  label {
+    width: 20%;
+  }
+  .string_filter, .integer_filter {
+    width: 79%;
+  }
+}
+
 .datagrid-submit {
   background-color: #0f98ab;
   color: white;
