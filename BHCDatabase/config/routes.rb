@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'conditions/new'
+
   get 'archives/index'
 
   get 'attendances/new'
