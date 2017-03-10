@@ -9,5 +9,7 @@
 
     <%= datagrid_table(@users_grid) %>
     <%= will_paginate @users_grid.assets %>
+    
+    <%= link_to "Get CSV", url_for(format: 'csv', users_grid: params[:users_grid]) %>
   </div>
 </div>
