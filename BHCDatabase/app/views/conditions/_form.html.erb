@@ -1,0 +1,12 @@
+<%= form_for @condition, :url => { :action => "create"} do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).name) %>
+
+    <div id="condition-scrollable-dropdown-menu" class="scrollable-dropdown-menu">
+      <%= f.label "Condition" %>
+      <%= f.text_field :medical_condition_id, placeholder: 'Condition', class: 'typeahead form-control' %>
+    </div>
+
+    <%= f.submit 'Submit', class: 'btn btn-default submit-btn' %>
+<% end %>

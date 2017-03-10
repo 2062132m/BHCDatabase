@@ -1,2 +1,13 @@
-<h1>Conditions#new</h1>
-<p>Find me in app/views/conditions/new.html.erb</p>
+<% provide(:title, 'Assign Medical Condition') %>
+<% @user = User.find(params[:user_id]) %>
+<div id="newcontainer">
+  <h1>Assign Condition</h1>
+  <div class="stdcontainer">
+    <h4>Please select the condition you would like to assign to <b><%= @user.name %></b></h4><br>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -84,5 +84,6 @@ Rails.application.routes.draw do
             :attendances,
             :archives,
             :funders,
-            :service_requests
+            :service_requests,
+            :conditions
 end
