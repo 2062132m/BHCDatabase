@@ -1,11 +1,27 @@
-<%= form_for(@enrolment) do |f| %>
+<%= form_for @enrolment, :url => { :action => "create"} do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :initiative %>
-    <%= f.select :initiative_id, options_for_select(@initiatives.map { |s| [s.name, s.id] }), {}, { class: "form-control" } %>
+    <!-- if user did not come from initiative#show, allow them to pick activity -->
+    <% if params[:initiative_id] == nil %>
+      <div id="init-scrollable-dropdown-menu" class="scrollable-dropdown-menu">
+        <%= f.label "Activity" %>
+        <%= f.text_field :initiative_id, placeholder: 'Activity', class: 'typeahead form-control' %>
+      </div>
+    <!-- otherwise, use the id of the initiative you came from -->
+    <% else %>
+      <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).name) %>
+    <% end %>
 
-    <%= f.label :user %>
-    <%= f.select :user_id, options_for_select(@users.map { |s| [s.name, s.id] }), {}, { class: "form-control" } %>
+    <!-- if user did not come from user#show, allow them to pick a user -->
+    <% if params[:user_id] == nil %>
+      <div id="user-scrollable-dropdown-menu" class="scrollable-dropdown-menu">
+        <%= f.label :user %>
+        <%= f.text_field :user_id, placeholder: 'User', class: 'typeahead form-control' %>
+      </div>
+    <!-- otherwise, use the id of the user you came from -->
+    <% else %>
+      <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).name) %>
+    <% end %>
 
-    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <%= f.submit 'Submit', class: 'btn btn-default submit-btn' %>
 <% end %>
