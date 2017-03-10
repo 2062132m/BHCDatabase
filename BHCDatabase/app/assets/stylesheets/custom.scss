@@ -398,6 +398,28 @@ table.datagrid {
   float: right;
 }
 
+.CSV {
+  color: #fff;
+  background-color: #3366ff;
+  border: 1px solid #3366ff;
+  /* box adjustments */
+  border-radius: 4px;
+  font-size: 17px;
+  padding: 7px 30px;
+}
+
+.CSV:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid grey;
+  text-decoration: none;
+}
+
+.CSV-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
