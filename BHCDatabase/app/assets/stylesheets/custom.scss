@@ -429,20 +429,26 @@ input, textarea, select, .uneditable-input {
 
 .datagrid-submit {
   background-color: #0f98ab;
+  border: 1px solid #0f98ab;
   color: white;
   text-align: center;
   font-size: 20px;
   width: 65%;
-  margin-left: 177px;
-  padding: 3px 0;
+  margin-left: 178px;
+  padding: 3px 0 4px 0;
+}
+
+.datagrid-submit:hover {
+  background-color: $gray-medium-light;
+  color: black;
+  border: 1px solid grey;
 }
 
 /* reset button */
 .datagrid-reset {
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #c43c35;
-  border-color: #c43c35;
+  border: 1px solid #c43c35;
   /* box adjustments */
   border-radius: 4px;
   font-size: 17px;
@@ -452,7 +458,9 @@ input, textarea, select, .uneditable-input {
 }
 
 .datagrid-reset:hover {
-  color: white;
+  background-color: $gray-medium-light;
+  color: black;
+  border: 1px solid grey;
   text-decoration: none;
 }
 
