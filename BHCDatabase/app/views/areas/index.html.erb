@@ -9,6 +9,10 @@
 
     <%= datagrid_table(@areas_grid) %>
     <%= will_paginate @areas_grid.assets %>
-
+    <% if request.original_url.ends_with?("areas") %>
+      <div class="CSV-container">
+        <%= link_to "<i class='glyphicon glyphicon-download-alt'></i> Download CSV".html_safe, url_for(format: 'csv', areas_grid: params[:areas_grid]), class: "CSV" %>
+      </div>
+    <% end %>
   </div>
 </div>

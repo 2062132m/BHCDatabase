@@ -9,5 +9,11 @@
 
     <%= datagrid_table(@users_grid) %>
     <%= will_paginate @users_grid.assets %>
+
+    <% if request.original_url.ends_with?("users") %>
+      <div class="CSV-container">
+        <%= link_to "<i class='glyphicon glyphicon-download-alt'></i> Download CSV".html_safe, url_for(format: 'csv', users_grid: params[:users_grid]), class: "CSV" %>
+      </div>
+    <% end %>
   </div>
 </div>
