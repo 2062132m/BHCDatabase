@@ -1,45 +1,24 @@
 class InitiativesGrid
-
   include Datagrid
 
   scope do
     Initiative
   end
 
-  #
-  # Filters
-  #
-
- # filter(:condition, :dynamic, :header => "Filter")
-
   filter(:id, :string, :multiple => ',')
   filter(:name, :string) { |value| where('name like ?', "%#{value}%") }
-  #filter(:created_at, :date, :range => true, :header => "Creation date")
-  #filter(:updated_at, :date, :range => true, :header => "Updated date")
   filter(:area, :string, :multiple => ',')
   filter(:location, :string) { |value| where('location like ?', "%#{value}%") }
 
-
-  #
-  # Conditions
-  #
-
   column(:id, :mandatory => true) do |model|
-    format(model.id) do |value|
-      link_to value, model
-    end
+    format(model.id) { |value| link_to value, model }
   end
   column(:name, :mandatory => true) do |model|
-    format(model.name) do |value|
-      link_to value, model
-    end
+    format(model.name) { |value| link_to value, model }
   end
   column(:location, :mandatory => true)
   column(:description, :mandatory => true)
-  column(:area_id, :header => "Area", :mandatory => true) do |model|
-    format(model.area_id) do |value|
-      Area.find(value).name
-    end
+  column(:area_id, :header => 'Area', :mandatory => true) do |model|
+    format(model.area_id) { |value| Area.find(value).name }
   end
-
 end

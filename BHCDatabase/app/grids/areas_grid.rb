@@ -1,36 +1,18 @@
 class AreasGrid
-
   include Datagrid
 
   scope do
     Area
   end
 
-  #
-  # Filters
-  #
-
-  #filter(:condition, :dynamic, :header => "Filter")
-  
   filter(:id, :string, :multiple => ',')
-  #filter(:created_at, :date, :range => true, :header => "Creation date")
-  #filter(:updated_at, :date, :range => true, :header => "Updated date")
-  filter(:name, :string) { |value| where('name like ? ',"%#{value}%") }
-
-  #
-  # Columns
-  #
+  filter(:name, :string) { |value| where('name like ? ', "%#{value}%") }
 
   column(:id, :mandatory => true) do |model|
-    format(model.id) do |value|
-      link_to value, model
-    end
+    format(model.id) { |value| link_to value, model }
   end
   column(:name, :mandatory => true) do |model|
-    format(model.name) do |value|
-      link_to value, model
-    end
+    format(model.name) { |value| link_to value, model }
   end
   column(:description, :mandatory => true)
-
 end

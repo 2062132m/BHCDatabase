@@ -1,40 +1,24 @@
 class EnrolmentsInUsersGrid
+  include Datagrid
 
-    include Datagrid
+  scope do
+    Enrolment
+  end
 
-    scope do
-      Enrolment
+  column(:id, :mandatory => true)
+  column(:initiative_id, :header => 'Initiative', :mandatory => true) do |model|
+    format(model.initiative_id) do |value|
+      init = Initiative.find(value)
+      link_to init.name, init
     end
-
-    #
-    # Columns
-    #
-
-    column(:id, :mandatory => true) do |model|
-      format(model.id) do |value|
-        value
-      end
+  end
+  column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
+    format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
+  end
+  column(:created_at, :header => 'Un-Enrolled', :mandatory => true) do |model|
+    format(model.updated_at) do |value|
+      value == model.created_at ? 'Still Enrolled' : value.strftime('%d/%m/%Y - %H:%M')
     end
-    column(:initiative_id, :header => 'Initiative', :mandatory => true) do |model|
-      format(model.initiative_id) do |value|
-        init = Initiative.find(value)
-        link_to init.name, init
-      end
-    end
-    column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
-      format(model.created_at) do |value|
-        value.strftime("%d/%m/%Y - %H:%M")
-      end
-    end
-    column(:created_at, :header => 'Un-Enrolled', :mandatory => true) do |model|
-      format(model.updated_at) do |value|
-        if value == model.created_at
-          'Still enrolled'
-        else
-          value.strftime("%d/%m/%Y - %H:%M")
-        end
-      end
-    end
-
+  end
 end
 
