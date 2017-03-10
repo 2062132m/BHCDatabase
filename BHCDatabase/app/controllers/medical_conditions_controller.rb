@@ -26,13 +26,7 @@ class MedicalConditionsController < ApplicationController
   def show
     @medical_condition = MedicalCondition.find(params[:id])
     @conditions = @medical_condition.conditions
-    @ids = []
-    @conditions.each do |cond|
-      @ids.push(cond.user_id)
-    end
-    @conditions_grid = UsersGrid.new(params[:users_grid]) do |scope|
-      scope.where(:id=>@ids)
-    end
+    @conditions_grid = UsersGrid.new(params[:users_grid]) {|scope| scope.where(:id => @conditions.map(&:id)) }
   end
 
   def edit
@@ -50,8 +44,7 @@ class MedicalConditionsController < ApplicationController
   end
 
   def destroy
-    MedicalCondition.find(params[:id]).destroy
-    flash[:success] = 'Medical Condition deleted'
+    flash[:success] = 'Medical Condition deleted' if MedicalCondition.find(params[:id]).destroy
     redirect_to medical_conditions_url
   end
 
@@ -61,23 +54,19 @@ class MedicalConditionsController < ApplicationController
 
   def update_archive
     @medical_condition = MedicalCondition.find(params[:id])
-    unless @medical_condition.update_attributes(archive_params)
-      flash[:danger] = 'Something went wrong'
-      redirect_to @medical_condition
-    else
-      redirect_to @medical_condition
-    end
+    flash[:danger] = 'Something went wrong' unless @medical_condition.update_attributes(archive_params)
+    redirect_to @medical_condition
+
   end
 
   def unarchive
     @medical_condition = MedicalCondition.find(params[:id])
-    unless @medical_condition.update_attributes(:archived => false, :reason_archived => nil)
-      flash[:danger] = 'Something went wrong'
-      redirect_to @medical_condition
-    else
+    if @medical_condition.update_attributes(:archived => false, :reason_archived => nil)
       flash[:success] = 'Medical condition is no longer archived'
-      redirect_to @medical_condition
+    else
+      flash[:danger] = 'Something went wrong'
     end
+    redirect_to @medical_condition
   end
 
   def is_archived?
@@ -89,6 +78,7 @@ class MedicalConditionsController < ApplicationController
   def medical_condition_params
     params.require(:medical_condition).permit(:name, :description, :archived, :reason_archived)
   end
+
   def archive_params
     params.require(:medical_condition).permit(:archived, :reason_archived)
   end

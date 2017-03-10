@@ -12,14 +12,10 @@ class HomepageController < ApplicationController
 
   private
 
+  # redirect routes a user to their own homepage when the log in
   def redirect
-    unless admin?
-      if volunteer?
-        redirect_to volunteershome_path
-      else service_user?
-        redirect_to serviceusershome_path
-      end
-    end
+    redirect_to volunteershome_url if volunteer?
+    redirect_to serviceusershome_url if service_user?
   end
 
 end

@@ -5,28 +5,23 @@ class AreasController < ApplicationController
 
   def index
     @areas = Area.all
-    @areas_grid = AreasGrid.new(params[:areas_grid]) do |scope|
-      scope.page(params[:page])
-    end
+    @areas_grid = AreasGrid.new(params[:areas_grid]) {|scope| scope.page(params[:page])}
   end
 
   def show
     @area = Area.find(params[:id])
 
-    # Builds a DataGrid using initiatives only belonging to this particular area
     @initiatives = Initiative.where(area_id: @area)
-    @initiatives_in_area_grid = InitiativesInAreaGrid.
-        new(params[:initiatives_in_area_grid]) do |scope|
+    # Builds a DataGrid using initiatives only belonging to this particular area
+    @initiatives_in_area_grid = InitiativesInAreaGrid.new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
     end
 
     # Builds a DataGrid using users only enrolled in initiatives in this area
-    @users = User.joins(:enrolments).
-        where(enrolments: {initiative: @initiatives.joins(:enrolments)})
+    @users = User.joins(:enrolments).where(enrolments: {initiative: @initiatives.joins(:enrolments)})
 
-    @users_grid = UsersGrid.new(params[:users_grid]) do |scope|
-      scope.where(:id => @users).page(params[:page])
-    end
+    # Builds a DataGrid that shows only users that belong to initiatives in this area
+    @users_grid = UsersGrid.new(params[:users_grid]) {|scope| scope.where(:id => @users).page(params[:page])}
 
   end
 
@@ -66,9 +61,7 @@ class AreasController < ApplicationController
 
   def update_archive
     @area = Area.find(params[:id])
-    unless @area.update_attributes(archive_params)
-      flash[:danger] = 'Something went wrong'
-    end
+    flash[:danger] = 'Something went wrong' unless @area.update_attributes(archive_params)
     redirect_to @area
   end
 

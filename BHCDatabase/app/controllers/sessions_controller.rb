@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to root_url if logged_in?
-      flash[:info] = "You are already logged in."
+      redirect_to root_url
+      flash[:info] = 'You are already logged in.'
     end
   end
 

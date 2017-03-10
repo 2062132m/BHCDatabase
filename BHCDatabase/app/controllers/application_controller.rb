@@ -43,28 +43,10 @@ class ApplicationController < ActionController::Base
   def correct_initiative_only_on_creation
     unless admin?
       if service_user?
-        flash[:danger] = 'You are not allowed to access that page.'
+        flash[:danger] = 'You are not allowed to access that page. vag'
         redirect_to current_user
       elsif !@current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      end
-    end
-  end
-
-  # Ensure that a user enrolled for the initiative belonging to the meeting can access the meeting(s) page
-  def correct_meeting_only
-    unless admin?
-      if service_user?
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      else
-        @current_user.initiatives.each do |init|
-          if init.meetings.include?(Meeting.find(params[:id]))
-            return
-          end
-        end
-        flash[:danger] = 'You are not allowed to access that page.'
+        flash[:danger] = 'You are not allowed to access that page Boobs.'
         redirect_to current_user
       end
     end
