@@ -413,8 +413,9 @@ input, textarea, select, .uneditable-input {
 .datagrid-filter {
   label {
     width: 20%;
+    letter-spacing: 1.5px;
   }
-  .string_filter, .integer_filter {
+  .string_filter, .integer_filter, .date_filter, .boolean_filter {
     width: 79%;
     box-sizing: border-box;
     border: 2px solid #0f98ab;
@@ -426,6 +427,13 @@ input, textarea, select, .uneditable-input {
     background-position: 8px 8px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 50px;
+  }
+  .to {
+    float: right;
+    margin-right: 4px;
+  }
+  .boolean_filter {
+    margin-bottom: 20px;
   }
 }
 
