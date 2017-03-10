@@ -2,7 +2,7 @@ class ConditionsController < ApplicationController
   def new
     @condition = Condition.new
     @medical_conditions = MedicalCondition.all
-    # get all the users and consolidate into a JSON object
+    # get all the medical_conditions and consolidate into a JSON object
     respond_to do |format|
       format.html
       format.json { render json: @medical_conditions }
@@ -10,10 +10,10 @@ class ConditionsController < ApplicationController
   end
 
   def create
-    # parse values returned to get respective ids
+    # parse medical_condition to get id
     # could be an issue if we allow duplicate names
     @medical_condition = MedicalCondition.where(:name => condition_params[:medical_condition_id]).first
-    # if either is nil, return an empty Enrolment to force an error
+    # if medical_condition is null, return an empty Condition to force an error
     unless @medical_condition == nil
       @condition = Condition.new(medical_condition_id: @medical_condition.id,
                                  user_id: condition_params[:user_id])

@@ -1,6 +1,7 @@
 <%= form_for @condition, :url => { :action => "create"} do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
+    <!-- pass the id of the user this form concerns -->
     <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).id) %>
 
     <div id="condition-scrollable-dropdown-menu" class="scrollable-dropdown-menu">
