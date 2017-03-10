@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-
   skip_before_action :admin_only, only: [:show]
   before_action :correct_user_only
   before_action :is_archived, only: [:show]
-
 
   def index
     @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.page(params[:page]) }
@@ -22,9 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     @user.feedback_due = @user.privilege == 2 ? Date.today : nil
-
     if @user.save
       flash[:success] = 'Successfully signed up new user!'
       redirect_to @user
@@ -45,7 +41,6 @@ class UsersController < ApplicationController
       flash[:danger] = 'Something went wrong'
     end
     redirect_to @user
-
   end
 
   def destroy

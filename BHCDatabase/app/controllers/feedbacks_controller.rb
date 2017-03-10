@@ -6,7 +6,6 @@ class FeedbacksController < ApplicationController
   # Ensures that only the owner of a feedback is allowed to view it
   before_action :correct_users_feedback?, only: [:show]
 
-
   def show
     @feedback = Feedback.find(params[:id])
   end
@@ -16,21 +15,18 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
     @questions = Question.where(visible: true).where('id < ?', 23).order(:id)
     # Builds our @feedback.answers, linking all answers to all available questions
-    @questions.each {|question| @feedback.answers.build(:question_id => question.id)}
+    @questions.each { |question| @feedback.answers.build(:question_id => question.id) }
   end
 
   def create
     @user = @current_user
     @feedback = Feedback.new(feedback_params)
     @questions = Question.where(:visible => true)
-
     if @feedback.save
       flash[:success] = 'Created a new feedback!'
-
       unless @user.update_attribute(:feedback_due, @user.feedback_due >> 6)
         flash[:warning] = "Next feedback due date wasn't set, please contact someone."
       end
-
       redirect_to @feedback
     else
       render 'new'

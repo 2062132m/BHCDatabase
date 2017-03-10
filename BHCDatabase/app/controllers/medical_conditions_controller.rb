@@ -1,5 +1,4 @@
 class MedicalConditionsController < ApplicationController
-
   before_action :is_archived, only: [:show]
 
   def new
@@ -26,7 +25,7 @@ class MedicalConditionsController < ApplicationController
   def show
     @medical_condition = MedicalCondition.find(params[:id])
     @conditions = @medical_condition.conditions
-    @conditions_grid = UsersGrid.new(params[:users_grid]) {|scope| scope.where(:id => @conditions.map(&:id)) }
+    @conditions_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @conditions.map(&:id)) }
   end
 
   def edit

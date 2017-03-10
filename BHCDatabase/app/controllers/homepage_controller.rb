@@ -1,5 +1,4 @@
 class HomepageController < ApplicationController
-
   skip_before_action :admin_only
   before_action :redirect
 
@@ -8,7 +7,7 @@ class HomepageController < ApplicationController
     @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
       scope.page(params[:page])
     end
-    end
+  end
 
   private
 

@@ -1,5 +1,4 @@
 class InitiativesController < ApplicationController
-
   skip_before_action :admin_only, only: [:show]
   before_action :correct_initiative_only
   before_action :is_archived, only: [:show]

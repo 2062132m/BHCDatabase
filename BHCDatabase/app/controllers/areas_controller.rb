@@ -5,13 +5,13 @@ class AreasController < ApplicationController
 
   def index
     @areas = Area.all
-    @areas_grid = AreasGrid.new(params[:areas_grid]) {|scope| scope.page(params[:page])}
+    @areas_grid = AreasGrid.new(params[:areas_grid]) { |scope| scope.page(params[:page]) }
   end
 
   def show
     @area = Area.find(params[:id])
-
     @initiatives = Initiative.where(area_id: @area)
+
     # Builds a DataGrid using initiatives only belonging to this particular area
     @initiatives_in_area_grid = InitiativesInAreaGrid.new(params[:initiatives_in_area_grid]) do |scope|
       scope.where(:area_id => @area).page(params[:page])
@@ -21,7 +21,7 @@ class AreasController < ApplicationController
     @users = User.joins(:enrolments).where(enrolments: {initiative: @initiatives.joins(:enrolments)})
 
     # Builds a DataGrid that shows only users that belong to initiatives in this area
-    @users_grid = UsersGrid.new(params[:users_grid]) {|scope| scope.where(:id => @users).page(params[:page])}
+    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @users).page(params[:page]) }
 
   end
 
