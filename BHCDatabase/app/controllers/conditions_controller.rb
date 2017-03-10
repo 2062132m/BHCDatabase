@@ -16,7 +16,7 @@ class ConditionsController < ApplicationController
     # if either is nil, return an empty Enrolment to force an error
     unless @medical_condition == nil
       @condition = Condition.new(medical_condition_id: @medical_condition.id,
-                                 condition_params[:user_id])
+                                 user_id: condition_params[:user_id])
     else
       @condition = Condition.new
     end
@@ -29,4 +29,11 @@ class ConditionsController < ApplicationController
       redirect_to :back
     end
   end
+
+  private
+
+  def condition_params
+    params.require(:condition).permit(:medical_condition_id, :user_id)
+  end
+
 end
