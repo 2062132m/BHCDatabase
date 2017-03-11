@@ -5,16 +5,20 @@ class InitiativesController < ApplicationController
 
   def index
     @initiatives = Initiative.all
+    # We create 2 grids, one for normal usage and one to be used for download
     @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid])
+    @initiatives_grid_csv = InitiativesGrid.new(params[:initiatives_grid])
       respond_to do |f|
         f.html do
+          # Display the first grid as normal
           @initiatives_grid.scope { |scope| scope.page(params[:page]) }
         end
         f.csv do
-          send_data @initiatives_grid.to_csv,
+          # Send the second grid to csv format and allow to be downloaded
+          send_data @initiatives_grid_csv.to_csv,
             type: "text/csv",
             disposition: 'inline',
-            filename: "grid-#{Time.now.to_s}.csv"
+            filename: "initiatives-#{Time.now.to_s}.csv"
         end
       end
   end

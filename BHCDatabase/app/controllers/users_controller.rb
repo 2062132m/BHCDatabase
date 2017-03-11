@@ -4,17 +4,20 @@ class UsersController < ApplicationController
   before_action :is_archived, only: [:show]
 
   def index
-    # @users = User.all
+    # We create 2 grids, one for normal usage and one to be used for download
     @users_grid = UsersGrid.new(params[:users_grid])
+    @users_grid_csv = UsersGrid.new(params[:users_grid])
     respond_to do |f|
       f.html do
+        # Display the first grid as normal
         @users_grid.scope { |scope| scope.page(params[:page]) }
       end
       f.csv do
-        send_data @users_grid.to_csv,
+        # Send the second grid to csv format and allow to be downloaded
+        send_data @users_grid_csv.to_csv,
           type: "text/csv",
           disposition: 'inline',
-          filename: "grid-#{Time.now.to_s}.csv"
+          filename: "users-#{Time.now.to_s}.csv"
       end
     end
   end
