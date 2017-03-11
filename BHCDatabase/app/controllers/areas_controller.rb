@@ -5,12 +5,13 @@ class AreasController < ApplicationController
   def index
     @areas = Area.all
     @areas_grid = AreasGrid.new(params[:areas_grid])
+    @areas_grid_csv = AreasGrid.new(params[:areas_grid])
       respond_to do |f|
         f.html do
           @areas_grid.scope { |scope| scope.page(params[:page]) }
         end
         f.csv do
-          send_data @areas_grid.to_csv,
+          send_data @areas_grid_csv.to_csv,
             type: "text/csv",
             disposition: 'inline',
             filename: "grid-#{Time.now.to_s}.csv"
