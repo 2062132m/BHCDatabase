@@ -4,17 +4,20 @@ class AreasController < ApplicationController
 
   def index
     @areas = Area.all
+    # We create 2 grids, one for normal usage and one to be used for download
     @areas_grid = AreasGrid.new(params[:areas_grid])
     @areas_grid_csv = AreasGrid.new(params[:areas_grid])
       respond_to do |f|
         f.html do
+          # Display the first grid as normal
           @areas_grid.scope { |scope| scope.page(params[:page]) }
         end
         f.csv do
+          # Send the second grid to csv format and allow to be downloaded
           send_data @areas_grid_csv.to_csv,
             type: "text/csv",
             disposition: 'inline',
-            filename: "grid-#{Time.now.to_s}.csv"
+            filename: "areas-#{Time.now.to_s}.csv"
         end
       end
   end
