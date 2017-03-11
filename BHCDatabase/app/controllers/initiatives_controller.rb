@@ -7,12 +7,13 @@ class InitiativesController < ApplicationController
   def index
     @initiatives = Initiative.all
     @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid])
+    @initiatives_grid_csv = InitiativesGrid.new(params[:initiatives_grid])
       respond_to do |f|
         f.html do
           @initiatives_grid.scope { |scope| scope.page(params[:page]) }
         end
         f.csv do
-          send_data @initiatives_grid.to_csv,
+          send_data @initiatives_grid_csv.to_csv,
             type: "text/csv",
             disposition: 'inline',
             filename: "grid-#{Time.now.to_s}.csv"
