@@ -8,12 +8,13 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     @users_grid = UsersGrid.new(params[:users_grid])
+    @users_grid_csv = UsersGrid.new(params[:users_grid])
     respond_to do |f|
       f.html do
         @users_grid.scope { |scope| scope.page(params[:page]) }
       end
       f.csv do
-        send_data @users_grid.to_csv,
+        send_data @users_grid_csv.to_csv,
           type: "text/csv",
           disposition: 'inline',
           filename: "grid-#{Time.now.to_s}.csv"
