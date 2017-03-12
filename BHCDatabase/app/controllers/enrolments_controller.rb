@@ -46,6 +46,7 @@ class EnrolmentsController < ApplicationController
   end
 
   def touch_enrolment
+    # Update the updated_at field
     Enrolment.find(params[:id]).touch
     redirect_to :back
   end

@@ -20,10 +20,17 @@ class EnrolmentsInUsersGrid
       value == model.created_at ? 'Still Enrolled' : value.strftime('%d/%m/%Y - %H:%M')
     end
   end
+  # Display button to unenrol a user from the initiative
   column(:id, :header => 'Unenrol', :mandatory => true) do |model|
     format(model.id) do |value|
       @enrolment = Enrolment.find(value)
-      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unenrol".html_safe, touch_enrolment_enrolment_path(@enrolment), class: "btn btn-default unenrol-btn"
+      # 'Touches' to tuple to update it's updated_at field, meaning unenrolled
+      if @enrolment.created_at == @enrolment.updated_at
+        link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unenrol".html_safe, touch_enrolment_enrolment_path(@enrolment), class: "btn btn-default unenrol-btn"
+      else
+        # Disable button if already unenrolled
+        link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unenrol".html_safe, nil, class: "btn btn-default disabled unenrol-btn"
+      end
     end
   end
 end
