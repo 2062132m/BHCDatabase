@@ -1,7 +1,10 @@
 <%= form_for @attendance do %>
 
-  <%= hidden_field_tag(:meeting_id, :value => Meeting.find(params[:id]).id) %>
+  <!-- Send the meeting_id as a hidden field -->
+  <%= hidden_field_tag(:meeting_id, Meeting.find(params[:id]).id) %>
 
+  <!-- Create a check box object for each user enrolled in the inititative, -->
+  <!--   populate attendance[] array with their user_ids -->
   <% @initiative.users.each do |user| %>
       <% if user.privilege == 2 %>
           <h2 class="enrol"><%= user.name %></h2>
