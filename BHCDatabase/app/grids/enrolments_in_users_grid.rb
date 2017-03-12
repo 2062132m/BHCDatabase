@@ -22,7 +22,8 @@ class EnrolmentsInUsersGrid
   end
   column(:id, :header => 'Unenrol', :mandatory => true) do |model|
     format(model.id) do |value|
-      link_to "<i class='glyphicon glyphicon-trash'></i> Unenrol".html_safe, service_request_path(value), method: :delete, class: "btn btn-default delete-btn2"
+      @enrolment = Enrolment.find(value)
+      link_to "<i class='glyphicon glyphicon-trash'></i> Unenrol".html_safe, touch_enrolment_enrolment_path(@enrolment), class: "btn btn-default delete-btn2"
     end
   end
 end

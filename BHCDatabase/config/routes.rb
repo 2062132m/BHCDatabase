@@ -71,6 +71,7 @@ Rails.application.routes.draw do
     member do
       get :enrol_initiative
       get :enrol_user
+      get :touch_enrolment
     end
   end
   # listing resources in this style defines default routes: new, show, index, etc...

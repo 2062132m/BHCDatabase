@@ -45,6 +45,11 @@ class EnrolmentsController < ApplicationController
     end
   end
 
+  def touch_enrolment
+    Enrolment.find(params[:id]).touch
+    redirect_to :back
+  end
+
   private
 
   def enrolment_params
