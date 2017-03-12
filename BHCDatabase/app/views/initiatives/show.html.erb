@@ -49,8 +49,19 @@
   <div class="stdcontainer">
     <% if @initiative.users.count == 0 %>
       <p>This initative does not yet have any members.</p>
-    <% else %>
+    <% elsif current_user.privilege == 0 %>
       <%= datagrid_table(@users_grid) %>
+    <% else %>
+      <div id="volunteer-list">
+        <% @initiative.users.each do |x| %>
+          <% unless x.archived %>
+            <h4>
+              <%= x.name %>
+              Emergency Contact - <%= x.emergency_contact %>
+            </h4>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <h1 id="meetingtitle">Meetings</h1>
