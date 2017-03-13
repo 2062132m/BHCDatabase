@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :attendances
   has_many :meetings, through: :attendances
   has_many :conditions
+  has_many :unassigned_conditions
   has_many :medical_conditions, through: :conditions
   has_many :feedbacks
   has_many :answers, through: :feedbacks

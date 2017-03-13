@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313144659) do
+ActiveRecord::Schema.define(version: 20170313145027) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20170313144659) do
   create_table "unassigned_conditions", force: :cascade do |t|
     t.integer  "medical_condition_id"
     t.integer  "user_id"
-    t.datetime "date_unassigned"
+    t.datetime "date_assigned"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.index ["medical_condition_id"], name: "index_unassigned_conditions_on_medical_condition_id"
