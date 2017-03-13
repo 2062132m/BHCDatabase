@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313152201) do
+ActiveRecord::Schema.define(version: 20170313152421) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170313152201) do
     t.string   "telephone"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["name", "email"], name: "index_funders_on_name_and_email", unique: true
   end
 
   create_table "initiatives", force: :cascade do |t|
