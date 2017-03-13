@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313152806) do
+ActiveRecord::Schema.define(version: 20170313153020) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20170313152806) do
     t.datetime "updated_at",    null: false
     t.integer  "initiative_id"
     t.integer  "attendance"
+    t.index ["initiative_id", "datetime"], name: "index_meetings_on_initiative_id_and_datetime", unique: true
     t.index ["initiative_id"], name: "index_meetings_on_initiative_id"
   end
 
