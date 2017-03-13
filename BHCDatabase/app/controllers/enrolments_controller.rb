@@ -52,7 +52,7 @@ class EnrolmentsController < ApplicationController
     Unenrolment.create(:user_id => @enrolment.user_id,
                        :initiative_id => @enrolment.initiative_id,
                        :date_enrolled => @enrolment.created_at)
-    # Destory the enrolment
+    # Destroy the enrolment
     flash[:success] = 'User Unenrolled' if @enrolment.destroy
     redirect_to :back
   end

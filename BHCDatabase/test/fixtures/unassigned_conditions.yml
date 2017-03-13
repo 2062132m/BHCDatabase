@@ -3,9 +3,9 @@
 one:
   medical_condition: one
   user: one
-  date_unassigned: 2017-03-13 14:46:59
+  date_assigned: 2017-03-13 14:46:59
 
 two:
   medical_condition: two
   user: two
-  date_unassigned: 2017-03-13 14:46:59
+  date_assigned: 2017-03-13 14:46:59

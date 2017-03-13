@@ -13,4 +13,11 @@ class ConditionsGrid
   column(:created_at, :mandatory => true, :header => 'Date Assigned') do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
+  column(:id, :header => 'Unassign', :mandatory => true) do |model|
+    format(model.id) do |value|
+      @condition = Condition.find(value)
+      # Delete the enrolment, which will in turn create an 'unenrolment'
+      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unassign".html_safe, @condition, method: :delete, class: "btn btn-default unenrol-btn"
+    end
+  end
 end
