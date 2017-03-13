@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :enrolments
+  has_many :unenrolments
   has_many :initiatives, through: :enrolments
   has_many :attendances
   has_many :meetings, through: :attendances
