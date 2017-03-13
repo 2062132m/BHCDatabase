@@ -7,7 +7,7 @@ class InitiativesGrid
 
   filter(:id, :string, :multiple => ',')
   filter(:name, :string) { |value| where('name like ?', "%#{value}%") }
-  filter(:area, :string, :multiple => ',')
+  filter(:area, :string, :multiple => ',', :header => 'Area ID')
   filter(:location, :string) { |value| where('location like ?', "%#{value}%") }
 
   column(:id, :mandatory => true) do |model|

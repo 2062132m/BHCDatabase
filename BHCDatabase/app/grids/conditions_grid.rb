@@ -5,9 +5,6 @@ class ConditionsGrid
     Condition
   end
 
-  column(:id, :mandatory => true) do |model|
-    format(model.id) { |value| link_to value, MedicalCondition.find(model.medical_condition_id) }
-  end
   column(:medical_condition_id, :mandatory => true) do |model|
     format(model.medical_condition_id) do
       link_to MedicalCondition.find(model.medical_condition_id).name, MedicalCondition.find(model.medical_condition_id)
