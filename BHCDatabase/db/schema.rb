@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313144445) do
+ActiveRecord::Schema.define(version: 20170313145854) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170313144445) do
     t.datetime "updated_at",                      null: false
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
+    t.index ["name"], name: "index_areas_on_name", unique: true
   end
 
   create_table "attendances", force: :cascade do |t|
