@@ -10,10 +10,10 @@ class UnassignedConditionsGrid
       link_to MedicalCondition.find(model.medical_condition_id).name, MedicalCondition.find(model.medical_condition_id)
     end
   end
-  column(:date_assigned, :mandatory => true, :header => 'Assigned Condition') do |model|
+  column(:date_assigned, :mandatory => true, :header => 'Date Assigned') do |model|
     format(model.date_assigned) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
-  column(:created_at, :mandatory => true, :header => 'Unassigned Condition') do |model|
-    format(model.created_at) { value.strftime('%d/%m/%Y - %H:%M') }
+  column(:created_at, :mandatory => true, :header => 'Date Unassigned') do |model|
+    format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
 end
