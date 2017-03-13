@@ -9,6 +9,14 @@ Faker::Config.locale = 'en-GB'
 
 random = Random.new
 
+def with_record_unique_handling
+  yield
+rescue ActiveRecord::RecordNotUnique => e
+  puts e
+end
+
+puts "ConstraintException is normal and expected. Don't panic!\n"
+
 # Add admins to the database
 
 User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
@@ -183,7 +191,7 @@ Question.create(question: 'How do you think attending BHC initiatives or activit
 User.where(privilege: 2).each do |user|
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-    user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+    with_record_unique_handling{user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))}
     Feedback.create(user: user)
   end
 
