@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313145027) do
+ActiveRecord::Schema.define(version: 20170313163243) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.text     "response"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["feedback_id", "question_id"], name: "index_answers_on_feedback_id_and_question_id", unique: true
     t.index ["feedback_id"], name: "index_answers_on_feedback_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.datetime "updated_at",                      null: false
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
+    t.index ["name"], name: "index_areas_on_name", unique: true
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meeting_id"], name: "index_attendances_on_meeting_id"
+    t.index ["user_id", "meeting_id"], name: "index_attendances_on_user_id_and_meeting_id", unique: true
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
@@ -45,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.integer  "user_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.index ["medical_condition_id", "user_id"], name: "index_conditions_on_medical_condition_id_and_user_id", unique: true
     t.index ["medical_condition_id"], name: "index_conditions_on_medical_condition_id"
     t.index ["user_id"], name: "index_conditions_on_user_id"
   end
@@ -55,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["initiative_id"], name: "index_enrolments_on_initiative_id"
+    t.index ["user_id", "initiative_id"], name: "index_enrolments_on_user_id_and_initiative_id", unique: true
     t.index ["user_id"], name: "index_enrolments_on_user_id"
   end
 
@@ -74,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.string   "telephone"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["name", "email"], name: "index_funders_on_name_and_email", unique: true
   end
 
   create_table "initiatives", force: :cascade do |t|
@@ -85,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.string   "location"
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
+    t.index ["name", "location"], name: "index_initiatives_on_name_and_location", unique: true
   end
 
   create_table "medical_conditions", force: :cascade do |t|
@@ -94,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.datetime "updated_at",                      null: false
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
+    t.index ["name"], name: "index_medical_conditions_on_name", unique: true
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -102,6 +110,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.datetime "updated_at",    null: false
     t.integer  "initiative_id"
     t.integer  "attendance"
+    t.index ["initiative_id", "datetime"], name: "index_meetings_on_initiative_id_and_datetime", unique: true
     t.index ["initiative_id"], name: "index_meetings_on_initiative_id"
   end
 
@@ -111,6 +120,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.boolean  "multiple_choice"
+    t.index ["question"], name: "index_questions_on_question", unique: true
   end
 
   create_table "service_requests", force: :cascade do |t|
@@ -154,6 +164,7 @@ ActiveRecord::Schema.define(version: 20170313145027) do
     t.string   "emergency_contact"
     t.boolean  "archived",          default: false
     t.string   "reason_archived"
+    t.index ["dob", "email", "telephone"], name: "index_users_on_dob_and_email_and_telephone", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

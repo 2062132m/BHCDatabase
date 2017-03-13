@@ -5,5 +5,6 @@ class Meeting < ApplicationRecord
   has_many :users, through: :attendances
 
   validates :datetime, presence: true
-  validates :initiative_id, presence: true
+  validates :initiative_id, presence: true, uniqueness: {:scope => :datetime}
+
 end

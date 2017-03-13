@@ -9,7 +9,19 @@ Faker::Config.locale = 'en-GB'
 
 random = Random.new
 
+# Helper function that provides error handling when adding seeds to the database. In an ideal world this is't optimal
+#   but since this seed file won't be run often, if at all, this is satisfactory.
+def with_record_unique_handling
+  yield
+rescue ActiveRecord::RecordNotUnique => e
+  puts e
+end
+
+puts "ConstraintException is normal and expected. Don't panic!\n"
+
 # Add admins to the database
+
+puts 'Inserting admins'
 
 User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
@@ -32,6 +44,8 @@ User.create(name: 'Kiril Mihaylov', email: 'kiril@kiril.com', password: 'kiril12
 
 # Add volunteers to the database
 
+puts 'Inserting volunteers'
+
 User.create(name: 'Volunteer', email: 'volunteer@volunteer.com', password: 'volunteer123', password_confirmation: 'volunteer123',
             telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
@@ -49,6 +63,8 @@ random.rand(20..50).times do
 end
 
 # Add users to the database
+
+puts 'Inserting service users'
 
 User.create(name: 'User', email: 'user@user.com', password: 'user123', password_confirmation: 'user123',
             telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
@@ -68,6 +84,8 @@ random.rand(100..200).times do
 end
 
 # Create area1 with initiatives
+
+puts 'Inserting areas with initiatives'
 
 @area1 = Area.create(name: 'Dumfries & Lower Nithsdale', description: Faker::StarWars.quote)
 @area1.initiatives.create(name: 'Scrimp and sew', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -122,6 +140,8 @@ end
 
 # Add meetings to all initiatives
 
+puts 'Inserting meetings/sessions for initiatives'
+
 Initiative.all.each do |init|
   random.rand(5..50).times do
     init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
@@ -129,6 +149,8 @@ Initiative.all.each do |init|
 end
 
 # Add medical conditions
+
+puts 'Inserting medical conditions'
 
 MedicalCondition.create(name: 'Asthma', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
@@ -150,6 +172,9 @@ MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWa
 
 # Main bulk of questions, these are the questions that a user is asked upon registration, and can leave at any time they
 #   wish.
+
+puts 'Inserting questions'
+
 Question.create(question: "I've been feeling optimistic about the future", visible: true, multiple_choice: true)
 Question.create(question: "I've been feeling useful", visible: true, multiple_choice: true)
 Question.create(question: "I've been feeling relaxed", visible: true, multiple_choice: true)
@@ -180,10 +205,12 @@ Question.create(question: 'How do you think attending BHC initiatives or activit
 
 # Add attendance, feedback/answers, enrollment and medical conditions to users
 
+puts 'Inserting attendance, feedback/answers, enrollment and medical conditions for users'
+
 User.where(privilege: 2).each do |user|
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-    user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+    with_record_unique_handling{user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))}
     Feedback.create(user: user)
   end
 
@@ -195,13 +222,15 @@ User.where(privilege: 2).each do |user|
 
   user.feedbacks.each do |feed|
     Question.all.each do |question|
-      Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote)
+      with_record_unique_handling{Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote)}
     end
 
   end
 end
 
 # Add attendance and enrolment to volunteers
+
+puts 'Inserting enrollment for volunteers'
 
 User.where(privilege: 1).each do |user|
   random.rand(1..2).times do
@@ -217,6 +246,8 @@ User.where(privilege: 1).each do |user|
 end
 
 # Generate random funders
+
+puts 'Inserting funders'
 
 random.rand(1..10).times do
   Funder.create(name: Faker::Company.name,
