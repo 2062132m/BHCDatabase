@@ -230,7 +230,7 @@ end
 
 # Add attendance and enrolment to volunteers
 
-puts 'Inserting attendance and enrollment for volunteers'
+puts 'Inserting enrollment for volunteers'
 
 User.where(privilege: 1).each do |user|
   random.rand(1..2).times do
