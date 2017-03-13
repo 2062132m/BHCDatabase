@@ -7,9 +7,9 @@ class UsersGrid
 
   filter(:id, :string, :multiple => ',')
   filter(:name, :string) { |value| where('name like ? ', "%#{value}%") }
-  filter(:email, :string)
-  filter(:telephone, :integer)
-  filter(:emergency_contact, :integer)
+  filter(:email, :string) { |value| where('email like ? ', "%#{value}%") }
+  filter(:telephone, :string) { |value| where('telephone like ? ', "%#{value}%") }
+  filter(:emergency_contact, :string) { |value| where('emergency_contact like ? ', "%#{value}%") }
   filter(:dob, :date, :range => true)
 
   column(:id, :mandatory => true) do |model|
