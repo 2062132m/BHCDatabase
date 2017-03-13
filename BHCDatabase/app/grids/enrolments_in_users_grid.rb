@@ -15,11 +15,6 @@ class EnrolmentsInUsersGrid
   column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
-  column(:created_at, :header => 'Un-Enrolled', :mandatory => true) do |model|
-    format(model.updated_at) do |value|
-      value == model.created_at ? 'Still Enrolled' : value.strftime('%d/%m/%Y - %H:%M')
-    end
-  end
   # Display button to unenrol a user from the initiative
   column(:id, :header => 'Unenrol', :mandatory => true) do |model|
     format(model.id) do |value|
