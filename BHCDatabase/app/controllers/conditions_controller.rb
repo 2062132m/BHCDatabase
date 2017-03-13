@@ -30,6 +30,18 @@ class ConditionsController < ApplicationController
     end
   end
 
+  def destroy
+    # Get the condition
+    @condition = Condition.find(params[:id])
+    # Create an unassigned_condition with identical details
+    UnassignedCondition.create(:user_id => @condition.user_id,
+                       :medical_condition_id => @condition.medical_condition_id,
+                       :date_assigned => @condition.created_at)
+    # Destroy the condition
+    flash[:success] = 'User Unassigned Condition' if @condition.destroy
+    redirect_to :back
+  end
+
   private
 
   def condition_params

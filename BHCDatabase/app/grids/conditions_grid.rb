@@ -10,16 +10,14 @@ class ConditionsGrid
       link_to MedicalCondition.find(model.medical_condition_id).name, MedicalCondition.find(model.medical_condition_id)
     end
   end
-  column(:created_at, :mandatory => true, :header => 'Assigned Condition') do |model|
+  column(:created_at, :mandatory => true, :header => 'Date Assigned') do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
-  column(:updated_at, :mandatory => true, :header => 'Unassigned Condition') do |model|
-    format(model.updated_at) do |value|
-      if model.updated_at == model.created_at
-        'Still have this condition'
-      else
-        value.strftime('%d/%m/%Y - %H:%M')
-      end
+  column(:id, :header => 'Unassign', :mandatory => true) do |model|
+    format(model.id) do |value|
+      @condition = Condition.find(value)
+      # Delete the condition, which will in turn create an 'unassigned_condition'
+      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unassign".html_safe, @condition, method: :delete, class: "btn btn-default unenrol-btn"
     end
   end
 end

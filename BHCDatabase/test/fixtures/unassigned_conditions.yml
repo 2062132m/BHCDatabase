@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medical_condition: one
+  user: one
+  date_assigned: 2017-03-13 14:46:59
+
+two:
+  medical_condition: two
+  user: two
+  date_assigned: 2017-03-13 14:46:59
