@@ -6,7 +6,7 @@ class MedicalConditionsGrid
   end
 
   filter(:id, :string, :multiple => ',')
-  filter(:name, :string, :multiple => ',')
+  filter(:name, :string) { |value| where('name like ? ', "%#{value}%") }
 
   column(:id, :mandatory => true) do |model|
     format(model.id) { |value| link_to value, model }
