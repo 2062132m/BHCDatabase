@@ -12,7 +12,7 @@ class EnrolmentsInUsersGrid
       link_to init.name, init
     end
   end
-  column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
+  column(:created_at, :header => 'Date Enrolled', :mandatory => true) do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
   # Display button to unenrol a user from the initiative

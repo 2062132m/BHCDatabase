@@ -50,7 +50,8 @@ class EnrolmentsController < ApplicationController
     @enrolment = Enrolment.find(params[:id])
     # Create an unenrolment with identical details
     Unenrolment.create(:user_id => @enrolment.user_id,
-                       :initiative_id => @enrolment.initiative_id)
+                       :initiative_id => @enrolment.initiative_id,
+                       :date_enrolled => @enrolment.created_at)
     # Destory the enrolment
     flash[:success] = 'User Unenrolled' if @enrolment.destroy
     redirect_to :back

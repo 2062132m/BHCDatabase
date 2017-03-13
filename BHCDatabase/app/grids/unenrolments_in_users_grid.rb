@@ -12,7 +12,10 @@ class UnenrolmentsInUsersGrid
       link_to init.name, init
     end
   end
-  column(:created_at, :header => 'Unenrolled', :mandatory => true) do |model|
+  column(:date_enrolled, :header => 'Date Enrolled', :mandatory => true) do |model|
+    format(model.date_enrolled) { |value| value.strftime('%d/%m/%Y - %H:%M') }
+  end
+  column(:created_at, :header => 'Date Unenrolled', :mandatory => true) do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
 end
