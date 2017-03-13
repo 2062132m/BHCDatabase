@@ -2,10 +2,10 @@
 
 one:
   id: 1
-  question: MyText
+  question: MyTextOne
   visible: false
 
 two:
   id: 2
-  question: MyText
+  question: MyTextTwo
   visible: false
