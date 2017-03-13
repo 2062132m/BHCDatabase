@@ -2,10 +2,10 @@ class UnassignedConditionsGrid
   include Datagrid
 
   scope do
-    Unassigned_Condition
+    UnassignedCondition
   end
 
-  column(:medical_condition_id, :mandatory => true) do |model|
+  column(:medical_condition_id, :header => 'Medical Condition', :mandatory => true) do |model|
     format(model.medical_condition_id) do
       link_to MedicalCondition.find(model.medical_condition_id).name, MedicalCondition.find(model.medical_condition_id)
     end
