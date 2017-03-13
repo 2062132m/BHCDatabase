@@ -45,9 +45,14 @@ class EnrolmentsController < ApplicationController
     end
   end
 
-  def touch_enrolment
-    # Update the updated_at field
-    Enrolment.find(params[:id]).touch
+  def destroy
+    # Get the enrolment
+    @enrolment = Enrolment.find(params[:id])
+    # Create an unenrolment with identical details
+    Unenrolment.create(:user_id => @enrolment.user_id,
+                       :initiative_id => @enrolment.initiative_id)
+    # Destory the enrolment
+    flash[:success] = 'User Unenrolled' if @enrolment.destroy
     redirect_to :back
   end
 
