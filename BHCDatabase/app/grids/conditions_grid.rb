@@ -16,7 +16,7 @@ class ConditionsGrid
   column(:id, :header => 'Unassign', :mandatory => true) do |model|
     format(model.id) do |value|
       @condition = Condition.find(value)
-      # Delete the enrolment, which will in turn create an 'unenrolment'
+      # Delete the condition, which will in turn create an 'unassigned_condition'
       link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unassign".html_safe, @condition, method: :delete, class: "btn btn-default unenrol-btn"
     end
   end
