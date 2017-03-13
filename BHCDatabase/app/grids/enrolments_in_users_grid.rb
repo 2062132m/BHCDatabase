@@ -25,12 +25,7 @@ class EnrolmentsInUsersGrid
     format(model.id) do |value|
       @enrolment = Enrolment.find(value)
       # 'Touches' to tuple to update it's updated_at field, meaning unenrolled
-      if @enrolment.created_at == @enrolment.updated_at
-        link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unenrol".html_safe, touch_enrolment_enrolment_path(@enrolment), class: "btn btn-default unenrol-btn"
-      else
-        # Disable button if already unenrolled
-        link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unenrol".html_safe, nil, class: "btn btn-default disabled unenrol-btn"
-      end
+      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Unenrol".html_safe, @enrolment, method: :delete, class: "btn btn-default unenrol-btn"
     end
   end
 end
