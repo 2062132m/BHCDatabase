@@ -81,6 +81,10 @@
       <% end %>
     </div>
   </div>
+  <h1>Feedbacks</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@feedbacks_grid) %>
+  </div>
   <h1 id="meetingtitle">Current Enrolments</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@enrolments_grid) %>
@@ -88,10 +92,6 @@
   <h1>Enrolment History</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@unenrolments_grid) %>
-  </div>
-  <h1>Feedbacks</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@feedbacks_grid) %>
   </div>
   <h1>Current Medical Conditions</h1>
   <div class="stdcontainer">
