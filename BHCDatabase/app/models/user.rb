@@ -1,13 +1,13 @@
 class User < ApplicationRecord
-  has_many :enrolments
-  has_many :unenrolments
+  has_many :enrolments, dependent: :delete_all
+  has_many :unenrolments, dependent: :delete_all
   has_many :initiatives, through: :enrolments
-  has_many :attendances
+  has_many :attendances, dependent: :delete_all
   has_many :meetings, through: :attendances
-  has_many :conditions
-  has_many :unassigned_conditions
+  has_many :conditions, dependent: :delete_all
+  has_many :unassigned_conditions, dependent: :delete_all
   has_many :medical_conditions, through: :conditions
-  has_many :feedbacks
+  has_many :feedbacks, dependent: :delete_all
   has_many :answers, through: :feedbacks
 
   before_save { self.email = email.downcase }
