@@ -91,18 +91,10 @@
   </div>
   <h1> Feedbacks </h1>
   <div class="stdcontainer">
-    <% if @user.feedbacks.count == 0 %>
-        <p>This user has not yet left any feedback.</p>
-    <% else %>
-        <%= datagrid_table(@feedbacks_grid) %>
-    <% end %>
+    <%= datagrid_table(@feedbacks_grid) %>
   </div>
   <h1> Medical Conditions </h1>
   <div class="stdcontainer">
-    <% if @user.conditions.count == 0 %>
-        <p>This user does not have any medical conditions.</p>
-    <% else %>
-        <%= datagrid_table(@conditions_grid) %>
-    <% end %>
+    <%= datagrid_table(@conditions_grid) %>
   </div>
 </div>
