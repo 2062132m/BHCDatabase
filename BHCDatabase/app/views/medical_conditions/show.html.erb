@@ -23,7 +23,8 @@
       <% end %>
 
       <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @medical_condition, method: :delete,
-                                  data: { confirm: "Are you sure you want to delete this medical condition?" },
+                                  data: { confirm: "Are you sure you want to delete this medical condition?
+                                                    \nNote: all associated user conditions will be deleted!"},
                                     class: "btn btn-default delete-btn" %>
       <% if @medical_condition.archived == false %>
         <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>

@@ -5,7 +5,6 @@ class UnenrolmentsInUsersGrid
     Unenrolment
   end
 
-  column(:id, :mandatory => true)
   column(:initiative_id, :header => 'Initiative', :mandatory => true) do |model|
     format(model.initiative_id) do |value|
       init = Initiative.find(value)

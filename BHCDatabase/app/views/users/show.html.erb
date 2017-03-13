@@ -61,7 +61,8 @@
             <span class="glyphicon glyphicon-lock"></span> Change Password
           </button>
           <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @user, method: :delete,
-                      data: {confirm: "Are you sure you want to delete this user?"},
+                      data: {confirm: "Are you sure you want to delete this user?
+                                      \nNote: All associated enrolments, conditions and feedbacks will be deleted!"},
                       class: "btn btn-default delete-btn" %>
           <% if !@user.archived %>
               <button id="openmodal" class="btn btn-default archive-btn">
@@ -81,6 +82,10 @@
       <% end %>
     </div>
   </div>
+  <h1>Feedbacks</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@feedbacks_grid) %>
+  </div>
   <h1 id="meetingtitle">Current Enrolments</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@enrolments_grid) %>
@@ -89,20 +94,12 @@
   <div class="stdcontainer">
     <%= datagrid_table(@unenrolments_grid) %>
   </div>
-  <h1> Feedbacks </h1>
+  <h1>Current Medical Conditions</h1>
   <div class="stdcontainer">
-    <% if @user.feedbacks.count == 0 %>
-        <p>This user has not yet left any feedback.</p>
-    <% else %>
-        <%= datagrid_table(@feedbacks_grid) %>
-    <% end %>
+    <%= datagrid_table(@conditions_grid) %>
   </div>
-  <h1> Medical Conditions </h1>
+  <h1>Medical Condition History</h1>
   <div class="stdcontainer">
-    <% if @user.conditions.count == 0 %>
-        <p>This user does not have any medical conditions.</p>
-    <% else %>
-        <%= datagrid_table(@conditions_grid) %>
-    <% end %>
+    <%= datagrid_table(@unassigned_conditions_grid) %>
   </div>
 </div>

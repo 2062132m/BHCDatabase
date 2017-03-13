@@ -3,7 +3,8 @@ class MedicalCondition < ApplicationRecord
   validates :description, presence: true, length: {maximum: 255}
   validates :reason_archived, length: {maximum: 30}
 
-  has_many :conditions
+  has_many :conditions, dependent: :delete_all
+  has_many :unassigned_conditions, dependent: :delete_all
   has_many :users, through: :conditions
 
 end
