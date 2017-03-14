@@ -12,10 +12,6 @@ class UsersGrid
   filter(:emergency_contact, :string) { |value| where('emergency_contact like ? ', "%#{value}%") }
   filter(:dob, :date, :range => true)
 
-  #
-  # Columns
-  #
-
   column(:id, :mandatory => true) do |model|
     format(model.id) { |value| link_to value, model }
   end
