@@ -65,13 +65,14 @@
       </div>
     <% end %>
   </div>
-  <h1 id="meetingtitle">Meetings</h1>
+  <h1>Meetings</h1>
   <div class="stdcontainer">
-    <% if @initiative.meetings.count == 0 %>
-      <p>This initiative has not yet had any meetings.</p>
-    <% else %>
-      <%= datagrid_table(@meetings_in_initiatives_grid) %>
-      <%= will_paginate @meetings_in_initiatives_grid.assets %>
-    <% end %>
+    <%= datagrid_table(@meetings_in_initiatives_grid) %>
+    <%= will_paginate @meetings_in_initiatives_grid.assets %>
+  </div>
+  <h1>Funders</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@funders_for_initiatives_grid) %>
+    <%= will_paginate @funders_for_initiatives_grid.assets %>
   </div>
 </div>
