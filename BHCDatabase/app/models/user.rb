@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :medical_conditions, through: :conditions
   has_many :feedbacks, dependent: :delete_all
   has_many :answers, through: :feedbacks
+  has_many :user_funders, dependent: :delete_all
 
   before_save { self.email = email.downcase }
 
