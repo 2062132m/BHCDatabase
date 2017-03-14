@@ -43,15 +43,15 @@ class FundersController < ApplicationController
   end
 
   def fund_initiative
-    @fund = InitiativeFunder.new
+    @initiative_funder = InitiativeFunder.new
   end
 
   def fund_medical_condition
-    @fund = MedicalConditionFunder.new
+    @medical_condition_funder = MedicalConditionFunder.new
   end
 
   def fund_user
-    @fund = UserFunder.new
+    @user_funder = UserFunder.new
   end
 
   def new_fund_initiative
