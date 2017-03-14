@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314143303) do
+ActiveRecord::Schema.define(version: 20170314143549) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -117,8 +117,9 @@ ActiveRecord::Schema.define(version: 20170314143303) do
   create_table "questions", force: :cascade do |t|
     t.text     "question"
     t.boolean  "visible"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "question_type"
     t.index ["question"], name: "index_questions_on_question", unique: true
   end
 
