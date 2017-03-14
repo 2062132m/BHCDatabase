@@ -102,4 +102,14 @@
   <div class="stdcontainer">
     <%= datagrid_table(@unassigned_conditions_grid) %>
   </div>
+  <h1>Funding</h1>
+  <div class="stdcontainer">
+    <h4>Directly Funded By:</h4>
+    <h4>Funded Through:</h4>
+    <% @user.initiatives.each do |initiative| %>
+      <% initiative.initiative_funders.each do |funder| %>
+        <h4><%= initiative.name %> by <%= Funder.find(funder.id).name %></h4>
+      <% end %>
+    <% end %>
+  </div>
 </div>

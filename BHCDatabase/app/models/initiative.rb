@@ -4,6 +4,7 @@ class Initiative < ApplicationRecord
   has_many :meetings, :dependent => :destroy
   has_many :enrolments, dependent: :delete_all
   has_many :users, through: :enrolments
+  has_many :initiative_funders
 
   validates :name, presence: true, length: {maximum: 50}, uniqueness: {:scope => :location, case_sensitive: false}
   validates :description, presence: true, length: {maximum: 255}
