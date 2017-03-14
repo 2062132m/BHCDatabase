@@ -1,0 +1,10 @@
+<%= form_for @fund_initiative, :url => { :action => "new_fund_initiative"} do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label "Activity" %>
+      <%= f.text_field :funder_id, placeholder: 'Activity', class: 'typeahead form-control' %>
+
+      <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
+
+    <%= f.submit 'Submit', class: 'btn btn-default submit-btn' %>
+<% end %>

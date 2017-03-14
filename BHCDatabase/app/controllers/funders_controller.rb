@@ -42,6 +42,10 @@ class FundersController < ApplicationController
     redirect_to funders_url
   end
 
+  def fund_initiative
+    @fund_initiative = InitiativeFunder.new
+  end
+
   private
 
   def funder_params
