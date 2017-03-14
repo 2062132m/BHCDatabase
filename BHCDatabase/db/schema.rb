@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314142851) do
+ActiveRecord::Schema.define(version: 20170314160424) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 20170314142851) do
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
     t.index ["name", "location"], name: "index_initiatives_on_name_and_location", unique: true
+  end
+
+  create_table "medical_condition_funders", force: :cascade do |t|
+    t.integer  "funder_id"
+    t.integer  "medical_condition_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["funder_id"], name: "index_medical_condition_funders_on_funder_id"
+    t.index ["medical_condition_id"], name: "index_medical_condition_funders_on_medical_condition_id"
   end
 
   create_table "medical_conditions", force: :cascade do |t|
