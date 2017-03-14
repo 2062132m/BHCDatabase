@@ -35,19 +35,19 @@ Jaklin Yordanova}
 
 Building Healthy Communities in Dumfries and Galloway is a community development programme which aims to advance the health and well-being of all individuals within its area, but particularly those in difficult circumstances. Its main goal is to improve the lives of people who may otherwise become isolated, by encouraging participation in initiatives which help keep them physically and mentally healthy while also promoting the creation and sustaining of social bonds. The programme consists of three different types of participants:
 \begin{itemize}
-    \item Administrators
-    \item Volunteers
-    \item Members
+	\item Administrators
+	\item Volunteers
+	\item Members
 \end{itemize}
 Members are the individuals participating in the initiatives themselves. Volunteers run the initiatives and are responsible for tracking the members progress. They must inform administrators not only about the progress of the members but also about the whole process. Currently all this is being performed by hand. Administrators must manually input the data into a database, and also search the database using only inbuilt functions of the database software. This is a difficult and time consuming process.
 
 Our team was responsible for building a system to automate the input and retrieval of relevant data. We designed and implemented a system that accepts the current database, and allows it to be modified and extended. The system has the following features:
 \begin{itemize}
-    \item Registering new members and deleting those who leave the program
-    \item Keeping track of members' attendance
-    \item Keeping track of the progress of both members and volunteers
-    \item Deleting and adding initiatives
-    \item Searching the database for particular parameters and organising the information in an easy to read manner.
+	\item Registering new members and deleting those who leave the program
+	\item Keeping track of members' attendance
+	\item Keeping track of the progress of both members and volunteers
+	\item Deleting and adding initiatives
+	\item Searching the database for particular parameters and organising the information in an easy to read manner.
 \end{itemize}
 
 \end{abstract}
@@ -108,7 +108,7 @@ In terms of project planning, agile methods are one of the most trusted methods 
 \subsection{Technologies Used}
 \label{tech}
 
-Having the methods that we going to be used outlined, the technologies needed regarding the project management had to be outlined. The university moodle page, suggested a series of technologies to use for handling the projects such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what technologies were permitted, we decided to use Gitlab for our project management and repository. Gitlab provides every technology that is needed to handle a project repository, the permissions that each member has as well as an amazing GUI that organises the "wiki" page and the "issues" page and so on. Gitlab provides feature organisation, where the user can have due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provides is probably Continuous Integration (CI). CI is a tool that enables all the repository users to merge their work to a local repository. This is a huge organisational feature, since it enables the constant interaction of every project member. Every contributor, has the ability of assigning a ticket to themselves or even to other team contributors, enabling the possibility of creating a highly organised page and the ability of tracking the workload that every contributor has done. All these make the ability of of assigning work to contributors that have not worked as much as the others in a specific week and assign less to contributors that already have done more work than needed. Subsequently, the creation of issues becomes very descriptive; using checkboxes, priority level, time estimating and different labels. This was very useful in terms of tracking progress. A feature that contributed to the increment of the security of the software was the creation of a separate branch for resolving any open issues. A plan was created about the useful usage of separate branches. Every particular issue or every new alternative was related with a newly created branch, enabling the test of new features and bug fixes without pushing to the Master branch. As soon as the issue was fixed, a merge request was created followed by closing that particular issue and deleting the temporary branch. Lastly, a feature that the lead developers managed to add in subsequent time was the "Docker". Docker is an open source container platform. Docker can be described as “The platform that worked for us”. It offers an automated deployment of the software. The most important thing that Docker offers is that the deployments are happening in different "containers" which hold all the requirements the software has. This results to a more automated management of the software.
+Having the methods that we going to be used outlined, the technologies needed regarding the project management had to be outlined. The university moodle page, suggested a series of technologies to use for handling the projects such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what technologies were permitted, we decided to use Gitlab for our project management and repository. Gitlab provides every technology that is needed to handle a project repository, the permissions that each member has as well as an amazing GUI that organises the "wiki" page and the "issues" page and so on. Gitlab provides feature organisation, where the user can have due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provides is probably Continuous Integration (CI). CI is a tool that enables all the repository users to merge their work to a local repository. This is a huge organisational feature, since it enables the constant interaction of every project member. Every contributor, has the ability of assigning a ticket to themselves or even to other team contributors, enabling the possibility of creating a highly organised page and the ability of tracking the workload that every contributor has done. All these make the ability of of assigning work to contributors that have not worked as much as the others in a specific week and assign less to contributors that already have done more work than needed. Subsequently, the creation of issues becomes very descriptive; using checkboxes, priority level, time estimating and different labels. This was very useful in terms of tracking progress. A feature that contributed to the increment of the security of the software was the creation of a separate branch for resolving any open issues. A plan was created about the useful usage of separate branches. Every particular issue or every new alternative was related with a newly created branch, enabling the test of new features and bug fixes without pushing to the Master branch. As soon as the issue was fixed, a merge request was created followed by closing that particular issue and deleting the temporary branch. Lastly, a feature that the lead developers managed to add in subsequent time was the "Docker". Docker is an open source container platform. Docker can be described as ?The platform that worked for us?. It offers an automated deployment of the software. The most important thing that Docker offers is that the deployments are happening in different "containers" which hold all the requirements the software has. This results to a more automated management of the software.
 
 After this discussion, the meeting was not over. Therefore, a decision needed to be taken about technologies being used for implementing the project itself. An application framework had to be chosen. From the one hand, Django was highly recommended, due to the fact that every team member had previous experience with Django from the second year web application development course. Another suggested option was Rails as more powerful tool with better documentation. To put more depth in it, Rails is a web application framework with "model-view-controller" software design pattern, not "model-view-template" like the already familiarised Django. None of the six members coded on Rails before, so the meeting was postponed and an issue was created on Gitlab suggesting that every member in the team had to study Rails in their personal free time. During the following meeting Rails was agreed to be used. Rails provides a massive help in the testing process. Moreover, the most persuasive factor of using Rails is the automation of many tasks and the "Gems" documentation that provides "RubyGems" as a package manager. Using a tool called "Gem" in  terminal, different libraries can be installed with which the user can work. Gems, are previously tested libraries, which provide security, saving a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks. Since Rails, as previously stated, is based in "model-view-controller", a model is needed for the management of the newly created database. PostgreSQL is a self-contained, free to use object-relational database management system suitable for a small database with just a couple of thousand text records.
 \subsection{Retrospective}
@@ -136,14 +136,14 @@ Due to the fact that the team was composed from novice programmers, the team rol
 \item Jaklin Yordanova - Documentation and Front End Developer
 
 \end{itemize}
-The team voted about the actual team leader. The team leader will navigate any retrospective and any presentation of the application to the customers. Additionally, a role based model is being followed. Thus, the team leader is actually just a team manager, he is not taking the final decisions alone but with the team's help. The team leader is just helping to the navigation of the program and explaining the daily tasks. The team voted fairly David Brown as the team leader since he is the one of the back end lead developers and had the most contribution to the project. Applying roles, does not necessarily mean that any team member will not work in any other sectors of the website. The members faced many difficulties in resolving issues of the program, such that many times a work has been transferred to another member of the team. Furthermore, the workload of the back end development is massive and many minor issues were assigned to other team members than the "Lead Developers" so that the lead developers can focus in more advanced issues. Subsequently, we discovered the benefits from working in pairs for different tasks regarding the Documentation, researching and doing “Pair Programming”. This was not only useful for our team building but also time-saving and code-efficient.
+The team voted about the actual team leader. The team leader will navigate any retrospective and any presentation of the application to the customers. Additionally, a role based model is being followed. Thus, the team leader is actually just a team manager, he is not taking the final decisions alone but with the team's help. The team leader is just helping to the navigation of the program and explaining the daily tasks. The team voted fairly David Brown as the team leader since he is the one of the back end lead developers and had the most contribution to the project. Applying roles, does not necessarily mean that any team member will not work in any other sectors of the website. The members faced many difficulties in resolving issues of the program, such that many times a work has been transferred to another member of the team. Furthermore, the workload of the back end development is massive and many minor issues were assigned to other team members than the "Lead Developers" so that the lead developers can focus in more advanced issues. Subsequently, we discovered the benefits from working in pairs for different tasks regarding the Documentation, researching and doing ?Pair Programming?. This was not only useful for our team building but also time-saving and code-efficient.
 
 
 %==============================================================================
 \section{Documentation}
 \label{documentation}
 
-To begin with, the project was divided to nine different milestones which lasted a period between every customer meeting. Sometimes, a milestone was referring to a completion to a major task, thus, two milestones may have occurred between two customers’ meeting. The following length of the case study, will focus to the process that was taken chronologically outlining the software process from the requirements elicitation until the software presentation.
+To begin with, the project was divided to nine different milestones which lasted a period between every customer meeting. Sometimes, a milestone was referring to a completion to a major task, thus, two milestones may have occurred between two customers? meeting. The following length of the case study, will focus to the process that was taken chronologically outlining the software process from the requirements elicitation until the software presentation.
 
 \subsection{Objectives}
 \label{objectives}
@@ -212,36 +212,36 @@ A couple of highly representative functional user stories are:
 
 \item As an administrator, I want to add a member to the database, so that they can join a group.
 
-    \begin{enumerate}
-     \item Add an activity to add a person
-     
-    \item Add an activity to enter their information
+	\begin{enumerate}
+ 	\item Add an activity to add a person
+ 	
+	\item Add an activity to enter their information
 
-    \item Add an activity for choosing groups
+	\item Add an activity for choosing groups
 
-    \item Create a query for retrieving groups
-    \end{enumerate}
+	\item Create a query for retrieving groups
+	\end{enumerate}
 \item As a volunteer, I want to be able to register attendance at my group(s), so that I can contribute data.
 
-    \begin{enumerate}
-    \item Create a query to retrieve groups I run
-    
-    \item Add an activity to log attendance
-    
-    \item Create a query for members of the group
-    
-    \item Add an activity to enter attendance per member
-    
-    \end{enumerate}
+	\begin{enumerate}
+	\item Create a query to retrieve groups I run
+	
+	\item Add an activity to log attendance
+	
+	\item Create a query for members of the group
+	
+	\item Add an activity to enter attendance per member
+	
+	\end{enumerate}
 
 \item As a member, I want to be able to log in, so that I can view my information.
 
-    \begin{enumerate}
-    
-    \item Add an activity to log in
-    \item Add an activity to enter log in information
-    
-    \end{enumerate}
+	\begin{enumerate}
+	
+	\item Add an activity to log in
+	\item Add an activity to enter log in information
+	
+	\end{enumerate}
 
 \end{itemize}
 
@@ -251,29 +251,29 @@ Thus, some non-functional user stories had to be outline in order practical exam
 
 \item  As an administrator, I want to replace a member's name with numbers in the database, so that I can find them easier.
 
-    \begin{enumerate}
-    
-    \item Create a query for retrieving a person
-    
-    \item Add an activity to update a person's information
-    
-    \item Create a warning message for wrong type of input
-    
-    \item Do not allow this modifications to be saved
-    \end{enumerate}
-    
-\item As a volunteer, I want to be able to have access to the database, so that I can add a new program that the administrators haven’t added yet.
+	\begin{enumerate}
+	
+	\item Create a query for retrieving a person
+	
+	\item Add an activity to update a person's information
+	
+	\item Create a warning message for wrong type of input
+	
+	\item Do not allow this modifications to be saved
+	\end{enumerate}
+	
+\item As a volunteer, I want to be able to have access to the database, so that I can add a new program that the administrators haven?t added yet.
 
-    \begin{enumerate}
-    \item Restrict the "Add a new page", "Add a new page", "Add a new member", etc buttons to can be only accessed from administrators
-    \end{enumerate}
-    
+	\begin{enumerate}
+	\item Restrict the "Add a new page", "Add a new page", "Add a new member", etc buttons to can be only accessed from administrators
+	\end{enumerate}
+	
 \item As a member, I want to be able to add or delete a group that I am part to, so that I can register my self to new groups or delete me from the old ones.
 
-    \begin{enumerate}
-    \item Restrict the member's redirected page to do very basic tasks
-    \item Do not provide this functionality to members.
-    \end{enumerate}
+	\begin{enumerate}
+	\item Restrict the member's redirected page to do very basic tasks
+	\item Do not provide this functionality to members.
+	\end{enumerate}
 
 \end{itemize}
 
@@ -319,71 +319,67 @@ An overall satisfaction was kept from both the team and the customers. After the
 \subsection{Objectives}
 \label{sec:objectives}
 
-During the next iteration, the team held a group discussion to decide the objectives for the next customer meeting. Some pieces of documentation were still missing, such as the ER (Entity-relationship) and Component diagrams. The team assigned to particular team members the diagrams as new issues. The team had not only create the diagrams but also start designing and coding the application. Some team members also have been assigned to start the actual application.
+During the next iteration, after a group discussion, the objectives for the next customer meeting were stated. ER (Entity-relationship) and Component diagrams were about to be designed for the documentation of the project. Particular team members were assigned with new issues to do that. Not only the diagrams were created, but also the designing and the coding for the application were in progress.  
 
 \subsection{ER Diagram}
 \label{sec:er}
 
-An entity-relationship diagram plays a critical role in the development of an application. In fact, the team was unable to start developing the application without such a diagram. An ER diagram presents the relationships between the entities in a diagram, which is why without the diagram the team was unable to have a clear view of the structure of the database. Having an ER diagram presents clearly the relationships between the entities, the attributes that consist them and which entities are depended on others.
+An Entity-Relationship diagram plays a critical role in the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team had started the development of the application only after an ER diagram was present to specify the structure of the database. 
 
-Our ER diagram is expressed in figure 2.
+The ER diagram is shown in figure 2.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
-  \caption{Entity Relationship Diagram}
-  \label{fig:er}
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
+ \caption{Entity Relationship Diagram}
+ \label{fig:er}
 \end{figure}
 
-To give a brief explanation of the diagram: The main aspect of the diagram is the initiatives, the courses that the program provides which are specified with a specific name, id and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. The sessions have an id, a date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
+The main aspect of the diagram is the initiatives, which are different courses that the program provides. They are specified with a name, ID and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. Each sessions has an ID, date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
 
 \subsection{Component Architecture}
 \label{sec:component}
 
-Since Ruby on Rails uses Model-View-Controller architecture pattern, it allows our team to develop Agile application. The Model layer represents the logic of the application and the management of interactions with elements in the database. The View is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation. 
+Since Ruby on Rails uses Model-View-Controller architecture pattern, it allows our team to develop Agile application. The Model layer represents the logic of the application and the management of interactions with elements in the database. The View is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation.
 In addition we decided to use Docker to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
 All of those are illustrated in Figure 3 which demonstrates visually the component architecture of our application.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
-  \caption{Component Architecturem}
-  \label{fig:ca}
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
+ \caption{Component Architecturem}
+ \label{fig:ca}
 \end{figure}
 
 \subsection{Initial Prototype}
 \label{sec:prototype1}
 
-Having the basic database structure, the team created some initial prototypes of the page, in order to discuss potential design changes. The first version of the page can be found in Figure 3.
+Having the basic database structure, initial prototypes of the page were created, in order to discuss potential design changes. The first version of the page can be found in Figure 3.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
-  \caption{Initial Prototype}
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
+ \caption{Initial Prototype}
 \end{figure}
 
-The initial page is very basic, not very colourful and errors are contained. It was created to point out the idea of the  design and to outline a vision of how the site would work. The team decided to add the colours and the feel of the blog that the program already had.
+The initial page was very basic, not very colourful and errors containing. It was created to point out the idea of the design and to outline a vision of how the site would work. After that we added the colours following a similar theme as the blog, which the customers already had.
 
 \subsection{Final Prototype}
-\label{sec:prototype2} 
+\label{sec:prototype2}
 
-The second design was more simplified in terms of account organisation. The customers clarified that the members would not be able to sign up, which has as a consequence to deleting this feature. Furthermore, the home page and the login page have been merged, so that a simpler view of the site is provided. The new prototype can be found in Figure 4.
+The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the members would not be able to sign up, which had the consequence of deleting this feature. Furthermore, the home page and the login page have been merged into one single page in order to provide easier access for the customers. The new prototype can be found in Figure 4.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
-  \caption{Second version of the prototype}
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
+ \caption{Second version of the prototype}
 \end{figure}
 
- 
-
-\subsection{Component Diagram}
-\label{sec:component}
 
 
 
 \subsection{End of second and third milestone}
 \label{sec:milestone23}
 
-The above section was generally outlining the progress in the second and third milestone. The progress was steady and specific. By the 7th of December, the team had their third customer meeting was again used for further clarifications about the software implementation and navigation to some more complete wireframes. Furthermore, after the Christmas break and before the fourth customer meeting at the 26th of January, the team managed to create an initial version of the application. The application was presented to the customers on its current point and their opinion was asked. The customers were impressed with the amount of progress since in the previous customer meeting the back end development was not even started. Further clarifications were made about the navigation of the page, since know the customers had a visualisation of the application. Additionally, the customers requested a new feature which was never discussed before. The addition of a funding flag which represents which funding is from what organisation and where in which groups it is applied. Furthermore, different funding's apply to a specifying group of people and different funding's are applying to specified initiatives group.
+The above section was generally outlining the progress in the second and third milestone. The progress was steady and specific. By the 7th of December, the team had their third customer meeting was again used for further clarifications about the software implementation and navigation to some more complete wireframes. Furthermore, after the Christmas break and before the fourth customer meeting at the 26th of January, the team managed to create an initial version of the application. The application was presented to the customers up to its current point and their opinion was taken into account. They were impressed with the amount of progress we had made since in the previous customer meeting the back end development was not even started. Further clarifications were made about the navigation of the page, since once the customers had a visualisation of the application, it was more convenient for them to express their view for it. Additionally, they requested a new feature which was never discussed before - the addition of a funding flag which represents which funding is from which organisation and where in which groups it is applied. Furthermore, different funding's apply to a specifying group of people and different funding's apply to a specified initiatives group.
 
-The retrospective performed by the end of the second milestone, showed some lack of communication. The team did not consider this as a major issue since there was a three week holiday gap were everyone were focused on self studying about how to develop and deploy the application. Additionally, the team lacked on clarifying some basic features of the website with the customers. All the issues outlined on the second retrospective, they were clearly solved during the next. The team was more organised and communicative. Due to the fact that an initial stage of the application was presented on the fourth customer meeting lack of clarification of the features that was raised as an issue in the previous retrospective was know clearly solved.
+The retrospective performed by the end of the second milestone, showed some lack of communication. The team did not consider this as a major issue since there was a three week holiday gap during which everyone was focused on self studying about how to develop and deploy the application. Additionally, the team lacked on clarifying some basic features of the website with the customers. All the issues outlined on the second retrospective, they were clearly solved during the next. The team was more organised and communicative. Due to the fact that an initial stage of the application was presented on the fourth customer meeting lack of clarification of the features that was raised as an issue in the previous retrospective was know clearly solved.
 
 %==============================================================================
 \section{Working on the backend development}
@@ -392,42 +388,39 @@ The retrospective performed by the end of the second milestone, showed some lack
 \subsection{Objectives}
 \label{objectives}
 
-Before the beginning of the fourth milestone the team performed a meeting where the next objectives were outlined. Due to the fact that by the end of the current milestone the team should deliver a working version of the website the main focus was on resolving any opened issues that were raised from the previous retrospective and customer meeting. In the following weeks the website had all the added functionality created. The most critical issues that were raised is the newest demands that the customers were requested including the flag feature described above. The team had to discuss how this addition will be implemented.
+Before the beginning of the fourth milestone, the next objectives were outlined. Due to the fact that by the end of the current milestone the team was expected to deliver a working version of the website the main focus was resolving any opened issues that were raised from the previous retrospective and customer meeting. In the following weeks the website had all the added functionality created. The most critical issues that were raised is the newest demands that the customers were requested including the flag feature described above. 
 
 
 \subsection{User Authentication}
-\label{sec:authentication} 
+\label{sec:authentication}
 
-Maybe the most important factor of the development of the site was the the protection of the user information.  A secure user authentication was a very crucial development part. By the phrase "User authentication" we mean the process where the user of the page types some credential information which are compared with the information that are kept in the database, if the information are matched the user is able to access various other information based on the level access that he/she has on the site. Improper development of the user authentication could lead to the leak of personal information from one user to another or the ability of every user editing the database. The team performed a small research online to explore the best practices of developing a highly secure user authentication. A highly suggested, "gem" for developing a good user authentication was the "Devise". Devise is one of the most popular user authentication tools. Some of its features are the ability of assigning multiple models in at the same time and its modulation. A user authentication tool such that provide a lot complexity and unnecessary tool that we will never user. On top of that, all these additional functionality may introduce issues that as programmers with a small experience may be unable to solve. All in all, a conclusion has been taken that a pre-built solution was not a very good idea. However, building from scratch the user authentication seemed a better solution since the complexity is controlled and every new feature is known along with any anomalies that may introduce. The user authentication was based in a very good book called "Ruby on Rails Tutorial (Rails 5)" written by Michael Hartl. The book provides some online tutorials which the authentication is based until chapter 6. The team finalised the authentication with some simple html commands based on previous experience.
+One of the most important factors of the development of the site was the protection of the user?s information.  A secure user authentication was a very crucial implementation part. By the phrase "User authentication" we mean the process where the user of the page types some credential information which are compared with the information that are kept in the database, if the information are matched the user is able to access various other information based on the level access that they have on the site. Improper development of the user authentication could lead to the leak of personal information from one user to another or the ability of every user editing the database. The team performed a small research online to explore the best practices of developing a highly secure user authentication. A highly suggested, "gem" for developing a good user authentication was the "Devise". Devise is one of the most popular user authentication tools. Some of its features are the ability of assigning multiple models in at the same time and its modulation. A user authentication tool such that provide a lot complexity and unnecessary tool that we will never user. On top of that, all these additional functionality may introduce issues that as programmers with a small experience may be unable to solve. All in all, a conclusion has been taken that a pre-built solution was not a very good idea. However, building from scratch the user authentication seemed a better solution since the complexity is controlled and every new feature is known along with any anomalies that may introduce. The user authentication was based in a very good book called "Ruby on Rails Tutorial (Rails 5)" written by Michael Hartl. The book provides some online tutorials which the authentication is based until chapter 6. The authentication was finalised with some simple HTML commands based on our previous experience.
 
 
 \subsection{Browser and Mobile Compatibility}
-\label{sec:compatibility} 
+\label{sec:compatibility}
 
-Our aim for browser compatibility is quite broad. From meetings with the customers, we have gathered the information that the support for the most popular browsers is essential, and that the website should function on iOS and Android (Running in both tablet and mobile form).
+The aim for browser compatibility was quite broad. From meetings with the customers, we had gathered the information that the support for the most popular browsers is essential, and that the website should function on iOS and Android (Running in both tablet and mobile form).
 
- A huge issue raised at that point, was the browser compatibility and more specifically the support of Internet Explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, we have taken the decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system. An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
- 
- An important amount of the user's site, will only have as a mean of access to the site their mobile phones. Thus, a good mobile compatibility is demanded. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility.
+A huge issue raised at that point, was the browser compatibility and more specifically the support of Internet Explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, we have taken the decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system. An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
+An important amount of the user's site, will only have as a mean of access to the site their mobile phones. Thus, a good mobile compatibility is demanded. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility.
 
 \begin{figure}
-  \centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
-  \caption{Mobile Compatibility Prototype}
+ \centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
+ \caption{Mobile Compatibility Prototype}
 \end{figure}
 
 \subsection{Testing}
 \label{testing}
 
-It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the first day that we started coding, every section that we completed, we had also provided the proper testings. Providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in figure 6 displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
+It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the first day we started coding, for every section that we completed, we had also provided the proper testings. Therefore, providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in figure 6 displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
-  \caption{Increasing rate of costs in different software development stages }
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
+ \caption{Increasing rate of costs in different software development stages }
 \end{figure}
 
- Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. Our file was using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in your project. Then, every time you commit or merge something in the repository, tests are running to check whether there are issues. Furthermore, the team developed their own tests using mutants. The program has an impressive percentage of testing coverage reaching more than 90\%. 
- 
- 
+Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. Our file was using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in your project. Then, every time you commit or merge something in the repository, tests are running to check whether there are issues. Furthermore, the team developed their own tests using mutants. The program has an impressive percentage of testing coverage reaching more than 90\%.
 \subsection{Website Deployment}
 \label{sec:deployment}
 
@@ -443,14 +436,14 @@ The fourth milestone was successfully completed with all its major goals succeed
 \section{User Documentation}
 \label{sec:user_doc}
 
-One other important thing that we needed to create was the user documentation. Due to the fact that this is a university course, the software life cycle won't be strictly followed. For example, no future maintenance will take place. The team had to develop by the end of the development of the site a well defined user documentation. The documentation needed to be divided in two parts. The first part will be a brief documentation about how to navigate in the program and perform simple tasks such us adding a new user or deleting an old one. This was easily developed using a simple pdf file. A team member created a navigation document containing screenshots and arrows showing how to perform simple tasks in the website. Figure **number** contains a screenshot of the user manual.
+One other important thing that we needed to create was the user documentation. Due to the fact that this is a university course, the software life cycle would not be strictly followed. For example, no future maintenance would take place. The team had to produce by the end of the development of the site a well defined user documentation. The documentation needed to be divided in two parts. The first part - a brief documentation about how to navigate in the program and perform simple tasks such as adding a new user or deleting an old one. This was easily developed using a simple pdf file. A team member created a navigation document containing screenshots and arrows showing how to perform simple tasks in the website. Figure **number** contains a screenshot of the user manual.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{usermanual.png}}
-  \caption{User Manual }
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{usermanual.png}}
+ \caption{User Manual }
 \end{figure}
 
- The second part of the documentation is about explaining what technologies are used and generally how to manage the back-end development. Providing a well-understood documentation is highly important since the programs that are provided are funded. This results to the fact that they are economically depended to many different organisations that vary every year and these organisations vary the information that they need to be undertaken from the program users. The development of the documentation was based on a single rule, develop it such us every aspect, every word will be read by a small child. This way, the team managed to develop a well understood documentation. 
+The second part of the documentation is about explaining what technologies are used and generally how to manage the back-end development. Providing a well-understood documentation is highly important since the programs that are provided are funded. This results to the fact that they are economically depended to many different organisations that vary every year and these organisations vary the information that they need to be undertaken from the program users. The development of the documentation was based on a single rule, develop it such us every aspect, every word will be read by a person who has no idea how to navigate through the site. Following that, simple and well-understood documentation was developed.
 
 Having a written documentation as a separate file is not enough. The program, throughout the years will be used by many different people in many different places. The documentation will not be available to them all the time. As a consequence, the integration of a user guide in the page is essential. The team decided to use an already created engine called "how\_to". This engine enables both the user and the programmer to easily manage various documented sections of the website such us frequently asked questions and notifications explaining the usage of various fields.
 
@@ -459,14 +452,14 @@ Having a written documentation as a separate file is not enough. The program, th
 \section{Formative Application Evaluation}
 \label{sec:appEval}
 
-A critical stage where maybe the most useful changes is the one of the Formative Application Evaluation. After the successful early deliver of the program to the customers, the team created a questionnaire and in combination with the simple user guide an application evaluation was performed. The evaluation was only performed from the customers. Due to the fact that the team had already discussed the design issues with the customers, the evaluation and questionnaire were mainly focused in the navigation and understanding of the page. On the  fourth customer day the team leader performed a navigation to the page, explaining to the customers how the page works.  Additionally, a user guide and a simple questionnaire was given. The goal was for the team to study whether the customers are able to navigate to the page and if they are able to solve their issues through the usage of the user guide. For the creation of the questionnaire a simple "Google Form" was used. The questionnaires were collected and studied. The questionnaire can be found in Figure ***number***.
+The Formative Application Evaluation is the stage when a developer receives objective feedback, useful comments and suggestions about their product.  After the successful early delivering of the application to the customers, the next step was creating a questionnaire. In combination with the simple user guide, an evaluation was performed. The evaluation was only performed from the customers. Due to the fact that the team had already discussed the design issues with them, the evaluation and questionnaire were mainly focused in the navigation and understanding of the page. On the  fourth customer meeting, the team leader performed a sample navigation to the page, explaining to the customers how the pages work.  Additionally, a user guide and a simple questionnaire was given. Our was to study whether the customers are able to navigate to the page and to what extent they are able to solve their issues using the user guide. The questionnaires were collected and studied.  The questionnaire was made via simple "Google Form" and can be found in Figure ***number***.
 
 \begin{figure}
-  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{evalQuestCustomers.pdf}}
-  \caption{Evaluation Questionnaire for customers }
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{evalQuestCustomers.pdf}}
+ \caption{Evaluation Questionnaire for customers }
 \end{figure}
 
-As a consequence of having a small amount of responses the results where mainly qualitative than quantitative. The responses of the questionnaire showed no major issues except of the fact that they have asked more features that again were not discussed in previous meetings. The team focused on solving the small navigation issues that the customers identified and left the new features in the case of having some more time.
+As a consequence of having a small amount of responses, the results were rather qualitative than quantitative. The responses of the questionnaire showed no major issues except of the fact that they have asked for more features that again were not discussed in previous meetings. The team focused on solving the small navigation issues that the customers identified and left the new requirements on a side during time-constraints. 
 
 
 
@@ -481,7 +474,7 @@ Developing a site from scratch, always creates some major challenges. The second
 
 The organisation of the database was another big challenge that the team have encountered. Although the proposed database can be characterised by its simplicity, retrieving the information was sometimes tricky since a member of a team could be a volunteer in another team and a general administrator. Possible authentication issues can be raised questioning the fact of where that specific user is allowed to alternate information and where is not.
 
-As in every project developing process, programmers will face some last-minute demands from the customers. One of these demands were the creation of some type of flag pointing which members or groups are funded from specific organisations. The current demand raised some issues in in the database development since this is an addition very specific information regarding every member of every group. The feature was flagged as an “ extra feature” which would be developed only after the rest of the software is properly developed. The decision of taking that action was stated clearly to the customers from the very first day that it was suggested. The feature caused last minute additions to the ER diagram. The feature was successfully created and added to the website after the correct testing.
+As in every project developing process, programmers will face some last-minute demands from the customers. One of these demands were the creation of some type of flag pointing which members or groups are funded from specific organisations. The current demand raised some issues in in the database development since this is an addition very specific information regarding every member of every group. The feature was flagged as an ? extra feature? which would be developed only after the rest of the software is properly developed. The decision of taking that action was stated clearly to the customers from the very first day that it was suggested. The feature caused last minute additions to the ER diagram. The feature was successfully created and added to the website after the correct testing.
 
 Having an agile oriented development sometimes leads to unexpected demands. This was the case of changing the deadline for delivering the website to a month before the due date. The customers suggested an early delivery of the website for testing purposes and feedback submission. The following action raised some challenges since the overall coding time was only one and a half months. The team managed to deliver the software on time but without some minor features which were progressively added in the software.
 
