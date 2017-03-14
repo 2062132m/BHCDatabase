@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313163243) do
+ActiveRecord::Schema.define(version: 20170314142851) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 20170313163243) do
     t.index ["name", "email"], name: "index_funders_on_name_and_email", unique: true
   end
 
+  create_table "initiative_funders", force: :cascade do |t|
+    t.integer  "funder_id"
+    t.integer  "initiative_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["funder_id"], name: "index_initiative_funders_on_funder_id"
+    t.index ["initiative_id"], name: "index_initiative_funders_on_initiative_id"
+  end
+
   create_table "initiatives", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -149,6 +158,15 @@ ActiveRecord::Schema.define(version: 20170313163243) do
     t.datetime "date_enrolled"
     t.index ["initiative_id"], name: "index_unenrolments_on_initiative_id"
     t.index ["user_id"], name: "index_unenrolments_on_user_id"
+  end
+
+  create_table "user_funders", force: :cascade do |t|
+    t.integer  "funder_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funder_id"], name: "index_user_funders_on_funder_id"
+    t.index ["user_id"], name: "index_user_funders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
