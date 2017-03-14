@@ -37,6 +37,7 @@ class UsersGrid
   column(:telephone, :mandatory => true)
   column(:emergency_contact, :mandatory => true)
   column(:dob, :mandatory => true)
-  column(:privilege, :mandatory => true, :html => true,)
+  column(:privilege, :mandatory => true,
+         :header => "Privileges <html><i class='glyphicon glyphicon-question-sign'></i></html>".html_safe , :html => true, )
 
 end
