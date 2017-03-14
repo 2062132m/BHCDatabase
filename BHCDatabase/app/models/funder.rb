@@ -1,4 +1,6 @@
 class Funder < ApplicationRecord
+  has_many :initiative_funders
+
   validates :name, presence: true, length: {maximum: 50}, uniqueness: { :scope => :email, case_sensitive: false }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, length: {maximum: 255},

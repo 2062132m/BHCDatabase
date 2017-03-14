@@ -13,5 +13,16 @@
     <h3><%= @funder.telephone %></h3>
     <h3><%= @funder.email %></h3>
     <h3><%= @funder.url %></h3>
+    <br>
+    <h3>Initiatives Affected:</h3>
+    <% @funder.initiative_funders.each do |funding| %>
+       <h3><%= funding.initiative.name %></h3>
+    <% end %>
+    <h3>Users Affected:</h3>
+    <% @funder.initiative_funders.each do |funding| %>
+      <% funding.initiative.users.each do |user| %>
+        <h3><%= user.name %></h3>
+      <% end %>
+    <% end %>
   </div>
 </div>
