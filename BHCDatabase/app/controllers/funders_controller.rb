@@ -42,14 +42,17 @@ class FundersController < ApplicationController
     redirect_to funders_url
   end
 
+  # Pass a new InitiativeFunder object to the form
   def fund_initiative
     @initiative_funder = InitiativeFunder.new
   end
 
+  # Pass a new MedicalConditionFunder object to the form
   def fund_medical_condition
     @medical_condition_funder = MedicalConditionFunder.new
   end
 
+  # Pass a new UserFunder object to the form
   def fund_user
     @user_funder = UserFunder.new
   end
