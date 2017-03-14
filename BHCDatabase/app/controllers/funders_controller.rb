@@ -46,9 +46,29 @@ class FundersController < ApplicationController
     @fund_initiative = InitiativeFunder.new
   end
 
+  def new_fund_initiative
+    @funder = Funder.where(:name => initiative_funder_params[:funder_id]).first
+    unless @funder == nil
+      @initiative_funder = InitiativeFunder.new(funder_id: @funder.id,
+                                                initiative_id: initiative_funder_params[:initiative_id])
+    else
+      @initiative_funder = InitiativeFunder.new
+    end
+    if @initiative_funder.save
+      flash[:success] = 'Added Funding!'
+      redirect_to @initiative_funder.initiative
+    else
+      flash[:danger] = 'This funder does not exist'
+      redirect_to :back
+    end
+  end
+
   private
 
   def funder_params
     params.require(:funder).permit(:name, :description, :email, :url, :telephone, :address)
+  end
+  def initiative_funder_params
+    params.require(:initiative_funder).permit(:funder_id, :initiative_id)
   end
 end

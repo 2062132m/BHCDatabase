@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   resources :funders do
     member do
       get :fund_initiative
+      post :new_fund_initiative
     end
   end
   # listing resources in this style defines default routes: new, show, index, etc...
