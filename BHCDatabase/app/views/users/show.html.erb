@@ -105,7 +105,8 @@
   </div>
   <h1>Funding</h1>
   <div class="stdcontainer">
-    <h4>Directly Funded By:</h4>
+    <%= datagrid_table(@funders_for_users_grid) %>
+    <%= will_paginate @funders_for_users_grid.assets %>
     <h4>Funded Through:</h4>
     <% @user.initiatives.each do |initiative| %>
       <% initiative.initiative_funders.each do |funder| %>
