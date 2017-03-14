@@ -2,25 +2,9 @@
 <div id="initiative">
   <h1>Feedback</h1>
   <div class="feedbackcontainer">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th class="col-md-0.5"><h4> N: </h4></th>
-        <th class="col-md-7.5"><h4> Question : </h4></th>
-        <th class="col-md-3"><h4> Answer : </h4></th>
-      </tr>
-      </thead>
-
-      <tbody>
-        <% @feedback.answers.sort.each do |answer| %>
-          <tr>
-            <td class="col-md-0.5"><%= answer.question.sort %>. </td>
-            <td class="col-md-7.5"><%= answer.question.question %></td>
-            <td class="col-md-3"><%= answer.response %></td>
-
-      <% end %>
-      </tr>
-      </tbody>
-    </table>
+    <% @feedback.answers.sort.each do |answer| %>
+        <h2><%= answer.question.question %></h2>
+        <%= answer.response %>
+    <% end %>
   </div>
 </div>
