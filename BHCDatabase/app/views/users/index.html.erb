@@ -11,8 +11,9 @@
 
     <%= datagrid_table(@users_grid) %>
     <%= will_paginate @users_grid.assets %>
-    <script>
 
-    </script>
+    <div class="CSV-container">
+      <%= link_to "<i class='glyphicon glyphicon-download-alt'></i> Download CSV".html_safe, url_for(format: 'csv', users_grid_csv: params[:users_grid]), class: "CSV" %>
+    </div>
   </div>
 </div>

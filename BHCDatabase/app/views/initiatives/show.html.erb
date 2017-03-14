@@ -39,6 +39,7 @@
         <% else %>
           <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_initiative_path, class: 'btn btn-default archive-btn' %>
         <% end %>
+        <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_user_enrolment_path(initiative_id: @initiative.id), class: 'btn btn-default enrolment-btn' %>
         <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
       <% end %>
       <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Session".html_safe, new_meeting_path(initiative_id: @initiative.id), class: 'btn btn-default new-session-btn' %>
@@ -48,8 +49,19 @@
   <div class="stdcontainer">
     <% if @initiative.users.count == 0 %>
       <p>This initative does not yet have any members.</p>
-    <% else %>
+    <% elsif current_user.privilege == 0 %>
       <%= datagrid_table(@users_grid) %>
+    <% else %>
+      <div id="volunteer-list">
+        <% @initiative.users.each do |x| %>
+          <% unless x.archived %>
+            <h4>
+              <%= x.name %>
+              Emergency Contact - <%= x.emergency_contact %>
+            </h4>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <h1 id="meetingtitle">Meetings</h1>

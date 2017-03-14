@@ -1,5 +1,7 @@
 # BHCDatabase
 
+[![build status](http://localhost:8080/DaBrown95/BHCDatabase/badges/master/build.svg)](http://localhost:8080/DaBrown95/BHCDatabase/commits/master)
+
 "The following presentation presents a case study of building a database for the public health program "Building Healthy Communities". By the expression "case study" we mean the investigation of a person, group of people or a situation. The following report investigates the situation of creating a database. The team that is involved in this case study is "Team N" which consists of six, third year colleagues studying Computing Science in the University of Glasgow."
 
 To access our GitLab from a machine other than the lab machines, you should configure your .ssh/config file to look something like this,

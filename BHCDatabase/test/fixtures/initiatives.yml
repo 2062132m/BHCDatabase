@@ -4,10 +4,18 @@ one:
   name: MyString
   description: MyText
   area: one
-  location: MyLocation
+  location: MyLocationOne
 
 two:
   name: MyString
   description: MyText
   area: one
-  location: MyLocation
+  location: MyLocationTwo
+
+archived_initiative:
+  name: MyString
+  description: MyTest
+  area: two
+  location: MyLocationA
+  archived: t
+  reason_archived: My Reason

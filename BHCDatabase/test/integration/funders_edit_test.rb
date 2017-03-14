@@ -3,7 +3,7 @@ require 'test_helper'
 class FundersEditTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @funder_one = funders(:one)
     @funder_two = funders(:two)
     log_in_as @user

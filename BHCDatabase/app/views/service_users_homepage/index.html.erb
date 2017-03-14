@@ -13,8 +13,10 @@
       <%= link_to (@user.feedback_due - Date.today).to_i.to_s + ' days', new_feedback_path, class: 'btn btn-warning disabled' %>
       <% end %>
     </div>
+    <h3>Building Healthy Communities Office Number: </h3>
+    <h2 class="text-center">01387 272776</h2>
     <h1>Your Initiatives</h1>
-    <% @user.initiatives.each do |i| %>
+    <% @user.initiatives.order("LOWER (name) ASC").each do |i| %>
       <% unless i.archived %>
         <div class="row">
           <div class="col-md-4">
@@ -37,16 +39,15 @@
                 <% unless x.archived %>
                   <% if x.privilege == 1 %>
                     <h4>
-                      <%= x.name %> -
-                      <%= x.telephone %>
+                      <%= x.name %> 
                     </h4>
                   <% end %>
                 <% end %>
               <% end %>
-            </div>
+            </div>		
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
-</div>
+</div>>

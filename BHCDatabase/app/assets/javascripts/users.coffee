@@ -3,44 +3,61 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-    btn = undefined
-    modal = undefined
-    span = undefined
-    modal = document.getElementById('modalcontainer')
-    btn = document.getElementById('openmodal')
-    span = document.getElementsByClassName('close')[0]
+  btn = undefined
+  modal = undefined
+  span = undefined
+  modal = document.getElementById('modalcontainer')
+  btn = document.getElementById('openmodal')
+  span = document.getElementsByClassName('close')[0]
 
-    pbtn = undefined
-    pmodal = undefined
-    pspan = undefined
-    pmodal = document.getElementById('passwordmodalcontainer')
-    pbtn = document.getElementById('openpasswordmodal')
-    pspan = document.getElementsByClassName('close')[1]
+  pbtn = undefined
+  pmodal = undefined
+  pspan = undefined
+  pmodal = document.getElementById('passwordmodalcontainer')
+  pbtn = document.getElementById('openpasswordmodal')
+  pspan = document.getElementsByClassName('close')[1]
 
-    pbtn.onclick = ->
-      pmodal.style.display = 'block'
-      return
+  ebtn = undefined
+  emodal = undefined
+  espan = undefined
+  emodal = document.getElementById('editmodalcontainer')
+  ebtn = document.getElementById('openeditmodal')
+  espan = document.getElementsByClassName('close')[2]
 
-    pspan.onclick = ->
-      pmodal.style.display = 'none'
-      return
+  ebtn.onclick = ->
+    emodal.style.display = 'block'
+    return
 
-    btn.onclick = ->
-      modal.style.display = 'block'
-      return
+  espan.onclick = ->
+    emodal.style.display = 'none'
+    return
 
-    span.onclick = ->
+  pbtn.onclick = ->
+    pmodal.style.display = 'block'
+    return
+
+  pspan.onclick = ->
+    pmodal.style.display = 'none'
+    return
+
+  btn.onclick = ->
+    modal.style.display = 'block'
+    return
+
+  span.onclick = ->
+    modal.style.display = 'none'
+    return
+
+  window.onclick = (event) ->
+    if event.target == modal
       modal.style.display = 'none'
-      return
-
-    window.onclick = (event) ->
-      if event.target == modal
-        modal.style.display = 'none'
-      if event.target == pmodal
-        pmodal.style.display = 'none'
-      return
+    if event.target == pmodal
+      pmodal.style.display = 'none'
+    if event.target == emodal
+      emodal.style.display = 'none'
+    return
 
 
-  $(document).ready(ready)
-  $(document).on('turbolinks:load', ready)
-  $(document).on('page:load', ready)
+$(document).ready(ready)
+$(document).on('turbolinks:load', ready)
+$(document).on('page:load', ready)

@@ -9,7 +9,19 @@ Faker::Config.locale = 'en-GB'
 
 random = Random.new
 
+# Helper function that provides error handling when adding seeds to the database. In an ideal world this is't optimal
+#   but since this seed file won't be run often, if at all, this is satisfactory.
+def with_record_unique_handling
+  yield
+rescue ActiveRecord::RecordNotUnique => e
+  puts e
+end
+
+puts "ConstraintException is normal and expected. Don't panic!\n"
+
 # Add admins to the database
+
+puts 'Inserting admins'
 
 User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
             telephone: Faker::PhoneNumber.phone_number,
@@ -32,6 +44,8 @@ User.create(name: 'Kiril Mihaylov', email: 'kiril@kiril.com', password: 'kiril12
 
 # Add volunteers to the database
 
+puts 'Inserting volunteers'
+
 User.create(name: 'Volunteer', email: 'volunteer@volunteer.com', password: 'volunteer123', password_confirmation: 'volunteer123',
             telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
             dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
@@ -49,6 +63,8 @@ random.rand(20..50).times do
 end
 
 # Add users to the database
+
+puts 'Inserting service users'
 
 User.create(name: 'User', email: 'user@user.com', password: 'user123', password_confirmation: 'user123',
             telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
@@ -68,6 +84,8 @@ random.rand(100..200).times do
 end
 
 # Create area1 with initiatives
+
+puts 'Inserting areas with initiatives'
 
 @area1 = Area.create(name: 'Dumfries & Lower Nithsdale', description: Faker::StarWars.quote)
 @area1.initiatives.create(name: 'Scrimp and sew', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -122,6 +140,8 @@ end
 
 # Add meetings to all initiatives
 
+puts 'Inserting meetings/sessions for initiatives'
+
 Initiative.all.each do |init|
   random.rand(5..50).times do
     init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
@@ -129,6 +149,8 @@ Initiative.all.each do |init|
 end
 
 # Add medical conditions
+
+puts 'Inserting medical conditions'
 
 MedicalCondition.create(name: 'Asthma', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
@@ -150,40 +172,45 @@ MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWa
 
 # Main bulk of questions, these are the questions that a user is asked upon registration, and can leave at any time they
 #   wish.
-Question.create(question: "I've been feeling optimistic about the future", visible: true, sort: 1, multiple_choice: true)
-Question.create(question: "I've been feeling useful", visible: true, sort: 2, multiple_choice: true)
-Question.create(question: "I've been feeling relaxed", visible: true, sort: 3, multiple_choice: true)
-Question.create(question: "I've been dealing with problems well", visible: true, sort: 4, multiple_choice: true)
-Question.create(question: "I've been thinking clearly", visible: true, sort: 5, multiple_choice: true)
-Question.create(question: "I've been feeling close to other people", visible: true, sort: 6, multiple_choice: true)
-Question.create(question: "I've been able to make up my own mind about things", visible: true, sort: 7, multiple_choice: true)
-Question.create(question: 'I exercise on a regular basis', visible: true, sort: 8, multiple_choice: true)
-Question.create(question: 'My daily life is filled with things that interest me', visible: true, sort: 9, multiple_choice: true)
-Question.create(question: 'I feel strongly connected to the neighbourhood that I live in', visible: true, sort: 10, multiple_choice: true)
-Question.create(question: 'I can influence decisions affecting my local area', visible: true, sort: 11, multiple_choice: true)
-Question.create(question: 'Most people I come into contact with can be trusted', visible: true, sort: 12, multiple_choice: true)
-Question.create(question: 'How happy are you with your relationships? This can include any relationships.', visible: true, sort: 13, multiple_choice: true)
-Question.create(question: 'How happy are you with the state of your health?', visible: true, sort: 14, multiple_choice: true)
-Question.create(question: 'How happy are you generally?', visible: true, sort: 15, multiple_choice: true)
-Question.create(question: 'How happy are you with your social life and activities that you are involved in?', visible: true, sort: 16, multiple_choice: true)
-Question.create(question: "How much are you influenced by others, in ways that don't help you?", visible: true, sort: 17, multiple_choice: true)
-Question.create(question: 'How stressed are you at this time in your life?', visible: true, sort: 18, multiple_choice: true)
-Question.create(question: "How much are drugs a part of your life? (This includes prescription drugs)", visible: true, sort: 19, multiple_choice: true)
-Question.create(question: 'How often do you see your friends or your neighbours?', visible: true, sort: 20, multiple_choice: true)
-Question.create(question: 'How often do you see your family?', visible: true, sort: 21, multiple_choice: true)
-Question.create(question: 'Is someone available to help you if you are feeling nervous, sick, need to talk, or need help with chores or caring for yourself?', visible: true, sort: 22, multiple_choice: true)
+
+puts 'Inserting questions'
+
+Question.create(question: "I've been feeling optimistic about the future", visible: true, multiple_choice: true)
+Question.create(question: "I've been feeling useful", visible: true, multiple_choice: true)
+Question.create(question: "I've been feeling relaxed", visible: true, multiple_choice: true)
+Question.create(question: "I've been dealing with problems well", visible: true, multiple_choice: true)
+Question.create(question: "I've been thinking clearly", visible: true, multiple_choice: true)
+Question.create(question: "I've been feeling close to other people", visible: true, multiple_choice: true)
+Question.create(question: "I've been able to make up my own mind about things", visible: true, multiple_choice: true)
+Question.create(question: 'I exercise on a regular basis', visible: true, multiple_choice: true)
+Question.create(question: 'My daily life is filled with things that interest me', visible: true, multiple_choice: true)
+Question.create(question: 'I feel strongly connected to the neighbourhood that I live in', visible: true, multiple_choice: true)
+Question.create(question: 'I can influence decisions affecting my local area', visible: true, multiple_choice: true)
+Question.create(question: 'Most people I come into contact with can be trusted', visible: true, multiple_choice: true)
+Question.create(question: 'How happy are you with your relationships? This can include any relationships.', visible: true, multiple_choice: true)
+Question.create(question: 'How happy are you with the state of your health?', visible: true, multiple_choice: true)
+Question.create(question: 'How happy are you generally?', visible: true, multiple_choice: true)
+Question.create(question: 'How happy are you with your social life and activities that you are involved in?', visible: true, multiple_choice: true)
+Question.create(question: "How much are you influenced by others, in ways that don't help you?", visible: true, multiple_choice: true)
+Question.create(question: 'How stressed are you at this time in your life?', visible: true, multiple_choice: true)
+Question.create(question: "How much are drugs a part of your life? (This includes prescription drugs)", visible: true, multiple_choice: true)
+Question.create(question: 'How often do you see your friends or your neighbours?', visible: true, multiple_choice: true)
+Question.create(question: 'How often do you see your family?', visible: true, multiple_choice: true)
+Question.create(question: 'Is someone available to help you if you are feeling nervous, sick, need to talk, or need help with chores or caring for yourself?', visible: true, multiple_choice: true)
 
 # These are the questions that are included in a "3 or 6 month follow up evaluation"
-Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, sort: 23, multiple_choice: true)
-Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, sort: 24, multiple_choice: false)
-Question.create(question: 'How do you think attending BHC initiatives or activities has affected your health and well being over the last 3 – 6 months?  This may include visits to doctors,  making new friends, new interests etc...', visible: true, sort: 25, multiple_choice: false)
+Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, multiple_choice: true)
+Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, multiple_choice: false)
+Question.create(question: 'How do you think attending BHC initiatives or activities has affected your health and well being over the last 3 – 6 months?  This may include visits to doctors,  making new friends, new interests etc...', visible: true, multiple_choice: false)
 
 # Add attendance, feedback/answers, enrollment and medical conditions to users
+
+puts 'Inserting attendance, feedback/answers, enrollment and medical conditions for users'
 
 User.where(privilege: 2).each do |user|
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-    user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+    with_record_unique_handling{user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))}
     Feedback.create(user: user)
   end
 
@@ -195,13 +222,15 @@ User.where(privilege: 2).each do |user|
 
   user.feedbacks.each do |feed|
     Question.all.each do |question|
-      Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote)
+      with_record_unique_handling{Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote)}
     end
 
   end
 end
 
 # Add attendance and enrolment to volunteers
+
+puts 'Inserting enrollment for volunteers'
 
 User.where(privilege: 1).each do |user|
   random.rand(1..2).times do
@@ -217,6 +246,8 @@ User.where(privilege: 1).each do |user|
 end
 
 # Generate random funders
+
+puts 'Inserting funders'
 
 random.rand(1..10).times do
   Funder.create(name: Faker::Company.name,

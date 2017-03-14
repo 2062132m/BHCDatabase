@@ -4,7 +4,7 @@
   <h1>Home</h1>
   <div class="stdcontainer" id="userhomecontainer">
     <h1>Your Initiatives</h1>
-    <% @user.initiatives.each do |i| %>
+    <% @user.initiatives.order("LOWER (name) ASC").each do |i| %>
       <% unless i.archived %>
         <div class="row">
           <div class="col-md-4">
@@ -22,8 +22,10 @@
               <% i.users.each do |x| %>
                 <% unless x.archived %>
                   <h4>
-                    <%= x.name %> -
-                    <%= x.telephone %>
+                    <%= x.name %> 
+		    <br>
+		    Emergency Contact -
+                    <%= x.emergency_contact %>
                   </h4>
                 <% end %>
               <% end %>

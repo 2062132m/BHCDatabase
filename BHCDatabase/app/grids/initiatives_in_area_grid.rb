@@ -1,5 +1,4 @@
 class InitiativesInAreaGrid
-
   include Datagrid
 
   scope do
@@ -7,15 +6,10 @@ class InitiativesInAreaGrid
   end
 
   column(:id, :mandatory => true) do |model|
-    format(model.id) do |value|
-      link_to value, model
-    end
+    format(model.id) { |value| link_to value, model }
   end
   column(:name, :mandatory => true) do |model|
-    format(model.name) do |value|
-      link_to value, model
-    end
+    format(model.name) { |value| link_to value, model }
   end
   column(:location, :mandatory => true)
-
 end

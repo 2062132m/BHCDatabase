@@ -3,7 +3,7 @@ require 'test_helper'
 class MedicalConditionEditTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     @condition_one = medical_conditions(:one)
     @condition_two = medical_conditions(:two)
     log_in_as @user

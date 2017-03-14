@@ -1,41 +1,34 @@
 class User < ApplicationRecord
-
-  has_many :enrolments
+  has_many :enrolments, dependent: :delete_all
+  has_many :unenrolments, dependent: :delete_all
   has_many :initiatives, through: :enrolments
-
-  has_many :attendances
+  has_many :attendances, dependent: :delete_all
   has_many :meetings, through: :attendances
-
-  has_many :conditions
+  has_many :conditions, dependent: :delete_all
+  has_many :unassigned_conditions, dependent: :delete_all
   has_many :medical_conditions, through: :conditions
-
-  has_many :feedbacks
+  has_many :feedbacks, dependent: :delete_all
   has_many :answers, through: :feedbacks
 
   before_save { self.email = email.downcase }
 
-  validates :name, presence: true, length: {maximum: 50}
-
+  validates :name, presence: true,
+            length: {maximum: 50},
+            uniqueness: {:scope => [:dob, :email, :telephone], case_sensitive: false}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
-
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, :if => :password_validation_required?
   validates :telephone, presence: true, length: {maximum: 16}
   validates :emergency_contact, presence: true, length: {maximum: 16}, :unless => :is_admin?
-
   validates :dob, presence: true
-
   validate :dob_before_today
-
   validate :only_service_user_has_feedback
-
   validates :privilege, presence: true, numericality: {only_integer: true,
                                                        greater_than_or_equal_to: 0,
                                                        less_than_or_equal_to: 2}
-
   validates :reason_archived, length: {maximum: 30}
 
   # Returns the hash digest of the given string.
@@ -50,23 +43,12 @@ class User < ApplicationRecord
   end
 
   def dob_before_today
-    if dob.present? && dob >= Date.today
-      errors.add(:dob, 'DOB is today or in the future')
-    end
+    errors.add(:dob, 'DOB is today or in the future') if dob.present? && dob >= Date.today
   end
 
   def only_service_user_has_feedback
-
-    if privilege == 2
-      unless feedback_due.present?
-        errors.add(:feedback_due, 'A service user must have a feedback')
-      end
-    else
-      if feedback_due.present?
-        errors.add(:feedback_due, "A non service user can't have a feedback due")
-      end
-    end
-
+    errors.add(:feedback_due, "A non service user can't have a feedback due") if privilege != 2 && feedback_due.present?
+    errors.add(:feedback_due, 'A service user must have a feedback') if privilege == 2 && !feedback_due.present?
   end
 
   def is_admin?

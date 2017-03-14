@@ -3,7 +3,7 @@ require 'test_helper'
 class AreaShowTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:david)
+    @user = users(:admin)
     log_in_as(@user)
     @area = areas(:one)
   end

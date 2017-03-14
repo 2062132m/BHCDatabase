@@ -2,12 +2,10 @@
 
 one:
   id: 1
-  question: MyText
+  question: MyTextOne
   visible: false
-  sort: 1
 
 two:
   id: 2
-  question: MyText
+  question: MyTextTwo
   visible: false
-  sort: 2

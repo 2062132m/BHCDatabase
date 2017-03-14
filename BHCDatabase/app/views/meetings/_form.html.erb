@@ -4,7 +4,7 @@
     <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
 
     <%= f.label "Date & Time" %>
-    <%= f.datetime_select :datetime, { :default => @lastmeetingtime, :required => true }, { class: "form-control" } %>
+    <%= f.datetime_select :datetime, {:default => @last_meeting_time, :required => true }, {class: "form-control" } %>
 
     <%= label_tag "Weeks to Run For:" %>
     <%= select_tag :weeks, "<option>1</option><option>2</option><option>3</option>

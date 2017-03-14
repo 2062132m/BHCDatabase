@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class UserChangePasswordTest < ActionDispatch::IntegrationTest
+class UsersChangePasswordTest < ActionDispatch::IntegrationTest
   def setup
-    @admin = users(:david)
+    @admin = users(:admin)
     @service_user = users(:service_user)
     log_in_as(@admin)
   end
