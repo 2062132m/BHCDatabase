@@ -107,10 +107,17 @@
   <div class="stdcontainer">
     <%= datagrid_table(@funders_for_users_grid) %>
     <%= will_paginate @funders_for_users_grid.assets %>
-    <h4>Funded Through:</h4>
+  </div>
+  <h1>Indirect Funding</h1>
+  <div class="stdcontainer">
     <% @user.initiatives.each do |initiative| %>
       <% initiative.initiative_funders.each do |funder| %>
-        <h4><%= initiative.name %> by <%= Funder.find(funder.id).name %></h4>
+        <h3><%= Funder.find(funder.funder_id).name %> through <%= initiative.name %></h3>
+      <% end %>
+    <% end %>
+    <% @user.medical_conditions.each do |medical_condition| %>
+      <% medical_condition.medical_condition_funders.each do |funder| %>
+        <h3><%= Funder.find(funder.funder_id).name %> through <%= medical_condition.name %></h3>
       <% end %>
     <% end %>
   </div>
