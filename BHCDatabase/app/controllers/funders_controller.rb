@@ -1,6 +1,7 @@
 class FundersController < ApplicationController
   def index
     @funders = Funder.all
+    @funders_grid = FundersGrid.new(params[:funders_grid])
   end
 
   def show
