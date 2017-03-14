@@ -25,7 +25,14 @@ class MedicalConditionsController < ApplicationController
   def show
     @medical_condition = MedicalCondition.find(params[:id])
     @conditions = @medical_condition.conditions
+    funder_ids = Array.new
+    @medical_condition.medical_condition_funders.each do |funder|
+      funder_ids.push(funder.funder_id)
+    end
     @conditions_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @conditions.map(&:id)) }
+    @funders_for_medical_conditions_grid = FundersGrid.new(params[:funders_grid]) do |scope|
+      scope.where(:id => funder_ids).page(params[:page])
+    end
   end
 
   def edit
