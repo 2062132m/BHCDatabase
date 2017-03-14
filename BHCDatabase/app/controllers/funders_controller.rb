@@ -46,6 +46,14 @@ class FundersController < ApplicationController
     @fund_initiative = InitiativeFunder.new
   end
 
+  def fund_medical_condition
+    @fund_medical_condition = MedicalConditionFunder.new
+  end
+
+  def fund_user
+    @fund_user = UserFunder.new
+  end
+
   def new_fund_initiative
     @initiative_funder = InitiativeFunder.new(funder_id: initiative_funder_params[:funder_id],
                                               initiative_id: initiative_funder_params[:initiative_id])
@@ -53,7 +61,28 @@ class FundersController < ApplicationController
       flash[:success] = 'Added Funding!'
       redirect_to @initiative_funder.initiative
     else
-      flash[:danger] = 'This funder does not exist'
+      redirect_to :back
+    end
+  end
+
+  def new_fund_medical_condition
+    @medical_condition_funder = MedicalConditionFunder.new(funder_id: medical_condition_funder_params[:funder_id],
+                                              medical_condition_id: medical_condition_funder_params[:medical_condition_id])
+    if @medical_condition_funder.save
+      flash[:success] = 'Added Funding!'
+      redirect_to @medical_condition_funder.medical_condition
+    else
+      redirect_to :back
+    end
+  end
+
+  def new_fund_user
+    @user_funder = UserFunder.new(funder_id: user_funder_params[:funder_id],
+                                  user_id: user_funder_params[:user_id])
+    if @user_funder.save
+      flash[:success] = 'Added Funding!'
+      redirect_to @user_funder.user
+    else
       redirect_to :back
     end
   end
@@ -65,5 +94,11 @@ class FundersController < ApplicationController
   end
   def initiative_funder_params
     params.require(:initiative_funder).permit(:funder_id, :initiative_id)
+  end
+  def medical_condition_funder_params
+    params.require(:medical_condition_funder).permit(:funder_id, :medical_condition_id)
+  end
+  def user_funder_params
+    params.require(:user_funder).permit(:funder_id, :user_id)
   end
 end
