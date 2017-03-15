@@ -7,5 +7,6 @@ class MedicalCondition < ApplicationRecord
   has_many :unassigned_conditions, dependent: :delete_all
   has_many :users, through: :conditions
   has_many :medical_condition_funders, dependent: :delete_all
+  has_many :removed_medical_funders, dependent: :delete_all
 
 end
