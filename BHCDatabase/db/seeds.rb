@@ -175,36 +175,37 @@ MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWa
 
 puts 'Inserting questions'
 
-Question.create(question: "I've been feeling optimistic about the future", visible: true, multiple_choice: true)
-Question.create(question: "I've been feeling useful", visible: true, multiple_choice: true)
-Question.create(question: "I've been feeling relaxed", visible: true, multiple_choice: true)
-Question.create(question: "I've been dealing with problems well", visible: true, multiple_choice: true)
-Question.create(question: "I've been thinking clearly", visible: true, multiple_choice: true)
-Question.create(question: "I've been feeling close to other people", visible: true, multiple_choice: true)
-Question.create(question: "I've been able to make up my own mind about things", visible: true, multiple_choice: true)
-Question.create(question: 'I exercise on a regular basis', visible: true, multiple_choice: true)
-Question.create(question: 'My daily life is filled with things that interest me', visible: true, multiple_choice: true)
-Question.create(question: 'I feel strongly connected to the neighbourhood that I live in', visible: true, multiple_choice: true)
-Question.create(question: 'I can influence decisions affecting my local area', visible: true, multiple_choice: true)
-Question.create(question: 'Most people I come into contact with can be trusted', visible: true, multiple_choice: true)
-Question.create(question: 'How happy are you with your relationships? This can include any relationships.', visible: true, multiple_choice: true)
-Question.create(question: 'How happy are you with the state of your health?', visible: true, multiple_choice: true)
-Question.create(question: 'How happy are you generally?', visible: true, multiple_choice: true)
-Question.create(question: 'How happy are you with your social life and activities that you are involved in?', visible: true, multiple_choice: true)
-Question.create(question: "How much are you influenced by others, in ways that don't help you?", visible: true, multiple_choice: true)
-Question.create(question: 'How stressed are you at this time in your life?', visible: true, multiple_choice: true)
-Question.create(question: "How much are drugs a part of your life? (This includes prescription drugs)", visible: true, multiple_choice: true)
-Question.create(question: 'How often do you see your friends or your neighbours?', visible: true, multiple_choice: true)
-Question.create(question: 'How often do you see your family?', visible: true, multiple_choice: true)
-Question.create(question: 'Is someone available to help you if you are feeling nervous, sick, need to talk, or need help with chores or caring for yourself?', visible: true, multiple_choice: true)
+# WMWEBS questions
+#   “none of the time, rarely, some of the time, often, all of the time”
+Question.create(question: "I've been feeling optimistic about the future", visible: true, question_type: 0)
+Question.create(question: "I've been feeling useful", visible: true, question_type: 0)
+Question.create(question: "I've been feeling relaxed", visible: true, question_type: 0)
+Question.create(question: "I've been dealing with problems well", visible: true, question_type: 0)
+Question.create(question: "I've been thinking clearly", visible: true, question_type: 0)
+Question.create(question: "I've been feeling close to other people", visible: true, question_type: 0)
+Question.create(question: "I've been able to make up my own mind about things", visible: true, question_type: 0)
+Question.create(question: 'I exercise on a regular basis', visible: true, question_type: 0)
+Question.create(question: 'My daily life is filled with things that interest me', visible: true, question_type: 0)
+Question.create(question: 'I feel strongly connected to the neighbourhood that I live in', visible: true, question_type: 0)
+Question.create(question: 'I can influence decisions affecting my local area', visible: true, question_type: 0)
+Question.create(question: 'Most people I come into contact with can be trusted', visible: true, question_type: 0)
+Question.create(question: 'How happy are you with your relationships? This can include any relationships.', visible: true, question_type: 0)
+Question.create(question: 'How happy are you with the state of your health?', visible: true, question_type: 0)
+# Social capital face to face question
+#   “less than monthly, 1-3 times per month, 1-2 times per week, 3 times per or more”
+Question.create(question: 'How often do you have face-to-face contact with friends or family not living with you?', visible: true, question_type: 1)
+# Social capital connected question
+#   “very strongly connected, connected, somewhat connected, weakly connected, not connected at all”
+Question.create(question: 'How strongly connected do you feel to the neighbourhood you live in?', visible: true, question_type: 2)
+# Social capital influence question
+#   “strongly agree, agree, neither agree or disagree, disagree, strongly disagree”
+Question.create(question: "How much do you agree or disagree with the following statement? 'I can influence decisions affecting my local area'", visible: true, question_type: 3)
+# Social capital trust question
+#   “most people can be trusted, need to be very careful”
+Question.create(question: 'Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?', visible: true, question_type: 4)
 
-# These are the questions that are included in a "3 or 6 month follow up evaluation"
-Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, multiple_choice: true)
-Question.create(question: 'On a scale of 1 – 10 where 1 is poor and 10 is excellent, What do you think of the initiative that you have been attending? (Please include the name of the Initiative.)', visible: true, multiple_choice: false)
-Question.create(question: 'How do you think attending BHC initiatives or activities has affected your health and well being over the last 3 – 6 months?  This may include visits to doctors,  making new friends, new interests etc...', visible: true, multiple_choice: false)
 
 # Add attendance, feedback/answers, enrollment and medical conditions to users
-
 puts 'Inserting attendance, feedback/answers, enrollment and medical conditions for users'
 
 User.where(privilege: 2).each do |user|

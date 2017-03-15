@@ -1,8 +1,6 @@
 class FeedbacksController < ApplicationController
 
   skip_before_action :admin_only
-  # Ensures that only a service user is allowed to leave feedback
-  before_action :service_user_only, :allowed_to_leave_feedback, only: [:new, :create]
   # Ensures that only the owner of a feedback is allowed to view it
   before_action :correct_users_feedback?, only: [:show]
 
@@ -11,7 +9,7 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @user = @current_user
+    @user = User.find(params[:user_id])
     @feedback = Feedback.new
     @questions = Question.where(visible: true).where('id < ?', 23).order(:id)
     # Builds our @feedback.answers, linking all answers to all available questions
@@ -19,8 +17,8 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @user = @current_user
     @feedback = Feedback.new(feedback_params)
+    @user = User.find(@feedback.user)
     @questions = Question.where(:visible => true)
     if @feedback.save
       flash[:success] = 'Created a new feedback!'
@@ -54,7 +52,7 @@ class FeedbacksController < ApplicationController
   def correct_users_feedback?
     @feedback = Feedback.find(params[:id])
     unless admin?
-      if @feedback.user != @current_user
+      if @feedback.user != @current_user || volunteer?
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to @current_user
       end

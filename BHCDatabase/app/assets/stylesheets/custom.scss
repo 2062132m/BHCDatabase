@@ -318,6 +318,18 @@ table.datagrid {
   float: right;
 }
 
+#pop{
+  color: white;
+  background-color: transparent;
+}
+.popover-title{
+  color: #008ED4;
+  font-size: 20px;
+}
+.popover-content{
+  color: #000000;
+}
+
 .new-btn {
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
@@ -403,6 +415,16 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #9933ff;
   border-color: #9933ff;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  float: right;
+}
+
+.feedback-btn {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+  background-color: #8B7D6B;
+  border-color: #8B7D6B;
   margin-bottom: 10px;
   margin-right: 5px;
   float: right;

@@ -135,9 +135,9 @@ ActiveRecord::Schema.define(version: 20170314160424) do
   create_table "questions", force: :cascade do |t|
     t.text     "question"
     t.boolean  "visible"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.boolean  "multiple_choice"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "question_type"
     t.index ["question"], name: "index_questions_on_question", unique: true
   end
 

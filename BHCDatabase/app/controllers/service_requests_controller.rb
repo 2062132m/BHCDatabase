@@ -29,6 +29,4 @@ class ServiceRequestsController < ApplicationController
   def service_request_params
     params.require(:service_request).permit(:user_id, :request)
   end
-
-
 end
