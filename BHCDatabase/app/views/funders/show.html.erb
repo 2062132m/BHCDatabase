@@ -47,32 +47,42 @@
   </div>
   <h1>Direct Funding</h1>
   <div class="stdcontainer">
-    <% @initiatives = Array.new %>
-    <h3><%= @funder.name %> is currently funding <%= @funder.initiative_funders.count %> initiative(s):</h3>
-    <% @funder.initiative_funders.each do |funder| %>
-      <% @initiatives.push(funder.initiative_id) %>
-    <% end %>
-    <% @initiatives.each do |initiative| %>
-      <h4><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></h4>
-    <% end %>
-    <br>
-    <% @medical_conditions = Array.new %>
-    <h3><%= @funder.name %> is currently funding <%= @funder.medical_condition_funders.count %> medial conditions(s):</h3>
-    <% @funder.medical_condition_funders.each do |funder| %>
-      <% @medical_conditions.push(funder.medical_condition_id) %>
-    <% end %>
-    <% @medical_conditions.each do |medical_condition| %>
-      <h4><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></h4>
-    <% end %>
-    <br>
-    <% @users = Array.new %>
-    <h3><%= @funder.name %> is currently funding <%= @funder.user_funders.count %> user(s):</h3>
-    <% @funder.user_funders.each do |funder| %>
-      <% @users.push(funder.user_id) %>
-    <% end %>
-    <% @users.each do |user| %>
-      <h4><%= link_to User.find(user).name, User.find(user) %></h4>
-    <% end %>
-    <br>
+    <h3><%= @funder.name %> is currently <b>directly</b> funding</h3>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <% @initiatives = Array.new %>
+          <h3><%= @funder.initiative_funders.count %> initiative(s):</h3>
+          <% @funder.initiative_funders.each do |funder| %>
+            <% @initiatives.push(funder.initiative_id) %>
+          <% end %>
+          <% @initiatives.each do |initiative| %>
+            <h4><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></h4>
+          <% end %>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <% @medical_conditions = Array.new %>
+          <h3><%= @funder.medical_condition_funders.count %> medial conditions(s):</h3>
+          <% @funder.medical_condition_funders.each do |funder| %>
+            <% @medical_conditions.push(funder.medical_condition_id) %>
+          <% end %>
+          <% @medical_conditions.each do |medical_condition| %>
+            <h4><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></h4>
+          <% end %>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <% @users = Array.new %>
+          <h3><%= @funder.user_funders.count %> user(s):</h3>
+          <% @funder.user_funders.each do |funder| %>
+            <% @users.push(funder.user_id) %>
+          <% end %>
+          <% @users.each do |user| %>
+            <h4><%= link_to User.find(user).name, User.find(user) %></h4>
+          <% end %>
+          <br>
+        </div>
+      </div>
   </div>
 </div>
