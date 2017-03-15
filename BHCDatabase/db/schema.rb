@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315164840) do
+ActiveRecord::Schema.define(version: 20170315171924) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 20170315164840) do
     t.integer  "initiative_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.datetime "date_given"
     t.index ["funder_id"], name: "index_removed_initiative_fundings_on_funder_id"
     t.index ["initiative_id"], name: "index_removed_initiative_fundings_on_initiative_id"
   end
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170315164840) do
     t.integer  "medical_condition_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.datetime "date_given"
     t.index ["funder_id"], name: "index_removed_medical_fundings_on_funder_id"
     t.index ["medical_condition_id"], name: "index_removed_medical_fundings_on_medical_condition_id"
   end
@@ -164,6 +166,7 @@ ActiveRecord::Schema.define(version: 20170315164840) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "date_given"
     t.index ["funder_id"], name: "index_removed_user_fundings_on_funder_id"
     t.index ["user_id"], name: "index_removed_user_fundings_on_user_id"
   end
