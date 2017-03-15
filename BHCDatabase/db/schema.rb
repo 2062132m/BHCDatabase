@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314160424) do
+ActiveRecord::Schema.define(version: 20170315164840) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -139,6 +139,33 @@ ActiveRecord::Schema.define(version: 20170314160424) do
     t.datetime "updated_at",    null: false
     t.integer  "question_type"
     t.index ["question"], name: "index_questions_on_question", unique: true
+  end
+
+  create_table "removed_initiative_fundings", force: :cascade do |t|
+    t.integer  "funder_id"
+    t.integer  "initiative_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["funder_id"], name: "index_removed_initiative_fundings_on_funder_id"
+    t.index ["initiative_id"], name: "index_removed_initiative_fundings_on_initiative_id"
+  end
+
+  create_table "removed_medical_fundings", force: :cascade do |t|
+    t.integer  "funder_id"
+    t.integer  "medical_condition_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["funder_id"], name: "index_removed_medical_fundings_on_funder_id"
+    t.index ["medical_condition_id"], name: "index_removed_medical_fundings_on_medical_condition_id"
+  end
+
+  create_table "removed_user_fundings", force: :cascade do |t|
+    t.integer  "funder_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funder_id"], name: "index_removed_user_fundings_on_funder_id"
+    t.index ["user_id"], name: "index_removed_user_fundings_on_user_id"
   end
 
   create_table "service_requests", force: :cascade do |t|
