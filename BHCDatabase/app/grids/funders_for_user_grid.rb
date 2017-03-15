@@ -17,7 +17,7 @@ class FundersForUserGrid
     format(model.id) do |value|
       @user_funder = UserFunder.find(value)
       # Delete the condition, which will in turn create an 'unassigned_condition'
-      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, nil, class: "btn btn-default unenrol-btn"
+      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, remove_user_funding_funder_path(@user_funder), class: "btn btn-default unenrol-btn"
     end
   end
 end

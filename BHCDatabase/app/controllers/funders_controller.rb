@@ -90,6 +90,18 @@ class FundersController < ApplicationController
     end
   end
 
+  def remove_user_funding
+    # Get the funding
+    @user_funder = UserFunder.find(params[:id])
+    # Create a "RemovedUserFunding" with identical details
+    RemovedUserFunding.create(:funder_id => @user_funder.funder_id,
+                       :user_id => @user_funder.user_id,
+                       :date_given => @user_funder.created_at)
+    # Destroy the funding
+    flash[:success] = 'Removed Funding' if @user_funder.destroy
+    redirect_to :back
+  end
+
   private
 
   def funder_params
