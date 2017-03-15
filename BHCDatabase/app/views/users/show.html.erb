@@ -103,7 +103,7 @@
   <div class="stdcontainer">
     <%= datagrid_table(@unassigned_conditions_grid) %>
   </div>
-  <h1>Funding</h1>
+  <h1>Direct Funding</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@funders_for_users_grid) %>
     <%= will_paginate @funders_for_users_grid.assets %>
@@ -112,12 +112,12 @@
   <div class="stdcontainer">
     <% @user.initiatives.each do |initiative| %>
       <% initiative.initiative_funders.each do |funder| %>
-        <h3><%= Funder.find(funder.funder_id).name %> through <%= initiative.name %></h3>
+        <h4><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to initiative.name, initiative %></h4>
       <% end %>
     <% end %>
     <% @user.medical_conditions.each do |medical_condition| %>
       <% medical_condition.medical_condition_funders.each do |funder| %>
-        <h3><%= Funder.find(funder.funder_id).name %> through <%= medical_condition.name %></h3>
+        <h4><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to medical_condition.name, medical_condition %></h4>
       <% end %>
     <% end %>
   </div>

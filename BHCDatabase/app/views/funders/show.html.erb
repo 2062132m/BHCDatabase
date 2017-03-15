@@ -47,42 +47,46 @@
   </div>
   <h1>Direct Funding</h1>
   <div class="stdcontainer">
-    <h3><%= @funder.name %> is currently <b>directly</b> funding</h3>
+    <h4><%= @funder.name %> is currently <b>directly</b> funding:</h4>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
           <% @initiatives = Array.new %>
-          <h3><%= @funder.initiative_funders.count %> initiative(s):</h3>
+          <h4><%= @funder.initiative_funders.count %> initiative(s):</h4>
           <% @funder.initiative_funders.each do |funder| %>
             <% @initiatives.push(funder.initiative_id) %>
           <% end %>
           <% @initiatives.each do |initiative| %>
-            <h4><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></h4>
+            <p><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></p>
           <% end %>
           <br>
         </div>
         <div class="col-md-4">
           <% @medical_conditions = Array.new %>
-          <h3><%= @funder.medical_condition_funders.count %> medial conditions(s):</h3>
+          <h4><%= @funder.medical_condition_funders.count %> medical condition(s):</h4>
           <% @funder.medical_condition_funders.each do |funder| %>
             <% @medical_conditions.push(funder.medical_condition_id) %>
           <% end %>
           <% @medical_conditions.each do |medical_condition| %>
-            <h4><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></h4>
+            <p><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></p>
           <% end %>
           <br>
         </div>
         <div class="col-md-4">
           <% @users = Array.new %>
-          <h3><%= @funder.user_funders.count %> user(s):</h3>
+          <h4><%= @funder.user_funders.count %> user(s):</h4>
           <% @funder.user_funders.each do |funder| %>
             <% @users.push(funder.user_id) %>
           <% end %>
           <% @users.each do |user| %>
-            <h4><%= link_to User.find(user).name, User.find(user) %></h4>
+            <p><%= link_to User.find(user).name, User.find(user) %></p>
           <% end %>
           <br>
         </div>
       </div>
+    </div>
+  </div>
+  <h1>Indirect Funding</h1>
+  <div class="stdcontainer">
   </div>
 </div>
