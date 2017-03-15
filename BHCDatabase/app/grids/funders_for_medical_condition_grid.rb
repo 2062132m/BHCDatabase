@@ -1,8 +1,8 @@
-class FundersForUserGrid
+class FundersForMedicalConditionGrid
   include Datagrid
 
   scope do
-    UserFunder
+    MedicalConditionFunder
   end
 
   column(:funder_id, :mandatory => true) do |model|
@@ -15,7 +15,7 @@ class FundersForUserGrid
   end
   column(:id, :header => 'Remove Funding', :mandatory => true) do |model|
     format(model.id) do |value|
-      @user_funder = UserFunder.find(value)
+      @medical_condition_funder = MedicalConditionFunder.find(value)
       # Delete the condition, which will in turn create an 'unassigned_condition'
       link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, nil, class: "btn btn-default unenrol-btn"
     end
