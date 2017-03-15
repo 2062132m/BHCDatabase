@@ -90,6 +90,42 @@ class FundersController < ApplicationController
     end
   end
 
+  def remove_user_funding
+    # Get the funding
+    @user_funder = UserFunder.find(params[:id])
+    # Create a "RemovedUserFunding" with identical details
+    RemovedUserFunding.create(:funder_id => @user_funder.funder_id,
+                       :user_id => @user_funder.user_id,
+                       :date_given => @user_funder.created_at)
+    # Destroy the funding
+    flash[:success] = 'Removed Funding' if @user_funder.destroy
+    redirect_to :back
+  end
+
+  def remove_initiative_funding
+    # Get the funding
+    @initiative_funder = InitiativeFunder.find(params[:id])
+    # Create a "RemovedUserFunding" with identical details
+    RemovedInitiativeFunding.create(:funder_id => @initiative_funder.funder_id,
+                       :initiative_id => @initiative_funder.initiative_id,
+                       :date_given => @initiative_funder.created_at)
+    # Destroy the funding
+    flash[:success] = 'Removed Funding' if @initiative_funder.destroy
+    redirect_to :back
+  end
+
+  def remove_medical_funding
+    # Get the funding
+    @medical_funder = MedicalConditionFunder.find(params[:id])
+    # Create a "RemovedUserFunding" with identical details
+    RemovedMedicalFunding.create(:funder_id => @medical_funder.funder_id,
+                       :medical_condition_id => @medical_funder.medical_condition_id,
+                       :date_given => @medical_funder.created_at)
+    # Destroy the funding
+    flash[:success] = 'Removed Funding' if @medical_funder.destroy
+    redirect_to :back
+  end
+
   private
 
   def funder_params

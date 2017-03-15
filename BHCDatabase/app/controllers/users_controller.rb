@@ -33,9 +33,8 @@ class UsersController < ApplicationController
     @feedbacks_grid = FeedbacksGrid.new(params[:feedbacks_grid]) { |scope| scope.where(:id => @user.feedbacks.ids) }
     @conditions_grid = ConditionsGrid.new(params[:conditions_grid]) { |scope| scope.where(:id => @user.conditions.ids) }
     @unassigned_conditions_grid = UnassignedConditionsGrid.new(params[:unassigned_conditions_grid]) { |scope| scope.where(:id => @user.unassigned_conditions.ids) }
-    @funders_for_users_grid = FundersGrid.new(params[:funders_grid]) do |scope|
-      scope.where(:id => funder_ids).page(params[:page])
-    end
+    @funders_for_user_grid = FundersForUserGrid.new(params[:funders_for_user_grid]) { |scope| scope.where(:id => @user.user_funders.ids) }
+    @removed_funders_for_users_grid = RemovedFundingsForUsersGrid.new(params[:removed_funding_for_users_grid]) { |scope| scope.where(:id => @user.removed_user_fundings.ids) }
   end
 
   def new
