@@ -38,6 +38,7 @@ class InitiativesController < ApplicationController
       scope.where(:initiative_id => @initiative).page(params[:page])
     end
     @funders_for_initiative_grid = FundersForInitiativeGrid.new(params[:funders_for_initiative_grid]) { |scope| scope.where(:id => @initiative.initiative_funders.ids) }
+    @removed_funders_for_initiative_grid = RemovedFundingsForInitiativesGrid.new(params[:removed_fundings_for_initiatives_grid]) { |scope| scope.where(:id => @initiative.removed_initiative_fundings.ids) }
   end
 
   def new

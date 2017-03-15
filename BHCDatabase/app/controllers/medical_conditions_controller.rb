@@ -31,6 +31,7 @@ class MedicalConditionsController < ApplicationController
     end
     @conditions_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @conditions.map(&:id)) }
     @funders_for_medical_condition_grid = FundersForMedicalConditionGrid.new(params[:funders_for_medical_condition_grid]) { |scope| scope.where(:id => @medical_condition.medical_condition_funders.ids) }
+    @removed_funders_for_medical_condition_grid = RemovedFundingsForMedicalConditionsGrid.new(params[:removed_funders_for_medical_conditions_grid]) { |scope| scope.where(:id => @medical_condition.removed_medical_fundings.ids) }
   end
 
   def edit

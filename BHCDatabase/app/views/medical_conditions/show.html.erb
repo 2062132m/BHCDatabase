@@ -39,8 +39,12 @@
   <div class="stdcontainer">
     <%= datagrid_table(@conditions_grid) %>
   </div>
-  <h1>Funders</h1>
+  <h1>Funding</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@funders_for_medical_condition_grid) %>
+  </div>
+  <h1>Funding History</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@removed_funders_for_medical_condition_grid) %>
   </div>
 </div>
