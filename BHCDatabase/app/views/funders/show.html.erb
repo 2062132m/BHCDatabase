@@ -45,7 +45,7 @@
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_funder_path, class: 'btn btn-default edit-btn' %>
     </div>
   </div>
-  <h1>Direct Funding</h1>
+  <h1>Funding</h1>
   <div class="stdcontainer">
     <h4><%= @funder.name %> are currently <b>directly</b> funding:</h4>
     <div class="container-fluid">
@@ -85,30 +85,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <h1>Indirect Funding</h1>
-  <div class="stdcontainer">
-    <div class="container-fluid">
-      <% @funder.initiative_funders.each do |funder| %>
-        <% @initiative = Initiative.find(funder.initiative_id) %>
-        <div class="funder-container">
-          <h4>Users funded via <%= @funder.name %>'s funding of <b><%= link_to @initiative.name, @initiative %></b>:</h4>
-          <% @initiative.users.each do |user| %>
-            <h4><%= link_to user.name, user %></h4>
-          <% end %>
-          <br>
-        </div>
-      <% end %>
-      <% @funder.medical_condition_funders.each do |funder| %>
-        <% @medical_condition = MedicalCondition.find(funder.medical_condition_id) %>
-        <div class="funder-container">
-          <h4>Users funded via <%= @funder.name %>'s funding of <b><%= link_to @medical_condition.name, @medical_condition %></b>:</h4>
-          <% @medical_condition.users.each do |user| %>
-            <h4><%= link_to user.name, user %></h4>
-          <% end %>
-          <br>
-        </div>
-      <% end %>
-    </div>
+    <h4>(to see which users are affected by funding an initiative or a medical condition, click through to see the member list)<h4>
   </div>
 </div>
