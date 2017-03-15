@@ -72,7 +72,7 @@
               <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
           <% end %>
           <%= link_to "<i class='glyphicon glyphicon-pencil'></i> Assign Condition".html_safe, new_condition_path(user_id: @user.id), class: 'btn btn-default condition-btn' %>
-          <%= link_to "<i class='glyphicon glyphicon-plus'></i> Add Funder".html_safe, fund_user_funder_path(user_id: @user.id), class: 'btn btn-default new-session-btn' %>
+          <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_user_funder_path(user_id: @user.id), class: 'btn btn-default funder-btn' %>
           <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
           <button id="openeditmodal" class="btn btn-default edit-btn"><span class="glyphicon glyphicon-edit"></span>
             Edit

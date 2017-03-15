@@ -31,7 +31,7 @@
       <% else %>
         <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_medical_condition_path, class: 'btn btn-default archive-btn' %>
       <% end %>
-      <%= link_to "<i class='glyphicon glyphicon-plus'></i> Add Funder".html_safe, fund_medical_condition_funder_path(medical_condition_id: @medical_condition.id), class: 'btn btn-default new-session-btn' %>
+      <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_medical_condition_funder_path(medical_condition_id: @medical_condition.id), class: 'btn btn-default funder-btn' %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_medical_condition_path, class: 'btn btn-default edit-btn' %>
     </div>
   </div>
