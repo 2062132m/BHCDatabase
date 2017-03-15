@@ -12,12 +12,6 @@ class FundersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get one" do
-    one = funders(:one)
-    get funder_url(one)
-    assert_response :success
-  end
-
   test "should get new" do
     get new_funder_url
     assert_response :success
