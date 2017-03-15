@@ -1,0 +1,13 @@
+<% provide(:title, 'New Medical Condition Funder') %>
+<% @medical_condition = MedicalCondition.find(params[:medical_condition_id]) %>
+<div id="newcontainer">
+  <h1>Fund Medical Condition</h1>
+  <div class="stdcontainer">
+    <h4>Please select a funder for <b><%= @medical_condition.name %></b></h4><br>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= render 'add_medical_condition_funder_form' %>
+      </div>
+    </div>
+  </div>
+</div>

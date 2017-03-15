@@ -27,12 +27,18 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params[:id])
     @area = Area.find(@initiative.area_id)
     @meetings = Meeting.where(initiative_id: @initiative)
-
+    funder_ids = Array.new
+    @initiative.initiative_funders.each do |funder|
+      funder_ids.push(funder.funder_id)
+    end
     # Builds a DataGrid that shows only the users that belong to this specific initiative
     @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @initiative.users.ids) }
     # Builds a DataGrid that shows only the meetings that belong to this specific initiative
     @meetings_in_initiatives_grid = MeetingsInInitiativesGrid.new(params[:meetings_in_initiatives_grid]) do |scope|
       scope.where(:initiative_id => @initiative).page(params[:page])
+    end
+    @funders_for_initiatives_grid = FundersGrid.new(params[:funders_grid]) do |scope|
+      scope.where(:id => funder_ids).page(params[:page])
     end
   end
 

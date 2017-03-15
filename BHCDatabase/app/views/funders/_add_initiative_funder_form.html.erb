@@ -1,0 +1,11 @@
+<%= form_for @initiative_funder, :url => { :action => "new_fund_initiative"} do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+      <% @funders = Funder.all %>
+
+      <%= f.label "Funder" %>
+      <%= f.select :funder_id, options_for_select(@funders.map { |s| [s.name, s.id] }), {}, { class: "form-control" } %>
+
+      <%= f.hidden_field(:initiative_id, :value => Initiative.find(params[:initiative_id]).id) %>
+
+    <%= f.submit 'Submit', class: 'btn btn-default submit-btn' %>
+<% end %>

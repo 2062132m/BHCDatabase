@@ -29,12 +29,19 @@
       <% if @medical_condition.archived == false %>
         <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>
       <% else %>
-        <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_medical_condition_path, class: 'btn btn-default archive-btn' %>
+        <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_medical_condition_path, class: 'btn btn-default archive-btn' %>
       <% end %>
+      <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_medical_condition_funder_path(medical_condition_id: @medical_condition.id), class: 'btn btn-default funder-btn' %>
       <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_medical_condition_path, class: 'btn btn-default edit-btn' %>
-
-      <h3><br><br>Users with this condition</h3>
-      <%= datagrid_table(@conditions_grid) %>
     </div>
+  </div>
+  <h1>Users With This Condition</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@conditions_grid) %>
+  </div>
+  <h1>Funders</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@funders_for_medical_conditions_grid) %>
+    <%= will_paginate @funders_for_medical_conditions_grid.assets %>
   </div>
 </div>

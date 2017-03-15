@@ -73,6 +73,17 @@ Rails.application.routes.draw do
       get :enrol_user
     end
   end
+  # Custom methods for funders
+  resources :funders do
+    member do
+      get :fund_initiative
+      get :fund_medical_condition
+      get :fund_user
+      post :new_fund_initiative
+      post :new_fund_medical_condition
+      post :new_fund_user
+    end
+  end
   # listing resources in this style defines default routes: new, show, index, etc...
   resources :users,
             :areas,

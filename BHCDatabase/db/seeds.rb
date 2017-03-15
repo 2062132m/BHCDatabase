@@ -250,11 +250,20 @@ end
 
 puts 'Inserting funders'
 
-random.rand(1..10).times do
-  Funder.create(name: Faker::Company.name,
+random.rand(30..40).times do
+  @funder = Funder.create(name: Faker::Company.name,
                 address: Faker::StarWars.planet,
                 url: Faker::Internet.url,
                 description: Faker::ChuckNorris.fact,
                 email: Faker::Internet.email,
                 telephone: Faker::PhoneNumber.phone_number)
+  random.rand(3..5).times do
+    @funder.initiative_funders.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+  end
+  random.rand(3..5).times do
+    @funder.medical_condition_funders.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+  end
+  random.rand(3..5).times do
+    @funder.user_funders.create(user: User.find(Faker::Number.between(1, User.count)))
+  end
 end

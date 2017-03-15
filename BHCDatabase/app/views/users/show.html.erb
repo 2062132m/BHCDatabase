@@ -72,6 +72,7 @@
               <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
           <% end %>
           <%= link_to "<i class='glyphicon glyphicon-pencil'></i> Assign Condition".html_safe, new_condition_path(user_id: @user.id), class: 'btn btn-default condition-btn' %>
+          <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_user_funder_path(user_id: @user.id), class: 'btn btn-default funder-btn' %>
           <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
           <%= link_to "<i class='glyphicon glyphicon-tasks'></i> Leave Feedback".html_safe, new_feedback_path(user_id: @user.id), class: 'btn btn-default feedback-btn' %>
           <button id="openeditmodal" class="btn btn-default edit-btn"><span class="glyphicon glyphicon-edit"></span>
@@ -102,5 +103,33 @@
   <h1>Medical Condition History</h1>
   <div class="stdcontainer">
     <%= datagrid_table(@unassigned_conditions_grid) %>
+  </div>
+  <h1>Direct Funding</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@funders_for_users_grid) %>
+    <%= will_paginate @funders_for_users_grid.assets %>
+  </div>
+  <h1>Indirect Funding</h1>
+  <div class="stdcontainer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Indirect funding received via initiatives:</h4>
+          <% @user.initiatives.each do |initiative| %>
+            <% initiative.initiative_funders.each do |funder| %>
+              <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to initiative.name, initiative %></p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <h4>Indirect funding received via medical conditions:</h4>
+          <% @user.medical_conditions.each do |medical_condition| %>
+            <% medical_condition.medical_condition_funders.each do |funder| %>
+              <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to medical_condition.name, medical_condition %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

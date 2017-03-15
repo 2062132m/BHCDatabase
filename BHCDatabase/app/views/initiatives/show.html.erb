@@ -39,6 +39,7 @@
         <% else %>
           <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_initiative_path, class: 'btn btn-default archive-btn' %>
         <% end %>
+        <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_initiative_funder_path(initiative_id: @initiative.id), class: 'btn btn-default funder-btn' %>
         <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_user_enrolment_path(initiative_id: @initiative.id), class: 'btn btn-default enrolment-btn' %>
         <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
       <% end %>
@@ -64,13 +65,14 @@
       </div>
     <% end %>
   </div>
-  <h1 id="meetingtitle">Meetings</h1>
+  <h1>Meetings</h1>
   <div class="stdcontainer">
-    <% if @initiative.meetings.count == 0 %>
-      <p>This initiative has not yet had any meetings.</p>
-    <% else %>
-      <%= datagrid_table(@meetings_in_initiatives_grid) %>
-      <%= will_paginate @meetings_in_initiatives_grid.assets %>
-    <% end %>
+    <%= datagrid_table(@meetings_in_initiatives_grid) %>
+    <%= will_paginate @meetings_in_initiatives_grid.assets %>
+  </div>
+  <h1>Funders</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@funders_for_initiatives_grid) %>
+    <%= will_paginate @funders_for_initiatives_grid.assets %>
   </div>
 </div>

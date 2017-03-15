@@ -24,11 +24,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    funder_ids = Array.new
+    @user.user_funders.each do |funder|
+      funder_ids.push(funder.funder_id)
+    end
     @enrolments_grid = EnrolmentsInUsersGrid.new(params[:enrolments_grid]) { |scope| scope.where(:id => @user.enrolments) }
     @unenrolments_grid = UnenrolmentsInUsersGrid.new(params[:unenrolments_grid]) { |scope| scope.where(:id => @user.unenrolments) }
     @feedbacks_grid = FeedbacksGrid.new(params[:feedbacks_grid]) { |scope| scope.where(:id => @user.feedbacks.ids) }
     @conditions_grid = ConditionsGrid.new(params[:conditions_grid]) { |scope| scope.where(:id => @user.conditions.ids) }
     @unassigned_conditions_grid = UnassignedConditionsGrid.new(params[:unassigned_conditions_grid]) { |scope| scope.where(:id => @user.unassigned_conditions.ids) }
+    @funders_for_users_grid = FundersGrid.new(params[:funders_grid]) do |scope|
+      scope.where(:id => funder_ids).page(params[:page])
+    end
   end
 
   def new

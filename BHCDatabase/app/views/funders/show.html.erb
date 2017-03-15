@@ -1,17 +1,90 @@
 <% provide(:title, @funder.name) %>
 
 <div id="initiative">
-  <h1><%= @funder.name %></h1>
+  <h1>Funder</h1>
 
   <div class="stdcontainer">
-    <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_funder_path, class: 'btn btn-default edit-btn' %>
-    <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @funder, method: :delete,
-                data: {confirm: "Are you sure you want to delete this funder?"},
-                class: "btn btn-default delete-btn" %>
-    <h3><%= @funder.description %></h3>
-    <h3><%= @funder.address %></h3>
-    <h3><%= @funder.telephone %></h3>
-    <h3><%= @funder.email %></h3>
-    <h3><%= @funder.url %></h3>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              <icon class="glyphicon glyphicon-user"></icon>
+              Name: <%= @funder.name %><br>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-map-marker"></icon>
+              Address: <%= @funder.address %><br>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-earphone"></icon>
+              Telephone: <%= @funder.telephone %><br>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-envelope"></icon>
+              Email: <%= @funder.email %><br>
+            </h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div align="left">
+            <h2>
+              <icon class="glyphicon glyphicon-info-sign"></icon>
+              Description: <%= @funder.description %><br>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-share-alt"></icon>
+              Website: <%= @funder.url %><br>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @funder, method: :delete,
+                  data: {confirm: "Are you sure you want to delete this funder?"},
+                  class: "btn btn-default delete-btn" %>
+      <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_funder_path, class: 'btn btn-default edit-btn' %>
+    </div>
+  </div>
+  <h1>Funding</h1>
+  <div class="stdcontainer">
+    <h4><%= @funder.name %> are currently <b>directly</b> funding:</h4>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <% @initiatives = Array.new %>
+          <h4><%= @funder.initiative_funders.count %> initiative(s):</h4>
+          <% @funder.initiative_funders.each do |funder| %>
+            <% @initiatives.push(funder.initiative_id) %>
+          <% end %>
+          <% @initiatives.each do |initiative| %>
+            <p><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></p>
+          <% end %>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <% @medical_conditions = Array.new %>
+          <h4><%= @funder.medical_condition_funders.count %> medical condition(s):</h4>
+          <% @funder.medical_condition_funders.each do |funder| %>
+            <% @medical_conditions.push(funder.medical_condition_id) %>
+          <% end %>
+          <% @medical_conditions.each do |medical_condition| %>
+            <p><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></p>
+          <% end %>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <% @users = Array.new %>
+          <h4><%= @funder.user_funders.count %> user(s):</h4>
+          <% @funder.user_funders.each do |funder| %>
+            <% @users.push(funder.user_id) %>
+          <% end %>
+          <% @users.each do |user| %>
+            <p><%= link_to User.find(user).name, User.find(user) %></p>
+          <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+    <h4>(to see which users are affected by funding an initiative or a medical condition, click through to see the member list)<h4>
   </div>
 </div>

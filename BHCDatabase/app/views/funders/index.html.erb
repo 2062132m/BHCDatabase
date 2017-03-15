@@ -1,14 +1,12 @@
 <% provide(:title, Funder) %>
-
 <div id="initiative">
   <h1>Funders</h1>
 
   <div class="stdcontainer">
+    <%= datagrid_form_for @funders_grid, url: funders_path %>
 
     <%= link_to "<i class='glyphicon glyphicon-plus'></i> New".html_safe, new_funder_url, class: 'btn btn-default new-btn' %>
 
-    <% @funders.each do |funder| %>
-        <h3><%= link_to funder.name, funder %></h3>
-    <% end %>
+    <%= datagrid_table(@funders_grid) %>
   </div>
 </div>
