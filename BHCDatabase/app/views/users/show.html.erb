@@ -110,15 +110,25 @@
   </div>
   <h1>Indirect Funding</h1>
   <div class="stdcontainer">
-    <% @user.initiatives.each do |initiative| %>
-      <% initiative.initiative_funders.each do |funder| %>
-        <h4><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to initiative.name, initiative %></h4>
-      <% end %>
-    <% end %>
-    <% @user.medical_conditions.each do |medical_condition| %>
-      <% medical_condition.medical_condition_funders.each do |funder| %>
-        <h4><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to medical_condition.name, medical_condition %></h4>
-      <% end %>
-    <% end %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Indirect funding received via initiatives:</h4>
+          <% @user.initiatives.each do |initiative| %>
+            <% initiative.initiative_funders.each do |funder| %>
+              <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to initiative.name, initiative %></p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <h4>Indirect funding received via medical conditions:</h4>
+          <% @user.medical_conditions.each do |medical_condition| %>
+            <% medical_condition.medical_condition_funders.each do |funder| %>
+              <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to medical_condition.name, medical_condition %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
