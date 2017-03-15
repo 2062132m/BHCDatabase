@@ -17,7 +17,7 @@ class FundersForInitiativeGrid
     format(model.id) do |value|
       @initiative_funder = InitiativeFunder.find(value)
       # Delete the condition, which will in turn create an 'unassigned_condition'
-      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, nil, class: "btn btn-default unenrol-btn"
+      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, remove_initiative_funding_funder_path(@initiative_funder), class: "btn btn-default unenrol-btn"
     end
   end
 end

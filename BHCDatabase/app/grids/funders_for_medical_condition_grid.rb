@@ -17,7 +17,7 @@ class FundersForMedicalConditionGrid
     format(model.id) do |value|
       @medical_condition_funder = MedicalConditionFunder.find(value)
       # Delete the condition, which will in turn create an 'unassigned_condition'
-      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, nil, class: "btn btn-default unenrol-btn"
+      link_to "<i class='glyphicon glyphicon-remove-sign'></i> Remove Funding".html_safe, remove_medical_funding_funder_path(@medical_condition_funder), class: "btn btn-default unenrol-btn"
     end
   end
 end

@@ -83,6 +83,8 @@ Rails.application.routes.draw do
       post :new_fund_medical_condition
       post :new_fund_user
       get :remove_user_funding
+      get :remove_initiative_funding
+      get :remove_medical_funding
     end
   end
   # listing resources in this style defines default routes: new, show, index, etc...
