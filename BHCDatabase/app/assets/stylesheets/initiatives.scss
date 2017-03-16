@@ -14,4 +14,38 @@
   h3 {
     margin-top: 50px;
   }
+
+  #show-title {
+    font-size: 50px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 0;
+  }
+  #show-sub-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #333333;
+  }
+
+  #info-table {
+    width: 100%;
+    tr {
+      border-bottom: 1px solid #bfbfbf;
+      border-top: 1px solid #bfbfbf;
+      border-collapse: collapse;
+      td {
+        padding: 10px 0 10px 10px;
+        font-weight: 600;
+        icon {
+          margin-right: 8px;
+        }
+      }
+      td:nth-child(odd) {
+        color: #595959;
+      }
+    }
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
 }
