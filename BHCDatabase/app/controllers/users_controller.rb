@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def new_volunteer
-    @volunteer = User.find(params[:id])
+    @volunteer = Volunteer.new
   end
 
   def create_volunteer
@@ -120,5 +120,9 @@ class UsersController < ApplicationController
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def volunteer_params
+    params.require(:volunteer).permit(:life_experiences, :skills, :aspirations, :num_children, :childcare_help, :carer, :carer_costs, :employment, :registered_disabled, :induction_completed)
   end
 end
