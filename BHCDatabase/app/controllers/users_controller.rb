@@ -63,7 +63,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if user_params[:privilege] != '2'
+      @user.feedback_due = nil
+    else
+      @user.feedback_due = Date.today
+    end
     if @user.update_attributes(user_params)
+      @user.save
       flash[:success] = 'User updated'
     else
       flash[:danger] = 'Something went wrong'
