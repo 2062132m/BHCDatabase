@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316113831) do
+ActiveRecord::Schema.define(version: 20170316142245) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -226,6 +226,21 @@ ActiveRecord::Schema.define(version: 20170316113831) do
     t.string   "reason_archived"
     t.index ["dob", "email", "telephone"], name: "index_users_on_dob_and_email_and_telephone", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.text     "life_experiences"
+    t.text     "skills"
+    t.text     "aspirations"
+    t.integer  "num_children"
+    t.boolean  "childcare_help"
+    t.boolean  "carer"
+    t.boolean  "carer_costs"
+    t.string   "employment"
+    t.boolean  "registered_disabled"
+    t.boolean  "induction_completed"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
 end
