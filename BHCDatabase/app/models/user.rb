@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  enum aims: ['Improve Health', 'Have a healthier lifestyle', 'Have more confidence', 'Make new friends', 'Be happier',
+              'Lose weight', 'Increase physical activities', 'Be able to overcome problems better', 'Learn new things',
+              'Be more able to self-manage/control condition', 'Be better able to build relationships', 'Be more involved in the community',
+              'Cope better with caring responsibilities', 'Reduce levels of medication', 'Other']
+
   has_many :enrolments, dependent: :delete_all
   has_many :unenrolments, dependent: :delete_all
   has_many :initiatives, through: :enrolments
