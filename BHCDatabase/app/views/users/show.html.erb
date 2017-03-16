@@ -26,34 +26,72 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <div align="left">
-            <h2>
-              <icon class="glyphicon glyphicon-user"></icon>
-              Name: <%= @user.name %><br>
-            </h2>
-            <h2>
-              <icon class="glyphicon glyphicon-earphone"></icon>
-              Telephone: <%= @user.telephone %><br>
-            </h2>
-            <% unless @user.privilege == 0 %>
-                <h2>
-                  <icon class="glyphicon glyphicon-phone-alt"></icon>
-                  Emergency Contact: <%= @user.emergency_contact %><br>
-                </h2>
+          <h2>
+            <icon class="glyphicon glyphicon-user"></icon>
+            Name: <%= @user.name %><br>
+          </h2>
+          <h2>
+            <icon class="glyphicon glyphicon-earphone"></icon>
+            Telephone: <%= @user.telephone %><br>
+          </h2>
+          <% unless @user.privilege == 0 %>
+              <h2>
+                <icon class="glyphicon glyphicon-phone-alt"></icon>
+                Emergency Contact: <%= @user.emergency_contact %><br>
+              </h2>
+          <% end %>
+          <h2>
+            <icon class="glyphicon glyphicon-envelope"></icon>
+            Email: <%= @user.email %><br>
+          </h2>
+          <h2>
+            <icon class="glyphicon glyphicon-calendar"></icon>
+            DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
+          </h2>
+          <h2>
+            <% if @user.privilege == 0 %>
+              <icon class="glyphicon glyphicon-eye-open"></icon>
+              Privilege: Admin<br>
+            <% elsif @user.privilege == 1 %>
+              <icon class="glyphicon glyphicon-eye-open"></icon>
+              Privilege: Volunteer<br>
+            <% else %>
+              <icon class="glyphicon glyphicon-eye-open"></icon>
+              Privilege: Service User<br>
             <% end %>
-            <h2>
-              <icon class="glyphicon glyphicon-envelope"></icon>
-              Email: <%= @user.email %><br>
-            </h2>
-            <h2>
-              <icon class="glyphicon glyphicon-calendar"></icon>
-              DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
-            </h2>
-            <% if @user.archived %>
-                <h4>This user has been archived.</h4>
-                <h4>Reason: <%= @user.reason_archived %></h4>
+          </h2>
+          <% if @user.archived %>
+              <h4>This user has been archived.</h4>
+              <h4>Reason: <%= @user.reason_archived %></h4>
+          <% end %>
+        </div>
+        <div class=col-md-6>
+          <% if current_user.privilege == 0 %>
+            <% if (@user.privilege == 1) && (Volunteer.find_by_user_id(@user.id) == nil) %>
+              <%= link_to "<i class='glyphicon glyphicon-list-alt'></i> Volunteer Details".html_safe, new_volunteer_user_path(user_id: @user.id), class: 'btn btn-default volunteer-btn' %>
+              <p id="volunteer-reminder"><em>You still need to complete volunteer details</em></p>
+            <% elsif @user.privilege == 1 %>
+              <% @volunteer = Volunteer.find_by_user_id(@user.id) %>
+              <h2>Volunteer Information</h2>
+              <h2>Became volunteer with BHC: <%= @volunteer.volunteer_date %></h2>
+              <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
+              <h2>Skills: <%= @volunteer.skills %></h2>
+              <h2>Aspirations: <%= @volunteer.aspirations %></h2>
+              <h2>Number of Children: <%= @volunteer.num_children %></h2>
+              <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
+              <% if @volunteer.childcare_help %><h2>Requires help with childcare: Yes</h2>
+              <% else %><h2>Requires help with childcare: No</h2><% end %>
+              <% if @volunteer.carer %><h2>Is a carer: Yes</h2>
+              <% else %><h2>Is a carer: No</h2><% end %>
+              <% if @volunteer.carer_costs %><h2>Requires help with carer's costs: Yes</h2>
+              <% else %><h2>Requires help with carer's costs: No</h2><% end %>
+              <h2>Employment: <%= @volunteer.employment %></h2>
+              <% if @volunteer.registered_disabled %><h2>Registered as disabled: Yes</h2>
+              <% else %><h2>Registered as disabled: No</h2><% end %>
+              <% if @volunteer.induction_completed %><h2>Completed Induction: Yes</h2>
+              <% else %><h2>Completed Induction: No</h2><% end %>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
       <% if current_user.privilege == 0 %>

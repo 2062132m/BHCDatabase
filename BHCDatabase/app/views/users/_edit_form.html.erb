@@ -17,7 +17,7 @@
     <%= f.date_select :dob, { :start_year => 1900, :end_year => Date.today.year }, { class: "form-control" } %>
 
     <%= f.label :privilege %>
-    <%= f.number_field :privilege, in: 0.0..2.0, step: 1.0, class: "form-control" %>
+    <%= f.select :privilege, options_for_select({"Admin" => 0, "Volunteer" => 1, "Service User" => 2}, @user.privilege), {}, { class: "form-control" } %>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>

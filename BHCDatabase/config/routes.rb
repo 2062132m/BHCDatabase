@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   # custom methods for users
   resources :users do
     member do
+      get :new_volunteer
+      post :create_volunteer
       get :archive
       get :unarchive
       patch :update_archive

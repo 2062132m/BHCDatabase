@@ -1,0 +1,40 @@
+<%= form_for @volunteer, :url => { :action => "create_volunteer" } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :user_id %>
+
+  <%= f.label :volunteer_date %>
+  <%= f.date_field :volunteer_date, class: "form-control" %>
+
+  <%= f.label :life_experiences %>
+  <%= f.text_field :life_experiences, class: "form-control" %>
+
+  <%= f.label :skills %>
+  <%= f.text_field :skills, class: "form-control" %>
+
+  <%= f.label :aspirations %>
+  <%= f.text_field :aspirations, class: "form-control" %>
+
+  <%= f.label :num_children %>
+  <%= f.number_field :num_children, class: "form-control" %>
+
+  <%= f.label :childcare_help %>
+  <%= f.select :childcare_help, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
+
+  <%= f.label :carer %>
+  <%= f.select :carer, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
+
+  <%= f.label :carer_costs %>
+  <%= f.select :carer_costs, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
+
+  <%= f.label :employment %>
+  <%= f.select(:employment, ["Employed full time", "Employed part time", "Unemployed", "Student"], {}, { class: "form-control" }) %>
+
+  <%= f.label :registered_disabled %>
+  <%= f.select :registered_disabled, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
+
+  <%= f.label :induction_completed %>
+  <%= f.select :induction_completed, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
+
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>
