@@ -24,39 +24,35 @@
   <h1>User</h1>
   <div class="stdcontainer">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div align="left">
-            <%= link_to "<i class='glyphicon glyphicon-tasks'></i> Volunteer Details".html_safe, new_volunteer_user_path(user_id: @user.id), class: 'btn btn-default feedback-btn' %>
-            <h2>
-              <icon class="glyphicon glyphicon-user"></icon>
-              Name: <%= @user.name %><br>
-            </h2>
-            <h2>
-              <icon class="glyphicon glyphicon-earphone"></icon>
-              Telephone: <%= @user.telephone %><br>
-            </h2>
-            <% unless @user.privilege == 0 %>
-                <h2>
-                  <icon class="glyphicon glyphicon-phone-alt"></icon>
-                  Emergency Contact: <%= @user.emergency_contact %><br>
-                </h2>
-            <% end %>
-            <h2>
-              <icon class="glyphicon glyphicon-envelope"></icon>
-              Email: <%= @user.email %><br>
-            </h2>
-            <h2>
-              <icon class="glyphicon glyphicon-calendar"></icon>
-              DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
-            </h2>
-            <% if @user.archived %>
-                <h4>This user has been archived.</h4>
-                <h4>Reason: <%= @user.reason_archived %></h4>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <% if (@user.privilege == 1) && (Volunteer.find_by_user_id(@user.id) == nil) %>
+        <%= link_to "<i class='glyphicon glyphicon-list-alt'></i> Volunteer Details".html_safe, new_volunteer_user_path(user_id: @user.id), class: 'btn btn-default volunteer-btn' %>
+      <% end %>
+      <h2>
+        <icon class="glyphicon glyphicon-user"></icon>
+        Name: <%= @user.name %><br>
+      </h2>
+      <h2>
+        <icon class="glyphicon glyphicon-earphone"></icon>
+        Telephone: <%= @user.telephone %><br>
+      </h2>
+      <% unless @user.privilege == 0 %>
+          <h2>
+            <icon class="glyphicon glyphicon-phone-alt"></icon>
+            Emergency Contact: <%= @user.emergency_contact %><br>
+          </h2>
+      <% end %>
+      <h2>
+        <icon class="glyphicon glyphicon-envelope"></icon>
+        Email: <%= @user.email %><br>
+      </h2>
+      <h2>
+        <icon class="glyphicon glyphicon-calendar"></icon>
+        DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
+      </h2>
+      <% if @user.archived %>
+          <h4>This user has been archived.</h4>
+          <h4>Reason: <%= @user.reason_archived %></h4>
+      <% end %>
       <% if current_user.privilege == 0 %>
           <button id="openpasswordmodal" class="btn btn-default password-btn">
             <span class="glyphicon glyphicon-lock"></span> Change Password
