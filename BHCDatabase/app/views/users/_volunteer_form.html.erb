@@ -25,7 +25,7 @@
   <%= f.select :carer_costs, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
 
   <%= f.label :employment %>
-  <%= f.select :employment, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
+  <%= f.select(:employment, ["Employed full time", "Employed part time", "Unemployed", "Student"], {}, { class: "form-control" }) %>
 
   <%= f.label :registered_disabled %>
   <%= f.select :registered_disabled, options_for_select({"Yes" => true, "No" => false}), {}, { class: "form-control" } %>
