@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316134929) do
+ActiveRecord::Schema.define(version: 20170316140122) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -231,6 +231,10 @@ ActiveRecord::Schema.define(version: 20170316134929) do
     t.string "town"
     t.string "postcode"
     t.string "emergency_name"
+    t.integer "aims", default: 0
+    t.string "aims_other"
+    t.string "prevent_attending"
+    t.date "reg_date"
     t.index ["dob", "email", "telephone"], name: "index_users_on_dob_and_email_and_telephone", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
