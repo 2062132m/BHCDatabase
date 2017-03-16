@@ -54,10 +54,10 @@
           <% @initiatives = Array.new %>
           <h4><%= @funder.initiative_funders.count %> initiative(s):</h4>
           <% @funder.initiative_funders.each do |funder| %>
-            <% @initiatives.push(funder.initiative_id) %>
+              <% @initiatives.push(funder.initiative_id) %>
           <% end %>
           <% @initiatives.each do |initiative| %>
-            <p><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></p>
+              <p><%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %></p>
           <% end %>
           <br>
         </div>
@@ -65,10 +65,10 @@
           <% @medical_conditions = Array.new %>
           <h4><%= @funder.medical_condition_funders.count %> medical condition(s):</h4>
           <% @funder.medical_condition_funders.each do |funder| %>
-            <% @medical_conditions.push(funder.medical_condition_id) %>
+              <% @medical_conditions.push(funder.medical_condition_id) %>
           <% end %>
           <% @medical_conditions.each do |medical_condition| %>
-            <p><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></p>
+              <p><%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %></p>
           <% end %>
           <br>
         </div>
@@ -76,15 +76,16 @@
           <% @users = Array.new %>
           <h4><%= @funder.user_funders.count %> user(s):</h4>
           <% @funder.user_funders.each do |funder| %>
-            <% @users.push(funder.user_id) %>
+              <% @users.push(funder.user_id) %>
           <% end %>
           <% @users.each do |user| %>
-            <p><%= link_to User.find(user).name, User.find(user) %></p>
+              <p><%= link_to User.find(user).known_as, User.find(user) %></p>
           <% end %>
           <br>
         </div>
       </div>
     </div>
-    <h4>(to see which users are affected by funding an initiative or a medical condition, click through to see the member list)<h4>
+    <h4>(to see which users are affected by funding an initiative or a medical condition, click through to see the
+      member list)</h4>
   </div>
 </div>
