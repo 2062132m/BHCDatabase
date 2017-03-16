@@ -1,8 +1,4 @@
 class EnrolmentsController < ApplicationController
-  def index
-    @enrolments_grid = EnrolmentsGrid.new(params[:enrolments_grid]) { |scope| scope.page(params[:page]) }
-  end
-
   def create
     # parse values returned to get respective ids
     # could be an issue if we allow duplicate names
