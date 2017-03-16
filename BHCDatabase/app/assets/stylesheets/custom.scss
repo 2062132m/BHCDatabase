@@ -360,8 +360,8 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #3366ff;
   border-color: #3366ff;
+  margin-right: 5px;
   margin-bottom: 10px;
-  float: left;
 }
 
 .new-session-btn {
@@ -402,6 +402,7 @@ table.datagrid {
   background-color: #ff6600;
   border-color: #ff6600;
   margin-bottom: 10px;
+  margin-top: 85px;
   margin-right: 5px;
   float: right;
 }
@@ -431,10 +432,8 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #ff3399;
   border-color: #ff3399;
-  margin-top: 10px;
-  margin-right: 30px;
+  margin: 20px 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  float: right;
 }
 
 .feedback-btn {
@@ -443,6 +442,7 @@ table.datagrid {
   background-color: #8B7D6B;
   border-color: #8B7D6B;
   margin-bottom: 10px;
+  margin-top: 85px;
   margin-right: 5px;
   float: right;
 }
@@ -724,7 +724,76 @@ input {
 }
 
 #volunteer-reminder {
-  float: right;
-  margin-right: 15px;
-  margin-top: 14px;
+  margin-top: 5px;
+}
+
+#show-title {
+  font-size: 50px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 0;
+}
+#show-sub-title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #333333;
+}
+
+#info-table {
+  width: 100%;
+  tr {
+    border-bottom: 1px solid #bfbfbf;
+    border-top: 1px solid #bfbfbf;
+    border-collapse: collapse;
+    td {
+      text-align: left;
+      padding: 10px 0 10px 10px;
+      font-weight: 600;
+      icon {
+        margin-right: 8px;
+      }
+    }
+    td:nth-child(odd) {
+      color: #595959;
+    }
+  }
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+}
+
+.volunteer-table {
+  margin-top: 16px;
+}
+
+#graph-title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+}
+
+.buttons-container {
+  padding: 0;
+}
+
+.info-container {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  border: 1px solid #bfbfbf;
+  background-color: #f2f2f2;
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-right: 20px;
+    color: #333333;
+  }
+  #show-details-title {
+    border-bottom: 1px solid #bfbfbf;
+    font-size: 25px;
+    padding-bottom: 5px;
+  }
 }
