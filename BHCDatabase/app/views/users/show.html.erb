@@ -72,6 +72,7 @@
           <% elsif @user.privilege == 1 %>
             <% @volunteer = Volunteer.find_by_user_id(@user.id) %>
             <h2>Volunteer Information</h2>
+            <h2>Became volunteer with BHC: <%= @volunteer.volunteer_date %></h2>
             <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
             <h2>Skills: <%= @volunteer.skills %></h2>
             <h2>Aspirations: <%= @volunteer.aspirations %></h2>
