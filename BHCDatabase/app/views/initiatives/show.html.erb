@@ -11,32 +11,50 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <div align="left">
-            <h2 id="show-title"><%= @initiative.name %></h2>
-            <h2 id="show-sub-title"><%= @area.name %></h2>
-            <table id="info-table">
-              <tr>
-                <td>Area:</td>
-                <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @area.name, @area %></td>
-              </tr>
-              <tr>
-                <td>Location:</td>
-                <td><icon class="glyphicon glyphicon-map-marker"></icon><%= @initiative.location %></td>
-              </tr>
-              <tr>
-                <td>Description:</td>
-                <td><icon class="glyphicon glyphicon-info-sign"></icon><%= @initiative.description %></td>
-              </tr>
-            </table>
-            <br>
-            <% if @initiative.archived == true %>
-              <h4><br>This initiative has been archived.</h4>
-              <h4>Reason: <%= @initiative.reason_archived %></h4>
-            <% end %>
-          </div>
-          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance) %>
+          <% if current_user.privilege == 0 %>
+            <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @initiative, method: :delete,
+                                        data: { confirm: "Are you sure you want to delete this initiative?
+                                                          \nNote: All associated meetings will be deleted!" },
+                                          class: "btn btn-default delete-btn" %>
+            <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
+          <% end %>
+          <h2 id="show-title"><%= @initiative.name %></h2>
+          <h2 id="show-sub-title"><%= @area.name %></h2>
+          <table id="info-table">
+            <tr>
+              <td>Area:</td>
+              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @area.name, @area %></td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td><icon class="glyphicon glyphicon-map-marker"></icon><%= @initiative.location %></td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><icon class="glyphicon glyphicon-info-sign"></icon><%= @initiative.description %></td>
+            </tr>
+          </table>
+          <br>
+          <% if @initiative.archived == true %>
+            <h4><br>This initiative has been archived.</h4>
+            <h4>Reason: <%= @initiative.reason_archived %></h4>
+          <% end %>
+          <h2 id="graph-title">Percentage Attendance Over Time</h2>
+          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance), xtitle: "Time", ytitle: "Attendance %" %>
         </div>
         <div class="col-md-6">
+          <div class="container-fluid buttons-container">
+            <% if current_user.privilege == 0 %>
+              <% if @initiative.archived == false %>
+                <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>
+              <% else %>
+                <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_initiative_path, class: 'btn btn-default archive-btn' %>
+              <% end %>
+              <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_initiative_funder_path(initiative_id: @initiative.id), class: 'btn btn-default funder-btn' %>
+              <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_user_enrolment_path(initiative_id: @initiative.id), class: 'btn btn-default enrolment-btn' %>
+            <% end %>
+            <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Session".html_safe, new_meeting_path(initiative_id: @initiative.id), class: 'btn btn-default new-session-btn' %>
+          </div>
           <div class="info-container">
             <h2 id="show-details-title">Initiative Details</h2>
             <h2>Number of Members Enrolled: <%= @initiative.users.count %></h2>
@@ -47,21 +65,6 @@
           </div>
         </div>
       </div>
-      <% if current_user.privilege == 0 %>
-        <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @initiative, method: :delete,
-                                    data: { confirm: "Are you sure you want to delete this initiative?
-                                                      \nNote: All associated meetings will be deleted!" },
-                                      class: "btn btn-default delete-btn" %>
-        <% if @initiative.archived == false %>
-          <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>
-        <% else %>
-          <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_initiative_path, class: 'btn btn-default archive-btn' %>
-        <% end %>
-        <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_initiative_funder_path(initiative_id: @initiative.id), class: 'btn btn-default funder-btn' %>
-        <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_user_enrolment_path(initiative_id: @initiative.id), class: 'btn btn-default enrolment-btn' %>
-        <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_initiative_path, class: 'btn btn-default edit-btn' %>
-      <% end %>
-      <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Session".html_safe, new_meeting_path(initiative_id: @initiative.id), class: 'btn btn-default new-session-btn' %>
     </div>
   </div>
   <h1 id="meetingtitle">Members</h1>

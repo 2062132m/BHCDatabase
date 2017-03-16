@@ -34,6 +34,7 @@
       border-top: 1px solid #bfbfbf;
       border-collapse: collapse;
       td {
+        text-align: left;
         padding: 10px 0 10px 10px;
         font-weight: 600;
         icon {
@@ -49,8 +50,19 @@
     }
   }
 
+  #graph-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+  }
+
+  .buttons-container {
+    padding: 0;
+  }
+
   .info-container {
-    margin-top: 20px;
+    margin-top: 16px;
     margin-bottom: 20px;
     margin-right: 10px;
     border: 1px solid #bfbfbf;
