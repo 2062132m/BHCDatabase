@@ -19,24 +19,40 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
 
-  validates :forename, presence: true,
+  validates :forename,
+            presence: true,
             length: {maximum: 50},
             uniqueness: {:scope => [:dob, :email, :telephone], case_sensitive: false}
+  validates :surname,
+            presence: true,
+            length: {maximum: 50}
+  validates :known_as, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: {maximum: 255},
+  validates :email,
+            presence: true,
+            length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
-  has_secure_password
   validates :password, presence: true, length: {minimum: 6}, :if => :password_validation_required?
   validates :telephone, presence: true, length: {maximum: 16}
-  validates :emergency_telephone, presence: true, length: {maximum: 16}, :unless => :is_admin?
   validates :dob, presence: true
-  validate :dob_before_today
-  validate :only_service_user_has_feedback
   validates :privilege, presence: true, numericality: {only_integer: true,
                                                        greater_than_or_equal_to: 0,
                                                        less_than_or_equal_to: 2}
+  validates :emergency_telephone, presence: true, length: {maximum: 16}, :unless => :is_admin?
+  validates :emergency_name, presence: true, length: {maximum: 50}, :unless => :is_admin?
   validates :reason_archived, length: {maximum: 30}
+  validates :address1, length: {maximum: 255}, presence: true
+  validates :address2, length: {maximum: 255}
+  validates :town, length: {maximum: 50}, presence: true
+  validates :postcode, length: {maximum: 10}, presence: true
+  validates :aims, presence: true, inclusion: {:in => aims.keys}, :unless => :is_admin?
+  validates :aims_other, length: {maximum: 255}, :unless => :is_admin?
+  validates :prevent_attending, length: {maximum: 255}, :unless => :is_admin?
+  validates :reg_date, presence: true
+  validate :only_service_user_has_feedback
+  validate :dob_before_today
+  has_secure_password
 
   # Returns the hash digest of the given string.
   def User.digest(string)
