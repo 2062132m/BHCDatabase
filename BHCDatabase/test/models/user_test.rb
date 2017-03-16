@@ -3,10 +3,23 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(name: Faker::Name.name, email: 'user@example.com',
-                     password: 'foobar', password_confirmation: 'foobar',
-                     telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
+    @user = User.new(forename: Faker::Name.first_name,
+                     surname: Faker::Name.last_name,
+                     known_as: Faker::LordOfTheRings.character,
+                     email: 'user@example.com',
+                     password: 'foobar',
+                     password_confirmation: 'foobar',
+                     telephone: Faker::PhoneNumber.phone_number,
                      dob: Faker::Date.between(70.years.ago, 18.years.ago),
+                     reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+                     emergency_name: Faker::Name.name,
+                     emergency_telephone: Faker::PhoneNumber.phone_number,
+                     address1: Faker::Address.street_address,
+                     address2: Faker::Address.secondary_address,
+                     town: Faker::Address.city,
+                     postcode: Faker::Address.postcode,
+                     aims: 0,
+                     aims_other: Faker::Lorem.sentence,
                      privilege: 1)
   end
 
@@ -14,13 +27,23 @@ class UserTest < ActiveSupport::TestCase
     assert @user.valid?
   end
 
-  test 'name should be present' do
-    @user.name = '     '
+  test 'forename should be present' do
+    @user.forename = ''
     assert_not @user.valid?
   end
 
-  test 'name should not be too long' do
-    @user.name = 'a' * 51
+  test 'forename should not be too long' do
+    @user.forename = 'a' * 51
+    assert_not @user.valid?
+  end
+
+  test 'surname should be present' do
+    @user.surname = ''
+    assert_not @user.valid?
+  end
+
+  test 'surname should not be too long' do
+    @user.surname = 'a' * 51
     assert_not @user.valid?
   end
 
@@ -72,15 +95,27 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test 'emergency_contact should be present' do
+  test 'emergency_name should be present' do
     @user.privilege = 2
-    @user.emergency_contact = ''
+    @user.emergency_name = ''
     assert_not @user.valid?
   end
 
-  test 'emergency_contact should not be too long' do
+  test 'emergency_name should not be too long' do
     @user.privilege = 2
-    @user.emergency_contact = '1' * 17
+    @user.emergency_name = 'a' * 50
+    assert_not @user.valid?
+  end
+
+  test 'emergency_telephone should be present' do
+    @user.privilege = 2
+    @user.emergency_name = ''
+    assert_not @user.valid?
+  end
+
+  test 'emergency_telephone should not be too long' do
+    @user.privilege = 2
+    @user.emergency_name = '1' * 17
     assert_not @user.valid?
   end
 
@@ -124,5 +159,76 @@ class UserTest < ActiveSupport::TestCase
     @user.email = mixed_case_email
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
+  end
+
+  test 'address1 should be present' do
+    @user.address1 = ''
+    assert_not @user.valid?
+  end
+
+  test 'address1 should not be too long' do
+    @user.address1 = 'a' * 256
+    assert_not @user.valid?
+  end
+
+  test 'address2 does not need to be present' do
+    @user.address2 = ''
+    assert @user.valid?
+  end
+
+  test 'address2 should not be too long' do
+    @user.address2 = 'a' * 256
+    assert_not @user.valid?
+  end
+
+  test 'town should be present' do
+    @user.town = ''
+    assert_not @user.valid?
+  end
+
+  test 'town should not be too long' do
+    @user.town = 'a' * 51
+    assert_not @user.valid?
+  end
+
+  test 'postcode should be present' do
+    @user.postcode = ''
+    assert_not @user.valid?
+  end
+
+  test 'postcode should not be too long' do
+    @user.postcode = 'k' * 11
+    assert_not @user.valid?
+  end
+
+  test 'aims should be present for non admin' do
+    @user.privilege = 1
+    assert @user.valid?
+    @user.aims = nil
+    @user.privilege = 0
+    assert @user.valid?
+  end
+
+  test 'aims_other should not be too long' do
+    @user.aims_other = 'a' * 256
+    @user.valid?
+  end
+
+  test 'prevent attending should be present for non admin' do
+    @user.privilege = 0
+    @user.prevent_attending = nil
+    assert @user.valid?
+    @user.privilege = 1
+    assert @user.valid?
+  end
+
+  test 'prevent_attending should not be too long' do
+    @user.prevent_attending = 'a' * 256
+    assert_not @user.valid?
+  end
+
+  test 'reg_date should be present' do
+    @user.reg_date = ''
+    assert_not @user.valid?
   end
 end
