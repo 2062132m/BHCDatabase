@@ -15,6 +15,10 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{cite}
+
 \begin{document}
 
 
@@ -109,9 +113,9 @@ In terms of project planning, agile methods are one of the most trusted methods 
 \subsection{Technologies Used}
 \label{tech}
 
-Having the methods that we going to be used outlined, the technologies needed regarding the project management had to be outlined. The university moodle page, suggested a series of technologies to use for handling the projects such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what technologies were permitted, we decided to use Gitlab for our project management and repository. Gitlab provides every technology that is needed to handle a project repository, the permissions that each member has as well as an amazing GUI that organises the "wiki" page and the "issues" page and so on. Gitlab provides feature organisation, where the user can have due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provides is probably Continuous Integration (CI). CI is a tool that enables all the repository users to merge their work to a local repository. This is a huge organisational feature, since it enables the constant interaction of every project member. Every contributor, has the ability of assigning a ticket to themselves or even to other team contributors, enabling the possibility of creating a highly organised page and the ability of tracking the workload that every contributor has done. All these make the ability of of assigning work to contributors that have not worked as much as the others in a specific week and assign less to contributors that already have done more work than needed. Subsequently, the creation of issues becomes very descriptive; using checkboxes, priority level, time estimating and different labels. This was very useful in terms of tracking progress. A feature that contributed to the increment of the security of the software was the creation of a separate branch for resolving any open issues. A plan was created about the useful usage of separate branches. Every particular issue or every new alternative was related with a newly created branch, enabling the test of new features and bug fixes without pushing to the Master branch. As soon as the issue was fixed, a merge request was created followed by closing that particular issue and deleting the temporary branch. Lastly, a feature that the lead developers managed to add in subsequent time was the "Docker". Docker is an open source container platform. Docker can be described as ?The platform that worked for us?. It offers an automated deployment of the software. The most important thing that Docker offers is that the deployments are happening in different "containers" which hold all the requirements the software has. This results to a more automated management of the software.
+Having the methods that we going to be used outlined, the technologies needed regarding the project management had to be outlined. The university moodle page, suggested a series of technologies to use for handling the projects such as "Ant and Ivy", "Jenkins", "Apache" etc. After a small group meeting and a discussion with the supervisors about what technologies were permitted, we decided to use Gitlab for our project management and repository. Gitlab provides every technology that is needed to handle a project repository, the permissions that each member has as well as an amazing GUI that organises the "wiki" page and the "issues" page and so on. Gitlab provides feature organisation, where the user can have due dates clearly displayed, issues and requests organised as milestones with the appropriate labels. The most useful feature that Gitlab provides is probably Continuous Integration (CI). \cite{ci} CI is a tool that enables all the repository users to merge their work to a local repository. This is a huge organisational feature, since it enables the constant interaction of every project member. Every contributor, has the ability of assigning a ticket to themselves or even to other team contributors, enabling the possibility of creating a highly organised page and the ability of tracking the workload that every contributor has done. All these make the ability of of assigning work to contributors that have not worked as much as the others in a specific week and assign less to contributors that already have done more work than needed. Subsequently, the creation of issues becomes very descriptive; using checkboxes, priority level, time estimating and different labels. This was very useful in terms of tracking progress. A feature that contributed to the increment of the security of the software was the creation of a separate branch for resolving any open issues. A plan was created about the useful usage of separate branches. Every particular issue or every new alternative was related with a newly created branch, enabling the test of new features and bug fixes without pushing to the Master branch. As soon as the issue was fixed, a merge request was created followed by closing that particular issue and deleting the temporary branch. Lastly, a feature that the lead developers managed to add in subsequent time was the "Docker". Docker is an open source container platform. Docker can be described as ?The platform that worked for us?. It offers an automated deployment of the software. The most important thing that Docker offers is that the deployments are happening in different "containers" which hold all the requirements the software has. This results to a more automated management of the software.
 
-After this discussion, the meeting was not over. Therefore, a decision needed to be taken about technologies being used for implementing the project itself. An application framework had to be chosen. From the one hand, Django was highly recommended, due to the fact that every team member had previous experience with Django from the second year web application development course. Another suggested option was Rails as more powerful tool with better documentation. To put more depth in it, Rails is a web application framework with "model-view-controller" software design pattern, not "model-view-template" like the already familiarised Django. None of the six members coded on Rails before, so the meeting was postponed and an issue was created on Gitlab suggesting that every member in the team had to study Rails in their personal free time. During the following meeting Rails was agreed to be used. Rails provides a massive help in the testing process. Moreover, the most persuasive factor of using Rails is the automation of many tasks and the "Gems" documentation that provides "RubyGems" as a package manager. Using a tool called "Gem" in  terminal, different libraries can be installed with which the user can work. Gems, are previously tested libraries, which provide security, saving a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks. Since Rails, as previously stated, is based in "model-view-controller", a model is needed for the management of the newly created database. PostgreSQL is a self-contained, free to use object-relational database management system suitable for a small database with just a couple of thousand text records.
+After this discussion, the meeting was not over. Therefore, a decision needed to be taken about technologies being used for implementing the project itself. An application framework had to be chosen. From the one hand, Django was highly recommended, due to the fact that every team member had previous experience with Django from the second year web application development course \cite{Django}. Another suggested option was Rails as more powerful tool with better documentation \cite{Rails}. \cite{DjangoVsRails} To put more depth in it, Rails is a web application framework with "model-view-controller" software design pattern, not "model-view-template" like the already familiarised Django. None of the six members coded on Rails before, so the meeting was postponed and an issue was created on Gitlab suggesting that every member in the team had to study Rails in their personal free time. During the following meeting Rails was agreed to be used. Rails provides a massive help in the testing process. \cite{RubyGem} Moreover, the most persuasive factor of using Rails is the automation of many tasks and the "Gems" documentation that provides "RubyGems" as a package manager. Using a tool called "Gem" in  terminal, different libraries can be installed with which the user can work. Gems, are previously tested libraries, which provide security, saving a lot of valuable time. Reusing previously tested tools is always highly suggested in the world of web application frameworks. Since Rails, as previously stated, is based in "model-view-controller", a model is needed for the management of the newly created database.\cite{PostgreSQL} PostgreSQL is a self-contained, free to use object-relational database management system suitable for a small database with just a couple of thousand text records.
 \subsection{Retrospective}
 \label{retrospective}
 
@@ -206,7 +210,7 @@ Identifying the requirements is an important step which enables the creation som
 \subsection{User Stories}
 \label{user_stories}
 
-User stories play a critical role in the agile methods which are strictly followed. A user story formally describes the state of the application. The basic functions that a potential user expects it to do. Functional and non-functional user stories were created. User stories helps to put in action the program and to fully understand how it will work.
+User stories \cite{UserStories} play a critical role in the agile methods which are strictly followed. A user story formally describes the state of the application. The basic functions that a potential user expects it to do. Functional and non-functional user stories were created. User stories helps to put in action the program and to fully understand how it will work.
 
 A couple of highly representative functional user stories are:
 \begin{itemize}
@@ -325,9 +329,9 @@ During the next iteration, after a group discussion, the objectives for the next
 \subsection{ER Diagram}
 \label{sec:er}
 
-An Entity-Relationship diagram plays a critical role in the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team had started the development of the application only after an ER diagram was present to specify the structure of the database. 
+An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team had started the development of the application only after an ER diagram was present to specify the structure of the database. 
 
-The ER diagram is shown in figure 2.
+The ER diagram is shown in Figure 2.
 
 \begin{figure}
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
@@ -341,7 +345,7 @@ The main aspect of the diagram is the initiatives, which are different courses t
 \label{sec:component}
 
 Since Ruby on Rails uses Model-View-Controller architecture pattern, it allows our team to develop Agile application. The Model layer represents the logic of the application and the management of interactions with elements in the database. The View is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation.
-In addition we decided to use Docker to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
+In addition we decided to use Docker \cite{Docker} to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
 All of those are illustrated in Figure 3 which demonstrates visually the component architecture of our application.
 
 \begin{figure}
@@ -353,7 +357,7 @@ All of those are illustrated in Figure 3 which demonstrates visually the compone
 \subsection{Initial Prototype}
 \label{sec:prototype1}
 
-Having the basic database structure, initial prototypes of the page were created, in order to discuss potential design changes. The first version of the page can be found in Figure 3.
+Having the basic database structure, initial prototypes of the page were created, in order to discuss potential design changes. The first version of the page can be found in Figure 4.
 
 \begin{figure}
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
@@ -365,7 +369,7 @@ The initial page was very basic, not very colourful and errors containing. It wa
 \subsection{Final Prototype}
 \label{sec:prototype2}
 
-The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the members would not be able to sign up, which had the consequence of deleting this feature. Furthermore, the home page and the login page have been merged into one single page in order to provide easier access for the customers. The new prototype can be found in Figure 4.
+The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the members would not be able to sign up, which had the consequence of deleting this feature. Furthermore, the home page and the login page have been merged into one single page in order to provide easier access for the customers. The new prototype can be found in Figure 5.
 
 \begin{figure}
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
@@ -395,7 +399,7 @@ Before the beginning of the fourth milestone, the next objectives were outlined.
 \subsection{User Authentication}
 \label{sec:authentication}
 
-One of the most important factors of the development of the site was the protection of the user's information.  A secure user authentication was a very crucial implementation part. By the phrase "User authentication" is meant the process where the user of the page types some credential information which are compared with the information that are kept in the database, if the information are matched the user is able to access various other information based on the level access that they have on the site. Improper development of the user authentication could lead to the leak of personal information from one user to another or the ability of every user editing the database. A small research online was performed in order to explore the best practices of developing a highly secure user authentication. A highly suggested, "gem" for developing a good user authentication was the "Devise". Devise is one of the most popular user authentication tools. Some of its features are the ability of assigning multiple models in at the same time and its modulation. A user authentication tool such that provide a lot complexity and unnecessary tool that we will never user. On top of that, all these additional functionality may introduce issues that as programmers with a small experience may be unable to solve. All in all, a conclusion has been taken that a pre-built solution was not a very good idea. However, building from scratch the user authentication seemed a better solution since the complexity is controlled and every new feature is known along with any anomalies that may introduce. The user authentication was based in an authenticated book called "Ruby on Rails Tutorial (Rails 5)" written by Michael Hartl. The book provides some online tutorials which the authentication is based until chapter 6. The authentication was finalised with some simple HTML commands based on our previous experience.
+One of the most important factors of the development of the site was the protection of the user's information.  A secure user authentication was a very crucial implementation part. By the phrase "User authentication" \cite{authentication} is meant the process where the user of the page types some credential information which are compared with the information that are kept in the database, if the information are matched the user is able to access various other information based on the level access that they have on the site. Improper development of the user authentication could lead to the leak of personal information from one user to another or the ability of every user editing the database. A small research online was performed in order to explore the best practices of developing a highly secure user authentication. A highly suggested, "gem" for developing a good user authentication was the "Devise". \cite{devise} Devise is one of the most popular user authentication tools. Some of its features are the ability of assigning multiple models in at the same time and its modulation. A user authentication tool such that provide a lot complexity and unnecessary tool that we will never user. On top of that, all these additional functionality may introduce issues that as programmers with a small experience may be unable to solve. All in all, a conclusion has been taken that a pre-built solution was not a very good idea. However, building from scratch the user authentication seemed a better solution since the complexity is controlled and every new feature is known along with any anomalies that may introduce. The user authentication was based in an authenticated book called "Ruby on Rails Tutorial (Rails 5)" written by Michael Hartl \cite{railsTut}. The book provides some online tutorials which the authentication is based until chapter 6. The authentication was finalised with some simple HTML commands based on our previous experience.
 
 
 \subsection{Browser and Mobile Compatibility}
@@ -404,7 +408,7 @@ One of the most important factors of the development of the site was the protect
 The aim for browser compatibility was quite broad. Throughout the customers' meetings it was clear that broad support of the most popular browsers is essential and that the website should function on both iOS and Android (Running in both tablet and mobile form).
 
 A huge issue that was raised at that point, was the browser compatibility and more specifically the support of Internet Explorers version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, the final decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system. An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
-An important amount of the user's site, will only have as a mean of access to the site their mobile phones. Thus, a good mobile compatibility is demanded. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility.
+An important amount of the user's site, will only have as a mean of access to the site their mobile phones. Thus, a good mobile compatibility is demanded. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility. An example screenshot can be found in Figure 6.
 
 \begin{figure}
  \centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
@@ -414,7 +418,7 @@ An important amount of the user's site, will only have as a mean of access to th
 \subsection{Testing}
 \label{testing}
 
-It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the initial development states, every completed section was not considered to be fully complete until the proper testing were implemented. Providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in figure 6 displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
+It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the initial development states, every completed section was not considered to be fully complete until the proper testing were implemented. Providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in Figure 7 displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
 
 \begin{figure}
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
@@ -437,25 +441,24 @@ The fourth milestone was successfully completed with all its major goals succeed
 \section{User Documentation}
 \label{sec:user_doc}
  
-A very essential product that needed to be developed was the user documentation. Due to the fact that this is a university course, the software life cycle would not be strictly followed. For example, no future maintenance would take place. A well defined user documentation had to be produced. To put more depth, the documentation mainly explains how to navigate in the program and perform simple tasks such as adding a new user or deleting an old one. The documentation was given in the form of a small book. The development of the documentation was based on a single principle, develop it such as every aspect, every word will be possibly read by a person who has no idea how to navigate through the site so he/she can understand and successfully complete their task. Due to the fact that this is a fund based program, many different people will have administrate the website through the years. Thus, a well understood user documentation is obligatory.
-Figure **number** contains a screenshot of the user manual.
+A very essential product that needed to be developed was the user documentation. Due to the fact that this is a university course, the software life cycle would not be strictly followed. For example, no future maintenance would take place. A well defined user documentation had to be produced. To put more depth, the documentation mainly explains how to navigate in the program and perform simple tasks such as adding a new user or deleting an old one. The documentation was given in the form of a small book. It is divided in three different parts, the administrator section, the volunteer and the member section. Three sections, each referring to one of the three different authentication types. The development of the documentation was based on a single principle, develop it such as every aspect, every word will be possibly read by a person who has no idea how to navigate through the site so he/she can understand and successfully complete their task. Due to the fact that this is a fund based program, many different people will have administrate the website through the years. Thus, a well understood user documentation is obligatory.
+Figure 8 contains a screenshot of the user manual.
 
 \begin{figure}
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{usermanual.png}}
  \caption{User Manual }
 \end{figure}
 
-Focusing on figure *** number *** which demonstrated an example page of the user documentation, 
-which included both text and screenshots, leading to a conclusion that the navigation is interactive, enabling the user to instantly locate the section that answers their question. 
+Focusing on figure 8 which demonstrates an example page of the user documentation, we can observe that both text and screenshots are included, leading to a conclusion that the navigation is interactive, enabling the user to instantly locate the section that answers their question. 
 
 %==============================================================================
 \section{Formative Application Evaluation}
 \label{sec:appEval}
 
-The Formative Application Evaluation is the stage when a developer receives objective feedback, useful comments and suggestions about their product.  After the successful early delivering of the application to the customers, the next step was creating a questionnaire. In combination with the simple user guide, an evaluation was performed. The evaluation was only performed from the customers. Due to the fact that the team had already discussed the design issues with them, the evaluation and questionnaire were mainly focused in the navigation and understanding of the page. On the  fourth customer meeting, the team leader performed a sample navigation to the page, explaining to the customers how the pages work.  Additionally, a user guide and a simple questionnaire was given. Our was to study whether the customers are able to navigate to the page and to what extent they are able to solve their issues using the user guide. The questionnaires were collected and studied.  The questionnaire was made via simple "Google Form" and can be found in Figure ***number***.
+The Formative Application Evaluation is the stage when a developer receives objective feedback, useful comments and suggestions about their product.  After the successful early delivering of the application to the customers, the next step was creating a questionnaire. In combination with the simple user guide, an evaluation was performed. The evaluation was only performed from the customers. Due to the fact that the team had already discussed the design issues with them, the evaluation and questionnaire were mainly focused in the navigation and understanding of the page. On the  fourth customer meeting, the team leader performed a sample navigation to the page, explaining to the customers how the pages work.  Additionally, a user guide and a simple questionnaire was given. Our was to study whether the customers are able to navigate to the page and to what extent they are able to solve their issues using the user guide. The questionnaires were collected and studied.  The questionnaire was made via simple "Google Form" and can be found in Figure 9.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{evalQuestCustomers.pdf}}
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{evalQuestCustomers.jpg}}
  \caption{Evaluation Questionnaire for customers }
 \end{figure}
 
@@ -514,6 +517,17 @@ On the 24th of February the team managed to deliver a fully working website to t
 To conclude, working with real clients, gave to each member the opportunity to develop a minor working experience, to realise how the future is going to be and develop the proper bases needed for working in a real company. Every student discovered in more depth their abilities and weakness and most importantly learned that a customer has not only a vision but also important requirements that need to be followed step by step. Everyone managed to develop professionalism were you have to constantly communicate with inexperienced customers and listen with respect their demands, even when they are impossible to be developed. Backtracking the experience, everyone managed to develop new skill that will be later used in their software engineering career.
 
 %==============================================================================
+
+
+%    BIBLIOGRAPHY
+\pagebreak
+
+\bibliographystyle{plain}
+\bibliography{dissertation}
+
+
+
+\iffalse
 \bibliographystyle{plain}
 \bibliography{dissertation}
 \subsection{Bibliography}
@@ -596,20 +610,6 @@ Testing
 \newline https://docs.gitlab.com/ce/ci/quick\_start/README.html [Accessed 19 January 2017]
 
 \end{itemize}
-
-\label{authentication}
-
-User Authentication
-\begin{itemize}
-
-\item "github.com: How\_to user documentation"
-\newline https://github.com/amuntasim/how\_to
-
-
-\end{itemize}
-
-
-
-
+\fi
 
 \end{document}
