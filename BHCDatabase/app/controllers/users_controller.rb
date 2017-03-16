@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def new_volunteer
-    @volunteer = Volunteer.new
+    @volunteer = Volunteer.new(user_id: params[:id])
   end
 
   def create_volunteer
