@@ -3,21 +3,26 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.hidden_field :user_id, :value => @user.id %>
-
+    <div class="feedbackcontainer">
+    <table class="table table-striped">
+      <tbody>
 
     <%= f.fields_for :answers do |a| %>
-        <br>
-
+        <tr>
+        <td>
         <% case @questions.find(a.object.question_id).id
              when 1, 15, 16, 17, 18 %>
-            <div class="stdcontainer">
+
         <% end %>
+
 
         <h2><%= a.label @questions.find(a.object.question_id).id %> |
           <%= a.label @questions.find(a.object.question_id).question %></h2>
 
+        </td>
         <%= a.hidden_field :question_id, :value => a.object.question_id %>
 
+          <td>
         <% case @questions.find(a.object.question_id).question_type
              when 0 %>
             <%= a.collection_radio_buttons :response, [['None of the time', 'None of the time'],
@@ -33,6 +38,7 @@
                   <% end %>
                 </div>
             <% end %>
+
         <% when 1 %>
             <%= a.collection_radio_buttons :response, [['Less than montly', 'Less than montly'],
                                                        ['1-3 times per month', '1-3 times per month'],
@@ -88,11 +94,17 @@
         <% else %>
             <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
         <% end %>
-
+          </td>
         <% case @questions.find(a.object.question_id).id
-             when 14, 15, 16, 17, 18 %> </div>
+             when 14, 15, 16, 17, 18 %>
         <% end %>
+      <% end %>
+        </tr>
+          </tbody>
+          </table>
 
-    <% end %>
+    </div>
+
     <%= f.submit 'Submit Feedback', class: 'btn btn-success' %>
 <% end %>
+
