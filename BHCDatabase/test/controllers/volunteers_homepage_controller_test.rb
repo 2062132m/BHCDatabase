@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class VolunteersHomepageControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @volunteer = users(:volunteer)
+    log_in_as @volunteer
+  end
+
+  test "should get index" do
+    get volunteershome_url
+    assert_response :success
+  end
 end
