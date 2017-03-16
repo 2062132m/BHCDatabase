@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316134330) do
+ActiveRecord::Schema.define(version: 20170316134929) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -214,16 +214,23 @@ ActiveRecord::Schema.define(version: 20170316134330) do
   create_table "users", force: :cascade do |t|
     t.string "forename"
     t.string   "email"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "password_digest"
     t.string   "telephone"
     t.date     "dob"
     t.integer  "privilege"
     t.date     "feedback_due"
-    t.string   "emergency_contact"
-    t.boolean  "archived",          default: false
+    t.string "emergency_telephone"
+    t.boolean "archived", default: false
     t.string   "reason_archived"
+    t.string "surname"
+    t.string "known_as"
+    t.string "address1"
+    t.string "address2"
+    t.string "town"
+    t.string "postcode"
+    t.string "emergency_name"
     t.index ["dob", "email", "telephone"], name: "index_users_on_dob_and_email_and_telephone", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
