@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  enum aims: ['Improve Health', 'Have a healthier lifestyle', 'Have more confidence', 'Make new friends', 'Be happier',
-              'Lose weight', 'Increase physical activities', 'Be able to overcome problems better', 'Learn new things',
-              'Be more able to self-manage/control condition', 'Be better able to build relationships', 'Be more involved in the community',
-              'Cope better with caring responsibilities', 'Reduce levels of medication', 'Other']
+  enum aims: [:improve_health, :have_a_healthier_lifestyle, :have_more_confidence, :make_new_friends, :be_happier,
+              :lost_weight, :increase_physical_activities, :be_able_to_overcome_problems_better, :learn_new_things,
+              :be_more_able_to_self_manage_condition, :be_better_able_to_build_relationships, :be_more_involved_in_the_community,
+              :cope_better_with_caring_responsibilities, :reduce_levels_of_medication, :other]
 
   has_many :enrolments, dependent: :delete_all
   has_many :unenrolments, dependent: :delete_all
@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
 
-  validates :name, presence: true,
+  validates :forename, presence: true,
             length: {maximum: 50},
             uniqueness: {:scope => [:dob, :email, :telephone], case_sensitive: false}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, :if => :password_validation_required?
   validates :telephone, presence: true, length: {maximum: 16}
-  validates :emergency_contact, presence: true, length: {maximum: 16}, :unless => :is_admin?
+  validates :emergency_telephone, presence: true, length: {maximum: 16}, :unless => :is_admin?
   validates :dob, presence: true
   validate :dob_before_today
   validate :only_service_user_has_feedback
