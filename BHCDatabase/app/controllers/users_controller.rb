@@ -76,6 +76,13 @@ class UsersController < ApplicationController
   end
 
   def create_volunteer
+    @volunteer = Volunteer.new(volunteer_params)
+    if @volunteer.save
+      flash[:success] = 'Completed volunteer details'
+      redirect_to User.find(@volunteer.user_id)
+    else
+      render 'new_volunteer'
+    end
   end
 
   def update_archive
@@ -123,6 +130,6 @@ class UsersController < ApplicationController
   end
 
   def volunteer_params
-    params.require(:volunteer).permit(:life_experiences, :skills, :aspirations, :num_children, :childcare_help, :carer, :carer_costs, :employment, :registered_disabled, :induction_completed)
+    params.require(:volunteer).permit(:user_id, :life_experiences, :skills, :aspirations, :num_children, :childcare_help, :carer, :carer_costs, :employment, :registered_disabled, :induction_completed)
   end
 end
