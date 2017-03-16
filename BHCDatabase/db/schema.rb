@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316113245) do
+ActiveRecord::Schema.define(version: 20170316113831) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(version: 20170316113245) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["funder_id", "user_id"], name: "index_user_funders_on_funder_id_and_user_id", unique: true
     t.index ["funder_id"], name: "index_user_funders_on_funder_id"
     t.index ["user_id"], name: "index_user_funders_on_user_id"
   end
