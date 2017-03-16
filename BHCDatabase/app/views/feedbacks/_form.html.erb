@@ -9,7 +9,7 @@
 
     <%= f.fields_for :answers do |a| %>
         <tr>
-        <td>
+        <td class="col-md-5">
         <% case @questions.find(a.object.question_id).id
              when 1, 15, 16, 17, 18 %>
 
@@ -22,7 +22,7 @@
         </td>
         <%= a.hidden_field :question_id, :value => a.object.question_id %>
 
-          <td>
+          <td class="col-md-7">
         <% case @questions.find(a.object.question_id).question_type
              when 0 %>
             <%= a.collection_radio_buttons :response, [['None of the time', 'None of the time'],
