@@ -6,8 +6,8 @@ class AreasController < ApplicationController
   def index
     @areas = Area.all
     # We create 2 grids, one for normal usage and one to be used for download
-    @areas_grid = AreasGrid.new(params[:areas_grid])
-    @areas_grid_csv = AreasGrid.new(params[:areas_grid])
+    @areas_grid = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
+    @areas_grid_csv = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
       respond_to do |f|
         f.html do
           # Display the first grid as normal
@@ -29,14 +29,14 @@ class AreasController < ApplicationController
 
     # Builds a DataGrid using initiatives only belonging to this particular area
     @initiatives_in_area_grid = InitiativesInAreaGrid.new(params[:initiatives_in_area_grid]) do |scope|
-      scope.where(:area_id => @area).page(params[:page])
+      scope.where(:area_id => @area, :archived => false).page(params[:page])
     end
 
     # Builds a DataGrid using users only enrolled in initiatives in this area
     @users = User.joins(:enrolments).where(enrolments: {initiative: @initiatives.joins(:enrolments)})
 
     # Builds a DataGrid that shows only users that belong to initiatives in this area
-    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @users).page(params[:page]) }
+    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @users, :archived => false).page(params[:page]) }
 
   end
 

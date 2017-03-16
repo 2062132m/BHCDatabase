@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
   def show
     @meeting = Meeting.find(params[:id])
     @initiative = Meeting.find(params[:id]).initiative
-    @users = @meeting.users
+    @users = @meeting.users.where(:archived => false)
     @attendance = Attendance.new
   end
 

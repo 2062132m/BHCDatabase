@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def index
     # We create 2 grids, one for normal usage and one to be used for download
-    @users_grid = UsersGrid.new(params[:users_grid])
-    @users_grid_csv = UsersGrid.new(params[:users_grid])
+    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:archived => false) }
+    @users_grid_csv = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:archived => false) }
     respond_to do |f|
       f.html do
         # Display the first grid as normal
@@ -47,8 +47,13 @@ class UsersController < ApplicationController
     @user.known_as &&= @user.forename
     @user.feedback_due = @user.privilege == 2 ? Date.today : nil
     if @user.save
-      flash[:success] = 'Successfully signed up new user!'
-      redirect_to @user
+      if @user.privilege == 1
+        flash[:success] = 'Succsessfully signed up new volunteer! Please fill in their volunteer details using the button below.'
+        redirect_to @user
+      else
+        flash[:success] = 'Successfully signed up new user!'
+        redirect_to @user
+      end
     else
       render 'new'
     end
@@ -60,7 +65,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if user_params[:privilege] != '2'
+      @user.feedback_due = nil
+    else
+      @user.feedback_due = Date.today
+    end
     if @user.update_attributes(user_params)
+      @user.save
       flash[:success] = 'User updated'
     else
       flash[:danger] = 'Something went wrong'
@@ -71,6 +82,20 @@ class UsersController < ApplicationController
   def destroy
     flash[:success] = 'User deleted' if User.find(params[:id]).destroy
     redirect_to users_url
+  end
+
+  def new_volunteer
+    @volunteer = Volunteer.new(user_id: params[:id])
+  end
+
+  def create_volunteer
+    @volunteer = Volunteer.new(volunteer_params)
+    if @volunteer.save
+      flash[:success] = 'Completed volunteer details'
+      redirect_to User.find(@volunteer.user_id)
+    else
+      render 'new_volunteer'
+    end
   end
 
   def update_archive
@@ -117,5 +142,9 @@ class UsersController < ApplicationController
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def volunteer_params
+    params.require(:volunteer).permit(:user_id, :volunteer_date, :life_experiences, :skills, :aspirations, :num_children, :childcare_help, :carer, :carer_costs, :employment, :registered_disabled, :induction_completed)
   end
 end

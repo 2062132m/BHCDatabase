@@ -23,7 +23,7 @@ class AttendancesController < ApplicationController
       @meeting = Meeting.find(meeting_id)
       @initiative = @meeting.initiative
       # Get the total number of people in the initiative
-      totalEnrolled = Enrolment.where(:initiative_id => @initiative, :user_id => (User.where(:privilege => 2).ids)).count
+      totalEnrolled = Enrolment.where(:initiative_id => @initiative, :user_id => (User.where(:privilege => 2, :archived => false).ids)).count
       # Convert totalAttendees to a float to force floating point division
       #   in order to calculate the attendance percentage
       @meeting.update_attribute(:attendance, numAttendees/totalEnrolled.to_f * 100)

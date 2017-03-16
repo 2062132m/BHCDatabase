@@ -1,7 +1,7 @@
 class ConditionsController < ApplicationController
   def new
     @condition = Condition.new
-    @medical_conditions = MedicalCondition.all
+    @medical_conditions = MedicalCondition.where(:archived => false)
     # get all the medical_conditions and consolidate into a JSON object
     respond_to do |format|
       format.html

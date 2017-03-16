@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  life_experiences: MyText
+  skills: MyText
+  aspirations: MyText
+  num_children: 1
+  childcare_help: false
+  carer: false
+  carer_costs: false
+  employment: MyString
+  registered_disabled: false
+  induction_completed: false
+
+two:
+  life_experiences: MyText
+  skills: MyText
+  aspirations: MyText
+  num_children: 1
+  childcare_help: false
+  carer: false
+  carer_costs: false
+  employment: MyString
+  registered_disabled: false
+  induction_completed: false

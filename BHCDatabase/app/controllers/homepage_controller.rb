@@ -3,7 +3,7 @@ class HomepageController < ApplicationController
   before_action :redirect
 
   def index
-    @areas = Area.all
+    @areas = Area.where(:archived => false)
     @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
       scope.page(params[:page])
     end
