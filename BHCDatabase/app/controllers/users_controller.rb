@@ -71,6 +71,13 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def new_volunteer
+    @volunteer = User.find(params[:id])
+  end
+
+  def create_volunteer
+  end
+
   def update_archive
     @user = User.find(params[:id])
     flash[:danger] = 'Something went wrong' unless @user.update_attributes(archive_params)
