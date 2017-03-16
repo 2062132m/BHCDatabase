@@ -43,6 +43,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.reg_date &&= Date.today
     @user.feedback_due = @user.privilege == 2 ? Date.today : nil
     if @user.save
       flash[:success] = 'Successfully signed up new user!'

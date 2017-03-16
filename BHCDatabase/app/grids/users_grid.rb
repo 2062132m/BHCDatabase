@@ -7,6 +7,7 @@ class UsersGrid
 
   filter(:id, :string, :multiple => ',')
   filter(:forename, :string) { |value| where('forename like ? ', "%#{value}%") }
+  filter(:surname, :string) { |value| where('surname like ?', "%#{value}%") }
   filter(:email, :string) { |value| where('email like ? ', "%#{value}%") }
   filter(:telephone, :string) { |value| where('telephone like ? ', "%#{value}%") }
   filter(:emergency_telephone, :string) { |value| where('emergency_telephone like ? ', "%#{value}%") }
@@ -17,6 +18,9 @@ class UsersGrid
   end
   column(:forename, :mandatory => true) do |model|
     format(model.forename) { |value| link_to value, model }
+  end
+  column(:surname, :mandatory => true) do |model|
+    format(model.surname) { |value| link_to value, model }
   end
   column(:email, :mandatory => true)
   column(:telephone, :mandatory => true)
