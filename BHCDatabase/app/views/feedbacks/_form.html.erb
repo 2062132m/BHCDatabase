@@ -16,8 +16,7 @@
         <% end %>
 
 
-        <h2><%= a.label @questions.find(a.object.question_id).id %> |
-          <%= a.label @questions.find(a.object.question_id).question %></h2>
+        <h2><%= a.label @questions.find(a.object.question_id).id %> | <%= a.label @questions.find(a.object.question_id).question %></h2>
 
         </td>
         <%= a.hidden_field :question_id, :value => a.object.question_id %>
@@ -34,7 +33,7 @@
                                            :last do |b| %>
                 <div class="radio-inline">
                   <%= b.label do %>
-                      <%= b.radio_button %> <br> <%= b.text %>
+                      <%= b.radio_button + b.text %>
                   <% end %>
                 </div>
             <% end %>
