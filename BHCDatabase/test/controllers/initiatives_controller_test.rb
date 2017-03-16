@@ -1,14 +1,13 @@
 require 'test_helper'
 
 class InitiativesControllerTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:admin)
     log_in_as(@user)
   end
 
   test 'should get new' do
-    get initiatives_new_url
+    get new_initiative_url
     assert_template 'initiatives/new'
     assert_response :success
   end
@@ -32,5 +31,4 @@ class InitiativesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'initiatives/edit'
   end
-
 end
