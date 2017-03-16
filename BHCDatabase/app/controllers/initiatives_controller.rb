@@ -4,10 +4,10 @@ class InitiativesController < ApplicationController
   before_action :is_archived, only: [:show]
 
   def index
-    @initiatives = Initiative.all
+    @initiatives = Initiative.where(:archived => false)
     # We create 2 grids, one for normal usage and one to be used for download
-    @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid])
-    @initiatives_grid_csv = InitiativesGrid.new(params[:initiatives_grid])
+    @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) { |scope| scope.where(:archived => false) }
+    @initiatives_grid_csv = InitiativesGrid.new(params[:initiatives_grid]) { |scope| scope.where(:archived => false) }
       respond_to do |f|
         f.html do
           # Display the first grid as normal
@@ -32,7 +32,7 @@ class InitiativesController < ApplicationController
       funder_ids.push(funder.funder_id)
     end
     # Builds a DataGrid that shows only the users that belong to this specific initiative
-    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @initiative.users.ids) }
+    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @initiative.users.ids, :archived => false) }
     # Builds a DataGrid that shows only the meetings that belong to this specific initiative
     @meetings_in_initiatives_grid = MeetingsInInitiativesGrid.new(params[:meetings_in_initiatives_grid]) do |scope|
       scope.where(:initiative_id => @initiative).page(params[:page])
@@ -43,12 +43,12 @@ class InitiativesController < ApplicationController
 
   def new
     @initiative = Initiative.new
-    @areas = Area.all
+    @areas = Area.where(:archived => false)
   end
 
   def create
     @initiative = Initiative.new(initiative_params)
-    @areas = Area.all
+    @areas = Area.where(:archived => false)
     if @initiative.save
       flash[:success] = 'Created the new initiative!'
       redirect_to @initiative
@@ -59,12 +59,12 @@ class InitiativesController < ApplicationController
 
   def edit
     @initiative = Initiative.find(params[:id])
-    @areas = Area.all
+    @areas = Area.where(:archived => false)
   end
 
   def update
     @initiative = Initiative.find(params[:id])
-    @areas = Area.all
+    @areas = Area.where(:archived => false)
     if @initiative.update_attributes(initiative_params)
       flash[:success] = 'Initiative updated'
       redirect_to @initiative
