@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def index
     # We create 2 grids, one for normal usage and one to be used for download
-    @users_grid = UsersGrid.new(params[:users_grid])
-    @users_grid_csv = UsersGrid.new(params[:users_grid])
+    @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:archived => false) }
+    @users_grid_csv = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:archived => false) }
     respond_to do |f|
       f.html do
         # Display the first grid as normal
