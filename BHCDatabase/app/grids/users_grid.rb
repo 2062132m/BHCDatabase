@@ -6,21 +6,25 @@ class UsersGrid
   end
 
   filter(:id, :string, :multiple => ',')
-  filter(:name, :string) { |value| where('name like ? ', "%#{value}%") }
+  filter(:forename, :string) { |value| where('forename like ? ', "%#{value}%") }
+  filter(:surname, :string) { |value| where('surname like ?', "%#{value}%") }
   filter(:email, :string) { |value| where('email like ? ', "%#{value}%") }
   filter(:telephone, :string) { |value| where('telephone like ? ', "%#{value}%") }
-  filter(:emergency_contact, :string) { |value| where('emergency_contact like ? ', "%#{value}%") }
+  filter(:emergency_telephone, :string) { |value| where('emergency_telephone like ? ', "%#{value}%") }
   filter(:dob, :date, :range => true)
 
   column(:id, :mandatory => true) do |model|
     format(model.id) { |value| link_to value, model }
   end
-  column(:name, :mandatory => true) do |model|
-    format(model.name) { |value| link_to value, model }
+  column(:forename, :mandatory => true) do |model|
+    format(model.forename) { |value| link_to value, model }
+  end
+  column(:surname, :mandatory => true) do |model|
+    format(model.surname) { |value| link_to value, model }
   end
   column(:email, :mandatory => true)
   column(:telephone, :mandatory => true)
-  column(:emergency_contact, :mandatory => true)
+  column(:emergency_telephone, :mandatory => true)
   column(:dob, :mandatory => true) do |model|
     format(model.dob) { |value| value.strftime('%d/%m/%Y') }
   end

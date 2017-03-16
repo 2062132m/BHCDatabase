@@ -1,14 +1,9 @@
 <% provide(:title, 'Questions') %>
 <div id="indexcontainer">
   <h1>Questions</h1>
-
   <div class="stdcontainer">
     <%= datagrid_form_for @questions_grid, url: questions_path %>
-
-    <%= link_to "<i class='glyphicon glyphicon-plus'></i> New".html_safe, new_question_path, class: 'btn btn-default new-btn' %>
-
     <%= datagrid_table(@questions_grid) %>
     <%= will_paginate @questions_grid.assets %>
-
   </div>
 </div>

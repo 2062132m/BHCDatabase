@@ -2,15 +2,11 @@
   <h1>
     Question <%= @question.id %>
   </h1>
-
   <div class="stdcontainer">
     <div class="container-fluid">
-
       <h2>
         <%= @question.question %>
       </h2>
-
-      <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_question_path, class: 'btn btn-default edit-btn' %>
     </div>
   </div>
 </div>

@@ -26,13 +26,23 @@ class UsersNewTest < ActionDispatch::IntegrationTest
   test "valid signup information" do
     get new_user_path
     assert_difference 'User.count', 1 do
-      post users_path, params: {user: {name: "Example User",
-                                       email: "user@example.com",
-                                       password: "password",
-                                       password_confirmation: "password",
+      post users_path, params: {user: {forename: "Example",
+                                       surname: "User",
+                                       known_as: Faker::LordOfTheRings.character,
+                                       email: 'user@example.com',
+                                       password: 'password',
+                                       password_confirmation: 'password',
                                        telephone: Faker::PhoneNumber.phone_number,
-                                       emergency_contact: Faker::PhoneNumber.phone_number,
                                        dob: Faker::Date.between(70.years.ago, 18.years.ago),
+                                       reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+                                       emergency_name: Faker::Name.name,
+                                       emergency_telephone: Faker::PhoneNumber.phone_number,
+                                       address1: Faker::Address.street_address,
+                                       address2: Faker::Address.secondary_address,
+                                       town: Faker::Address.city,
+                                       postcode: Faker::Address.postcode,
+                                       aims: User.aims.first,
+                                       aims_other: Faker::Lorem.sentence,
                                        privilege: 2}}
     end
     follow_redirect!

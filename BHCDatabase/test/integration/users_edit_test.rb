@@ -3,44 +3,62 @@ require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:admin)
+    @admin = users(:admin)
     @volunteer = users(:volunteer)
     @service_user = users(:service_user)
-    log_in_as @user
+    log_in_as @admin
   end
 
   test 'unsuccessful edit' do
     get user_path(@service_user)
     assert_template 'users/show'
-    patch user_path(@service_user), params: {user: {name: '',
-                                                    email: Faker::Internet.email,
-                                                    telephone: Faker::PhoneNumber.phone_number,
-                                                    emergency_contact: Faker::PhoneNumber.phone_number,
-                                                    dob: Faker::Date.between(70.years.ago, 18.years.ago),
-                                                    privilege: 2,
-                                                    feedback_due: 6.months.from_now}}
+    patch user_path(@service_user), params: {user: {forename: @service_user.forename,
+                                                    surname: '',
+                                                    known_as: @service_user.known_as,
+                                                    email: @service_user.email,
+                                                    telephone: @service_user.telephone,
+                                                    dob: @service_user.dob,
+                                                    reg_date: @service_user.reg_date,
+                                                    emergency_name: @service_user.emergency_name,
+                                                    emergency_telephone: @service_user.emergency_telephone,
+                                                    address1: @service_user.address1,
+                                                    address2: @service_user.address2,
+                                                    town: @service_user.town,
+                                                    postcode: @service_user.postcode,
+                                                    aims: @service_user.aims,
+                                                    aims_other: @service_user.aims_other,
+                                                    privilege: @service_user.privilege}}
     assert_not flash.empty?
     assert_redirected_to @service_user
     @service_user.reload
-    assert_not_equal @service_user.name, ''
+    assert_not_equal @service_user.forename, ''
 
   end
 
   test 'successful edit' do
     get user_path(@service_user)
     assert_template 'users/show'
-    name = Faker::Name.name
-    patch user_path(@service_user), params: {user: {name: name,
+    surname = Faker::Name.last_name
+    patch user_path(@service_user), params: {user: {forename: @service_user.forename,
+                                                    surname: surname,
+                                                    known_as: @service_user.known_as,
                                                     email: @service_user.email,
                                                     telephone: @service_user.telephone,
-                                                    emergency_contact: @service_user.emergency_contact,
                                                     dob: @service_user.dob,
-                                                    privilege: @service_user.privilege,
-                                                    feedback_due: @service_user.feedback_due}}
+                                                    reg_date: @service_user.reg_date,
+                                                    emergency_name: @service_user.emergency_name,
+                                                    emergency_telephone: @service_user.emergency_telephone,
+                                                    address1: @service_user.address1,
+                                                    address2: @service_user.address2,
+                                                    town: @service_user.town,
+                                                    postcode: @service_user.postcode,
+                                                    aims: @service_user.aims,
+                                                    aims_other: @service_user.aims_other,
+                                                    privilege: @service_user.privilege}}
     assert_not flash.empty?
     assert_redirected_to @service_user
     @service_user.reload
-    assert_equal name, @service_user.name
+    assert_equal surname, @service_user.surname
   end
 
 end
