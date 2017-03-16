@@ -21,44 +21,65 @@ puts "ConstraintException is normal and expected. Don't panic!\n"
 
 # Add admins to the database
 
-puts 'Inserting admins'
+puts 'Inserting admin'
 
-User.create(name: 'David Robertson', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
+User.create(forename: 'Admin',
+            surname: 'Admin',
+            known_as: Faker::LordOfTheRings.character,
+            email: 'admin@admin.com',
+            password: 'admin123',
+            password_confirmation: 'admin123',
             telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-User.create(name: 'David Brown', email: 'david@david.com', password: 'david123', password_confirmation: 'david123',
-            telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-User.create(name: 'Maria Papadopoulou', email: 'maria@maria.com', password: 'maria123', password_confirmation: 'maria123',
-            telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-User.create(name: 'Jaklin Yordanova', email: 'jaklin@jaklin.com', password: 'jaklin123', password_confirmation: 'jaklin123',
-            telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-User.create(name: 'Chris Harris', email: 'chris@chris.com', password: 'chris123', password_confirmation: 'chris123',
-            telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
-User.create(name: 'Kiril Mihaylov', email: 'kiril@kiril.com', password: 'kiril123', password_confirmation: 'kiril123',
-            telephone: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 0)
+            dob: Faker::Date.between(70.years.ago, 18.years.ago),
+            reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+            address1: Faker::Address.street_address,
+            address2: Faker::Address.secondary_address,
+            town: Faker::Address.city,
+            postcode: Faker::Address.postcode,
+            privilege: 0)
 
 # Add volunteers to the database
 
 puts 'Inserting volunteers'
 
-User.create(name: 'Volunteer', email: 'volunteer@volunteer.com', password: 'volunteer123', password_confirmation: 'volunteer123',
-            telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 1)
+User.create(forename: 'Volunteer',
+            surname: 'Volunteer',
+            known_as: Faker::LordOfTheRings.character,
+            email: 'volunteer@volunteer.com',
+            password: 'volunteer123',
+            password_confirmation: 'volunteer123',
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago),
+            reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+            emergency_name: Faker::Name.name,
+            emergency_telephone: Faker::PhoneNumber.phone_number,
+            address1: Faker::Address.street_address,
+            address2: Faker::Address.secondary_address,
+            town: Faker::Address.city,
+            postcode: Faker::Address.postcode,
+            aims: User.aims[:improve_health],
+            aims_other: Faker::Lorem.sentence,
+            privilege: 1)
 
 random.rand(20..50).times do
   password = Faker::Internet.password
-  User.create(name: Faker::Name.name,
+  User.create(forename: Faker::Name.first_name,
+              surname: Faker::Name.last_name,
+              known_as: Faker::LordOfTheRings.character,
               email: Faker::Internet.email,
               password: password,
               password_confirmation: password,
               telephone: Faker::PhoneNumber.phone_number,
-              emergency_contact: Faker::PhoneNumber.phone_number,
               dob: Faker::Date.between(70.years.ago, 18.years.ago),
+              reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+              emergency_name: Faker::Name.name,
+              emergency_telephone: Faker::PhoneNumber.phone_number,
+              address1: Faker::Address.street_address,
+              address2: Faker::Address.secondary_address,
+              town: Faker::Address.city,
+              postcode: Faker::Address.postcode,
+              aims: User.aims[:improve_health],
+              aims_other: Faker::Lorem.sentence,
               privilege: 1)
 end
 
@@ -66,19 +87,45 @@ end
 
 puts 'Inserting service users'
 
-User.create(name: 'User', email: 'user@user.com', password: 'user123', password_confirmation: 'user123',
-            telephone: Faker::PhoneNumber.phone_number, emergency_contact: Faker::PhoneNumber.phone_number,
-            dob: Faker::Date.between(70.years.ago, 18.years.ago), privilege: 2, feedback_due: 1.months.ago)
+User.create(forename: 'Service',
+            surname: 'User',
+            known_as: Faker::LordOfTheRings.character,
+            email: 'user@user.com',
+            password: 'user123',
+            password_confirmation: 'user123',
+            telephone: Faker::PhoneNumber.phone_number,
+            dob: Faker::Date.between(70.years.ago, 18.years.ago),
+            reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+            emergency_name: Faker::Name.name,
+            emergency_telephone: Faker::PhoneNumber.phone_number,
+            address1: Faker::Address.street_address,
+            address2: Faker::Address.secondary_address,
+            town: Faker::Address.city,
+            postcode: Faker::Address.postcode,
+            aims: User.aims[:improve_health],
+            aims_other: Faker::Lorem.sentence,
+            privilege: 2,
+            feedback_due: 1.months.ago)
 
 random.rand(100..200).times do
   password = Faker::Internet.password
-  @user = User.create(name: Faker::Name.name,
+  @user = User.create(forename: Faker::Name.first_name,
+                      surname: Faker::Name.last_name,
+                      known_as: Faker::LordOfTheRings.character,
                       email: Faker::Internet.email,
                       password: password,
                       password_confirmation: password,
                       telephone: Faker::PhoneNumber.phone_number,
-                      emergency_contact: Faker::PhoneNumber.phone_number,
                       dob: Faker::Date.between(70.years.ago, 18.years.ago),
+                      reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+                      emergency_name: Faker::Name.name,
+                      emergency_telephone: Faker::PhoneNumber.phone_number,
+                      address1: Faker::Address.street_address,
+                      address2: Faker::Address.secondary_address,
+                      town: Faker::Address.city,
+                      postcode: Faker::Address.postcode,
+                      aims: User.aims[:improve_health],
+                      aims_other: Faker::Lorem.sentence,
                       privilege: 2,
                       feedback_due: 6.months.from_now)
 end
@@ -211,7 +258,7 @@ puts 'Inserting attendance, feedback/answers, enrollment and medical conditions 
 User.where(privilege: 2).each do |user|
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-    with_record_unique_handling{user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))}
+    with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count))) }
     Feedback.create(user: user)
   end
 
@@ -223,7 +270,7 @@ User.where(privilege: 2).each do |user|
 
   user.feedbacks.each do |feed|
     Question.all.each do |question|
-      with_record_unique_handling{Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote)}
+      with_record_unique_handling { Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote) }
     end
 
   end
@@ -252,11 +299,11 @@ puts 'Inserting funders'
 
 random.rand(30..40).times do
   @funder = Funder.create(name: Faker::Company.name,
-                address: Faker::StarWars.planet,
-                url: Faker::Internet.url,
-                description: Faker::ChuckNorris.fact,
-                email: Faker::Internet.email,
-                telephone: Faker::PhoneNumber.phone_number)
+                          address: Faker::StarWars.planet,
+                          url: Faker::Internet.url,
+                          description: Faker::ChuckNorris.fact,
+                          email: Faker::Internet.email,
+                          telephone: Faker::PhoneNumber.phone_number)
   random.rand(3..5).times do
     @funder.initiative_funders.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
   end

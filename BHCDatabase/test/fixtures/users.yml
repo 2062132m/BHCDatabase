@@ -1,35 +1,70 @@
 admin:
-  name: David Example
+  forename: Admin
+  surname: Example
   email: david@example.com
   password_digest: <%= User.digest('password') %>
+  telephone: 0123456789
   dob: <%= Faker::Date.between(70.years.ago, 18.years.ago) %>
+  reg_date: <%= Date.today %>
+  address1: Example address21
+  address2: Example address22
+  town: Example town2
+  postcode: Example2
   privilege: 0
 
 volunteer:
-  name: Volunteer Example
+  forename: Volunteer
+  surname: Example
   email: volunteer@example.com
   telephone: 0123456789
-  emergency_contact: 0123456789
+  emergency_name: Example contact
+  emergency_telephone: 0123456789
   dob: <%= Faker::Date.between(70.years.ago, 18.years.ago) %>
+  reg_date: <%= Date.today %>
+  address1: Example address1
+  address2: Example address2
+  town: Example town
+  postcode: Example
+  aims: <%= User.aims[:improve_health] %>
+  aims_other: Example other aims
   password_digest: <%= User.digest('password') %>
   privilege: 1
 
 service_user:
-  name: Service-User Example
+  forename: Service-User
+  surname: Example
+  known_as: Ex123
+  telephone: 123456789
   email: serviceuser@example.com
-  telephone: 0123456789
-  emergency_contact: 0123456789
-  dob: <%=Faker::Date.between(70.years.ago, 18.years.ago) %>
+  emergency_name: Example contact
+  emergency_telephone: 0123456789
+  dob: <%= Faker::Date.between(70.years.ago, 18.years.ago) %>
+  reg_date: <%= Date.today %>
+  address1: Example address1
+  address2: Example address2
+  town: Example town
+  postcode: Example
+  aims: <%= User.aims[:improve_health] %>
+  aims_other: Example other aims
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>
 
 service_user2:
-  name: Service-User Example2
-  email: serviceuser@example2.com
-  telephone: 0123456789
-  emergency_contact: 0123456789
-  dob: <%=Faker::Date.between(70.years.ago, 18.years.ago) %>
+  forename: Service-User2
+  surname: Example2
+  email: serviceuse2r@example.com
+  telephone: 987654321
+  emergency_name: Example contact2
+  emergency_telephone: 0987654321
+  dob: <%= Faker::Date.between(70.years.ago, 18.years.ago) %>
+  reg_date: <%= Date.today %>
+  address1: Example address21
+  address2: Example address22
+  town: Example town2
+  postcode: Example2
+  aims: <%= User.aims[:improve_health] %>
+  aims_other: Example other aims2
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>

@@ -15,9 +15,9 @@ class UsersController < ApplicationController
       f.csv do
         # Send the second grid to csv format and allow to be downloaded
         send_data @users_grid_csv.to_csv,
-          type: "text/csv",
-          disposition: 'inline',
-          filename: "users-#{Time.now.to_s}.csv"
+                  type: "text/csv",
+                  disposition: 'inline',
+                  filename: "users-#{Time.now.to_s}.csv"
       end
     end
   end
@@ -43,6 +43,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.reg_date &&= Date.today
+    @user.known_as &&= @user.forename
     @user.feedback_due = @user.privilege == 2 ? Date.today : nil
     if @user.save
       if @user.privilege == 1
@@ -129,7 +131,9 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :telephone, :emergency_contact, :dob, :privilege, :feedback_due, :archived, :reason_archived)
+    params.require(:user).permit(:forename, :surname, :email, :password, :password_confirmation, :telephone, :emergency_name,
+                                 :emergency_telephone, :dob, :privilege, :feedback_due, :archived, :reason_archived, :known_as,
+                                 :address1, :address2, :town, :postcode, :aims, :aims_other, :prevent_attending, :reg_date)
   end
 
   def archive_params
