@@ -71,18 +71,18 @@
             <% if @user.archived %>
                 <h4>This user has been archived.</h4>
                 <h4>Reason: <%= @user.reason_archived %></h4>
-                <h2>
             <% end %>
-            <% if @user.privilege == 0 %>
-                <icon class="glyphicon glyphicon-eye-open"></icon>
-                Privilege: Admin<br>
-            <% elsif @user.privilege == 1 %>
-                <icon class="glyphicon glyphicon-eye-open"></icon>
-                Privilege: Volunteer<br>
-            <% else %>
-                <icon class="glyphicon glyphicon-eye-open"></icon>
-                Privilege: Service User<br>
-            <% end %>
+            <h2>
+              <% if @user.privilege == 0 %>
+                  <icon class="glyphicon glyphicon-eye-open"></icon>
+                  Privilege: Admin<br>
+              <% elsif @user.privilege == 1 %>
+                  <icon class="glyphicon glyphicon-eye-open"></icon>
+                  Privilege: Volunteer<br>
+              <% else %>
+                  <icon class="glyphicon glyphicon-eye-open"></icon>
+                  Privilege: Service User<br>
+              <% end %>
             </h2>
             <% if @user.archived %>
                 <h4>This user has been archived.</h4>
@@ -103,21 +103,31 @@
                     <h2>Aspirations: <%= @volunteer.aspirations %></h2>
                     <h2>Number of Children: <%= @volunteer.num_children %></h2>
                     <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
-                    <% if @volunteer.childcare_help %><h2>Requires help with childcare: Yes</h2>
-                    <% else %><h2>Requires help with childcare: No</h2>
+                    <% if @volunteer.childcare_help %>
+                        <h2>Requires help with childcare: Yes</h2>
+                    <% else %>
+                        <h2>Requires help with childcare: No</h2>
                     <% end %>
-                    <% if @volunteer.carer %><h2>Is a carer: Yes</h2>
-                    <% else %><h2>Is a carer: No</h2>
+                    <% if @volunteer.carer %>
+                        <h2>Is a carer: Yes</h2>
+                    <% else %>
+                        <h2>Is a carer: No</h2>
                     <% end %>
-                    <% if @volunteer.carer_costs %><h2>Requires help with carer's costs: Yes</h2>
-                    <% else %><h2>Requires help with carer's costs: No</h2>
+                    <% if @volunteer.carer_costs %>
+                        <h2>Requires help with carer's costs: Yes</h2>
+                    <% else %>
+                        <h2>Requires help with carer's costs: No</h2>
                     <% end %>
                     <h2>Employment: <%= @volunteer.employment %></h2>
-                    <% if @volunteer.registered_disabled %><h2>Registered as disabled: Yes</h2>
-                    <% else %><h2>Registered as disabled: No</h2>
+                    <% if @volunteer.registered_disabled %>
+                        <h2>Registered as disabled: Yes</h2>
+                    <% else %>
+                        <h2>Registered as disabled: No</h2>
                     <% end %>
-                    <% if @volunteer.induction_completed %><h2>Completed Induction: Yes</h2>
-                    <% else %><h2>Completed Induction: No</h2>
+                    <% if @volunteer.induction_completed %>
+                        <h2>Completed Induction: Yes</h2>
+                    <% else %>
+                        <h2>Completed Induction: No</h2>
                     <% end %>
                 <% end %>
             <% end %>
@@ -152,58 +162,58 @@
         <% end %>
       </div>
     </div>
-    <h1>Feedbacks</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@feedbacks_grid) %>
-    </div>
-    <h1 id="meetingtitle">Current Enrolments</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@enrolments_grid) %>
-    </div>
-    <h1>Enrolment History</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@unenrolments_grid) %>
-    </div>
-    <h1>Current Medical Conditions</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@conditions_grid) %>
-    </div>
-    <h1>Medical Condition History</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@unassigned_conditions_grid) %>
-    </div>
-    <h1>Direct Funding</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@funders_for_user_grid) %>
-    </div>
-    <h1>Direct Funding History</h1>
-    <div class="stdcontainer">
-      <%= datagrid_table(@removed_funders_for_users_grid) %>
-    </div>
-    <h1>Indirect Funding</h1>
-    <div class="stdcontainer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <h4>Indirect funding received via initiatives:</h4>
-            <% @user.initiatives.each do |initiative| %>
-                <% initiative.initiative_funders.each do |funder| %>
-                    <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
-                      through their
-                      funding of: <%= link_to initiative.name, initiative %></p>
-                <% end %>
-            <% end %>
-          </div>
-          <div class="col-md-6">
-            <h4>Indirect funding received via medical conditions:</h4>
-            <% @user.medical_conditions.each do |medical_condition| %>
-                <% medical_condition.medical_condition_funders.each do |funder| %>
-                    <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
-                      through their
-                      funding of: <%= link_to medical_condition.name, medical_condition %></p>
-                <% end %>
-            <% end %>
-          </div>
+  </div>
+  <h1>Feedbacks</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@feedbacks_grid) %>
+  </div>
+  <h1 id="meetingtitle">Current Enrolments</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@enrolments_grid) %>
+  </div>
+  <h1>Enrolment History</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@unenrolments_grid) %>
+  </div>
+  <h1>Current Medical Conditions</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@conditions_grid) %>
+  </div>
+  <h1>Medical Condition History</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@unassigned_conditions_grid) %>
+  </div>
+  <h1>Direct Funding</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@funders_for_user_grid) %>
+  </div>
+  <h1>Direct Funding History</h1>
+  <div class="stdcontainer">
+    <%= datagrid_table(@removed_funders_for_users_grid) %>
+  </div>
+  <h1>Indirect Funding</h1>
+  <div class="stdcontainer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Indirect funding received via initiatives:</h4>
+          <% @user.initiatives.each do |initiative| %>
+              <% initiative.initiative_funders.each do |funder| %>
+                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
+                    through their
+                    funding of: <%= link_to initiative.name, initiative %></p>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <h4>Indirect funding received via medical conditions:</h4>
+          <% @user.medical_conditions.each do |medical_condition| %>
+              <% medical_condition.medical_condition_funders.each do |funder| %>
+                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
+                    through their
+                    funding of: <%= link_to medical_condition.name, medical_condition %></p>
+              <% end %>
+          <% end %>
         </div>
       </div>
     </div>
