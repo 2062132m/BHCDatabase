@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AreasControllerTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:admin)
     log_in_as(@user)
@@ -14,7 +13,7 @@ class AreasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    get areas_new_url
+    get new_area_url
     assert_response :success
     assert_template 'areas/new'
   end
@@ -32,5 +31,4 @@ class AreasControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'areas/show'
   end
-
 end

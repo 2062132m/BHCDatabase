@@ -28,10 +28,11 @@
                   <% i.users.each do |x| %>
                       <% unless x.archived %>
                           <h4>
-                            <%= x.name %>
+                            <%= x.known_as %>
                             <br>
                             Emergency Contact -
-                            <%= x.emergency_contact %>
+                            <%= x.emergency_name %>,
+                            <%= x.emergency_telephone %>
                           </h4>
                       <% end %>
                   <% end %>
