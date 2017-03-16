@@ -144,6 +144,7 @@ h1 {
 }
 
 h2 {
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
@@ -427,6 +428,7 @@ table.datagrid {
   border-color: #ff3399;
   margin-top: 10px;
   margin-right: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   float: right;
 }
 
@@ -714,4 +716,10 @@ input {
 .scrollable-dropdown-menu .tt-menu {
   max-height: 150px;
   overflow-y: auto;
+}
+
+#volunteer-reminder {
+  float: right;
+  margin-right: 15px;
+  margin-top: 14px;
 }
