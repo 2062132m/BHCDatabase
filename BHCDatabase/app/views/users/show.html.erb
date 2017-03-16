@@ -71,129 +71,139 @@
             <% if @user.archived %>
                 <h4>This user has been archived.</h4>
                 <h4>Reason: <%= @user.reason_archived %></h4>
-            <h2>
+                <h2>
+            <% end %>
             <% if @user.privilege == 0 %>
-              <icon class="glyphicon glyphicon-eye-open"></icon>
-              Privilege: Admin<br>
+                <icon class="glyphicon glyphicon-eye-open"></icon>
+                Privilege: Admin<br>
             <% elsif @user.privilege == 1 %>
-              <icon class="glyphicon glyphicon-eye-open"></icon>
-              Privilege: Volunteer<br>
+                <icon class="glyphicon glyphicon-eye-open"></icon>
+                Privilege: Volunteer<br>
             <% else %>
-              <icon class="glyphicon glyphicon-eye-open"></icon>
-              Privilege: Service User<br>
+                <icon class="glyphicon glyphicon-eye-open"></icon>
+                Privilege: Service User<br>
             <% end %>
-          </h2>
-          <% if @user.archived %>
-              <h4>This user has been archived.</h4>
-              <h4>Reason: <%= @user.reason_archived %></h4>
-          <% end %>
-        </div>
-        <div class=col-md-6>
-          <% if current_user.privilege == 0 %>
-            <% if (@user.privilege == 1) && (Volunteer.find_by_user_id(@user.id) == nil) %>
-              <%= link_to "<i class='glyphicon glyphicon-list-alt'></i> Volunteer Details".html_safe, new_volunteer_user_path(user_id: @user.id), class: 'btn btn-default volunteer-btn' %>
-              <p id="volunteer-reminder"><em>You still need to complete volunteer details</em></p>
-            <% elsif @user.privilege == 1 %>
-              <% @volunteer = Volunteer.find_by_user_id(@user.id) %>
-              <h2>Volunteer Information</h2>
-              <h2>Became volunteer with BHC: <%= @volunteer.volunteer_date %></h2>
-              <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
-              <h2>Skills: <%= @volunteer.skills %></h2>
-              <h2>Aspirations: <%= @volunteer.aspirations %></h2>
-              <h2>Number of Children: <%= @volunteer.num_children %></h2>
-              <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
-              <% if @volunteer.childcare_help %><h2>Requires help with childcare: Yes</h2>
-              <% else %><h2>Requires help with childcare: No</h2><% end %>
-              <% if @volunteer.carer %><h2>Is a carer: Yes</h2>
-              <% else %><h2>Is a carer: No</h2><% end %>
-              <% if @volunteer.carer_costs %><h2>Requires help with carer's costs: Yes</h2>
-              <% else %><h2>Requires help with carer's costs: No</h2><% end %>
-              <h2>Employment: <%= @volunteer.employment %></h2>
-              <% if @volunteer.registered_disabled %><h2>Registered as disabled: Yes</h2>
-              <% else %><h2>Registered as disabled: No</h2><% end %>
-              <% if @volunteer.induction_completed %><h2>Completed Induction: Yes</h2>
-              <% else %><h2>Completed Induction: No</h2><% end %>
+            </h2>
+            <% if @user.archived %>
+                <h4>This user has been archived.</h4>
+                <h4>Reason: <%= @user.reason_archived %></h4>
             <% end %>
-          <% end %>
+          </div>
+          <div class=col-md-6>
+            <% if current_user.privilege == 0 %>
+                <% if (@user.privilege == 1) && (Volunteer.find_by_user_id(@user.id) == nil) %>
+                    <%= link_to "<i class='glyphicon glyphicon-list-alt'></i> Volunteer Details".html_safe, new_volunteer_user_path(user_id: @user.id), class: 'btn btn-default volunteer-btn' %>
+                    <p id="volunteer-reminder"><em>You still need to complete volunteer details</em></p>
+                <% elsif @user.privilege == 1 %>
+                    <% @volunteer = Volunteer.find_by_user_id(@user.id) %>
+                    <h2>Volunteer Information</h2>
+                    <h2>Became volunteer with BHC: <%= @volunteer.volunteer_date %></h2>
+                    <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
+                    <h2>Skills: <%= @volunteer.skills %></h2>
+                    <h2>Aspirations: <%= @volunteer.aspirations %></h2>
+                    <h2>Number of Children: <%= @volunteer.num_children %></h2>
+                    <h2>Life Experiences: <%= @volunteer.life_experiences %></h2>
+                    <% if @volunteer.childcare_help %><h2>Requires help with childcare: Yes</h2>
+                    <% else %><h2>Requires help with childcare: No</h2>
+                    <% end %>
+                    <% if @volunteer.carer %><h2>Is a carer: Yes</h2>
+                    <% else %><h2>Is a carer: No</h2>
+                    <% end %>
+                    <% if @volunteer.carer_costs %><h2>Requires help with carer's costs: Yes</h2>
+                    <% else %><h2>Requires help with carer's costs: No</h2>
+                    <% end %>
+                    <h2>Employment: <%= @volunteer.employment %></h2>
+                    <% if @volunteer.registered_disabled %><h2>Registered as disabled: Yes</h2>
+                    <% else %><h2>Registered as disabled: No</h2>
+                    <% end %>
+                    <% if @volunteer.induction_completed %><h2>Completed Induction: Yes</h2>
+                    <% else %><h2>Completed Induction: No</h2>
+                    <% end %>
+                <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <% if current_user.privilege == 0 %>
-          <button id="openpasswordmodal" class="btn btn-default password-btn">
-            <span class="glyphicon glyphicon-lock"></span> Change Password
-          </button>
-          <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @user, method: :delete,
-                      data: {confirm: "Are you sure you want to delete this user?
+        <% if current_user.privilege == 0 %>
+            <button id="openpasswordmodal" class="btn btn-default password-btn">
+              <span class="glyphicon glyphicon-lock"></span> Change Password
+            </button>
+            <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @user, method: :delete,
+                        data: {confirm: "Are you sure you want to delete this user?
                                       \nNote: All associated enrolments, conditions and feedbacks will be deleted!"},
-                      class: "btn btn-default delete-btn" %>
-          <% if !@user.archived %>
-              <button id="openmodal" class="btn btn-default archive-btn">
-                <span class="glyphicon glyphicon-folder-close"></span> Archive
-              </button>
-          <% else %>
-              <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
-          <% end %>
-          <%= link_to "<i class='glyphicon glyphicon-pencil'></i> Assign Condition".html_safe, new_condition_path(user_id: @user.id), class: 'btn btn-default condition-btn' %>
-          <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_user_funder_path(user_id: @user.id), class: 'btn btn-default funder-btn' %>
-          <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
-          <%= link_to "<i class='glyphicon glyphicon-tasks'></i> Leave Feedback".html_safe, new_feedback_path(user_id: @user.id), class: 'btn btn-default feedback-btn' %>
-          <button id="openeditmodal" class="btn btn-default edit-btn"><span class="glyphicon glyphicon-edit"></span>
-            Edit
-          </button>
-      <% end %>
-      <% if current_user.privilege > 0 %>
-          <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
-      <% end %>
+                        class: "btn btn-default delete-btn" %>
+            <% if !@user.archived %>
+                <button id="openmodal" class="btn btn-default archive-btn">
+                  <span class="glyphicon glyphicon-folder-close"></span> Archive
+                </button>
+            <% else %>
+                <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
+            <% end %>
+            <%= link_to "<i class='glyphicon glyphicon-pencil'></i> Assign Condition".html_safe, new_condition_path(user_id: @user.id), class: 'btn btn-default condition-btn' %>
+            <%= link_to "<i class='glyphicon glyphicon-check'></i> Add Funder".html_safe, fund_user_funder_path(user_id: @user.id), class: 'btn btn-default funder-btn' %>
+            <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
+            <%= link_to "<i class='glyphicon glyphicon-tasks'></i> Leave Feedback".html_safe, new_feedback_path(user_id: @user.id), class: 'btn btn-default feedback-btn' %>
+            <button id="openeditmodal" class="btn btn-default edit-btn">
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            </button>
+        <% end %>
+        <% if current_user.privilege > 0 %>
+            <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <h1>Feedbacks</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@feedbacks_grid) %>
-  </div>
-  <h1 id="meetingtitle">Current Enrolments</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@enrolments_grid) %>
-  </div>
-  <h1>Enrolment History</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@unenrolments_grid) %>
-  </div>
-  <h1>Current Medical Conditions</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@conditions_grid) %>
-  </div>
-  <h1>Medical Condition History</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@unassigned_conditions_grid) %>
-  </div>
-  <h1>Direct Funding</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@funders_for_user_grid) %>
-  </div>
-  <h1>Direct Funding History</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@removed_funders_for_users_grid) %>
-  </div>
-  <h1>Indirect Funding</h1>
-  <div class="stdcontainer">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <h4>Indirect funding received via initiatives:</h4>
-          <% @user.initiatives.each do |initiative| %>
-              <% initiative.initiative_funders.each do |funder| %>
-                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their
-                    funding of: <%= link_to initiative.name, initiative %></p>
-              <% end %>
-          <% end %>
-        </div>
-        <div class="col-md-6">
-          <h4>Indirect funding received via medical conditions:</h4>
-          <% @user.medical_conditions.each do |medical_condition| %>
-              <% medical_condition.medical_condition_funders.each do |funder| %>
-                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their
-                    funding of: <%= link_to medical_condition.name, medical_condition %></p>
-              <% end %>
-          <% end %>
+    <h1>Feedbacks</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@feedbacks_grid) %>
+    </div>
+    <h1 id="meetingtitle">Current Enrolments</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@enrolments_grid) %>
+    </div>
+    <h1>Enrolment History</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@unenrolments_grid) %>
+    </div>
+    <h1>Current Medical Conditions</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@conditions_grid) %>
+    </div>
+    <h1>Medical Condition History</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@unassigned_conditions_grid) %>
+    </div>
+    <h1>Direct Funding</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@funders_for_user_grid) %>
+    </div>
+    <h1>Direct Funding History</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@removed_funders_for_users_grid) %>
+    </div>
+    <h1>Indirect Funding</h1>
+    <div class="stdcontainer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Indirect funding received via initiatives:</h4>
+            <% @user.initiatives.each do |initiative| %>
+                <% initiative.initiative_funders.each do |funder| %>
+                    <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
+                      through their
+                      funding of: <%= link_to initiative.name, initiative %></p>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <h4>Indirect funding received via medical conditions:</h4>
+            <% @user.medical_conditions.each do |medical_condition| %>
+                <% medical_condition.medical_condition_funders.each do |funder| %>
+                    <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
+                      through their
+                      funding of: <%= link_to medical_condition.name, medical_condition %></p>
+                <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
