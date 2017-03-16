@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.forename) %>
 <div id="modalcontainer" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -29,7 +29,8 @@
           <div align="left">
             <h2>
               <icon class="glyphicon glyphicon-user"></icon>
-              Name: <%= @user.name %><br>
+              Name: <%= @user.surname %>, <%= @user.forename %><br>
+              Known as: <%= @user.known_as %>
             </h2>
             <h2>
               <icon class="glyphicon glyphicon-earphone"></icon>
@@ -37,8 +38,12 @@
             </h2>
             <% unless @user.privilege == 0 %>
                 <h2>
+                  <icon class="glyphicon glyphicon-heart-empty"></icon>
+                  Emergency Contact Name: <%= @user.emergency_name %>
+                </h2>
+                <h2>
                   <icon class="glyphicon glyphicon-phone-alt"></icon>
-                  Emergency Contact: <%= @user.emergency_contact %><br>
+                  Emergency Contact: <%= @user.emergency_telephone %><br>
                 </h2>
             <% end %>
             <h2>
@@ -48,6 +53,20 @@
             <h2>
               <icon class="glyphicon glyphicon-calendar"></icon>
               DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
+              Registration Date: <%= @user.reg_date.strftime('%d/%m/%Y') %>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-map-marker"></icon>
+              Address: <%= @user.address1 %>, <%= @user.address2 %>, <%= @user.town %>, <%= @user.postcode %>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-indent-left"></icon>
+              Aims: <%= @user.aims.humanize %>
+              <%= @user.aims_other %>
+            </h2>
+            <h2>
+              <icon class="glyphicon glyphicon-remove-sign"></icon>
+              Could prevent attendance: <%= @user.prevent_attending %>
             </h2>
             <% if @user.archived %>
                 <h4>This user has been archived.</h4>
@@ -119,17 +138,19 @@
         <div class="col-md-6">
           <h4>Indirect funding received via initiatives:</h4>
           <% @user.initiatives.each do |initiative| %>
-            <% initiative.initiative_funders.each do |funder| %>
-              <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to initiative.name, initiative %></p>
-            <% end %>
+              <% initiative.initiative_funders.each do |funder| %>
+                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their
+                    funding of: <%= link_to initiative.name, initiative %></p>
+              <% end %>
           <% end %>
         </div>
         <div class="col-md-6">
           <h4>Indirect funding received via medical conditions:</h4>
           <% @user.medical_conditions.each do |medical_condition| %>
-            <% medical_condition.medical_condition_funders.each do |funder| %>
-              <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their funding of: <%= link_to medical_condition.name, medical_condition %></p>
-            <% end %>
+              <% medical_condition.medical_condition_funders.each do |funder| %>
+                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %> through their
+                    funding of: <%= link_to medical_condition.name, medical_condition %></p>
+              <% end %>
           <% end %>
         </div>
       </div>
