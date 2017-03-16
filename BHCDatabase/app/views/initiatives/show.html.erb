@@ -34,8 +34,17 @@
               <h4>Reason: <%= @initiative.reason_archived %></h4>
             <% end %>
           </div>
+          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance) %>
         </div>
         <div class="col-md-6">
+          <div class="info-container">
+            <h2 id="show-details-title">Initiative Details</h2>
+            <h2>Number of Members Enrolled: <%= @initiative.users.count %></h2>
+            <h2>Number of Funders: <%= @initiative.initiative_funders.count %></h2>
+            <h2>Total Number of Meetings: <%= @initiative.meetings.count %></h2>
+            <h2>Average Attendance: <%= @average_attendance %>%</h2>
+            <h2>Number of Members Unenrolled: <%= @initiative.unenrolments.count %></h2>
+          </div>
         </div>
       </div>
       <% if current_user.privilege == 0 %>
