@@ -49,6 +49,18 @@
         <icon class="glyphicon glyphicon-calendar"></icon>
         DOB: <%= @user.dob.strftime('%d/%m/%Y') %><br>
       </h2>
+      <h2>
+        <% if @user.privilege == 0 %>
+          <icon class="glyphicon glyphicon-eye-open"></icon>
+          Privilege: Admin<br>
+        <% elsif @user.privilege == 1 %>
+          <icon class="glyphicon glyphicon-eye-open"></icon>
+          Privilege: Volunteer<br>
+        <% else %>
+          <icon class="glyphicon glyphicon-eye-open"></icon>
+          Privilege: Service User<br>
+        <% end %>
+      </h2>
       <% if @user.archived %>
           <h4>This user has been archived.</h4>
           <h4>Reason: <%= @user.reason_archived %></h4>

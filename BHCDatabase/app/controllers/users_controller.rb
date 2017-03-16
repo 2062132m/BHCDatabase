@@ -45,8 +45,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.feedback_due = @user.privilege == 2 ? Date.today : nil
     if @user.save
-      flash[:success] = 'Successfully signed up new user!'
-      redirect_to @user
+      if @user.privilege == 1
+        flash[:success] = 'Succsessfully signed up new volunteer! Please fill in their volunteer details using the button below.'
+        redirect_to @user
+      else
+        flash[:success] = 'Successfully signed up new user!'
+        redirect_to @user
+      end
     else
       render 'new'
     end
