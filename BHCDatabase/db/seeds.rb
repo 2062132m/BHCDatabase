@@ -175,22 +175,22 @@ MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWa
 
 puts 'Inserting questions'
 
-# WMWEBS questions
+# Warwick-Edinburgh Mental Well-Being Scale (WEMWBS)
 #   “none of the time, rarely, some of the time, often, all of the time”
 Question.create(question: "I've been feeling optimistic about the future", visible: true, question_type: 0)
 Question.create(question: "I've been feeling useful", visible: true, question_type: 0)
 Question.create(question: "I've been feeling relaxed", visible: true, question_type: 0)
-Question.create(question: "I've been dealing with problems well", visible: true, question_type: 0)
+Question.create(question: "I've been feeling interested in people", visible: true, question_type: 0)
+Question.create(question: "I've had energy to spare", visible: true, question_type: 0)
+Question.create(question: "I've been dealing well with problems", visible: true, question_type: 0)
 Question.create(question: "I've been thinking clearly", visible: true, question_type: 0)
+Question.create(question: "I've been feeling good about myself", visible: true, question_type: 0)
 Question.create(question: "I've been feeling close to other people", visible: true, question_type: 0)
+Question.create(question: "I've been feeling confident", visible: true, question_type: 0)
 Question.create(question: "I've been able to make up my own mind about things", visible: true, question_type: 0)
-Question.create(question: 'I exercise on a regular basis', visible: true, question_type: 0)
-Question.create(question: 'My daily life is filled with things that interest me', visible: true, question_type: 0)
-Question.create(question: 'I feel strongly connected to the neighbourhood that I live in', visible: true, question_type: 0)
-Question.create(question: 'I can influence decisions affecting my local area', visible: true, question_type: 0)
-Question.create(question: 'Most people I come into contact with can be trusted', visible: true, question_type: 0)
-Question.create(question: 'How happy are you with your relationships? This can include any relationships.', visible: true, question_type: 0)
-Question.create(question: 'How happy are you with the state of your health?', visible: true, question_type: 0)
+Question.create(question: "I've been feeling loved", visible: true, question_type: 0)
+Question.create(question: "I've been interested in new things", visible: true, question_type: 0)
+Question.create(question: "I've been feeling cheerful", visible: true, question_type: 0)
 # Social capital face to face question
 #   “less than monthly, 1-3 times per month, 1-2 times per week, 3 times per or more”
 Question.create(question: 'How often do you have face-to-face contact with friends or family not living with you?', visible: true, question_type: 1)
