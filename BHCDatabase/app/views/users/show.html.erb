@@ -103,8 +103,8 @@
               <h4>This user has been archived.</h4>
               <h4>Reason: <%= @user.reason_archived %></h4>
           <% end %>
-          <h2 id="graph-title">Number of Attenances per Month</h2>
-          <%= column_chart @user.attendances.group(:created_at).count, xtitle: "Month", ytitle: "Attendances" %>
+          <h2 id="graph-title">Number of Attendances per Month</h2>
+          <%= line_chart @user.meetings.group_by_month(:datetime).count, xtitle: "Month", ytitle: "Attendances" %>
         </div>
         <div class=col-md-6>
           <div class="container-fluid buttons-container">
