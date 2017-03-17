@@ -29,7 +29,7 @@ class MedicalConditionsController < ApplicationController
     @medical_condition.medical_condition_funders.each do |funder|
       funder_ids.push(funder.funder_id)
     end
-    @conditions_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @conditions.map(&:id), :archived => false) }
+    @conditions_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @conditions.map(&:user_id), :archived => false) }
     @funders_for_medical_condition_grid = FundersForMedicalConditionGrid.new(params[:funders_for_medical_condition_grid]) { |scope| scope.where(:id => @medical_condition.medical_condition_funders.ids) }
     @removed_funders_for_medical_condition_grid = RemovedFundingsForMedicalConditionsGrid.new(params[:removed_funders_for_medical_conditions_grid]) { |scope| scope.where(:id => @medical_condition.removed_medical_fundings.ids) }
   end

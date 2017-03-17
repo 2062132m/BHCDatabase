@@ -2,7 +2,7 @@ class EnrolmentsController < ApplicationController
   def create
     # parse values returned to get respective ids
     # could be an issue if we allow duplicate names
-    @user = User.where(:name => enrolment_params[:user_id]).first
+    @user = User.where(:known_as => enrolment_params[:user_id]).first
     @initiative = Initiative.where(:name => enrolment_params[:initiative_id]).first
     # if either is nil, return an empty Enrolment to force an error
     unless @initiative == nil || @user == nil
