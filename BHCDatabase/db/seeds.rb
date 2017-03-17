@@ -18,8 +18,8 @@ end
 
 puts "ConstraintException is normal and expected. Don't panic!\n"
 
-# Add test admin to the database
-puts 'Inserting admin'
+# Add test admin, volunteer and service user
+puts 'Inserting test users to the database'
 User.create(forename: 'Admin',
             surname: Faker::Name.last_name,
             known_as: Faker::LordOfTheRings.character,
@@ -34,9 +34,6 @@ User.create(forename: 'Admin',
             town: Faker::Address.city,
             postcode: Faker::Address.postcode,
             privilege: 0)
-
-# Add test volunteer to the database
-puts 'Inserting volunteers'
 User.create(forename: 'Volunteer',
             surname: Faker::Name.last_name,
             known_as: Faker::LordOfTheRings.character,
@@ -55,32 +52,6 @@ User.create(forename: 'Volunteer',
             aims: User.aims[:improve_health],
             aims_other: Faker::Lorem.sentence,
             privilege: 1)
-
-# Add volunteers to the database
-random.rand(20..50).times do
-  password = Faker::Internet.password
-  User.create(forename: Faker::Name.first_name,
-              surname: Faker::Name.last_name,
-              known_as: Faker::LordOfTheRings.character,
-              email: Faker::Internet.email,
-              password: password,
-              password_confirmation: password,
-              telephone: Faker::PhoneNumber.phone_number,
-              dob: Faker::Date.between(70.years.ago, 18.years.ago),
-              reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
-              emergency_name: Faker::Name.name,
-              emergency_telephone: Faker::PhoneNumber.phone_number,
-              address1: Faker::Address.street_address,
-              address2: Faker::Address.secondary_address,
-              town: Faker::Address.city,
-              postcode: Faker::Address.postcode,
-              aims: User.aims[:improve_health],
-              aims_other: Faker::Lorem.sentence,
-              privilege: 1)
-end
-
-# Add test user
-puts 'Inserting service users'
 User.create(forename: 'Service',
             surname: 'User',
             known_as: Faker::LordOfTheRings.character,
@@ -101,7 +72,33 @@ User.create(forename: 'Service',
             privilege: 2,
             feedback_due: 1.months.ago)
 
+# Add volunteers
+puts 'Inserting volunteers'
+random.rand(20..50).times do
+  password = Faker::Internet.password
+  @user = User.create(forename: Faker::Name.first_name,
+                      surname: Faker::Name.last_name,
+                      known_as: Faker::LordOfTheRings.character,
+                      email: Faker::Internet.email,
+                      password: password,
+                      password_confirmation: password,
+                      telephone: Faker::PhoneNumber.phone_number,
+                      dob: Faker::Date.between(70.years.ago, 18.years.ago),
+                      reg_date: Faker::Date.between(2.years.ago, 1.weeks.ago),
+                      emergency_name: Faker::Name.name,
+                      emergency_telephone: Faker::PhoneNumber.phone_number,
+                      address1: Faker::Address.street_address,
+                      address2: Faker::Address.secondary_address,
+                      town: Faker::Address.city,
+                      postcode: Faker::Address.postcode,
+                      aims: User.aims[:improve_health],
+                      aims_other: Faker::Lorem.sentence,
+                      privilege: 1,
+                      feedback_due: 6.months.from_now)
+end
+
 # Add service users
+puts 'Inserting service users'
 random.rand(100..200).times do
   password = Faker::Internet.password
   @user = User.create(forename: Faker::Name.first_name,
@@ -233,40 +230,25 @@ Question.create(question: "How much do you agree or disagree with the following 
 Question.create(question: 'Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?', visible: true, question_type: 4)
 
 # Add attendance, feedback/answers, enrollment and medical conditions to users
-puts 'Inserting attendance, feedback/answers, enrollment and medical conditions for users'
-User.where(privilege: 2).find_each do |user|
+User.where(privilege: [1, 2]).find_each do |user|
+  puts 'Enrolling users'
   random.rand(1..3).times do
-    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-    with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count))) }
+    user.enrolments.create(initiative: Initiative.find(random.rand(1..Initiative.count)))
+    with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(random.rand(1..MedicalCondition.count))) }
     Feedback.create(user: user)
   end
-
-  # user.initiatives.each do |init|
-  #   init.meetings.each do |meet|
-  #     user.attendances.create(meeting: meet)
-  #   end
-  # end
-
+  puts 'Giving users fake feedbacks'
   user.feedbacks.find_each do |feed|
     Question.find_each do |question|
-      with_record_unique_handling { Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote) }
+      with_record_unique_handling { Answer.create(feedback: feed, question: question, response: Faker::Lorem.word) }
     end
-
   end
-end
-
-# Add attendance and enrolment to volunteers
-puts 'Inserting enrollment for volunteers'
-User.where(privilege: 1).find_each do |user|
-  random.rand(1..2).times do
-    user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
-  end
-
   # user.initiatives.each do |init|
   #   init.meetings.each do |meet|
   #     user.attendances.create(meeting: meet)
   #   end
   # end
+
 
 end
 
