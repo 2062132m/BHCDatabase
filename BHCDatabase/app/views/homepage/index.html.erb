@@ -19,3 +19,18 @@
 <div class="row stdcontainer">
   <%= datagrid_table(@service_requests_grid) %>
 </div>
+<h1>Statistics</h1>
+<div class="stdcontainer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 id="graph-title">Monthly Total Attendance</h2>
+        <%= line_chart Attendance.all.group_by_month(:created_at).count, xtitle: "Month", ytitle: "Attendances" %>
+      </div>
+      <div class="col-md-6">
+        <h2 id="graph-title">Monthly Average Attendance</h2>
+        <%= line_chart Meeting.all.group_by_month(:datetime).average(:attendance), xtitle: "Month", ytitle: "Attendance %" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -103,7 +103,7 @@
               <h4>Reason: <%= @user.reason_archived %></h4>
           <% end %>
           <% if @user.privilege == 2 %>
-            <h2 id="graph-title">Number of Attendances per Month</h2>
+            <h2 id="graph-title">Monthly Attendance</h2>
             <%= line_chart @user.meetings.group_by_month(:datetime).count, xtitle: "Month", ytitle: "Attendances" %>
           <% end %>
         </div>
