@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = 'en-GB'
-
 random = Random.new
 
 # Helper function that provides error handling when adding seeds to the database. In an ideal world this is't optimal
@@ -19,12 +18,10 @@ end
 
 puts "ConstraintException is normal and expected. Don't panic!\n"
 
-# Add admins to the database
-
+# Add test admin to the database
 puts 'Inserting admin'
-
 User.create(forename: 'Admin',
-            surname: 'Admin',
+            surname: Faker::Name.last_name,
             known_as: Faker::LordOfTheRings.character,
             email: 'admin@admin.com',
             password: 'admin123',
@@ -38,12 +35,10 @@ User.create(forename: 'Admin',
             postcode: Faker::Address.postcode,
             privilege: 0)
 
-# Add volunteers to the database
-
+# Add test volunteer to the database
 puts 'Inserting volunteers'
-
 User.create(forename: 'Volunteer',
-            surname: 'Volunteer',
+            surname: Faker::Name.last_name,
             known_as: Faker::LordOfTheRings.character,
             email: 'volunteer@volunteer.com',
             password: 'volunteer123',
@@ -61,6 +56,7 @@ User.create(forename: 'Volunteer',
             aims_other: Faker::Lorem.sentence,
             privilege: 1)
 
+# Add volunteers to the database
 random.rand(20..50).times do
   password = Faker::Internet.password
   User.create(forename: Faker::Name.first_name,
@@ -83,10 +79,8 @@ random.rand(20..50).times do
               privilege: 1)
 end
 
-# Add users to the database
-
+# Add test user
 puts 'Inserting service users'
-
 User.create(forename: 'Service',
             surname: 'User',
             known_as: Faker::LordOfTheRings.character,
@@ -107,6 +101,7 @@ User.create(forename: 'Service',
             privilege: 2,
             feedback_due: 1.months.ago)
 
+# Add service users
 random.rand(100..200).times do
   password = Faker::Internet.password
   @user = User.create(forename: Faker::Name.first_name,
@@ -130,10 +125,8 @@ random.rand(100..200).times do
                       feedback_due: 6.months.from_now)
 end
 
-# Create area1 with initiatives
-
+# Create areas with their initiatives
 puts 'Inserting areas with initiatives'
-
 @area1 = Area.create(name: 'Dumfries & Lower Nithsdale', description: Faker::StarWars.quote)
 @area1.initiatives.create(name: 'Scrimp and sew', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area1.initiatives.create(name: 'Writing Group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -146,9 +139,6 @@ puts 'Inserting areas with initiatives'
 @area1.initiatives.create(name: 'Tai chi Summerhill', description: Faker::StarWars.quote, location: 'Summerhill')
 @area1.initiatives.create(name: 'Tai chi Lincluden', description: Faker::StarWars.quote, location: 'Lincluden')
 @area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::StarWars.quote, location: 'Hollywood')
-
-# Create other areas with their initiatives
-
 @area2 = Area.create(name: "West \n Wigtownshire", description: Faker::StarWars.quote)
 @area2.initiatives.create(name: 'Chair based exercise', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area2.initiatives.create(name: 'Tai Chi 50+', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -158,7 +148,6 @@ puts 'Inserting areas with initiatives'
 @area2.initiatives.create(name: 'Tai chi Phoenix', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area2.initiatives.create(name: 'SHAWL Group art', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area2.initiatives.create(name: 'Boccia & NAC', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-
 @area3 = Area.create(name: "The \n Machars", description: Faker::StarWars.quote)
 @area3.initiatives.create(name: 'Monday Club', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area3.initiatives.create(name: 'Boccia/NAC', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -171,7 +160,6 @@ puts 'Inserting areas with initiatives'
 @area3.initiatives.create(name: 'IOW Youth', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area3.initiatives.create(name: 'Vol Drop in', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area3.initiatives.create(name: 'Scrabble4fun', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-
 @area4 = Area.create(name: "Upper \n Nithsdale", description: Faker::StarWars.quote)
 @area4.initiatives.create(name: 'Singing group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area4.initiatives.create(name: 'Qijong', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
@@ -184,21 +172,16 @@ puts 'Inserting areas with initiatives'
 @area4.initiatives.create(name: 'Tai Chi Kirconnel', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area4.initiatives.create(name: 'Walk for Health', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 
-
 # Add meetings to all initiatives
-
 puts 'Inserting meetings/sessions for initiatives'
-
-Initiative.all.each do |init|
+Initiative.find_each do |init|
   random.rand(5..50).times do
     init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
   end
 end
 
 # Add medical conditions
-
 puts 'Inserting medical conditions'
-
 MedicalCondition.create(name: 'Asthma', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
 MedicalCondition.create(name: 'Learning Disability', description: Faker::StarWars.quote)
@@ -219,11 +202,9 @@ MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWa
 
 # Main bulk of questions, these are the questions that a user is asked upon registration, and can leave at any time they
 #   wish.
-
-puts 'Inserting questions'
-
 # Warwick-Edinburgh Mental Well-Being Scale (WEMWBS)
 #   “none of the time, rarely, some of the time, often, all of the time”
+puts 'Inserting questions'
 Question.create(question: "I've been feeling optimistic about the future", visible: true, question_type: 0)
 Question.create(question: "I've been feeling useful", visible: true, question_type: 0)
 Question.create(question: "I've been feeling relaxed", visible: true, question_type: 0)
@@ -251,11 +232,9 @@ Question.create(question: "How much do you agree or disagree with the following 
 #   “most people can be trusted, need to be very careful”
 Question.create(question: 'Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?', visible: true, question_type: 4)
 
-
 # Add attendance, feedback/answers, enrollment and medical conditions to users
 puts 'Inserting attendance, feedback/answers, enrollment and medical conditions for users'
-
-User.where(privilege: 2).each do |user|
+User.where(privilege: 2).find_each do |user|
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
     with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count))) }
@@ -268,8 +247,8 @@ User.where(privilege: 2).each do |user|
   #   end
   # end
 
-  user.feedbacks.each do |feed|
-    Question.all.each do |question|
+  user.feedbacks.find_each do |feed|
+    Question.find_each do |question|
       with_record_unique_handling { Answer.create(feedback: feed, question: question, response: Faker::StarWars.quote) }
     end
 
@@ -277,10 +256,8 @@ User.where(privilege: 2).each do |user|
 end
 
 # Add attendance and enrolment to volunteers
-
 puts 'Inserting enrollment for volunteers'
-
-User.where(privilege: 1).each do |user|
+User.where(privilege: 1).find_each do |user|
   random.rand(1..2).times do
     user.enrolments.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
   end
@@ -294,9 +271,7 @@ User.where(privilege: 1).each do |user|
 end
 
 # Generate random funders
-
 puts 'Inserting funders'
-
 random.rand(30..40).times do
   @funder = Funder.create(name: Faker::Company.name,
                           address: Faker::StarWars.planet,
