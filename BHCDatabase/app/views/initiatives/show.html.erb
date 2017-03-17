@@ -79,8 +79,8 @@
         <% @initiative.users.each do |x| %>
           <% unless x.archived %>
             <h4>
-              <%= x.name %>
-              Emergency Contact - <%= x.emergency_contact %>
+              <%= x.known_as %>
+              Emergency <%= x.emergency_name %>, <%= x.emergency_telephone %>
             </h4>
           <% end %>
         <% end %>

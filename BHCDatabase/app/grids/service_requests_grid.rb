@@ -7,7 +7,7 @@ class ServiceRequestsGrid
 
   column(:user_id, :header => 'User', :mandatory => true) do |model|
     format(model.user_id) do |value|
-        link_to User.find(value).name, User.find(value) if value
+      link_to User.find(value).known_as, User.find(value) if value
     end
   end
   column(:request, :mandatory => true)

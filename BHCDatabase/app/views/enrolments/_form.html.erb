@@ -20,7 +20,7 @@
       </div>
     <!-- otherwise, use the id of the user you came from -->
     <% else %>
-      <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).known_as) %>
+        <%= f.hidden_field(:user_id, :value => User.find(params[:user_id]).known_as) %>
     <% end %>
 
     <%= f.submit 'Submit', class: 'btn btn-default submit-btn' %>
