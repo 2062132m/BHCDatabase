@@ -320,6 +320,15 @@ table.datagrid {
   float: right;
 }
 
+.medical {
+  .delete-btn, .edit-btn {
+    margin-bottom: 10px;
+    margin-top: 85px;
+    margin-right: 5px;
+    float: right;
+  }
+}
+
 #pop{
   color: white;
   background-color: transparent;
