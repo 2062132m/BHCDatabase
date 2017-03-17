@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 .feedbackcontainer {
   margin-top: 20px;
   padding-bottom: 10px;
@@ -9,19 +11,14 @@
   border-bottom: 1px solid #61BB46;
   font-size: 17px;
 
-  h2{
+  h{
     text-align: left;
     display: inline;
+    color: dimgrey;
 
   }
 
-  h4{
-    text-align: center;
-  }
-  .radio-inline{
-    display: inline-block;
-    text-align:center;
-  }
+
 
   .table{
     margin-bottom: 0px;
