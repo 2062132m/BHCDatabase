@@ -20,7 +20,7 @@
           <%= line_chart @medical_condition.conditions.group_by_month(:created_at).count, xtitle: "Month", ytitle: "Assignments" %>
         </div>
         <div class="col-md-6">
-          <div class="container-fluid buttons-container medical">
+          <div class="container-fluid buttons-container right-split">
             <% if @medical_condition.archived == false %>
               <button id="openmodal" class="btn btn-default archive-btn"><span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive</button>
             <% else %>
@@ -35,6 +35,7 @@
           </div>
           <div class="info-container">
             <h2 id="show-details-title">Medical Condition Details</h2>
+            <h2>Description: <%= @medical_condition.description %></h2>
             <h2>Members with Condition: <%= @medical_condition.conditions.count %></h2>
             <h2>Members Unassigned this Condition: <%= @medical_condition.unassigned_conditions.count %></h2>
           </div>
