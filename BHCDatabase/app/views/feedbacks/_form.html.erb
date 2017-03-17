@@ -3,16 +3,16 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.hidden_field :user_id, :value => @user.id %>
-    <div class="feedbackcontainer">
-    <table class="table table-striped">
-      <tbody>
+
 
     <%= f.fields_for :answers do |a| %>
         <tr>
         <td class="col-md-5">
         <% case @questions.find(a.object.question_id).id
              when 1, 15, 16, 17, 18 %>
-
+              <div class="stdcontainer">
+              <table class="table table-striped">
+                <tbody>
         <% end %>
 
 
@@ -94,15 +94,18 @@
             <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
         <% end %>
           </td>
+
         <% case @questions.find(a.object.question_id).id
              when 14, 15, 16, 17, 18 %>
+              </tr>
+              </tbody>
+              </table>
+              </div>
         <% end %>
       <% end %>
-        </tr>
-          </tbody>
-          </table>
 
-    </div>
+
+
 
     <%= f.submit 'Submit Feedback', class: 'btn btn-success' %>
 <% end %>
