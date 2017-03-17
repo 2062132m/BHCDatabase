@@ -74,7 +74,7 @@ User.create(forename: 'Service',
 
 # Add volunteers
 puts 'Inserting volunteers'
-random.rand(20..50).times do
+random.rand(50..100).times do
   password = Faker::Internet.password
   @user = User.create(forename: Faker::Name.first_name,
                       surname: Faker::Name.last_name,
@@ -93,13 +93,12 @@ random.rand(20..50).times do
                       postcode: Faker::Address.postcode,
                       aims: User.aims[:improve_health],
                       aims_other: Faker::Lorem.sentence,
-                      privilege: 1,
-                      feedback_due: 6.months.from_now)
+                      privilege: 1)
 end
 
 # Add service users
 puts 'Inserting service users'
-random.rand(100..200).times do
+random.rand(400..500).times do
   password = Faker::Internet.password
   @user = User.create(forename: Faker::Name.first_name,
                       surname: Faker::Name.last_name,
@@ -169,14 +168,6 @@ puts 'Inserting areas with initiatives'
 @area4.initiatives.create(name: 'Tai Chi Kirconnel', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 @area4.initiatives.create(name: 'Walk for Health', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
 
-# Add meetings to all initiatives
-puts 'Inserting meetings/sessions for initiatives'
-Initiative.find_each do |init|
-  random.rand(5..50).times do
-    init.meetings.create(datetime: Faker::Time.between(2.years.ago, DateTime.now), attendance: 0)
-  end
-end
-
 # Add medical conditions
 puts 'Inserting medical conditions'
 MedicalCondition.create(name: 'Asthma', description: Faker::StarWars.quote)
@@ -229,27 +220,41 @@ Question.create(question: "How much do you agree or disagree with the following 
 #   “most people can be trusted, need to be very careful”
 Question.create(question: 'Generally speaking, would you say that most people can be trusted or that you need to be very careful in dealing with people?', visible: true, question_type: 4)
 
+# Add meetings to all initiatives
+puts 'Inserting meetings/sessions for initiatives'
+Initiative.find_each do |init|
+  random.rand(5..50).times do
+    init.meetings.create(datetime: Faker::Time.between(2.years.ago, Time.current), attendance: 0)
+  end
+end
+puts "Enrolling users\nGiving users feedback\nUsers attending meetings"
 # Add attendance, feedback/answers, enrollment and medical conditions to users
 User.where(privilege: [1, 2]).find_each do |user|
-  puts 'Enrolling users'
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(random.rand(1..Initiative.count)))
     with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(random.rand(1..MedicalCondition.count))) }
     Feedback.create(user: user)
   end
-  puts 'Giving users fake feedbacks'
   user.feedbacks.find_each do |feed|
     Question.find_each do |question|
       with_record_unique_handling { Answer.create(feedback: feed, question: question, response: Faker::Lorem.word) }
     end
   end
-  # user.initiatives.each do |init|
-  #   init.meetings.each do |meet|
-  #     user.attendances.create(meeting: meet)
-  #   end
-  # end
+  user.initiatives.each do |init|
+    init.meetings.each do |meet|
+      user.attendances.create(meeting: meet) if random.rand(2) == 1
+    end
+  end
+end
 
+puts 'Calculating attendance percentage for initiatives'
 
+Initiative.find_each do |init|
+  number_of_enrolled = Enrolment.where(initiative_id: init.id).count
+  init.meetings.find_each do |meet|
+    number_of_attended = Attendance.where(meeting_id: meet.id).count
+    meet.update_attribute(:attendance, (number_of_attended.to_f/number_of_enrolled.to_f * 100))
+  end
 end
 
 # Generate random funders
