@@ -3,6 +3,7 @@ class Initiative < ApplicationRecord
 
   has_many :meetings, :dependent => :destroy
   has_many :enrolments, dependent: :delete_all
+  has_many :unenrolments, dependent: :delete_all
   has_many :users, through: :enrolments
   has_many :initiative_funders, dependent: :delete_all
   has_many :removed_initiative_fundings, dependent: :delete_all

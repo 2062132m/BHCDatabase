@@ -70,6 +70,8 @@ GEM
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -226,6 +228,7 @@ DEPENDENCIES
   datagrid (~> 1.4, >= 1.4.4)
   execjs (= 2.7.0)
   faker (= 1.7.2)
+  groupdate
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (= 2.4.1)

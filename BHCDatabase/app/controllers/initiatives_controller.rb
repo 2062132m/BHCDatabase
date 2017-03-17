@@ -27,6 +27,16 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params[:id])
     @area = Area.find(@initiative.area_id)
     @meetings = Meeting.where(initiative_id: @initiative)
+    @average_attendance = 0
+    begin
+      @initiative.meetings.each do |meeting|
+        puts meeting.attendance
+        @average_attendance += meeting.attendance
+      end
+      @average_attendance = @average_attendance / @initiative.meetings.count
+    rescue
+      @average_attendance = 0
+    end
     funder_ids = Array.new
     @initiative.initiative_funders.each do |funder|
       funder_ids.push(funder.funder_id)
