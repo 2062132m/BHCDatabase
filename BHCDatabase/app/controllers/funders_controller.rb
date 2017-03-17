@@ -6,6 +6,18 @@ class FundersController < ApplicationController
 
   def show
     @funder = Funder.find(params[:id])
+    @initiatives = Array.new
+    @medical_conditions = Array.new
+    @users = Array.new
+    @funder.initiative_funders.each do |funder|
+      @initiatives.push(funder.initiative_id)
+    end
+    @funder.medical_condition_funders.each do |funder|
+      @medical_conditions.push(funder.medical_condition_id)
+    end
+    @funder.user_funders.each do |funder|
+      @users.push(funder.user_id)
+    end 
   end
 
   def new
