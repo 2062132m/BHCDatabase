@@ -6,16 +6,16 @@
 
 
     <%= f.fields_for :answers do |a| %>
-        <tr>
-        <td class="col-md-5">
+
         <% case @questions.find(a.object.question_id).id
              when 1, 15, 16, 17, 18 %>
-              <div class="stdcontainer">
+              <div class="feedbackcontainer">
               <table class="table table-striped">
                 <tbody>
         <% end %>
 
-
+          <tr>
+          <td class="col-md-5">
         <h2><%= a.label @questions.find(a.object.question_id).id %> | <%= a.label @questions.find(a.object.question_id).question %></h2>
 
         </td>
@@ -94,18 +94,19 @@
             <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
         <% end %>
           </td>
+          </tr>
 
         <% case @questions.find(a.object.question_id).id
              when 14, 15, 16, 17, 18 %>
-              </tr>
               </tbody>
               </table>
               </div>
+
         <% end %>
       <% end %>
 
 
-
+<br>
 
     <%= f.submit 'Submit Feedback', class: 'btn btn-success' %>
 <% end %>
