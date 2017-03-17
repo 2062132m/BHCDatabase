@@ -14,9 +14,9 @@
 <script>
 // Bloodhound object used to parse JSON object
 var users = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('known_as'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  identify: function(obj) { return obj.name; },
+  identify: function(obj) { return obj.known_as; },
   prefetch: '/user.json'  // get the user JSON object
 });
 
@@ -37,7 +37,7 @@ $('#user-scrollable-dropdown-menu .typeahead').typeahead({
 },
 {
   name: 'user',
-  displayKey: 'name',
+  displayKey: 'known_as',
   limit: 500, // hard coded value, not sure how to get actual length of the json file
   source: namesWithDefaults
 });
