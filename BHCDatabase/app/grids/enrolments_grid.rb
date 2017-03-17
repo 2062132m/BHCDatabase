@@ -13,7 +13,7 @@ class EnrolmentsGrid
   column(:user_id, :header => 'User', :mandatory => true) do |model|
     format(model.user_id) do |value|
       user = User.find(value)
-      link_to user.name, user
+      link_to user.known_as, user
     end
   end
   column(:initiative_id, :header => 'Initiative', :mandatory => true) do |model|
