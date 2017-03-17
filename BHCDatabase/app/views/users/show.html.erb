@@ -21,7 +21,6 @@
   </div>
 </div>
 <div id="initiative">
-  <h1>User</h1>
   <div class="stdcontainer">
     <div class="container-fluid">
       <div class="row">
@@ -103,8 +102,10 @@
               <h4>This user has been archived.</h4>
               <h4>Reason: <%= @user.reason_archived %></h4>
           <% end %>
-          <h2 id="graph-title">Number of Attendances per Month</h2>
-          <%= line_chart @user.meetings.group_by_month(:datetime).count, xtitle: "Month", ytitle: "Attendances" %>
+          <% if @user.privilege == 2 %>
+            <h2 id="graph-title">Number of Attendances per Month</h2>
+            <%= line_chart @user.meetings.group_by_month(:datetime).count, xtitle: "Month", ytitle: "Attendances" %>
+          <% end %>
         </div>
         <div class=col-md-6>
           <div class="container-fluid buttons-container">
