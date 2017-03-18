@@ -4,6 +4,7 @@ class AttendancesController < ApplicationController
   def create
     # The number of users who attended this particular meeting
     num_attendees = 0
+
     # If at least one name was checked
     if params[:attendance].nil?
       flash[:danger] = 'Please select at least one attendant'
@@ -20,6 +21,7 @@ class AttendancesController < ApplicationController
         # Total the number of attendants
         num_attendees += 1
       end
+
       @meeting = Meeting.find(params[:meeting_id])
       @initiative = @meeting.initiative
       # Get the total number of people in the initiative

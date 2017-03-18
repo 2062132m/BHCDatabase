@@ -5,9 +5,11 @@ class AreasController < ApplicationController
 
   def index
     @areas = Area.all
+
     # We create 2 grids, one for normal usage and one to be used for download
     @areas_grid = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
     @areas_grid_csv = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
+
     respond_to do |f|
       f.html do
         # Display the first grid as normal

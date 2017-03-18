@@ -1,22 +1,21 @@
 class EnrolmentsController < ApplicationController
   def create
-    # parse values returned to get respective ids
-    # could be an issue if we allow duplicate names
     @user = User.where(:known_as => enrolment_params[:user_id]).first
     @initiative = Initiative.where(:name => enrolment_params[:initiative_id]).first
-    # if either is nil, return an empty Enrolment to force an error
-    unless @initiative == nil || @user == nil
-      @enrolment = Enrolment.new(initiative_id: @initiative.id,
-                                 user_id: @user.id)
+
+    if @initiative || @user
+      @enrolment = Enrolment.new(initiative_id: @initiative.id, user_id: @user.id)
     else
-      @enrolment = Enrolment.new
+      flash[:danger] = "Either that initiative doesn't exist or you didn't select one"
+      redirect_to :back
+      return
     end
+
     if @enrolment.save
       flash[:success] = 'Created the new enrolment!'
       redirect_to @enrolment.user
     else
-      flash[:danger] = 'This activity/user does not exist'
-      # redirect back to the form
+      flash[:danger] = 'Something went wrong and the user was not enrolled'
       redirect_to :back
     end
   end
@@ -24,6 +23,7 @@ class EnrolmentsController < ApplicationController
   def enrol_user
     @enrolment = Enrolment.new
     @users = User.all
+
     # get all the users and consolidate into a JSON object
     respond_to do |format|
       format.html
@@ -34,6 +34,7 @@ class EnrolmentsController < ApplicationController
   def enrol_initiative
     @enrolment = Enrolment.new
     @initiatives = Initiative.all
+
     # get all the initiatives and consolidate into a JSON object
     respond_to do |format|
       format.html
@@ -42,14 +43,20 @@ class EnrolmentsController < ApplicationController
   end
 
   def destroy
-    # Get the enrolment
     @enrolment = Enrolment.find(params[:id])
-    # Create an unenrolment with identical details
-    Unenrolment.create(:user_id => @enrolment.user_id,
-                       :initiative_id => @enrolment.initiative_id,
-                       :date_enrolled => @enrolment.created_at)
-    # Destroy the enrolment
-    flash[:success] = 'User Unenrolled' if @enrolment.destroy
+
+    @un_enrolment = Unenrolment.new(:user_id => @enrolment.user_id,
+                                    :initiative_id => @enrolment.initiative_id,
+                                    :date_enrolled => @enrolment.created_at)
+    if @enrolment.destroy
+      if @un_enrolment.save
+        flash[:success] = 'Saved the history of the user having this enrolment and un-enrolled the user.'
+      else
+        flash[:danger] = "Un-enrolled however something went wrong and the history of this wasn't recorded."
+      end
+    else
+      flash[:danger] = "Something went wrong, the user wasn't successfully un-enrolled."
+    end
     redirect_to :back
   end
 

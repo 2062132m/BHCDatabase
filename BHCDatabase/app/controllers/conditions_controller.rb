@@ -2,6 +2,7 @@ class ConditionsController < ApplicationController
   def new
     @condition = Condition.new
     @medical_conditions = MedicalCondition.where(:archived => false)
+
     # Get all the medical_conditions and consolidate into a JSON object
     respond_to do |format|
       format.html
@@ -18,6 +19,7 @@ class ConditionsController < ApplicationController
       redirect_to :back
       return
     end
+
     if @condition.save
       flash[:success] = 'Assigned the new condition!'
       redirect_to @condition.user
