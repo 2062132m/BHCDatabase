@@ -117,4 +117,14 @@ class InitiativesController < ApplicationController
   def archive_params
     params.require(:initiative).permit(:archived, :reason_archived)
   end
+
+  # Ensure that only a user, at least a volunteer, who is enrolled for a particular initiative can access it
+  def correct_initiative_only
+    unless current_user.admin?
+      if current_user.service_user? || current_user.initiatives.exclude?(Initiative.find(params[:id]))
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
 end

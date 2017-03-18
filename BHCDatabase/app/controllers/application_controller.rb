@@ -17,31 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Ensure that only a user enrolled for the particular initiative can access it
-  def correct_initiative_only
-    unless current_user.admin?
-      if service_user?
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      elsif !@current_user.initiatives.include?(Initiative.find(params[:id]))
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      end
-    end
-  end
-
-  def correct_initiative_only_on_creation
-    unless current_user.admin?
-      if current_user.service_user?
-        flash[:danger] = 'You are not allowed to access that page. vag'
-        redirect_to current_user
-      elsif !current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
-        flash[:danger] = 'You are not allowed to access that page Boobs.'
-        redirect_to current_user
-      end
-    end
-  end
-
   def service_user_only
     unless current_user.service_user?
       flash[:danger] = 'You are not allowed to access that page.'
