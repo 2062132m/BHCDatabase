@@ -9,4 +9,7 @@ class MedicalCondition < ApplicationRecord
   has_many :medical_condition_funders, dependent: :delete_all
   has_many :removed_medical_fundings, dependent: :delete_all
 
+  def archived?
+    archived
+  end
 end

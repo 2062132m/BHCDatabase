@@ -1,7 +1,7 @@
 class InitiativesController < ApplicationController
   skip_before_action :admin_only, only: [:show]
   before_action :correct_initiative_only
-  before_action :is_archived, only: [:show]
+  before_action :archive_redirect, only: [:show]
 
   def index
     @initiatives = Initiative.where(:archived => false)
@@ -104,8 +104,8 @@ class InitiativesController < ApplicationController
     redirect_to @initiative
   end
 
-  def is_archived?
-    Initiative.find(params[:id]).archived
+  def am_i_archived?
+    Initiative.find(params[:id]).archived?
   end
 
   private

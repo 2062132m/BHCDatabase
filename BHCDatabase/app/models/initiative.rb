@@ -13,4 +13,8 @@ class Initiative < ApplicationRecord
   validates :location, presence: true, length: {maximum: 50}
   validates :area, presence: true
   validates :reason_archived, length: {maximum: 30}
+
+  def archived?
+    archived
+  end
 end

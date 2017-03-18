@@ -1,5 +1,5 @@
 class MedicalConditionsController < ApplicationController
-  before_action :is_archived, only: [:show]
+  before_action :archive_redirect, only: [:show]
 
   def new
     @medical_condition = MedicalCondition.new
@@ -74,8 +74,8 @@ class MedicalConditionsController < ApplicationController
     redirect_to @medical_condition
   end
 
-  def is_archived?
-    MedicalCondition.find(params[:id]).archived
+  def am_i_archived?
+    MedicalCondition.find(params[:id]).archived?
   end
 
   private

@@ -4,4 +4,8 @@ class Area < ApplicationRecord
   validates :reason_archived, length: {maximum: 30}
 
   has_many :initiatives, :dependent => :destroy
+
+  def archived?
+    archived
+  end
 end

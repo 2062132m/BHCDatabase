@@ -1,7 +1,7 @@
 class AreasController < ApplicationController
 
   # Checks to see if the area is archived before the #show action is called
-  before_action :is_archived, only: [:show]
+  before_action :archive_redirect, only: [:show]
 
   def index
     @areas = Area.all
@@ -90,8 +90,8 @@ class AreasController < ApplicationController
     redirect_to @area
   end
 
-  def is_archived?
-    Area.find(params[:id]).archived
+  def am_i_archived?
+    Area.find(params[:id]).archived?
   end
 
   private

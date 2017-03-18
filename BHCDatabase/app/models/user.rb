@@ -85,4 +85,8 @@ class User < ApplicationRecord
   def admin?
     privilege == 0
   end
+
+  def archived?
+    archived
+  end
 end

@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Following three functions allow the blocking of pages to users who don't have the required privilege level
   def service_user_only
     unless current_user.service_user?
       flash[:danger] = 'You are not allowed to access that page.'
@@ -38,13 +39,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def is_archived
-    if self.is_archived?
-      if @current_user.privilege > 0
+  # Calls a method at .self to check if archived
+  def archive_redirect
+    if self.am_i_archived?
+      if current_user.admin?
+        flash[:info] = 'This page has been archived.'
+      else
         flash[:danger] = 'Sorry, this page no longer exists.'
         redirect_to :back
-      else
-        flash[:danger] = 'This page has been archived and is only visible to admins.'
       end
     end
   end
