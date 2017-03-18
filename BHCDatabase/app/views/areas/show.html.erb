@@ -17,7 +17,7 @@
               <h4>Reason: <%= @area.reason_archived %></h4>
           <% end %>
           <h2 id="graph-title">Number of Members per Initiative</h2>
-          <%= column_chart @users.group(:initiative_id).count, xtitle: "Initiative", ytitle: "Number of Members" %>
+          <%= column_chart @users.group(:initiative_id).count, download: true, xtitle: "Initiative", ytitle: "Number of Members" %>
         </div>
         <div class="col-md-6">
           <div class="container-fluid buttons-container right-split">

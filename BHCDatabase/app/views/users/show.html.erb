@@ -104,7 +104,7 @@
           <% end %>
           <% if @user.privilege == 2 %>
             <h2 id="graph-title">Monthly Attendance</h2>
-            <%= line_chart @user.meetings.group_by_month(:datetime).count, xtitle: "Month", ytitle: "Attendances" %>
+            <%= line_chart @user.meetings.group_by_month(:datetime).count, download: true, xtitle: "Month", ytitle: "Attendances" %>
           <% end %>
         </div>
         <div class=col-md-6>

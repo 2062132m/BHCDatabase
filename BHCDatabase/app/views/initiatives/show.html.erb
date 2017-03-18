@@ -41,7 +41,7 @@
             <h4>Reason: <%= @initiative.reason_archived %></h4>
           <% end %>
           <h2 id="graph-title">Average Attendance per Meeting (%)</h2>
-          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance), xtitle: "Time", ytitle: "Attendance %" %>
+          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance), download: true, xtitle: "Time", ytitle: "Attendance %" %>
         </div>
         <div class="col-md-6">
           <div class="container-fluid buttons-container">
