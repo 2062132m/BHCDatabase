@@ -17,83 +17,37 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def correct_user_only
-    unless admin?
-      if @current_user != User.find(params[:id])
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      end
-    end
-  end
-
-  # Ensure that only a user enrolled for the particular initiative can access it
-  def correct_initiative_only
-    unless admin?
-      if service_user?
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      elsif !@current_user.initiatives.include?(Initiative.find(params[:id]))
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      end
-    end
-  end
-
-
-  def correct_initiative_only_on_creation
-    unless admin?
-      if service_user?
-        flash[:danger] = 'You are not allowed to access that page. vag'
-        redirect_to current_user
-      elsif !@current_user.initiatives.include?(Initiative.find(params[:initiative_id]))
-        flash[:danger] = 'You are not allowed to access that page Boobs.'
-        redirect_to current_user
-      end
-    end
-  end
-
+  # Following three functions allow the blocking of pages to users who don't have the required privilege level
   def service_user_only
-    unless service_user?
+    unless current_user.service_user?
       flash[:danger] = 'You are not allowed to access that page.'
       redirect_to current_user
     end
   end
 
   def volunteer_only
-    unless volunteer?
+    unless current_user.volunteer?
       flash[:danger] = 'You are not allowed to access that page.'
       redirect_to current_user
     end
   end
 
   def admin_only
-    unless admin?
+    unless current_user.admin?
       flash[:danger] = 'You are not allowed to access that page.'
       redirect_to current_user
     end
   end
 
-  def service_user?
-    @current_user.privilege == 2
-  end
-
-  def volunteer?
-    @current_user.privilege == 1
-  end
-
-  def admin?
-    @current_user.privilege == 0
-  end
-
-  def is_archived
-    if self.is_archived?
-      if @current_user.privilege > 0
+  # Calls a method at .self to check if archived
+  def archive_redirect
+    if self.am_i_archived?
+      if current_user.admin?
+        flash[:info] = 'This page has been archived.'
+      else
         flash[:danger] = 'Sorry, this page no longer exists.'
         redirect_to :back
-        return
       end
-      flash[:danger] = 'This page has been archived and is only visible to admins.'
     end
   end
-
 end

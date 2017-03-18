@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :admin_only, only: [:show]
   before_action :correct_user_only
-  before_action :is_archived, only: [:show]
+  before_action :archive_redirect, only: [:show]
 
   def index
     # We create 2 grids, one for normal usage and one to be used for download
@@ -114,8 +114,8 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
-  def is_archived?
-    User.find(params[:id]).archived
+  def am_i_archived?
+    User.find(params[:id]).archived?
   end
 
   def update_password
@@ -129,6 +129,15 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def correct_user_only
+    unless current_user.admin?
+      if current_user != User.find(params[:id])
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
 
   def user_params
     params.require(:user).permit(:forename, :surname, :email, :password, :password_confirmation, :telephone, :emergency_name,

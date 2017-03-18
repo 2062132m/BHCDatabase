@@ -2,7 +2,8 @@ class ConditionsController < ApplicationController
   def new
     @condition = Condition.new
     @medical_conditions = MedicalCondition.where(:archived => false)
-    # get all the medical_conditions and consolidate into a JSON object
+
+    # Get all the medical_conditions and consolidate into a JSON object
     respond_to do |format|
       format.html
       format.json { render json: @medical_conditions }
@@ -10,22 +11,20 @@ class ConditionsController < ApplicationController
   end
 
   def create
-    # parse medical_condition to get id
-    # could be an issue if we allow duplicate names
     @medical_condition = MedicalCondition.where(:name => condition_params[:medical_condition_id]).first
-    # if medical_condition is null, return an empty Condition to force an error
-    unless @medical_condition == nil
-      @condition = Condition.new(medical_condition_id: @medical_condition.id,
-                                 user_id: condition_params[:user_id])
+    if @medical_condition
+      @condition = Condition.new(medical_condition_id: @medical_condition.id, user_id: condition_params[:user_id])
     else
-      @condition = Condition.new
+      flash[:danger] = "Either that condition doesn't exist or you didn't select one."
+      redirect_to :back
+      return
     end
+
     if @condition.save
       flash[:success] = 'Assigned the new condition!'
       redirect_to @condition.user
     else
-      flash[:danger] = 'This medical condition does not exist'
-      # redirect back to the form
+      flash[:danger] = 'Something went wrong.'
       redirect_to :back
     end
   end
@@ -34,11 +33,18 @@ class ConditionsController < ApplicationController
     # Get the condition
     @condition = Condition.find(params[:id])
     # Create an unassigned_condition with identical details
-    UnassignedCondition.create(:user_id => @condition.user_id,
-                       :medical_condition_id => @condition.medical_condition_id,
-                       :date_assigned => @condition.created_at)
-    # Destroy the condition
-    flash[:success] = 'User Unassigned Condition' if @condition.destroy
+    @unassigned_condition = UnassignedCondition.new(:user_id => @condition.user_id,
+                                                    :medical_condition_id => @condition.medical_condition_id,
+                                                    :date_assigned => @condition.created_at)
+    if @condition.destroy
+      if @unassigned_condition.save
+        flash[:success] = 'Saved the history of the user having this condition and unassigned the condition.'
+      else
+        flash[:danger] = "Condition unassigned however something went wrong and the history of this wasn't recorded."
+      end
+    else
+      flash[:danger] = "Something went wrong, the condition wasn't successfully unassigned."
+    end
     redirect_to :back
   end
 
@@ -47,5 +53,4 @@ class ConditionsController < ApplicationController
   def condition_params
     params.require(:condition).permit(:medical_condition_id, :user_id)
   end
-
 end

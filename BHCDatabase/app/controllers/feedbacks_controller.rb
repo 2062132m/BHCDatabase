@@ -42,8 +42,7 @@ class FeedbacksController < ApplicationController
   end
 
   def allowed_to_leave_feedback
-    @user = @current_user
-    unless @user.feedback_due <= Date.today
+    unless current_user.feedback_due <= Date.today
       flash[:warning] = "You aren't due to leave feedback yet."
       redirect_to serviceusershome_path
     end
@@ -51,8 +50,8 @@ class FeedbacksController < ApplicationController
 
   def correct_users_feedback?
     @feedback = Feedback.find(params[:id])
-    unless admin?
-      if @feedback.user != @current_user || volunteer?
+    unless current_user.admin?
+      if @feedback.user != current_user || current_user.volunteer?
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to @current_user
       end

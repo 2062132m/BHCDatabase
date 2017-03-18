@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
 
   # Only allows volunteers that belong to the correct meeting to view #show
   before_action :correct_meeting_only, only: [:show]
-  before_action :correct_initiative_only_on_creation, only: [:new]
+  before_action :correct_initiative_only, only: [:new]
 
   def index
     @meetings = Meeting.all
@@ -56,11 +56,21 @@ class MeetingsController < ApplicationController
 
   private
 
+  # Ensure that only a user, at least a volunteer, who is enrolled for a particular initiative can access it
+  def correct_initiative_only
+    unless current_user.admin?
+      if current_user.service_user? || current_user.initiatives.exclude?(Initiative.find(params[:initiative_id]))
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
   # Ensure that a user enrolled for the initiative belonging to the meeting can access the meeting(s) page
   def correct_meeting_only
-    redirect_to @current_user if service_user?
-    if volunteer?
-      @current_user.initiatives.each do |init|
+    redirect_to current_user if current_user.service_user?
+    if current_user.volunteer?
+      current_user.initiatives.each do |init|
         return if init.meetings.include?(Meeting.find(params[:id]))
       end
       flash[:danger] = 'You are not allowed to access that page.'

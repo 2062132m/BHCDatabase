@@ -1,26 +1,28 @@
 class AreasController < ApplicationController
 
   # Checks to see if the area is archived before the #show action is called
-  before_action :is_archived, only: [:show]
+  before_action :archive_redirect, only: [:show]
 
   def index
     @areas = Area.all
+
     # We create 2 grids, one for normal usage and one to be used for download
     @areas_grid = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
     @areas_grid_csv = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
-      respond_to do |f|
-        f.html do
-          # Display the first grid as normal
-          @areas_grid.scope { |scope| scope.page(params[:page]) }
-        end
-        f.csv do
-          # Send the second grid to csv format and allow to be downloaded
-          send_data @areas_grid_csv.to_csv,
-            type: "text/csv",
-            disposition: 'inline',
-            filename: "areas-#{Time.now.to_s}.csv"
-        end
+
+    respond_to do |f|
+      f.html do
+        # Display the first grid as normal
+        @areas_grid.scope { |scope| scope.page(params[:page]) }
       end
+      f.csv do
+        # Send the second grid to csv format and allow to be downloaded
+        send_data @areas_grid_csv.to_csv,
+                  type: 'text/csv',
+                  disposition: 'inline',
+                  filename: "areas-#{Time.now.to_s}.csv"
+      end
+    end
   end
 
   def show
@@ -69,8 +71,7 @@ class AreasController < ApplicationController
   end
 
   def destroy
-    Area.find(params[:id]).destroy
-    flash[:success] = 'Area deleted'
+    Area.find(params[:id]).destroy ? flash[:success] = 'Area deleted' : flash[:danger] = "Area wasn't deleted. Something went wrong!"
     redirect_to areas_url
   end
 
@@ -90,8 +91,8 @@ class AreasController < ApplicationController
     redirect_to @area
   end
 
-  def is_archived?
-    Area.find(params[:id]).archived
+  def am_i_archived?
+    Area.find(params[:id]).archived?
   end
 
   private
