@@ -2,23 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 .feedbackcontainer {
-  margin-top: 15px;
+  padding-top: 8px;
+  margin-top: 20px;
   padding-bottom: 10px;
   background-color: white;
   border-bottom: 1px solid #61BB46;
   font-size: 17px;
 
-  h3 {
-    font-size: 25px;
-    margin-bottom: 2px;
-    margin-top: 1px;
-    text-align: center;
-  }
-  h4 {
-    font-size: 25px;
-    margin-bottom: 5px;
-    margin-top: 2px;
+  h{
     text-align: left;
+    display: inline;
+    color: dimgrey;
+  }
+
+  h5{
+    font-size: 20px;
+    color:black;
+  }
+
+  .table-striped{
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-radius: 20px;
+  }
+  .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+    background-color: #abe8df;
   }
 }
+
