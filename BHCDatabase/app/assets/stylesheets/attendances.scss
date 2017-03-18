@@ -3,14 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .new_attendance {
-  h2 {
-    float: left;
+  margin: 0 10px;
+  .attendance-name {
     width: 70%;
-    margin: 10px 0;
+    float: left;
+    h2 {
+      margin: 0 !important;
+    }
   }
 
-  #attendance_ {
+  .attendance-box {
     width: 30%;
-    margin: 11.5px 0;
+    overflow: hidden;
   }
 }

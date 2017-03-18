@@ -1,69 +1,68 @@
-<% provide(:title, @meeting.datetime) %>
+<% provide(:title, @meeting.initiative.name + " Meeting") %>
 <div id="initiative">
-  <h1>
-    <%= @meeting.initiative.name %> - <%= @meeting.datetime.strftime("%d/%m/%Y  - %H:%M") %>
-  </h1>
   <div class="stdcontainer">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <div align="left">
-            <h2>
-              <icon class="glyphicon glyphicon-list-alt"></icon>
-              Area:
-            </h2>
-            <ht><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %></ht>
-            <h2>
-              <icon class="glyphicon glyphicon-map-marker"></icon>
-              Location:
-            </h2>
-            <ht><%= @meeting.initiative.location %></ht>
+          <h2 id="show-title"><%= @meeting.initiative.name %> Meeting</h2>
+          <div>
+            <h2 id="show-sub-title"><%= @meeting.datetime.strftime('%d/%m/%Y - %H:%M') %></h2>
           </div>
-        </div>
-
-        <div class="col-md-6">
-          <div align="left">
-            <h2>
-              <icon class="glyphicon glyphicon-info-sign"></icon>
-              Description:
-            </h2>
-            <ht><%= @meeting.initiative.description %></ht>
-            <h2>
-              <icon class="glyphicon glyphicon-user"></icon>
-              Volunteers:
-            </h2>
-            <% @initiative.users.each do |user| %>
-                <% if user.privilege == 1 %>
-                    <ht><%= link_to user.known_as, user %></ht>
-                    <br>
+          <table id="info-table">
+            <tr>
+              <td>Initiative:</td>
+              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.name, @meeting.initiative %></td>
+            </tr>
+            <tr>
+              <td>Area:</td>
+              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %></td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td><icon class="glyphicon glyphicon-map-marker"></icon><%= @meeting.initiative.location %></td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><icon class="glyphicon glyphicon-info-sign"></icon><%= @meeting.initiative.description %></td>
+            </tr>
+            <tr>
+              <td>Volunteers:</td>
+              <td><icon class="glyphicon glyphicon-user"></icon>
+                <% i = 0 %>
+                <% @initiative.users.where(:privilege => 1).each do |user| %>
+                      <%= link_to user.known_as, user %><% unless i == @initiative.users.where(:privilege => 1).length - 1 %>, <% end %>
+                      <% i = i + 1 %>
                 <% end %>
-            <% end %>
-          </div>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <% unless @meeting.attendances.count == 0 %>
+              <%= pie_chart({"Attended" => @meeting.attendance, "Not Attended" => 100 - @meeting.attendance}) %>
+          <% end %>
         </div>
-      </div>
-      <br>
-      <div class="row">
-        <% if @meeting.attendances.count == 0 %>
-          <div class="col-md-6 col-md-offset-3">
-            <h3>Attendance</h3>
-            <%= render 'attendance_form' %>
-          </div>
-        <% else %>
-          <div class="col-md-6">
-              <h3>Attendance: <%= @meeting.attendance %>%</h3>
-              <% @users.each do |user| %>
-                  <h2 class="enrol"><%= link_to user.known_as, user %></h2>
-              <% end %>
+        <div class="col-md-6">
+          <div class="container-fluid buttons-container right-split">
+            <% unless @meeting.attendances.count == 0 %>
               <%= link_to "<i class='glyphicon glyphicon-edit'></i> Retake Attendance".html_safe, @meeting, method: :delete,
                           data: {confirm: "Are you sure you want to retake the attendance?
                                                           \nNote: This action cannot be undone!"},
-                          class: "btn btn-default edit-btn", id: "attendance-btn" %>
+                          class: "btn btn-default edit-btn" %>
+            <% end %>
           </div>
-        <% end %>
-        <div class="col-md-6">
-          <div align="left">
-            <% if @meeting.attendances.count != 0 %>
-                <%= pie_chart({"Attended" => @meeting.attendance, "Not Attended" => 100 - @meeting.attendance}) %>
+          <div class="info-container">
+            <h2 id="show-details-title">Attendance Form</h2>
+            <% if @meeting.attendances.count == 0 %>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <%= render 'attendance_form' %>
+                </div>
+              </div>
+            <% else %>
+              <h2>Attendance: <%= @meeting.attendance %>%</h2>
+              <% @users.each do |user| %>
+                  <h2><%= link_to user.known_as, user %></h2>
+              <% end %>
             <% end %>
           </div>
         </div>
