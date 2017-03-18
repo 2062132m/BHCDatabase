@@ -12,7 +12,6 @@
   border-bottom: 1px solid #61BB46;
   font-size: 17px;
 
-
   h{
     text-align: left;
     display: inline;
@@ -24,9 +23,13 @@
     color:black;
   }
 
-  .table{
+  .table-striped{
     margin-bottom: 0px;
-    margin-top: 1px;
+    margin-top: 0px;
+    border-radius: 20px;
+  }
+  .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+    background-color: #E8F7F6;
   }
 }
 
