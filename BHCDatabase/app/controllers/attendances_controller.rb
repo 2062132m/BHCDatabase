@@ -1,5 +1,4 @@
 class AttendancesController < ApplicationController
-
   skip_before_action :admin_only
 
   def create
