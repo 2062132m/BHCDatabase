@@ -130,6 +130,15 @@ class UsersController < ApplicationController
 
   private
 
+  def correct_user_only
+    unless current_user.admin?
+      if current_user != User.find(params[:id])
+        flash[:danger] = 'You are not allowed to access that page.'
+        redirect_to current_user
+      end
+    end
+  end
+
   def user_params
     params.require(:user).permit(:forename, :surname, :email, :password, :password_confirmation, :telephone, :emergency_name,
                                  :emergency_telephone, :dob, :privilege, :feedback_due, :archived, :reason_archived, :known_as,

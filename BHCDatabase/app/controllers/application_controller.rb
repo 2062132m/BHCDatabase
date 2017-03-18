@@ -17,15 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def correct_user_only
-    unless current_user.admin?
-      if @current_user != User.find(params[:id])
-        flash[:danger] = 'You are not allowed to access that page.'
-        redirect_to current_user
-      end
-    end
-  end
-
   # Ensure that only a user enrolled for the particular initiative can access it
   def correct_initiative_only
     unless current_user.admin?
