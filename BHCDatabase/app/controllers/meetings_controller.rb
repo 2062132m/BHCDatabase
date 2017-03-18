@@ -58,9 +58,9 @@ class MeetingsController < ApplicationController
 
   # Ensure that a user enrolled for the initiative belonging to the meeting can access the meeting(s) page
   def correct_meeting_only
-    redirect_to @current_user if service_user?
-    if volunteer?
-      @current_user.initiatives.each do |init|
+    redirect_to current_user if current_user.service_user?
+    if current_user.volunteer?
+      current_user.initiatives.each do |init|
         return if init.meetings.include?(Meeting.find(params[:id]))
       end
       flash[:danger] = 'You are not allowed to access that page.'
