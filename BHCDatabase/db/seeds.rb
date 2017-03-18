@@ -232,7 +232,7 @@ puts "Enrolling users\nGiving users feedback\nUsers attending meetings"
 User.where(privilege: [1, 2]).find_each do |user|
   random.rand(1..3).times do
     user.enrolments.create(initiative: Initiative.find(random.rand(1..Initiative.count)))
-    with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(random.rand(1..MedicalCondition.count))) }
+    with_record_unique_handling { user.conditions.create(medical_condition: MedicalCondition.find(random.rand(1..MedicalCondition.count)), created_at: Faker::Time.between(2.years.ago, Time.current)) }
     Feedback.create(user: user)
   end
   user.feedbacks.find_each do |feed|
