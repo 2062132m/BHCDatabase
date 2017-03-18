@@ -16,7 +16,7 @@
             <h4>This medical condition has been archived.</h4>
             <h4>Reason: <%= @medical_condition.reason_archived %></h4>
           <% end %>
-          <h2 id="graph-title">Number of Times Condition Assigned per Month</h2>
+          <h2 id="graph-title">Number of Times Condition Assigned (per month)</h2>
           <%= line_chart @medical_condition.conditions.group_by_month(:created_at).count, download: true, xtitle: "Month", ytitle: "Assignments" %>
         </div>
         <div class="col-md-6">
