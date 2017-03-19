@@ -78,15 +78,20 @@
     <% elsif current_user.privilege == 0 %>
       <%= datagrid_table(@users_grid) %>
     <% else %>
-      <div id="volunteer-list">
-        <% @initiative.users.each do |x| %>
-          <% unless x.archived %>
-            <h4>
-              <%= x.known_as %>
-              Emergency <%= x.emergency_name %>, <%= x.emergency_telephone %>
-            </h4>
+      <div class="container-fluid">
+        <br>
+        <table id="info-table">
+          <% @initiative.users.each do |i| %>
+            <% unless i.archived %>
+              <tr>
+                <td>Name: <%= i.known_as %></td>
+                <td>Emergency Contact: <%= i.emergency_name %></td>
+                <td>Emergency Contact Number: <%= i.emergency_telephone %></td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
+        </table>
+        <br>
       </div>
     <% end %>
   </div>
