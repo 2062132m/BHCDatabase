@@ -102,13 +102,13 @@
               <h4>This user has been archived.</h4>
               <h4>Reason: <%= @user.reason_archived %></h4>
           <% end %>
-          <% if @user.privilege > 0 %>
+          <% if @user.privilege > 0 && current_user.privilege < 2 %>
             <h2 id="graph-title">Number of Meetings Attended (per month)</h2>
             <%= line_chart @user.meetings.group_by_month(:datetime).count, download: true, xtitle: "Month", ytitle: "Meetings Attended" %>
           <% end %>
         </div>
         <div class=col-md-6>
-          <div class="container-fluid buttons-container">
+          <div class="container-fluid buttons-container right-split">
             <% if current_user.privilege == 0 %>
                 <% if !@user.archived %>
                     <button id="openmodal" class="btn btn-default archive-btn">
@@ -122,7 +122,7 @@
                 <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
             <% end %>
             <% if current_user.privilege > 0 %>
-                <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
+                <%= link_to "<i class='glyphicon glyphicon-edit'></i> Change Details".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
             <% end %>
           </div>
             <% if current_user.privilege == 0 %>
@@ -214,45 +214,83 @@
                   <h2>Initiatives Unenrolled From: <%= @user.unenrolments.count %></h2>
                   <h2>Conditions Unassigned From: <%= @user.unassigned_conditions.count %></h2>
                 </div>
+            <% else %>
+            <div class="info-container">
+              <h2 id="show-details-title">Personal Details</h2>
+              <h2>
+                Enrolled Initiatives:
+                <% i = 0 %>
+                <% @user.initiatives.each do |init| %>
+                  <%= init.name %><% unless i == @user.initiatives.length - 1 %>, <% end %>
+                  <% i = i + 1 %>
+                <% end %>
+              </h2>
+              <h2>
+                Assigned Conditions:
+                <% i = 0 %>
+                <% @user.medical_conditions.each do |cond| %>
+                  <%= cond.name %><% unless i == @user.medical_conditions.length - 1 %>, <% end %>
+                  <% i = i + 1 %>
+                <% end %>
+              </h2>
+              <h2>
+                Direct Funding:
+                <% i = 0 %>
+                <% @user.user_funders.each do |fund| %>
+                  <%= fund.funder.name %><% unless i == @user.user_funders.length - 1 %>, <% end %>
+                  <% i = i + 1 %>
+                <% end %>
+              </h2>
+              <h2>
+                Feedbacks Completed:
+                <% i = 0 %>
+                <% @user.feedbacks.each do |feedback| %>
+                  <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %><% unless i == @user.feedbacks.length - 1 %>, <% end %>
+                  <% i = i + 1 %>
+                <% end %>
+              </h2>
+            </div>
             <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <h1>Feedbacks</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@feedbacks_grid) %>
-  </div>
-  <h1 id="meetingtitle">Current Enrolments</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@enrolments_grid) %>
-  </div>
-  <% unless @unenrolments_grid.rows.empty? %>
-    <h1>Enrolment History</h1>
+  <% if current_user.privilege == 0 %>
+    <h1>Feedbacks</h1>
     <div class="stdcontainer">
-      <%= datagrid_table(@unenrolments_grid) %>
+      <%= datagrid_table(@feedbacks_grid) %>
     </div>
-  <% end %>
-  <h1>Current Medical Conditions</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@conditions_grid) %>
-  </div>
-  <% unless @unassigned_conditions_grid.rows.empty? %>
-    <h1>Medical Condition History</h1>
+    <h1 id="meetingtitle">Current Enrolments</h1>
     <div class="stdcontainer">
-      <%= datagrid_table(@unassigned_conditions_grid) %>
+      <%= datagrid_table(@enrolments_grid) %>
     </div>
-  <% end %>
-  <h1>Direct Funding</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@funders_for_user_grid) %>
-  </div>
-  <% unless @removed_funders_for_users_grid.rows.empty? %>
-    <h1>Direct Funding History</h1>
+    <% unless @unenrolments_grid.rows.empty? %>
+      <h1>Enrolment History</h1>
+      <div class="stdcontainer">
+        <%= datagrid_table(@unenrolments_grid) %>
+      </div>
+    <% end %>
+    <h1>Current Medical Conditions</h1>
     <div class="stdcontainer">
-      <%= datagrid_table(@removed_funders_for_users_grid) %>
+      <%= datagrid_table(@conditions_grid) %>
     </div>
+    <% unless @unassigned_conditions_grid.rows.empty? %>
+      <h1>Medical Condition History</h1>
+      <div class="stdcontainer">
+        <%= datagrid_table(@unassigned_conditions_grid) %>
+      </div>
+    <% end %>
+    <h1>Direct Funding</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@funders_for_user_grid) %>
+    </div>
+    <% unless @removed_funders_for_users_grid.rows.empty? %>
+      <h1>Direct Funding History</h1>
+      <div class="stdcontainer">
+        <%= datagrid_table(@removed_funders_for_users_grid) %>
+      </div>
+    <% end %>
   <% end %>
   <h1>Indirect Funding</h1>
   <div class="stdcontainer">
@@ -269,8 +307,8 @@
             <% @user.initiatives.each do |initiative| %>
                 <% initiative.initiative_funders.each do |funder| %>
                   <tr>
-                    <td><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
-                    <td><%= link_to initiative.name, initiative %></td>
+                    <td><%= link_to_if current_user.privilege == 0, Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
+                    <td><%= link_to_if current_user.privilege == 0, initiative.name, initiative %></td>
                   </tr>
                 <% end %>
               <% end %>
@@ -288,8 +326,8 @@
             <% @user.medical_conditions.each do |medical_condition| %>
                 <% medical_condition.medical_condition_funders.each do |funder| %>
                   <tr>
-                    <td><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
-                    <td><%= link_to medical_condition.name, medical_condition %></td>
+                    <td><%= link_to_if current_user.privilege == 0, Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
+                    <td><%= link_to_if current_user.privilege == 0, medical_condition.name, medical_condition %></td>
                   </tr>
                 <% end %>
               <% end %>
