@@ -109,8 +109,10 @@
   <div class="stdcontainer">
     <%= datagrid_table(@funders_for_initiative_grid) %>
   </div>
-  <h1>Funding History</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@removed_funders_for_initiative_grid) %>
-  </div>
+  <% unless @removed_funders_for_initiative_grid.rows.empty? %>
+    <h1>Funding History</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@removed_funders_for_initiative_grid) %>
+    </div>
+  <% end %>
 </div>
