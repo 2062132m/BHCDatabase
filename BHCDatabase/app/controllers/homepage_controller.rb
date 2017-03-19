@@ -7,38 +7,40 @@ class HomepageController < ApplicationController
     @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
       scope.page(params[:page])
     end
-    @initiatives = Initiative.all
-    @conditions = MedicalCondition.all
-    maxInitCount = 0
-    maxConditionCount = 0
-    @maxInit = @initiatives.first
-    @maxCondition = @conditions.first
-    @initiatives.each do |init|
-      if init.users.count > maxInitCount
-        maxInitCount = init.users.count
-        @maxInit = init
+
+    @max_init = Initiative.first
+    max_init_count = 0
+    Initiative.find_each do |init|
+      if init.users.count > max_init_count
+        max_init_count = init.users.count
+        @max_init = init
       end
     end
-    @conditions.each do |cond|
-      if cond.users.count > maxConditionCount
-        maxConditionCount = cond.users.count
-        @maxCondition = cond
+
+    @max_condition = MedicalCondition.first
+    max_condition_count = 0
+    MedicalCondition.find_each do |cond|
+      if cond.users.count > max_condition_count
+        max_condition_count = cond.users.count
+        @max_condition = cond
       end
     end
-    minInitCount = maxInitCount
-    minConditionCount = maxConditionCount
-    @minInit = @initiatives.first
-    @minCondition = @conditions.first
-    @initiatives.each do |init|
-      if init.users.count < minInitCount
-        minInitCount = init.users.count
-        @minInit = init
+
+    min_init_count = max_init_count
+    @min_initiative = Initiative.first
+    Initiative.find_each do |init|
+      if init.users.count < min_init_count
+        min_init_count = init.users.count
+        @min_initiative = init
       end
     end
-    @conditions.each do |cond|
-      if cond.users.count < minConditionCount
-        minConditionCount = cond.users.count
-        @minCondition = cond
+
+    min_condition_count = max_condition_count
+    @min_condition = MedicalCondition.first
+    MedicalCondition.find_each do |cond|
+      if cond.users.count < min_condition_count
+        min_condition_count = cond.users.count
+        @min_condition = cond
       end
     end
   end
@@ -50,5 +52,4 @@ class HomepageController < ApplicationController
     redirect_to volunteershome_url if current_user.volunteer?
     redirect_to serviceusershome_url if current_user.service_user?
   end
-
 end
