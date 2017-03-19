@@ -455,6 +455,17 @@ table.datagrid {
   margin-left: 15px;
 }
 
+.leave-feedback-btn {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+  background-color: #57a957;
+  border-color: #57a957;
+  margin-bottom: 10px;
+  margin-top: 135px;
+  margin-right: 10px;
+  float: right;
+}
+
 .CSV {
   color: #fff;
   background-color: #3366ff;
@@ -749,7 +760,7 @@ input {
     border-bottom: 1px solid #bfbfbf;
     border-top: 1px solid #bfbfbf;
     border-collapse: collapse;
-    td {
+    td, th {
       text-align: left;
       padding: 10px 0 10px 10px;
       font-weight: 600;
@@ -779,6 +790,9 @@ input {
 
 .buttons-container {
   padding: 0;
+  #show-sub-title {
+    margin-top: 140px;
+  }
 }
 
 .info-container {

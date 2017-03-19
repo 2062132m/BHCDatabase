@@ -1,55 +1,60 @@
 <% provide(:title, @user.known_as) %>
-
-<div id="userhome">
-  <h1>Home</h1>
-  <div class="stdcontainer" id="userhomecontainer">
-    <div class="feedbackcontainer">
-      <% if @user.feedback_due <= Date.today %>
-          <h3>Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago</h3>
-          <br>
-          <%= link_to 'Leave feedback', new_feedback_path(user_id: @current_user.id), class: 'btn btn-success' %>
-      <% else %>
-          <h3>Your feedback is due in...</h3>
-          <%= link_to (@user.feedback_due - Date.today).to_i.to_s + ' days', new_feedback_path(user_id: @current_user.id), class: 'btn btn-success' %>
-      <% end %>
-    </div>
-    <h3>Building Healthy Communities Office Number: </h3>
-    <h2 class="text-center">01387 272776</h2>
-    <h1>Your Initiatives</h1>
-    <% @user.initiatives.order("LOWER (name) ASC").each do |i| %>
-        <% unless i.archived %>
-            <div class="row">
-              <div class="col-md-4">
-                <h3><%= i.name %></h3>
-                <div id="details">
-                  <h2>
-                    <icon class="glyphicon glyphicon-map-marker"></icon>
-                    Location:
-                  </h2>
-                  <h4><%= i.location %></h4>
-                  <h2>
-                    <icon class="glyphicon glyphicon-info-sign"></icon>
-                    Description:
-                  </h2>
-                  <h4><%= i.description %></h4>
-                </div>
-              </div>
-              <div class="col-md-8">
-                <div id="volunteer-list">
-                  <h3>Initiative Volunteers:</h3>
-                  <% i.users.each do |x| %>
-                      <% unless x.archived %>
-                          <% if x.privilege == 1 %>
-                              <h4>
-                                <%= x.known_as %>
-                              </h4>
-                          <% end %>
+<div id="initiative">
+  <div class="stdcontainer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 id="show-title">Building Healthy Communities</h2>
+          <div>
+            <h2 id="show-sub-title">Office Number: 01387 272776</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="container-fluid buttons-container">
+            <% if @user.feedback_due <= Date.today %>
+              <h2 id="show-sub-title">Your feedback was due <%= (Date.today - @user.feedback_due).to_i %> day(s) ago:</h2>
+              <%= link_to 'Leave Feedback', new_feedback_path(user_id: @current_user.id), class: 'btn btn-default leave-feedback-btn' %>
+            <% else %>
+              <h2 id="show-sub-title">Your feedback is due in <%= (@user.feedback_due - Date.today).to_i.to_s + ' day(s):' %></h2>
+              <%= link_to 'Leave Feedback', new_feedback_path(user_id: @current_user.id), class: 'btn btn-default leave-feedback-btn' %>
+            <% end %>
+          </div>
+        </div>
+        <% @user.initiatives.order("LOWER (name) ASC").each do |i| %>
+          <% unless i.archived %>
+            <div class="container-fluid">
+              <table id="info-table">
+                <tr>
+                  <td>Initiative:</td>
+                  <td><icon class="glyphicon glyphicon-home"></icon><%= i.name %></td>
+                </tr>
+                <tr>
+                  <td>Description:</td>
+                  <td><icon class="glyphicon glyphicon-info-sign"></icon><%= i.description %></td>
+                </tr>
+                <tr>
+                  <td>Location:</td>
+                  <td><icon class="glyphicon glyphicon-map-marker"></icon><%= i.location %></td>
+                </tr>
+                <tr>
+                  <td>Volunteers:</td>
+                  <td>
+                    <icon class="glyphicon glyphicon-user"></icon>
+                    <% j = 0 %>
+                    <% i.users.each do |user| %>
+                      <% if user.privilege == 1 %>
+                        <%= user.known_as %><% unless j == i.users.where(:privilege => 1).count - 1 %>, <% end %>
+                        <% j = j + 1 %>
                       <% end %>
-                  <% end %>
-                </div>
-              </div>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+              <br>
             </div>
+          <% end %>
         <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
-</div>>
+</div>

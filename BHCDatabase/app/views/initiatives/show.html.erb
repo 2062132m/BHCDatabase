@@ -78,15 +78,25 @@
     <% elsif current_user.privilege == 0 %>
       <%= datagrid_table(@users_grid) %>
     <% else %>
-      <div id="volunteer-list">
-        <% @initiative.users.each do |x| %>
-          <% unless x.archived %>
-            <h4>
-              <%= x.known_as %>
-              Emergency <%= x.emergency_name %>, <%= x.emergency_telephone %>
-            </h4>
+      <div class="container-fluid">
+        <br>
+        <table id="info-table">
+          <tr>
+            <th><icon class="glyphicon glyphicon-user"></icon>Name</th>
+            <th><icon class="glyphicon glyphicon-heart-empty"></icon>Emergency Contact</th>
+            <th><icon class="glyphicon glyphicon-earphone"></icon>Emergency Contact Name</th>
+          </tr>
+          <% @initiative.users.each do |i| %>
+            <% unless i.archived %>
+              <tr>
+                <td><%= i.known_as %></td>
+                <td><%= i.emergency_name %></td>
+                <td><%= i.emergency_telephone %></td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
+        </table>
+        <br>
       </div>
     <% end %>
   </div>
@@ -99,8 +109,10 @@
   <div class="stdcontainer">
     <%= datagrid_table(@funders_for_initiative_grid) %>
   </div>
-  <h1>Funding History</h1>
-  <div class="stdcontainer">
-    <%= datagrid_table(@removed_funders_for_initiative_grid) %>
-  </div>
+  <% unless @removed_funders_for_initiative_grid.rows.empty? %>
+    <h1>Funding History</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@removed_funders_for_initiative_grid) %>
+    </div>
+  <% end %>
 </div>
