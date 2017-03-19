@@ -233,7 +233,7 @@ footer {
 /* grids */
 
 .datagrid-form {
-  margin: 10px 27px;
+  margin: 10px 27px 10px -20px;
 }
 
 table.datagrid {
@@ -346,10 +346,11 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
-  margin-top: -62px;
+  margin-top: -63px;
   margin-bottom: 20px;
-  margin-left: 65px;
-  padding: 7.5px 50px;
+  margin-left: 28px;
+  padding: 5px 30px 5px 30px;
+  font-size: 19px;
   float: left;
 }
 
@@ -380,8 +381,8 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
-  margin-bottom: 10px;
-  margin-top: 85px;
+  margin-bottom: 9px;
+  margin-top: 83px;
   margin-right: 5px;
   float: right;
 }
@@ -548,15 +549,15 @@ input, textarea, select, .uneditable-input {
 
 /* reset button */
 .datagrid-reset {
-  color: #fff;
+  color: white;
   background-color: #c43c35;
   border: 1px solid #c43c35;
   /* box adjustments */
   border-radius: 4px;
-  font-size: 17px;
+  font-size: 19px;
   margin-right: 5px;
   float: right;
-  padding: 7px 30px 4px 30px;
+  padding: 4px 30px 5px 30px;
 }
 
 .datagrid-reset:hover {
