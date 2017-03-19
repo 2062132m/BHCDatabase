@@ -242,7 +242,7 @@ User.where(privilege: [1, 2]).find_each do |user|
   end
   user.initiatives.each do |init|
     init.meetings.each do |meet|
-      user.attendances.create(meeting: meet, created_at: meet.datetime) if random.rand(2) == 1
+      user.attendances.create(meeting: meet, created_at: meet.datetime) if random.rand(100) > 25
     end
   end
 end
