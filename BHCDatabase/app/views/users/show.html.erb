@@ -108,7 +108,7 @@
           <% end %>
         </div>
         <div class=col-md-6>
-          <div class="container-fluid buttons-container">
+          <div class="container-fluid buttons-container right-split">
             <% if current_user.privilege == 0 %>
                 <% if !@user.archived %>
                     <button id="openmodal" class="btn btn-default archive-btn">
@@ -122,7 +122,7 @@
                 <%= link_to "<i class='glyphicon glyphicon-ok-sign'></i> Enrol".html_safe, enrol_initiative_enrolment_path(user_id: @user.id), class: 'btn btn-default enrolment-btn' %>
             <% end %>
             <% if current_user.privilege > 0 %>
-                <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
+                <%= link_to "<i class='glyphicon glyphicon-edit'></i> Change Details".html_safe, new_service_request_path, class: 'btn btn-default edit-btn' %>
             <% end %>
           </div>
             <% if current_user.privilege == 0 %>
@@ -214,6 +214,10 @@
                   <h2>Initiatives Unenrolled From: <%= @user.unenrolments.count %></h2>
                   <h2>Conditions Unassigned From: <%= @user.unassigned_conditions.count %></h2>
                 </div>
+            <% else %>
+            <div class="info-container">
+              <h2 id="show-details-title">Hello</h2>
+            </div>
             <% end %>
           </div>
         </div>
