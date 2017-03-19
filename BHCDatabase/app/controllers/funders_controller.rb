@@ -1,23 +1,13 @@
 class FundersController < ApplicationController
   def index
-    @funders = Funder.all
     @funders_grid = FundersGrid.new(params[:funders_grid])
   end
 
   def show
     @funder = Funder.find(params[:id])
-    @initiatives = Array.new
-    @medical_conditions = Array.new
-    @users = Array.new
-    @funder.initiative_funders.each do |funder|
-      @initiatives.push(funder.initiative_id)
-    end
-    @funder.medical_condition_funders.each do |funder|
-      @medical_conditions.push(funder.medical_condition_id)
-    end
-    @funder.user_funders.each do |funder|
-      @users.push(funder.user_id)
-    end 
+    @initiatives = @funder.initiatives
+    @medical_conditions = @funder.medical_conditions
+    @users = @funder.users
   end
 
   def new
@@ -40,7 +30,7 @@ class FundersController < ApplicationController
 
   def update
     @funder = Funder.find(params[:id])
-    if @funder.update_attributes(funder_params)
+    if @funder.update(funder_params)
       flash[:success] = 'Funder updated successfully'
       redirect_to @funder
     else
@@ -49,12 +39,14 @@ class FundersController < ApplicationController
   end
 
   def destroy
-    Funder.find(params[:id]).destroy
-    flash[:success] = 'Funder was successfully deleted'
+    if Funder.find(params[:id]).destroy
+      flash[:success] = 'Funder was successfully deleted'
+    else
+      flash[:danger] = "Something went wrong and the funder wasn't deleted"
+    end
     redirect_to funders_url
   end
 
-  # Pass a new InitiativeFunder object to the form
   def fund_initiative
     @initiative_funder = InitiativeFunder.new
   end
@@ -82,7 +74,7 @@ class FundersController < ApplicationController
 
   def new_fund_medical_condition
     @medical_condition_funder = MedicalConditionFunder.new(funder_id: medical_condition_funder_params[:funder_id],
-                                              medical_condition_id: medical_condition_funder_params[:medical_condition_id])
+                                                           medical_condition_id: medical_condition_funder_params[:medical_condition_id])
     if @medical_condition_funder.save
       flash[:success] = 'Added Funding!'
       redirect_to @medical_condition_funder.medical_condition
@@ -103,39 +95,57 @@ class FundersController < ApplicationController
   end
 
   def remove_user_funding
-    # Get the funding
     @user_funder = UserFunder.find(params[:id])
     # Create a "RemovedUserFunding" with identical details
-    RemovedUserFunding.create(:funder_id => @user_funder.funder_id,
-                       :user_id => @user_funder.user_id,
-                       :date_given => @user_funder.created_at)
-    # Destroy the funding
-    flash[:success] = 'Removed Funding' if @user_funder.destroy
-    redirect_to :back
+    @removed_user_funding = RemovedUserFunding.new(:funder_id => @user_funder.funder_id,
+                                                   :user_id => @user_funder.user_id,
+                                                   :date_given => @user_funder.created_at)
+    if @user_funder.destroy
+      if @removed_user_funding.save
+        flash[:success] = 'Removed funding from the user and recorded history of this'
+      else
+        flash[:warning] = "Removed funding however the history of this funding wasn't recorded"
+      end
+    else
+      flash[:danger] = "Something went wrong and funding wasn't removed"
+    end
+    redirect_to funders_url
   end
 
   def remove_initiative_funding
-    # Get the funding
     @initiative_funder = InitiativeFunder.find(params[:id])
     # Create a "RemovedUserFunding" with identical details
-    RemovedInitiativeFunding.create(:funder_id => @initiative_funder.funder_id,
-                       :initiative_id => @initiative_funder.initiative_id,
-                       :date_given => @initiative_funder.created_at)
-    # Destroy the funding
-    flash[:success] = 'Removed Funding' if @initiative_funder.destroy
-    redirect_to :back
+    @removed_initiative = RemovedInitiativeFunding.new(:funder_id => @initiative_funder.funder_id,
+                                                       :initiative_id => @initiative_funder.initiative_id,
+                                                       :date_given => @initiative_funder.created_at)
+    if @removed_initiative.destroy
+      if @removed_initiative.save
+        flash[:success] = 'Removed funding from the initiative and recorded history of this'
+      else
+        flash[:warning] = "Removed funding however the history of this funding wasn't recorded"
+      end
+    else
+      flash[:danger] = "Something went wrong and funding wasn't removed"
+    end
+    redirect_to funders_url
   end
 
   def remove_medical_funding
-    # Get the funding
     @medical_funder = MedicalConditionFunder.find(params[:id])
     # Create a "RemovedUserFunding" with identical details
-    RemovedMedicalFunding.create(:funder_id => @medical_funder.funder_id,
-                       :medical_condition_id => @medical_funder.medical_condition_id,
-                       :date_given => @medical_funder.created_at)
-    # Destroy the funding
-    flash[:success] = 'Removed Funding' if @medical_funder.destroy
-    redirect_to :back
+    @removed_medical = RemovedMedicalFunding.new(:funder_id => @medical_funder.funder_id,
+                                                 :medical_condition_id => @medical_funder.medical_condition_id,
+                                                 :date_given => @medical_funder.created_at)
+    if @removed_medical.destroy
+      if @removed_medical.save
+        flash[:success] = 'Removed funding from the medical condition and recorded history of this'
+      else
+        flash[:warning] = "Removed funding however the history of this funding wasn't recorded"
+      end
+    else
+      flash[:danger] = "Something went wrong and funding wasn't removed"
+    end
+    redirect_to funders_url
   end
 
   private
@@ -143,12 +153,15 @@ class FundersController < ApplicationController
   def funder_params
     params.require(:funder).permit(:name, :description, :email, :url, :telephone, :address)
   end
+
   def initiative_funder_params
     params.require(:initiative_funder).permit(:funder_id, :initiative_id)
   end
+
   def medical_condition_funder_params
     params.require(:medical_condition_funder).permit(:funder_id, :medical_condition_id)
   end
+
   def user_funder_params
     params.require(:user_funder).permit(:funder_id, :user_id)
   end
