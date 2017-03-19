@@ -502,6 +502,17 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+.form-column {
+  border-radius: 5px;
+  background-color: #eaeaea;
+  margin: 0 10px;
+  padding: 10px;
+  label {
+    display: inline-block;
+    text-align: left;
+  }
+}
+
 .datagrid-filter {
   label {
     width: 20%;

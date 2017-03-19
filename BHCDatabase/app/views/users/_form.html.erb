@@ -1,62 +1,68 @@
 <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :forename %>
-    <%= f.text_field :forename, class: "form-control" %>
+    <div class="col-md-6">
+      <div class="form-column">
+        <%= f.label :forename %>
+        <%= f.text_field :forename, class: "form-control" %>
 
-    <%= f.label :surname %>
-    <%= f.text_field :surname, class: "form-control" %>
+        <%= f.label :surname %>
+        <%= f.text_field :surname, class: "form-control" %>
 
-    <%= f.label :known_as %>
-    <%= f.text_field :known_as, class: "form-control" %>
+        <%= f.label :known_as %>
+        <%= f.text_field :known_as, class: "form-control" %>
 
-    <%= f.label :address1, 'Address First Line' %>
-    <%= f.text_field :address1, class: "form-control" %>
+        <%= f.label :address1, 'Address First Line' %>
+        <%= f.text_field :address1, class: "form-control" %>
 
-    <%= f.label :address2, 'Address Second Line' %>
-    <%= f.text_field :address2, class: "form-control" %>
+        <%= f.label :address2, 'Address Second Line' %>
+        <%= f.text_field :address2, class: "form-control" %>
 
-    <%= f.label :town %>
-    <%= f.text_field :town, class: "form-control" %>
+        <%= f.label :town %>
+        <%= f.text_field :town, class: "form-control" %>
 
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode, class: "form-control" %>
+        <%= f.label :postcode %>
+        <%= f.text_field :postcode, class: "form-control" %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control" %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control" %>
 
-    <%= f.label :telephone %>
-    <%= f.text_field :telephone, class: "form-control" %>
+        <%= f.label :telephone %>
+        <%= f.text_field :telephone, class: "form-control" %>
 
-    <%= f.label :emergency_telephone %>
-    <%= f.text_field :emergency_telephone, class: "form-control" %>
+        <%= f.label :emergency_telephone %>
+        <%= f.text_field :emergency_telephone, class: "form-control" %>
 
-    <%= f.label :emergency_name %>
-    <%= f.text_field :emergency_name, class: "form-control" %>
+        <%= f.label :emergency_name %>
+        <%= f.text_field :emergency_name, class: "form-control" %>
 
-    <%= f.label :dob %>
-    <%= f.date_select :dob, {:start_year => 1900, :end_year => Date.today.year}, {class: "form-control"} %>
+        <%= f.label :dob %>
+        <%= f.date_select :dob, {:start_year => 1900, :end_year => Date.today.year}, {class: "form-control"} %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-column">
+        <%= f.label :aims %>
+        <%= f.select :aims, User.aims.keys.map { |x| [x.humanize, x] }, {}, {class: "form-control"} %>
 
-    <%= f.label :aims %>
-    <%= f.select :aims, User.aims.keys.map { |x| [x.humanize, x] } %>
+        <%= f.label :other %>
+        <%= f.text_field :aims_other, class: "form-control" %>
 
-    <%= f.label :other %>
-    <%= f.text_field :aims_other, class: "form-control" %>
+        <%= f.label :prevent_attending, 'Reasons for not attending some meetings' %>
+        <%= f.text_field :prevent_attending, class: "form-control" %>
 
-    <%= f.label :prevent_attending, 'Reasons for not attending some meetings' %>
-    <%= f.text_field :prevent_attending, class: "form-control" %>
+        <%= f.label :reg_date %>
+        <%= f.date_select :reg_date, {}, class: "form-control" %>
 
-    <%= f.label :reg_date %>
-    <%= f.date_select :reg_date, class: "form-control" %>
+        <%= f.label :privilege %>
+        <%= f.select :privilege, options_for_select({"Admin" => 0, "Volunteer" => 1, "Service User" => 2}, 2), {}, { class: "form-control" } %>
 
-    <%= f.label :privilege %>
-    <%= f.select :privilege, options_for_select({"Admin" => 0, "Volunteer" => 1, "Service User" => 2}, 2), {}, { class: "form-control" } %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %>
-
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
-
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+    </div>
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
