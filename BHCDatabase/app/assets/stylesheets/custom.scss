@@ -427,6 +427,15 @@ table.datagrid {
   margin-bottom: 10px;
 }
 
+.form-submit-btn {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+  background-color: #337AB7;
+  border-color: #337AB7;
+  width: 60%;
+  margin: 20px 0;
+}
+
 .enrolment-btn {
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
@@ -504,13 +513,27 @@ input, textarea, select, .uneditable-input {
 
 .form-column {
   border-radius: 5px;
-  background-color: #eaeaea;
-  margin: 0 10px;
+  background-color: #EBEDED;
+  border: 1px solid #afb6b6;
+  -webkit-box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
+  -moz-box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
+  box-shadow: 0 0 4px 1px rgba(0,0,0,.3);
+  margin: 20px 10px;
   padding: 10px;
-  label {
-    display: inline-block;
+  h4 {
     text-align: left;
+    font-weight: bold;
   }
+}
+
+#form-title {
+  font-size: 40px;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+  padding-bottom: 15px;
+  margin-right: 50px;
+  border-bottom: 1px solid #afb6b6;
 }
 
 .datagrid-filter {
