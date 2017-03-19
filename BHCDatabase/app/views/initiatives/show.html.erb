@@ -81,12 +81,17 @@
       <div class="container-fluid">
         <br>
         <table id="info-table">
+          <tr>
+            <th><icon class="glyphicon glyphicon-user"></icon>Name</th>
+            <th><icon class="glyphicon glyphicon-heart-empty"></icon>Emergency Contact</th>
+            <th><icon class="glyphicon glyphicon-earphone"></icon>Emergency Contact Name</th>
+          </tr>
           <% @initiative.users.each do |i| %>
             <% unless i.archived %>
               <tr>
-                <td>Name: <%= i.known_as %></td>
-                <td>Emergency Contact: <%= i.emergency_name %></td>
-                <td>Emergency Contact Number: <%= i.emergency_telephone %></td>
+                <td><%= i.known_as %></td>
+                <td><%= i.emergency_name %></td>
+                <td><%= i.emergency_telephone %></td>
               </tr>
             <% end %>
           <% end %>

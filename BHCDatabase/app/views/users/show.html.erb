@@ -254,23 +254,41 @@
       <div class="row">
         <div class="col-md-6">
           <h4>Indirect funding received via initiatives:</h4>
-          <% @user.initiatives.each do |initiative| %>
-              <% initiative.initiative_funders.each do |funder| %>
-                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
-                    through their
-                    funding of: <%= link_to initiative.name, initiative %></p>
+          <br>
+          <table id="info-table">
+            <tr>
+              <th><icon class="glyphicon glyphicon-user"></icon>Funder</th>
+              <th><icon class="glyphicon glyphicon-share-alt"></icon>Through</th>
+            </tr>
+            <% @user.initiatives.each do |initiative| %>
+                <% initiative.initiative_funders.each do |funder| %>
+                  <tr>
+                    <td><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
+                    <td><%= link_to initiative.name, initiative %></td>
+                  </tr>
+                <% end %>
               <% end %>
-          <% end %>
+          </table>
+          <br>
         </div>
         <div class="col-md-6">
           <h4>Indirect funding received via medical conditions:</h4>
-          <% @user.medical_conditions.each do |medical_condition| %>
-              <% medical_condition.medical_condition_funders.each do |funder| %>
-                  <p><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %>
-                    through their
-                    funding of: <%= link_to medical_condition.name, medical_condition %></p>
+          <br>
+          <table id="info-table">
+            <tr>
+              <th><icon class="glyphicon glyphicon-user"></icon>Funder</th>
+              <th><icon class="glyphicon glyphicon-share-alt"></icon>Through</th>
+            </tr>
+            <% @user.medical_conditions.each do |medical_condition| %>
+                <% medical_condition.medical_condition_funders.each do |funder| %>
+                  <tr>
+                    <td><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
+                    <td><%= link_to medical_condition.name, medical_condition %></td>
+                  </tr>
+                <% end %>
               <% end %>
-          <% end %>
+          </table>
+          <br>
         </div>
       </div>
     </div>
