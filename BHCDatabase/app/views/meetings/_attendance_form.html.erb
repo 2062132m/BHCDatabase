@@ -7,8 +7,12 @@
   <!--   populate attendance[] array with their user_ids -->
   <% @initiative.users.each do |user| %>
         <% if user.privilege == 2 || user.privilege == 1 %>
-            <h2 class="enrol"><%= user.known_as %></h2>
-          <%= check_box_tag('attendance[]', user.id) %>
+          <div class="attendance-name">
+            <h2><%= user.known_as %></h2>
+          </div>
+          <div class="attendance-box">
+            <%= check_box_tag('attendance[]', user.id) %>
+          </div>
       <% end %>
   <% end %>
   <%= submit_tag "Submit", class: "btn btn-default enrol-btn" %>

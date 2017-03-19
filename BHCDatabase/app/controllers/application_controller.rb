@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  Groupdate.time_zone = false
+
   # As this is in ApplicationController, all pages on the website require a login EXCEPT the contact page
   before_action :require_login, :except => :contact
   # Admin_Only here specifics that all pages, except contact, require a login to access. Where a service_user or

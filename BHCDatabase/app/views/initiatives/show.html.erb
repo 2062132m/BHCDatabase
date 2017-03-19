@@ -40,8 +40,8 @@
             <h4><br>This initiative has been archived.</h4>
             <h4>Reason: <%= @initiative.reason_archived %></h4>
           <% end %>
-          <h2 id="graph-title">Percentage Attendance Over Time</h2>
-          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance), xtitle: "Time", ytitle: "Attendance %" %>
+          <h2 id="graph-title">Average Attendance per Meeting (%)</h2>
+          <%= line_chart @initiative.meetings.group(:datetime).sum(:attendance), download: true, xtitle: "Time", ytitle: "Attendance %" %>
         </div>
         <div class="col-md-6">
           <div class="container-fluid buttons-container">
@@ -58,6 +58,9 @@
           </div>
           <div class="info-container">
             <h2 id="show-details-title">Initiative Details</h2>
+            <% if @initiative.meetings.count > 0 %>
+              <h2>Most Recent Meeting: <%= link_to @initiative.meetings.last.datetime.strftime('%d/%m/%Y'), @initiative.meetings.last %></h2>
+            <% end %>
             <h2>Members Enrolled: <%= @initiative.users.count %></h2>
             <h2>Funders: <%= @initiative.initiative_funders.count %></h2>
             <h2>Total Meetings: <%= @initiative.meetings.count %></h2>
