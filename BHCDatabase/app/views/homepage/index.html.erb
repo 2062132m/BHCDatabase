@@ -1,19 +1,23 @@
-<div class="row stdcontainer">
-    <% @areas.each do |area| %>
-      <% unless area.archived %>
-        <div class="col-md-3">
-          <h3><%= link_to simple_format(area.name), area %></h3>
-          <div class="list-group">
-            <% Initiative.where(area_id: area.id).order("LOWER (name) ASC").each do |initiative| %>
-              <% unless initiative.archived %>
-                <%= link_to initiative.name, initiative,
-                 class: "list-group-item list-group-item-action" %>
+<div class="stdcontainer">
+  <div class="container-fluid">
+    <div class="row">
+      <% @areas.each do |area| %>
+        <% unless area.archived %>
+          <div class="col-md-3">
+            <h3><%= link_to simple_format(area.name), area %></h3>
+            <div class="list-group">
+              <% Initiative.where(area_id: area.id).order("LOWER (name) ASC").each do |initiative| %>
+                <% unless initiative.archived %>
+                  <%= link_to initiative.name, initiative,
+                   class: "list-group-item list-group-item-action" %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  </div>
 </div>
 <div id="initiative">
   <div class="stdcontainer">
@@ -65,6 +69,6 @@
   </div>
 </div>
 <h1 id="meetingtitle">Service Requests</h1>
-<div class="row stdcontainer">
+<div class="stdcontainer">
   <%= datagrid_table(@service_requests_grid) %>
 </div>
