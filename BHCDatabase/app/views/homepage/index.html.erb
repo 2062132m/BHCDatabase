@@ -15,30 +15,55 @@
       <% end %>
     <% end %>
 </div>
-<h1 id="meetingtitle">Service Requests</h1>
-<div class="row stdcontainer">
-  <%= datagrid_table(@service_requests_grid) %>
-</div>
-<h1>Statistics</h1>
-<div class="stdcontainer">
-  <div class="container-fluid">
-    <div id="home-table-container">
-      <table id="info-table">
-        <tr>
-          <td>Most Popular Initiative:</td>
-          <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @maxInit.name, @maxInit %> (<%= @maxInit.users.count %> members)</td>
-      </table>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-6">
-        <h2 id="graph-title">Monthly Total Attendance</h2>
-        <%= line_chart Attendance.all.group_by_month(:created_at).count, download: true, xtitle: "Month", ytitle: "Attendances" %>
-      </div>
-      <div class="col-md-6">
-        <h2 id="graph-title">Monthly Average Attendance</h2>
-        <%= line_chart Meeting.all.group_by_month(:datetime).average(:attendance), download: true, xtitle: "Month", ytitle: "Attendance %" %>
+<div id="initiative">
+  <div class="stdcontainer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 id="show-title">Statistics</h2>
+          <br>
+          <table id="info-table">
+            <tr>
+              <td>Total Service Users:</td>
+              <td><%= User.where(:privilege => 2).count %></td>
+            </tr>
+            <tr>
+              <td>Total Volunteers:</td>
+              <td><%= User.where(:privilege => 1).count %></td>
+            </tr>
+            <tr>
+              <td>Total Funders:</td>
+              <td><%= Funder.all.count %></td>
+            </tr>
+            <tr>
+              <td>Most Popular Initiative:</td>
+              <td><%= link_to @maxInit.name, @maxInit %> (<%= @maxInit.users.count %> members)</td>
+            </tr>
+            <tr>
+              <td>Least Popular Initiative:</td>
+              <td><%= link_to @minInit.name, @minInit %> (<%= @minInit.users.count %> members)</td>
+            </tr>
+            <tr>
+              <td>Most Assigned Condition:</td>
+              <td><%= link_to @maxCondition.name, @maxCondition %> (<%= @maxCondition.users.count %> assignments)</td>
+            </tr>
+            <tr>
+              <td>Least Assigned Condition:</td>
+              <td><%= link_to @minCondition.name, @minCondition %> (<%= @minCondition.users.count %> assignments)</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <h2 id="graph-title">Monthly Total Attendance</h2>
+          <%= line_chart Attendance.all.group_by_month(:created_at).count, download: true, xtitle: "Month", ytitle: "Attendances" %>
+          <h2 id="graph-title">Monthly Average Attendance</h2>
+          <%= line_chart Meeting.all.group_by_month(:datetime).average(:attendance), download: true, xtitle: "Month", ytitle: "Attendance %" %>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<h1 id="meetingtitle">Service Requests</h1>
+<div class="row stdcontainer">
+  <%= datagrid_table(@service_requests_grid) %>
 </div>
