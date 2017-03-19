@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :admin_only, only: [:show]
+
   before_action :correct_user_only
   before_action :archive_redirect, only: [:show]
 
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
       f.csv do
         # Send the second grid to csv format and allow to be downloaded
         send_data @users_grid_csv.to_csv,
-                  type: "text/csv",
+                  type: 'text/csv',
                   disposition: 'inline',
                   filename: "users-#{Time.now.to_s}.csv"
       end
@@ -24,17 +25,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    funder_ids = Array.new
-    @user.user_funders.each do |funder|
-      funder_ids.push(funder.funder_id)
-    end
     @enrolments_grid = EnrolmentsInUsersGrid.new(params[:enrolments_grid]) { |scope| scope.where(:id => @user.enrolments) }
     @unenrolments_grid = UnenrolmentsInUsersGrid.new(params[:unenrolments_grid]) { |scope| scope.where(:id => @user.unenrolments) }
     @feedbacks_grid = FeedbacksGrid.new(params[:feedbacks_grid]) { |scope| scope.where(:id => @user.feedbacks.ids) }
     @conditions_grid = ConditionsGrid.new(params[:conditions_grid]) { |scope| scope.where(:id => @user.conditions.ids) }
-    @unassigned_conditions_grid = UnassignedConditionsGrid.new(params[:unassigned_conditions_grid]) { |scope| scope.where(:id => @user.unassigned_conditions.ids) }
-    @funders_for_user_grid = FundersForUserGrid.new(params[:funders_for_user_grid]) { |scope| scope.where(:id => @user.user_funders.ids) }
-    @removed_funders_for_users_grid = RemovedFundingsForUsersGrid.new(params[:removed_funding_for_users_grid]) { |scope| scope.where(:id => @user.removed_user_fundings.ids) }
+    @unassigned_conditions_grid = UnassignedConditionsGrid.new(params[:unassigned_conditions_grid]) do
+    |scope|
+      scope.where(:id => @user.unassigned_conditions.ids)
+    end
+    @funders_for_user_grid = FundersForUserGrid.new(params[:funders_for_user_grid]) do |scope|
+      scope.where(:id => @user.user_funders.ids)
+    end
+    @removed_funders_for_users_grid = RemovedFundingsForUsersGrid.new(params[:removed_funding_for_users_grid]) do |scope|
+      scope.where(:id => @user.removed_user_fundings.ids)
+    end
   end
 
   def new
@@ -48,12 +52,11 @@ class UsersController < ApplicationController
     @user.feedback_due = @user.privilege == 2 ? Date.today : nil
     if @user.save
       if @user.privilege == 1
-        flash[:success] = 'Succsessfully signed up new volunteer! Please fill in their volunteer details using the button below.'
-        redirect_to @user
+        flash[:success] = 'Successfully signed up new volunteer! Please fill in their volunteer details using the button below.'
       else
         flash[:success] = 'Successfully signed up new user!'
-        redirect_to @user
       end
+      redirect_to @user
     else
       render 'new'
     end
@@ -65,22 +68,21 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if user_params[:privilege] != '2'
-      @user.feedback_due = nil
+    @user.feedback_due = user_params[:privilege] != '2' ? nil : Date.today
+    if @user.update(user_params)
+      flash[:success] = 'The users details were successfully updated'
     else
-      @user.feedback_due = Date.today
-    end
-    if @user.update_attributes(user_params)
-      @user.save
-      flash[:success] = 'User updated'
-    else
-      flash[:danger] = 'Something went wrong'
+      flash[:danger] = "Something went wrong and the user wasn't updated"
     end
     redirect_to @user
   end
 
   def destroy
-    flash[:success] = 'User deleted' if User.find(params[:id]).destroy
+    if User.find(params[:id]).destroy
+      flash[:success] = 'User was successfully deleted'
+    else
+      flash[:danger] = "Something went wrong and the user wasn't deleted"
+    end
     redirect_to users_url
   end
 
@@ -91,7 +93,7 @@ class UsersController < ApplicationController
   def create_volunteer
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save
-      flash[:success] = 'Completed volunteer details'
+      flash[:success] = 'Successfully saved the volunteers details'
       redirect_to User.find(@volunteer.user_id)
     else
       render 'new_volunteer'
@@ -100,16 +102,20 @@ class UsersController < ApplicationController
 
   def update_archive
     @user = User.find(params[:id])
-    flash[:danger] = 'Something went wrong' unless @user.update_attributes(archive_params)
+    if @user.update(archive_params)
+      flash[:success] = 'Successfully updated the archived user'
+    else
+      flash[:danger] = "Something went wrong and the user wasn't updated"
+    end
     redirect_to @user
   end
 
   def unarchive
     @user = User.find(params[:id])
-    if @user.update_attributes(:archived => false, :reason_archived => nil)
-      flash[:success] = 'User is no longer archived'
+    if @user.update(:archived => false, :reason_archived => nil)
+      flash[:success] = 'Successfully un-archived the user'
     else
-      flash[:danger] = 'Something went wrong'
+      flash[:danger] = "Something went wrong and the user wasn't un-archived"
     end
     redirect_to @user
   end
@@ -120,10 +126,10 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(params[:id])
-    if @user.update_attributes(password_params)
-      flash[:success] = 'Password updated!'
+    if @user.update(password_params)
+      flash[:success] = 'The users password was changed!'
     else
-      flash[:danger] = 'Something went wrong'
+      flash[:danger] = "Something went wrong and the users password wasn't changed"
     end
     redirect_to @user
   end
@@ -154,6 +160,7 @@ class UsersController < ApplicationController
   end
 
   def volunteer_params
-    params.require(:volunteer).permit(:user_id, :volunteer_date, :life_experiences, :skills, :aspirations, :num_children, :childcare_help, :carer, :carer_costs, :employment, :registered_disabled, :induction_completed)
+    params.require(:volunteer).permit(:user_id, :volunteer_date, :life_experiences, :skills, :aspirations, :num_children,
+                                      :childcare_help, :carer, :carer_costs, :employment, :registered_disabled, :induction_completed)
   end
 end
