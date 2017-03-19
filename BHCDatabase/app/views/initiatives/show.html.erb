@@ -24,7 +24,7 @@
           <table id="info-table">
             <tr>
               <td>Area:</td>
-              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @area.name, @area %></td>
+              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to_if current_user.privilege == 0, @area.name, @area %></td>
             </tr>
             <tr>
               <td>Location:</td>

@@ -307,8 +307,8 @@
             <% @user.initiatives.each do |initiative| %>
                 <% initiative.initiative_funders.each do |funder| %>
                   <tr>
-                    <td><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
-                    <td><%= link_to initiative.name, initiative %></td>
+                    <td><%= link_to_if current_user.privilege == 0, Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
+                    <td><%= link_to_if current_user.privilege == 0, initiative.name, initiative %></td>
                   </tr>
                 <% end %>
               <% end %>
@@ -326,8 +326,8 @@
             <% @user.medical_conditions.each do |medical_condition| %>
                 <% medical_condition.medical_condition_funders.each do |funder| %>
                   <tr>
-                    <td><%= link_to Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
-                    <td><%= link_to medical_condition.name, medical_condition %></td>
+                    <td><%= link_to_if current_user.privilege == 0, Funder.find(funder.funder_id).name, Funder.find(funder.funder_id) %></td>
+                    <td><%= link_to_if current_user.privilege == 0, medical_condition.name, medical_condition %></td>
                   </tr>
                 <% end %>
               <% end %>
