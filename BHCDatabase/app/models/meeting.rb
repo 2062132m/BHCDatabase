@@ -6,5 +6,4 @@ class Meeting < ApplicationRecord
 
   validates :datetime, presence: true
   validates :initiative_id, presence: true, uniqueness: {:scope => :datetime}
-
 end

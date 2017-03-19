@@ -22,7 +22,7 @@ puts "ConstraintException is normal and expected. Don't panic!\n"
 puts 'Inserting test users to the database'
 User.create(forename: 'Admin',
             surname: Faker::Name.last_name,
-            known_as: Faker::LordOfTheRings.character,
+            known_as: 'Admin',
             email: 'admin@admin.com',
             password: 'admin123',
             password_confirmation: 'admin123',
@@ -36,7 +36,7 @@ User.create(forename: 'Admin',
             privilege: 0)
 User.create(forename: 'Volunteer',
             surname: Faker::Name.last_name,
-            known_as: Faker::LordOfTheRings.character,
+            known_as: 'Volunteer',
             email: 'volunteer@volunteer.com',
             password: 'volunteer123',
             password_confirmation: 'volunteer123',
@@ -53,8 +53,8 @@ User.create(forename: 'Volunteer',
             aims_other: Faker::Lorem.sentence,
             privilege: 1)
 User.create(forename: 'Service',
-            surname: 'User',
-            known_as: Faker::LordOfTheRings.character,
+            surname: 'Volun',
+            known_as: 'Service',
             email: 'user@user.com',
             password: 'user123',
             password_confirmation: 'user123',
@@ -76,9 +76,10 @@ User.create(forename: 'Service',
 puts 'Inserting volunteers'
 random.rand(50..100).times do
   password = Faker::Internet.password
-  @user = User.create(forename: Faker::Name.first_name,
+  first_name = Faker::Name.first_name
+  @user = User.create(forename: first_name,
                       surname: Faker::Name.last_name,
-                      known_as: Faker::LordOfTheRings.character,
+                      known_as: first_name,
                       email: Faker::Internet.email,
                       password: password,
                       password_confirmation: password,
@@ -100,9 +101,10 @@ end
 puts 'Inserting service users'
 random.rand(400..500).times do
   password = Faker::Internet.password
+  first_name = Faker::Name.first_name
   @user = User.create(forename: Faker::Name.first_name,
                       surname: Faker::Name.last_name,
-                      known_as: Faker::LordOfTheRings.character,
+                      known_as: first_name,
                       email: Faker::Internet.email,
                       password: password,
                       password_confirmation: password,
@@ -120,74 +122,73 @@ random.rand(400..500).times do
                       privilege: 2,
                       feedback_due: 6.months.from_now)
 end
-
 # Create areas with their initiatives
 puts 'Inserting areas with initiatives'
-@area1 = Area.create(name: 'Dumfries & Lower Nithsdale', description: Faker::StarWars.quote)
-@area1.initiatives.create(name: 'Scrimp and sew', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: 'Writing Group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: 'Inkspirations', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: 'Arts and crafts', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: 'Drop in craft', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area1.initiatives.create(name: 'Tai chi Heathall', description: Faker::StarWars.quote, location: 'Heathall')
-@area1.initiatives.create(name: 'Tai chi Cumberland day centre', description: Faker::StarWars.quote, location: 'Cumberland day centre')
-@area1.initiatives.create(name: 'Tai chi NWRC', description: Faker::StarWars.quote, location: 'NWRC')
-@area1.initiatives.create(name: 'Tai chi Summerhill', description: Faker::StarWars.quote, location: 'Summerhill')
-@area1.initiatives.create(name: 'Tai chi Lincluden', description: Faker::StarWars.quote, location: 'Lincluden')
-@area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::StarWars.quote, location: 'Hollywood')
-@area2 = Area.create(name: "West \n Wigtownshire", description: Faker::StarWars.quote)
-@area2.initiatives.create(name: 'Chair based exercise', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'Tai Chi 50+', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'SHAWL group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'Tai chi for health', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'Tai chi Potters', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'Tai chi Phoenix', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'SHAWL Group art', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area2.initiatives.create(name: 'Boccia & NAC', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3 = Area.create(name: "The \n Machars", description: Faker::StarWars.quote)
-@area3.initiatives.create(name: 'Monday Club', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Boccia/NAC', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Dancercise', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Jills of all trades', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Jills in the community', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'I.O.W. Arts', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Login &Connect', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Gentle Exercise', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'IOW Youth', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Vol Drop in', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area3.initiatives.create(name: 'Scrabble4fun', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4 = Area.create(name: "Upper \n Nithsdale", description: Faker::StarWars.quote)
-@area4.initiatives.create(name: 'Singing group', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Qijong', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Monday Munchers', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Hard of hearing', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Tai chi Sanquar', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Lifestyles', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Drop in', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Criss Cross', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Tai Chi Kirconnel', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
-@area4.initiatives.create(name: 'Walk for Health', description: Faker::StarWars.quote, location: Faker::StarWars.planet)
+@area1 = Area.create(name: 'Dumfries & Lower Nithsdale', description: Faker::Lorem.sentence)
+@area1.initiatives.create(name: 'Scrimp and sew', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Writing Group', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Inkspirations', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Arts and crafts', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Drop in craft', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Tai chi Heathall', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Tai chi Cumberland day centre', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Tai chi NWRC', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Tai chi Summerhill', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Tai chi Lincluden', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area1.initiatives.create(name: 'Tai chi Hollywood', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2 = Area.create(name: "West \n Wigtownshire", description: Faker::Lorem.sentence)
+@area2.initiatives.create(name: 'Chair based exercise', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'Tai Chi 50+', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'SHAWL group', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'Tai chi for health', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'Tai chi Potters', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'Tai chi Phoenix', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'SHAWL Group art', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area2.initiatives.create(name: 'Boccia & NAC', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3 = Area.create(name: "The \n Machars", description: Faker::Lorem.sentence)
+@area3.initiatives.create(name: 'Monday Club', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Boccia/NAC', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Dancercise', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Jills of all trades', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Jills in the community', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'I.O.W. Arts', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Login &Connect', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Gentle Exercise', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'IOW Youth', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Vol Drop in', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area3.initiatives.create(name: 'Scrabble4fun', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4 = Area.create(name: "Upper \n Nithsdale", description: Faker::Lorem.sentence)
+@area4.initiatives.create(name: 'Singing group', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Qijong', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Monday Munchers', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Hard of hearing', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Tai chi Sanquar', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Lifestyles', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Drop in', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Criss Cross', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Tai Chi Kirconnel', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
+@area4.initiatives.create(name: 'Walk for Health', description: Faker::Lorem.sentence, location: Faker::Address.full_address)
 
 # Add medical conditions
 puts 'Inserting medical conditions'
-MedicalCondition.create(name: 'Asthma', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Physical Disability', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Learning Disability', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Mental Health', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Heart Disease', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Stroke', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'High Blood Pressure', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Diabetes Type 1 or 2', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Cancer', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Arthritis', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Dementia', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Autistic Spectrum Disorder', description: Faker::StarWars.quote)
-MedicalCondition.create(name: "Parkinson's Disease", description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Chronic Obstructive Pulmonary Disease', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Fibromyalgia', description: Faker::StarWars.quote)
-MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::StarWars.quote)
-
+MedicalCondition.create(name: 'Asthma', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Physical Disability', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Learning Disability', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Mental Health', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Heart Disease', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Stroke', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'High Blood Pressure', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Diabetes Type 1 or 2', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Cancer', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Arthritis', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Dementia', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Autistic Spectrum Disorder', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: "Parkinson's Disease", description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Chronic Obstructive Pulmonary Disease', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Multiple Sclerosis', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Fibromyalgia', description: Faker::Lorem.sentence)
+MedicalCondition.create(name: 'Chronic Back Problem', description: Faker::Lorem.sentence)
+Faker
 # Main bulk of questions, these are the questions that a user is asked upon registration, and can leave at any time they
 #   wish.
 # Warwick-Edinburgh Mental Well-Being Scale (WEMWBS)
@@ -261,18 +262,18 @@ end
 puts 'Inserting funders'
 random.rand(30..40).times do
   @funder = Funder.create(name: Faker::Company.name,
-                          address: Faker::StarWars.planet,
+                          address: Faker::Address.full_address,
                           url: Faker::Internet.url,
-                          description: Faker::ChuckNorris.fact,
+                          description: Faker::Lorem.sentence,
                           email: Faker::Internet.email,
                           telephone: Faker::PhoneNumber.phone_number)
   random.rand(3..5).times do
-    @funder.initiative_funders.create(initiative: Initiative.find(Faker::Number.between(1, Initiative.count)))
+    @funder.initiative_funders.create(initiative: Initiative.find(random.rand(1, Initiative.count)))
   end
   random.rand(3..5).times do
-    @funder.medical_condition_funders.create(medical_condition: MedicalCondition.find(Faker::Number.between(1, MedicalCondition.count)))
+    @funder.medical_condition_funders.create(medical_condition: MedicalCondition.find(random.rand(1, MedicalCondition.count)))
   end
   random.rand(3..5).times do
-    @funder.user_funders.create(user: User.find(Faker::Number.between(1, User.count)))
+    @funder.user_funders.create(user: User.find(random.rand(1, User.count)))
   end
 end
