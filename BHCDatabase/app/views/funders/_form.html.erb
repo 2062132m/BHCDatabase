@@ -2,24 +2,26 @@
 
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <div class="form-column">
+      <h4>Name</h4>
+      <%= f.text_field :name, class: 'form-control' %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
+      <h4>Description</h4>
+      <%= f.text_area :description, class: 'form-control' %>
 
-    <%= f.label :telephone %>
-    <%= f.text_field :telephone, class: 'form-control' %>
+      <h4>Telephone</h4>
+      <%= f.text_field :telephone, class: 'form-control' %>
 
-    <%= f.label :address %>
-    <%= f.text_field :address, class: 'form-control' %>
+      <h4>Address</h4>
+      <%= f.text_field :address, class: 'form-control' %>
 
-    <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control' %>
+      <h4>Email</h4>
+      <%= f.text_field :email, class: 'form-control' %>
 
-    <%= f.label :url %>
-    <%= f.text_field :url, class: 'form-control' %>
+      <h4>Website</h4>
+      <%= f.text_field :url, class: 'form-control' %>
 
-    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      <%= f.submit 'Submit', class: 'btn btn-default form-submit-btn' %>
+    </div>
 
 <% end %>
