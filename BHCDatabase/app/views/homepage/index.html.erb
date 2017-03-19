@@ -54,6 +54,7 @@
           </table>
         </div>
         <div class="col-md-6">
+          <br><br><br>
           <h2 id="graph-title">Monthly Total Attendance</h2>
           <%= line_chart Attendance.all.group_by_month(:created_at).count, download: true, xtitle: "Month", ytitle: "Attendances" %>
           <h2 id="graph-title">Monthly Average Attendance</h2>
