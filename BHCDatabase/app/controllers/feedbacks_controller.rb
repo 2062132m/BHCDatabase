@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
-
   skip_before_action :admin_only
+
   # Ensures that only the owner of a feedback is allowed to view it
   before_action :correct_users_feedback?, only: [:show]
 
@@ -22,7 +22,7 @@ class FeedbacksController < ApplicationController
     @questions = Question.where(:visible => true)
     if @feedback.save
       flash[:success] = 'Created a new feedback!'
-      unless @user.update_attribute(:feedback_due, @user.feedback_due >> 6)
+      unless @user.update(:feedback_due => @user.feedback_due >> 6)
         flash[:warning] = "Next feedback due date wasn't set, please contact someone."
       end
       redirect_to @feedback
@@ -33,19 +33,8 @@ class FeedbacksController < ApplicationController
 
   private
 
-  def set_feedback
-    @feedback = Feedback.find(params[:id])
-  end
-
   def feedback_params
     params.require(:feedback).permit(:user_id, answers_attributes: [:id, :response, :question_id, :feedback_id])
-  end
-
-  def allowed_to_leave_feedback
-    unless current_user.feedback_due <= Date.today
-      flash[:warning] = "You aren't due to leave feedback yet."
-      redirect_to serviceusershome_path
-    end
   end
 
   def correct_users_feedback?

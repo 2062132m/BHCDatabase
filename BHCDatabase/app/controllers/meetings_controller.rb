@@ -18,7 +18,6 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
-    @initiatives = Initiative.all
     @meetings = Initiative.find(params[:initiative_id]).meetings
     if @meetings.count == 0
       @last_meeting_time = DateTime.now
@@ -32,8 +31,7 @@ class MeetingsController < ApplicationController
     params[:weeks].to_i.times do |i|
       @meeting = Meeting.new(meeting_params)
       @first_meeting = @meeting if i == 0
-      @meeting.update_attribute(:datetime, @meeting.datetime + i.weeks)
-      unless @meeting.save
+      unless @meeting.update(:datetime => @meeting.datetime + i.weeks)
         flash[:danger] = 'Something went wrong'
         render 'new'
         return
@@ -45,13 +43,13 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting = Meeting.find(params[:id])
-    puts @meeting.attendances.ids
-    @meeting.attendances.each do |attendance|
-      attendance.destroy
+    @meeting.attendances.each { |attendance| attendance.destroy }
+    if @meeting.update_attributes(:attendance => 0)
+      flash[:success] = 'Attendance cleared'
+      redirect_to meeting_url
+    else
+      flash[:danger] = "Something went wrong and the attendances weren't deleted"
     end
-    @meeting.update_attribute(:attendance, 0)
-    flash[:success] = "Attendance cleared"
-    redirect_to meeting_url
   end
 
   private

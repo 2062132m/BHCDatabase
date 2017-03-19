@@ -3,6 +3,5 @@ class VolunteersHomepageController < ApplicationController
   before_action :volunteer_only
 
   def index
-    @user = User.find(@current_user.id)
   end
 end

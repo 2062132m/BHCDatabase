@@ -11,27 +11,36 @@
           <table id="info-table">
             <tr>
               <td>Initiative:</td>
-              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.name, @meeting.initiative %></td>
+              <td>
+                <icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.name, @meeting.initiative %>
+              </td>
             </tr>
             <tr>
               <td>Area:</td>
-              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %></td>
+              <td>
+                <icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %>
+              </td>
             </tr>
             <tr>
               <td>Location:</td>
-              <td><icon class="glyphicon glyphicon-map-marker"></icon><%= @meeting.initiative.location %></td>
+              <td>
+                <icon class="glyphicon glyphicon-map-marker"></icon><%= @meeting.initiative.location %></td>
             </tr>
             <tr>
               <td>Description:</td>
-              <td><icon class="glyphicon glyphicon-info-sign"></icon><%= @meeting.initiative.description %></td>
+              <td>
+                <icon class="glyphicon glyphicon-info-sign"></icon><%= @meeting.initiative.description %></td>
             </tr>
             <tr>
               <td>Volunteers:</td>
-              <td><icon class="glyphicon glyphicon-user"></icon>
+              <td>
+                <icon class="glyphicon glyphicon-user"></icon>
                 <% i = 0 %>
                 <% @initiative.users.where(:privilege => 1).each do |user| %>
-                      <%= link_to user.known_as, user %><% unless i == @initiative.users.where(:privilege => 1).length - 1 %>, <% end %>
-                      <% i = i + 1 %>
+                    <%= link_to user.known_as, user %>
+                    <% unless i == @initiative.users.where(:privilege => 1).length - 1 %>,
+                    <% end %>
+                    <% i = i + 1 %>
                 <% end %>
               </td>
             </tr>
@@ -44,25 +53,25 @@
         <div class="col-md-6">
           <div class="container-fluid buttons-container right-split">
             <% unless @meeting.attendances.count == 0 %>
-              <%= link_to "<i class='glyphicon glyphicon-edit'></i> Retake Attendance".html_safe, @meeting, method: :delete,
-                          data: {confirm: "Are you sure you want to retake the attendance?
+                <%= link_to "<i class='glyphicon glyphicon-edit'></i> Retake Attendance".html_safe, @meeting, method: :delete,
+                            data: {confirm: "Are you sure you want to retake the attendance?
                                                           \nNote: This action cannot be undone!"},
-                          class: "btn btn-default edit-btn" %>
+                            class: "btn btn-default edit-btn" %>
             <% end %>
           </div>
           <div class="info-container">
             <h2 id="show-details-title">Attendance Form</h2>
             <% if @meeting.attendances.count == 0 %>
-              <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                  <%= render 'attendance_form' %>
+                <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                    <%= render 'attendance_form' %>
+                  </div>
                 </div>
-              </div>
             <% else %>
-              <h2>Attendance: <%= @meeting.attendance %>%</h2>
-              <% @users.each do |user| %>
-                  <h2><%= link_to user.known_as, user %></h2>
-              <% end %>
+                <h2>Attendance: <%= @meeting.attendance %>%</h2>
+                <% @users.each do |user| %>
+                    <h2><%= link_to user.known_as, user %></h2>
+                <% end %>
             <% end %>
           </div>
         </div>

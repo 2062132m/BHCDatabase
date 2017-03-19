@@ -32,7 +32,7 @@ class InitiativeTest < ActiveSupport::TestCase
   end
 
   test "location should not be too long" do
-    @initiative.location = "a" * 51
+    @initiative.location = "a" * 256
     assert_not @initiative.valid?
   end
 

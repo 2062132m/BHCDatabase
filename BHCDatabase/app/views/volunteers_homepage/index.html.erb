@@ -1,4 +1,4 @@
-<% provide(:title, @user.known_as) %>
+<% provide(:title, current_user.known_as) %>
 <div id="initiative">
   <div class="stdcontainer">
     <div class="container-fluid">
@@ -9,7 +9,7 @@
             <h2 id="show-sub-title">Office Number: 01387 272776</h2>
           </div>
         </div>
-        <% @user.initiatives.order("LOWER (name) ASC").each do |i| %>
+        <% current_user.initiatives.order("LOWER (name) ASC").find_each do |i| %>
           <% unless i.archived %>
             <div class="container-fluid">
               <table id="info-table">

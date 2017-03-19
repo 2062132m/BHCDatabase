@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316173835) do
+ActiveRecord::Schema.define(version: 20170319213018) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20170316173835) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "area_id"
-    t.string   "location"
+    t.text "location"
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
     t.index ["name", "location"], name: "index_initiatives_on_name_and_location", unique: true

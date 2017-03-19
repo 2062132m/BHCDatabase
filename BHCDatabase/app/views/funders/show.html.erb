@@ -39,26 +39,32 @@
           <div class="info-container">
             <h2 id="show-details-title">Funder Details</h2>
             <h2>
-              Directly Funding <%= @funder.initiative_funders.count %> initiative(s):
+              Directly Funding <%= @initiatives.count %> initiative(s):
               <% i = 0 %>
               <% @initiatives.each do |initiative| %>
-                  <%= link_to Initiative.find(initiative).name, Initiative.find(initiative) %><% unless i == @initiatives.length - 1 %>, <% end %>
+                  <%= link_to initiative.name, initiative %>
+                  <% unless i == @initiatives.length - 1 %>,
+                  <% end %>
                   <% i = i + 1 %>
               <% end %>
             </h2>
             <h2>
-              Directly Funding <%= @funder.medical_condition_funders.count %> medical_condition(s):
+              Directly Funding <%= @medical_conditions.count %> medical_condition(s):
               <% i = 0 %>
               <% @medical_conditions.each do |medical_condition| %>
-                  <%= link_to MedicalCondition.find(medical_condition).name, MedicalCondition.find(medical_condition) %><% unless i == @medical_conditions.length - 1 %>, <% end %>
+                  <%= link_to medical_condition.name, medical_condition %>
+                  <% unless i == @medical_conditions.length - 1 %>,
+                  <% end %>
                   <% i = i + 1 %>
               <% end %>
             </h2>
             <h2>
-              Directly Funding <%= @funder.user_funders.count %> users(s):
+              Directly Funding <%= @users.count %> users(s):
               <% i = 0 %>
               <% @users.each do |user| %>
-                  <%= link_to User.find(user).known_as, User.find(user) %><% unless i == @users.length - 1 %>, <% end %>
+                  <%= link_to user.known_as, user %>
+                  <% unless i == @users.length - 1 %>,
+                  <% end %>
                   <% i = i + 1 %>
               <% end %>
             </h2>

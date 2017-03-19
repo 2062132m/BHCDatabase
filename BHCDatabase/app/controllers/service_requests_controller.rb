@@ -6,12 +6,10 @@ class ServiceRequestsController < ApplicationController
   end
 
   def new
-    @user = @current_user
     @service_request = ServiceRequest.new
   end
 
   def create
-    @user = @current_user
     @service_request = ServiceRequest.new(service_request_params)
     if @service_request.save
       flash[:success] = 'Created a new service request!'
@@ -22,7 +20,11 @@ class ServiceRequestsController < ApplicationController
   end
 
   def destroy
-    flash[:success] = 'Service request deleted' if ServiceRequest.find(params[:id]).destroy
+    if ServiceRequest.find(params[:id]).destroy
+      flash[:success] = 'Service request deleted'
+    else
+      flash[:danger] = "Something went wrong and the request wasn't deleted"
+    end
     redirect_to root_url
   end
 
