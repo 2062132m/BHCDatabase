@@ -10,7 +10,7 @@ class Initiative < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: 50}, uniqueness: {:scope => :location, case_sensitive: false}
   validates :description, presence: true, length: {maximum: 255}
-  validates :location, presence: true, length: {maximum: 50}
+  validates :location, presence: true, length: {maximum: 255}
   validates :area, presence: true
   validates :reason_archived, length: {maximum: 30}
 
