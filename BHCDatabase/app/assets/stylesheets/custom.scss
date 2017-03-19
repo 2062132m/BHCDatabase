@@ -801,3 +801,14 @@ input {
     padding-bottom: 5px;
   }
 }
+
+#home-table-container {
+  margin: 20px 150px 0 150px;
+  #info-table {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
+  }
+}

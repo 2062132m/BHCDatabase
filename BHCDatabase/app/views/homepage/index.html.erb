@@ -22,6 +22,14 @@
 <h1>Statistics</h1>
 <div class="stdcontainer">
   <div class="container-fluid">
+    <div id="home-table-container">
+      <table id="info-table">
+        <tr>
+          <td>Most Popular Initiative:</td>
+          <td><icon class="glyphicon glyphicon-home"></icon><%= link_to @maxInit.name, @maxInit %> (<%= @maxInit.users.count %> members)</td>
+      </table>
+    </div>
+    <br>
     <div class="row">
       <div class="col-md-6">
         <h2 id="graph-title">Monthly Total Attendance</h2>

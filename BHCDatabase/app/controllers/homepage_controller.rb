@@ -7,6 +7,15 @@ class HomepageController < ApplicationController
     @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
       scope.page(params[:page])
     end
+    @initiatives = Initiative.all
+    max = 0
+    @maxInit = @initiatives.first
+    @initiatives.each do |init|
+      if init.users.count > max
+        max = init.users.count
+        @maxInit = init
+      end
+    end
   end
 
   private
