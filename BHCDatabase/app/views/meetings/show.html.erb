@@ -60,19 +60,23 @@
             <% end %>
           </div>
           <div class="info-container">
-            <h2 id="show-details-title">Attendance Form</h2>
-            <% if @meeting.attendances.count == 0 %>
-                <div class="row">
-                  <div class="col-md-6 col-md-offset-3">
-                    <%= render 'attendance_form' %>
-                  </div>
-                </div>
-            <% else %>
-                <h2>Attendance: <%= @meeting.attendance %>%</h2>
+          <h2 id="show-details-title" >Attendance Form</h2>
+          <% if @meeting.attendances.count == 0 %>
+              <%= render 'attendance_form' %>
+          <% else %>
+              <table class="table table-hover">
+                <thead>
+                <tr><h2>Attendance: <%= @meeting.attendance %>%</h2></tr>
+                </thead>
+                <tbody>
                 <% @users.each do |user| %>
-                    <h2><%= link_to user.known_as, user %></h2>
+                    <tr><td class="col-md-12">
+                      <%= link_to user.known_as, user %>
+                    </td></tr>
                 <% end %>
-            <% end %>
+                </tbody>
+              </table>
+          <% end %>
           </div>
         </div>
       </div>
