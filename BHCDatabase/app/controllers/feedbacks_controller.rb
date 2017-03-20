@@ -23,7 +23,7 @@ class FeedbacksController < ApplicationController
     if @feedback.save
       flash[:success] = 'Created a new feedback!'
       unless @user.update(:feedback_due => @user.feedback_due >> 6)
-        flash[:warning] = "Next feedback due date wasn't set, please contact someone."
+        flash[:warning] = "An unknown error occurred and the next feedback due date was not set. Please contact support."
       end
       redirect_to @feedback
     else

@@ -87,7 +87,7 @@ class InitiativesController < ApplicationController
     if Initiative.find(params[:id]).destroy
       flash[:success] = 'Initiative successfully deleted.'
     else
-      flash[:danger] = "Something went wrong, the initiative wasn't deleted"
+      flash[:danger] = 'An unknown error occurred and the initiative was not deleted. Please try again later or contact support.'
     end
     redirect_to initiatives_url
   end
@@ -97,7 +97,7 @@ class InitiativesController < ApplicationController
     if @initiative.update(archive_params)
       flash[:success] = 'Archived initiative was successfully updated'
     else
-      flash[:danger] = "Something went wrong and the archived initiative wasn't updated"
+      flash[:danger] = "An unknown error occurred and the archived initiative was not updated. Please try again later or contact support."
     end
     redirect_to @initiative
   end
@@ -107,7 +107,7 @@ class InitiativesController < ApplicationController
     if @initiative.update(:archived => false, :reason_archived => nil)
       flash[:success] = 'Initiative is no longer archived'
     else
-      flash[:danger] = "Something went wrong and the initiative wasn't un-archived"
+      flash[:danger] = "An unknown error occurred and the initiative was not un-archived. Please try again later or contact support."
     end
     redirect_to @initiative
   end

@@ -24,7 +24,7 @@ class ConditionsController < ApplicationController
       flash[:success] = 'Assigned the new condition!'
       redirect_to @condition.user
     else
-      flash[:danger] = 'Something went wrong.'
+      flash[:danger] = 'An unknown error occurred and the condition was not successfully assigned. Please contact support.'
       redirect_to :back
     end
   end
@@ -40,10 +40,10 @@ class ConditionsController < ApplicationController
       if @unassigned_condition.save
         flash[:success] = 'Saved the history of the user having this condition and unassigned the condition.'
       else
-        flash[:danger] = "Condition unassigned however something went wrong and the history of this wasn't recorded."
+        flash[:danger] = "Condition unassigned however an unknown error occurred and the history of this wasn't recorded. Please contact support."
       end
     else
-      flash[:danger] = "Something went wrong, the condition wasn't successfully unassigned."
+      flash[:danger] = "An unknown error occurred and the condition wasn't successfully unassigned. Please contact support."
     end
     redirect_to :back
   end
