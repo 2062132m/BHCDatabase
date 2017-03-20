@@ -71,13 +71,13 @@ class AreasController < ApplicationController
   end
 
   def destroy
-    Area.find(params[:id]).destroy ? flash[:success] = 'Area deleted' : flash[:danger] = "Area wasn't deleted. Something went wrong!"
+    Area.find(params[:id]).destroy ? flash[:success] = 'Area deleted' : flash[:danger] = "An unknown error occurred and the area wasn't deleted. Please try again later or contact support."
     redirect_to areas_url
   end
 
   def update_archive
     @area = Area.find(params[:id])
-    flash[:danger] = 'Something went wrong' unless @area.update_attributes(archive_params)
+    flash[:danger] = 'An unknown error occurred and the archive could not be updated. Please try again later or contact support.' unless @area.update_attributes(archive_params)
     redirect_to @area
   end
 
@@ -86,7 +86,7 @@ class AreasController < ApplicationController
     if @area.update_attributes(:archived => false, :reason_archived => nil)
       flash[:success] = 'Area is no longer archived'
     else
-      flash[:danger] = 'Something went wrong'
+      flash[:danger] = 'An unknown error occurred and the area could not be un-archived. Please try again later or contact support.'
     end
     redirect_to @area
   end

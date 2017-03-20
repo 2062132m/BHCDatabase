@@ -15,7 +15,7 @@ class EnrolmentsController < ApplicationController
       flash[:success] = 'Created the new enrolment!'
       redirect_to @enrolment.user
     else
-      flash[:danger] = 'Something went wrong and the user was not enrolled'
+      flash[:danger] = "An unknown error occurred and the user was not enrolled. Please try again later or contact support."
       redirect_to :back
     end
   end
@@ -52,10 +52,10 @@ class EnrolmentsController < ApplicationController
       if @un_enrolment.save
         flash[:success] = 'Saved the history of the user having this enrolment and un-enrolled the user.'
       else
-        flash[:danger] = "Un-enrolled however something went wrong and the history of this wasn't recorded."
+        flash[:danger] = "Un-enrolled however an unknown error occurred and the history of this was not recorded. Please contact support."
       end
     else
-      flash[:danger] = "Something went wrong, the user wasn't successfully un-enrolled."
+      flash[:danger] = "An unknown error occurred the user was not un-enrolled. Please try again later or contact support."
     end
     redirect_to :back
   end

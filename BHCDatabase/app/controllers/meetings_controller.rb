@@ -32,7 +32,7 @@ class MeetingsController < ApplicationController
       @meeting = Meeting.new(meeting_params)
       @first_meeting = @meeting if i == 0
       unless @meeting.update(:datetime => @meeting.datetime + i.weeks)
-        flash[:danger] = 'Something went wrong'
+        flash[:danger] = "An unknown error occurred and the session was not created. Please try again later or contact support."
         render 'new'
         return
       end
@@ -48,7 +48,7 @@ class MeetingsController < ApplicationController
       flash[:success] = 'Attendance cleared'
       redirect_to meeting_url
     else
-      flash[:danger] = "Something went wrong and the attendances weren't deleted"
+      flash[:danger] = "An unknown error occurred and the attendances were not cleared. Please try again later or contact support."
     end
   end
 

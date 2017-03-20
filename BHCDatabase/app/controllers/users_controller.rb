@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = 'The users details were successfully updated'
     else
-      flash[:danger] = "Something went wrong and the user wasn't updated"
+      flash[:danger] = "An unknown error occurred and the user was not updated. Please try again later or contact support."
     end
     redirect_to @user
   end
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     if User.find(params[:id]).destroy
       flash[:success] = 'User was successfully deleted'
     else
-      flash[:danger] = "Something went wrong and the user wasn't deleted"
+      flash[:danger] = "An unknown error occurred and the user was not deleted. Please try again later or contact support."
     end
     redirect_to users_url
   end
@@ -105,7 +105,7 @@ class UsersController < ApplicationController
     if @user.update(archive_params)
       flash[:success] = 'Successfully updated the archived user'
     else
-      flash[:danger] = "Something went wrong and the user wasn't updated"
+      flash[:danger] = "An unknown error occurred and the user was not archived. Please try again later or contact support."
     end
     redirect_to @user
   end
@@ -115,7 +115,7 @@ class UsersController < ApplicationController
     if @user.update(:archived => false, :reason_archived => nil)
       flash[:success] = 'Successfully un-archived the user'
     else
-      flash[:danger] = "Something went wrong and the user wasn't un-archived"
+      flash[:danger] = "An unknown error occurred and the user was not un-archived. Please try again later or contact support."
     end
     redirect_to @user
   end
@@ -129,7 +129,7 @@ class UsersController < ApplicationController
     if @user.update(password_params)
       flash[:success] = 'The users password was changed!'
     else
-      flash[:danger] = "Something went wrong and the users password wasn't changed"
+      flash[:danger] = "An unknown error occurred and the user's password was not changed. Please try again later or contact support."
     end
     redirect_to @user
   end

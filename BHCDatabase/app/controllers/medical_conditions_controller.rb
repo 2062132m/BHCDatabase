@@ -52,7 +52,7 @@ class MedicalConditionsController < ApplicationController
     if MedicalCondition.find(params[:id]).destroy
       flash[:success] = 'Medical Condition was successfully deleted'
     else
-      flash[:danger] = "Something went wrong and the medical condition wasn't deleted"
+      flash[:danger] = "An unknown error occurred and the medical condition was not deleted. Please try again later or contact support."
     end
     redirect_to medical_conditions_url
   end
@@ -63,7 +63,7 @@ class MedicalConditionsController < ApplicationController
 
   def update_archive
     @medical_condition = MedicalCondition.find(params[:id])
-    flash[:danger] = "Something went wrong and the archive wasn't updated" unless @medical_condition.update(archive_params)
+    flash[:danger] = "An unknown error occurred and the archive wasn't updated. Please try again later or contact support." unless @medical_condition.update(archive_params)
     redirect_to @medical_condition
   end
 
@@ -72,7 +72,7 @@ class MedicalConditionsController < ApplicationController
     if @medical_condition.update_attributes(:archived => false, :reason_archived => nil)
       flash[:success] = 'Medical condition is no longer archived'
     else
-      flash[:danger] = "Something went wrong and the medical condition wasn't un-archived"
+      flash[:danger] = "An unknown error occurred and the medical condition wasn't un-archived. Please try again later or contact support."
     end
     redirect_to @medical_condition
   end

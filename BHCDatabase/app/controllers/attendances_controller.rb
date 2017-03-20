@@ -14,7 +14,7 @@ class AttendancesController < ApplicationController
         # Create a new attendance object
         @attendance = Attendance.new(:user_id => user_id, :meeting_id => params[:meeting_id])
         unless @attendance.save
-          flash[:danger] = 'Something went wrong.'
+          flash[:danger] = 'An unknown error occurred. Please try again later or contact support.'
           redirect_to Meeting.find(params[:meeting_id])
           return
         end
@@ -31,7 +31,7 @@ class AttendancesController < ApplicationController
       if @meeting.update_attributes(:attendance => num_attendees/total_enrolled.to_f * 100)
         flash[:success] = 'Attendance saved!'
       else
-        flash[:danger] = "Something went wrong and attendance wasn't calculated."
+        flash[:danger] = "An unknown error occurred and attendance wasn't calculated. Please try again later or contact support."
       end
       redirect_to Meeting.find(params[:meeting_id])
     end

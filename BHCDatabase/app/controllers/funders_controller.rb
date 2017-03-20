@@ -42,7 +42,7 @@ class FundersController < ApplicationController
     if Funder.find(params[:id]).destroy
       flash[:success] = 'Funder was successfully deleted'
     else
-      flash[:danger] = "Something went wrong and the funder wasn't deleted"
+      flash[:danger] = "An unknown error occurred and the funder was not deleted. Please try again later or contact support."
     end
     redirect_to funders_url
   end
@@ -107,7 +107,7 @@ class FundersController < ApplicationController
         flash[:warning] = "Removed funding however the history of this funding wasn't recorded"
       end
     else
-      flash[:danger] = "Something went wrong and funding wasn't removed"
+      flash[:danger] = "An unknown error occurred and funding was not removed. Please try again later or contact support."
     end
     redirect_to funders_url
   end
@@ -125,7 +125,7 @@ class FundersController < ApplicationController
         flash[:warning] = "Removed funding however the history of this funding wasn't recorded"
       end
     else
-      flash[:danger] = "Something went wrong and funding wasn't removed"
+      flash[:danger] = "An unknown error occurred and funding was not removed. Please try again later or contact support."
     end
     redirect_to funders_url
   end
@@ -143,7 +143,7 @@ class FundersController < ApplicationController
         flash[:warning] = "Removed funding however the history of this funding wasn't recorded"
       end
     else
-      flash[:danger] = "Something went wrong and funding wasn't removed"
+      flash[:danger] = "An unknown error occurred and funding was not removed. Please try again later or contact support."
     end
     redirect_to funders_url
   end
