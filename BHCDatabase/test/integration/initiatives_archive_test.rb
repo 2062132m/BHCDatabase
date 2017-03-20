@@ -10,7 +10,7 @@ class InitiativesArchiveTest < ActionDispatch::IntegrationTest
   test 'unsuccessful initiative archive' do
     get initiative_path(@initiative)
     assert_template 'initiatives/show'
-    reason = 'a' * 50
+    reason = 'a' * 256
     patch update_archive_initiative_path(@initiative), params: { initiative: { archived:  true, reason_archived: reason} }
     assert_redirected_to @initiative
     @initiative.reload

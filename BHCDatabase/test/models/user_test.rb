@@ -34,7 +34,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'forename should not be too long' do
-    @user.forename = 'a' * 51
+    @user.forename = 'a' * 256
     assert_not @user.valid?
   end
 
@@ -44,7 +44,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'surname should not be too long' do
-    @user.surname = 'a' * 51
+    @user.surname = 'a' * 256
     assert_not @user.valid?
   end
 
@@ -92,7 +92,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'telephone should not be too long' do
-    @user.telephone = '1' * 17
+    @user.telephone = '1' * 256
     assert_not @user.valid?
   end
 
@@ -104,7 +104,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'emergency_name should not be too long' do
     @user.privilege = 2
-    @user.emergency_name = 'a' * 51
+    @user.emergency_name = 'a' * 256
     assert_not @user.valid?
   end
 
@@ -116,7 +116,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'emergency_telephone should not be too long' do
     @user.privilege = 2
-    @user.emergency_telephone = '1' * 17
+    @user.emergency_telephone = '1' * 256
     assert_not @user.valid?
   end
 
@@ -188,7 +188,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'town should not be too long' do
-    @user.town = 'a' * 51
+    @user.town = 'a' * 256
     assert_not @user.valid?
   end
 
@@ -198,7 +198,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'postcode should not be too long' do
-    @user.postcode = 'k' * 11
+    @user.postcode = 'k' * 256
     assert_not @user.valid?
   end
 

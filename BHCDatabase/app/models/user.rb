@@ -21,12 +21,12 @@ class User < ApplicationRecord
 
   validates :forename,
             presence: true,
-            length: {maximum: 50},
+            length: {maximum: 255},
             uniqueness: {:scope => [:dob, :email, :telephone], case_sensitive: false}
   validates :surname,
             presence: true,
-            length: {maximum: 50}
-  validates :known_as, length: {maximum: 50}
+            length: {maximum: 255}
+  validates :known_as, length: {maximum: 255}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
             presence: true,
@@ -39,13 +39,13 @@ class User < ApplicationRecord
   validates :privilege, presence: true, numericality: {only_integer: true,
                                                        greater_than_or_equal_to: 0,
                                                        less_than_or_equal_to: 2}
-  validates :emergency_telephone, presence: true, length: {maximum: 16}, :unless => :admin?
-  validates :emergency_name, presence: true, length: {maximum: 50}, :unless => :admin?
-  validates :reason_archived, length: {maximum: 30}
+  validates :emergency_telephone, presence: true, length: {maximum: 255}, :unless => :admin?
+  validates :emergency_name, presence: true, length: {maximum: 255}, :unless => :admin?
+  validates :reason_archived, length: {maximum: 255}
   validates :address1, length: {maximum: 255}, presence: true
   validates :address2, length: {maximum: 255}
-  validates :town, length: {maximum: 50}, presence: true
-  validates :postcode, length: {maximum: 10}, presence: true
+  validates :town, length: {maximum: 255}, presence: true
+  validates :postcode, length: {maximum: 255}, presence: true
   validates :aims, presence: true, inclusion: {:in => aims.keys}, :unless => :admin?
   validates :aims_other, length: {maximum: 255}, :unless => :admin?
   validates :prevent_attending, length: {maximum: 255}, :unless => :admin?
