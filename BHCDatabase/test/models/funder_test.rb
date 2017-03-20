@@ -21,12 +21,12 @@ class FunderTest < ActiveSupport::TestCase
   end
 
   test "email shouldn't be too long" do
-    @funder.email = 'a' * 266
+    @funder.email = 'a' * 256
     assert_not @funder.valid?
   end
 
   test "telephone shouldn't be too long" do
-    @funder.telephone = '0' * 17
+    @funder.telephone = '0' * 256
     assert_not @funder.valid?
   end
 
@@ -36,7 +36,7 @@ class FunderTest < ActiveSupport::TestCase
   end
 
   test "description shouldn't be too long" do
-    @funder.description = 'a' * 256
+    @funder.description = 'a' * 65537
     assert_not @funder.valid?
   end
 
