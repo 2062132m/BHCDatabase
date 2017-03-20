@@ -29,7 +29,7 @@ class UsersGrid
     format(model.dob) { |value| value.strftime('%d/%m/%Y') }
   end
   column(:privilege, :mandatory => true,
-         :header => 'Privileges <html><button button id="pop" data-trigger="hover"
+         :header => 'Privileges <html><button button id="pop" data-placement="top" data-trigger="hover"
                     data-toggle="popover" title="Levels of Privileges:"
                     data-content="<b>LEVEL 0: </b>Admin <br>
                     <b>LEVEL 1: </b>Volunteer <br>
