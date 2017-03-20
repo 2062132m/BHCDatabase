@@ -16,7 +16,7 @@ class MedicalConditionTest < ActiveSupport::TestCase
   end
 
   test 'name cannot be too long' do
-    @valid_condition.name = 'a' * 51
+    @valid_condition.name = 'a' * 256
     assert_not @valid_condition.valid?
   end
 
@@ -26,7 +26,7 @@ class MedicalConditionTest < ActiveSupport::TestCase
   end
 
   test 'description cannot be too long' do
-    @valid_condition.description = 'a' * 256
+    @valid_condition.description = 'a' * 65537
     assert_not @valid_condition.valid?
   end
 
