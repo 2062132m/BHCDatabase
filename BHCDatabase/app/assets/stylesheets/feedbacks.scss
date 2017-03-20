@@ -31,5 +31,12 @@
   .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
     background-color: #abe8df;
   }
+
+  .radio-label {
+    display: inline-block !important;
+    float: left;
+    margin-right: 5%;
+    position: relative;
+  }
 }
 
