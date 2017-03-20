@@ -233,7 +233,7 @@ footer {
 /* grids */
 
 .datagrid-form {
-  margin: 10px 27px;
+  margin: 10px 27px 10px -20px;
 }
 
 table.datagrid {
@@ -346,11 +346,13 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
-  margin-top: -62px;
+  margin-top: -63px;
   margin-bottom: 20px;
-  margin-left: 65px;
-  padding: 7.5px 50px;
+  margin-left: 28px;
+  padding: 5px 30px 5px 30px;
+  font-size: 19px;
   float: left;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .archive-btn {
@@ -362,6 +364,7 @@ table.datagrid {
   margin-top: 85px;
   margin-right: 10px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .password-btn {
@@ -373,6 +376,7 @@ table.datagrid {
   margin-right: 5px;
   margin-bottom: 5px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .new-session-btn {
@@ -380,10 +384,11 @@ table.datagrid {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
   background-color: #57a957;
   border-color: #57a957;
-  margin-bottom: 10px;
-  margin-top: 85px;
+  margin-bottom: 9px;
+  margin-top: 83px;
   margin-right: 5px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .enrol-btn {
@@ -394,6 +399,7 @@ table.datagrid {
   width: 90%;
   margin-top: 30px;
   margin-bottom: 20px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .funder-btn {
@@ -405,6 +411,7 @@ table.datagrid {
   margin-top: 85px;
   margin-right: 5px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .condition-btn {
@@ -416,6 +423,7 @@ table.datagrid {
   margin-top: 85px;
   margin-right: 5px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .submit-btn {
@@ -425,6 +433,7 @@ table.datagrid {
   border-color: #337AB7;
   width: 50%;
   margin-bottom: 10px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .form-submit-btn {
@@ -445,6 +454,7 @@ table.datagrid {
   margin-top: 85px;
   margin-right: 5px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .volunteer-btn {
@@ -462,6 +472,7 @@ table.datagrid {
   background-color: #8B7D6B;
   border-color: #8B7D6B;
   margin-left: 15px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .leave-feedback-btn {
@@ -473,6 +484,7 @@ table.datagrid {
   margin-top: 135px;
   margin-right: 10px;
   float: right;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .CSV {
@@ -483,6 +495,7 @@ table.datagrid {
   border-radius: 4px;
   font-size: 17px;
   padding: 7px 30px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .CSV:hover {
@@ -562,6 +575,7 @@ input, textarea, select, .uneditable-input {
   width: 65%;
   margin-left: 178px;
   padding: 3px 0 4px 0;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .datagrid-submit:hover {
@@ -572,15 +586,16 @@ input, textarea, select, .uneditable-input {
 
 /* reset button */
 .datagrid-reset {
-  color: #fff;
+  color: white;
   background-color: #c43c35;
   border: 1px solid #c43c35;
   /* box adjustments */
   border-radius: 4px;
-  font-size: 17px;
+  font-size: 19px;
   margin-right: 5px;
   float: right;
-  padding: 7px 30px 4px 30px;
+  padding: 4px 30px 5px 30px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.17512156);
 }
 
 .datagrid-reset:hover {
