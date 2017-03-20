@@ -118,7 +118,7 @@ class FundersController < ApplicationController
     @removed_initiative = RemovedInitiativeFunding.new(:funder_id => @initiative_funder.funder_id,
                                                        :initiative_id => @initiative_funder.initiative_id,
                                                        :date_given => @initiative_funder.created_at)
-    if @removed_initiative.destroy
+    if @initiative_funder.destroy
       if @removed_initiative.save
         flash[:success] = 'Removed funding from the initiative and recorded history of this'
       else
@@ -136,7 +136,7 @@ class FundersController < ApplicationController
     @removed_medical = RemovedMedicalFunding.new(:funder_id => @medical_funder.funder_id,
                                                  :medical_condition_id => @medical_funder.medical_condition_id,
                                                  :date_given => @medical_funder.created_at)
-    if @removed_medical.destroy
+    if @medical_funder.destroy
       if @removed_medical.save
         flash[:success] = 'Removed funding from the medical condition and recorded history of this'
       else
