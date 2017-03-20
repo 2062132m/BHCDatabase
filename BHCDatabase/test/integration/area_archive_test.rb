@@ -10,7 +10,7 @@ class AreaArchiveTest < ActionDispatch::IntegrationTest
   test "unsuccessful area archive" do
     get area_path(@area)
     assert_template 'areas/show'
-    reason = 'a' * 50
+    reason = 'a' * 256
     patch update_archive_area_path(@area), params: { area: { archived:  true, reason_archived: reason} }
     assert_redirected_to @area
     @area.reload
