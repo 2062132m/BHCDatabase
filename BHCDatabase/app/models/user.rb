@@ -51,6 +51,8 @@ class User < ApplicationRecord
   validates :prevent_attending, length: {maximum: 255}, :unless => :admin?
   validates :reg_date, presence: true
   validate :dob_before_today
+  validate :service_and_volunteer_have_feedback
+
   has_secure_password
 
   # Returns the hash digest of the given string.
@@ -66,6 +68,11 @@ class User < ApplicationRecord
 
   def dob_before_today
     errors.add(:dob, 'DOB is today or in the future') if dob.present? && dob >= Date.today
+  end
+
+  def service_and_volunteer_have_feedback
+    errors.add(:feedback_due, 'A service user must have a feedback due') if service_user? && !feedback_due.present?
+    errors.add(:feedback_due, 'A volunteer must have a feedback due') if volunteer? && !feedback_due.present?
   end
 
   def service_user?

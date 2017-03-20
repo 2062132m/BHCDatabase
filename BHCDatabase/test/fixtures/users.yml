@@ -28,6 +28,7 @@ volunteer:
   aims: <%= User.aims[:improve_health] %>
   aims_other: Example other aims
   password_digest: <%= User.digest('password') %>
+  feedback_due: <%= Date.today %>
   privilege: 1
 
 service_user:
