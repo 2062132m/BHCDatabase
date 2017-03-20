@@ -230,19 +230,6 @@
                       - <%= link_to 'Leave Feedback', new_feedback_path(user_id: @user.id) %>
                     </h2>
                 <% end %>
-                <div class="info-container">
-                  <h2 id="show-details-title">User Details</h2>
-                  <h2>Enrolled Initiatives: <%= @user.enrolments.count %></h2>
-                  <h2>Funders: <%= @user.user_funders.count %></h2>
-                  <h2>Medical Conditions: <%= @user.conditions.count %></h2>
-                  <h2>Meetings Attended: <%= @user.attendances.count %></h2>
-                  <h2>Feedbacks Left: <%= @user.feedbacks.count %></h2>
-                  <% if @user.privilege == 2 %>
-                    <h2>Next Feedback Due: <%= @user.feedback_due.strftime('%d/%m/%Y') %> - <%= link_to 'Leave Feedback', new_feedback_path(user_id: @user.id) %>
-                  <% end %>
-                  <h2>Initiatives Unenrolled From: <%= @user.unenrolments.count %></h2>
-                  <h2>Conditions Unassigned From: <%= @user.unassigned_conditions.count %></h2>
-                </div>
             <% else %>
             <div class="info-container">
               <h2 id="show-details-title">Personal Details</h2>
