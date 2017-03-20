@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="container-fluid buttons-container">
+          <div class="container-fluid buttons-container feedback-due">
             <% if current_user.feedback_due <= Date.today %>
                 <h2 id="show-sub-title">Your feedback was due <%= (Date.today - current_user.feedback_due).to_i %>
                   day(s)
