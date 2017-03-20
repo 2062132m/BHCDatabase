@@ -48,11 +48,11 @@
                                                          ['All of the time', 'All of the time']],
                                              :first,
                                              :last do |b| %>
-                  <label class="radio-label">
+                  <div class="radio-inline">
                     <%= b.label do %>
                         <%= b.radio_button + b.text %>
                     <% end %>
-                  </label>
+                  </div>
               <% end %>
 
           <% when 1 %>
