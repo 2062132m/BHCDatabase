@@ -51,7 +51,8 @@ User.create(forename: 'Volunteer',
             postcode: Faker::Address.postcode,
             aims: User.aims[:improve_health],
             aims_other: Faker::Lorem.sentence,
-            privilege: 1)
+            privilege: 1,
+            feedback_due: 1.months.ago)
 User.create(forename: 'Service',
             surname: 'Volun',
             known_as: 'Service',
@@ -94,6 +95,7 @@ random.rand(50..100).times do
                       postcode: Faker::Address.postcode,
                       aims: User.aims[:improve_health],
                       aims_other: Faker::Lorem.sentence,
+                      feedback_due: 6.months.from_now,
                       privilege: 1)
 end
 

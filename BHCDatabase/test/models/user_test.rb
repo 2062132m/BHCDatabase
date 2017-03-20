@@ -20,6 +20,7 @@ class UserTest < ActiveSupport::TestCase
                      postcode: Faker::Address.postcode,
                      aims: 0,
                      aims_other: Faker::Lorem.sentence,
+                     feedback_due: Time.zone.now,
                      privilege: 1)
   end
 
@@ -79,10 +80,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test 'should not have feedback_due' do
-    @user.privilege = 1
-    @user.feedback_due = Date.today >> 6
-    assert_not @user.valid?
+  test 'doesnt need to have feedback_due' do
+    @user.privilege = 0
+    @user.feedback_due = nil
+    assert @user.valid?
   end
 
   test 'telephone should be present' do
@@ -103,7 +104,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'emergency_name should not be too long' do
     @user.privilege = 2
-    @user.emergency_name = 'a' * 50
+    @user.emergency_name = 'a' * 51
     assert_not @user.valid?
   end
 
@@ -115,7 +116,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'emergency_telephone should not be too long' do
     @user.privilege = 2
-    @user.emergency_name = '1' * 17
+    @user.emergency_telephone = '1' * 17
     assert_not @user.valid?
   end
 

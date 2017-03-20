@@ -40,7 +40,7 @@ class FeedbacksController < ApplicationController
   def correct_users_feedback?
     @feedback = Feedback.find(params[:id])
     unless current_user.admin?
-      if @feedback.user != current_user || current_user.volunteer?
+      if @feedback.user != current_user
         flash[:danger] = 'You are not allowed to access that page.'
         redirect_to @current_user
       end

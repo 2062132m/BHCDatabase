@@ -50,8 +50,9 @@ class User < ApplicationRecord
   validates :aims_other, length: {maximum: 255}, :unless => :admin?
   validates :prevent_attending, length: {maximum: 255}, :unless => :admin?
   validates :reg_date, presence: true
-  validate :only_service_user_has_feedback
   validate :dob_before_today
+  validate :service_and_volunteer_have_feedback
+
   has_secure_password
 
   # Returns the hash digest of the given string.
@@ -69,9 +70,9 @@ class User < ApplicationRecord
     errors.add(:dob, 'DOB is today or in the future') if dob.present? && dob >= Date.today
   end
 
-  def only_service_user_has_feedback
-    errors.add(:feedback_due, "A non service user can't have a feedback due") if privilege != 2 && feedback_due.present?
-    errors.add(:feedback_due, 'A service user must have a feedback') if privilege == 2 && !feedback_due.present?
+  def service_and_volunteer_have_feedback
+    errors.add(:feedback_due, 'A service user must have a feedback due') if service_user? && !feedback_due.present?
+    errors.add(:feedback_due, 'A volunteer must have a feedback due') if volunteer? && !feedback_due.present?
   end
 
   def service_user?
