@@ -21,7 +21,7 @@
           <%end%>
 
           <% case @questions.find(a.object.question_id).id when 15, 16, 17, 18 %>
-              <td class="col-md-12">
+              <td class="col-md-12 col-offset-3">
 
           <%end%>
 
@@ -30,9 +30,7 @@
           </td>
           <%= a.hidden_field :question_id, :value => a.object.question_id %>
 
-          <% case @questions.find(a.object.question_id).id when 1,2,3,4,5,6,7,8,9,10,11,12,13,14 %>
-              <td class="col-md-7">
-          <%end%>
+
 
           <% case @questions.find(a.object.question_id).id when 15, 16, 17, 18 %>
               <tr>
@@ -48,7 +46,8 @@
                                                          ['All of the time', 'All of the time']],
                                              :first,
                                              :last do |b| %>
-                  <div class="radio-inline">
+                <td>
+                  <div class="radiofeed">
                     <%= b.label do %>
                         <%= b.radio_button + b.text %>
                     <% end %>
@@ -63,7 +62,7 @@
                                              :first,
                                              :last do |b| %>
 
-                  <div class="radio-inline">
+                  <div class="radiofeed">
                     <%= b.label do %>
                         <%= b.radio_button + b.text %>
                     <% end %>
@@ -78,7 +77,7 @@
                                              :first,
                                              :last do |b| %>
 
-                  <div class="radio-inline">
+                  <div class="radiofeed">
                     <%= b.label do %>
                         <%= b.radio_button + b.text %>
                     <% end %>
@@ -92,7 +91,7 @@
                                                          ['Strongly disagree', 'Strongly disagree']],
                                              :first,
                                              :last do |b| %>
-                  <div class="radio-inline">
+                  <div class="radiofeed">
                     <%= b.label do %>
                         <%= b.radio_button + b.text %>
                     <% end %>
@@ -104,7 +103,7 @@
                                              :first,
                                              :last do |b| %>
 
-                  <div class="radio-inline">
+                  <div class="radiofeed">
                     <%= b.label do %>
                         <%= b.radio_button + b.text %>
                     <% end %>
