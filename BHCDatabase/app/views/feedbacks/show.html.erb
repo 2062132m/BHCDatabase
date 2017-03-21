@@ -1,4 +1,4 @@
-<% provide(:title, @feedback.id) %>
+<% provide(:title, 'Feedback - ' + @feedback.created_at.strftime('%d/%m/%Y')) %>
 <div id="initiative">
   <div class="stdcontainer">
     <div class="container-fluid">
