@@ -77,7 +77,7 @@ User.create(forename: 'Service',
 
 # Add volunteers
 puts 'Inserting volunteers'
-random.rand(20..30).times do
+random.rand(50..100).times do
   password = Faker::Internet.password
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -105,7 +105,7 @@ end
 
 # Add service users
 puts 'Inserting service users'
-random.rand(40..50).times do
+random.rand(400..500).times do
   password = Faker::Internet.password
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
