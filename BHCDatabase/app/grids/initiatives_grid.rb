@@ -6,11 +6,9 @@ class InitiativesGrid
   end
 
   filter(:id, :string, :multiple => ',')
-  filter(:name, :string) do |value|
-    where.has {name =~ "#{value}%"}
-  end
+  filter(:name, :string) { |value| where.has { name =~ "#{value}%" } }
   filter(:area, :string, :multiple => ',', :header => 'Area ID')
-  filter(:location, :string) { |value| where('location like ?', "%#{value}%") }
+  filter(:location, :string) { |value| where.has { location =~ "#{value}%" } }
 
   column(:id, :mandatory => true) do |model|
     format(model.id) { |value| link_to value, model }
