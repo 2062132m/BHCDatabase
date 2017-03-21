@@ -37,6 +37,9 @@ class AreasController < ApplicationController
     # Builds a DataGrid using users only enrolled in initiatives in this area
     @users = User.joins(:enrolments).where(enrolments: {initiative: @initiatives.joins(:enrolments)})
 
+    @initiative_graph = Hash.new
+    @initiatives.find_each { |init| @initiative_graph[init.name] = init.users.count }
+
     # Builds a DataGrid that shows only users that belong to initiatives in this area
     @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:id => @users, :archived => false).page(params[:page]) }
 
