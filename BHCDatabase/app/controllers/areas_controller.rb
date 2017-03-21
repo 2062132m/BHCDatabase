@@ -31,7 +31,7 @@ class AreasController < ApplicationController
 
     # Builds a DataGrid using initiatives only belonging to this particular area
     @initiatives_in_area_grid = InitiativesInAreaGrid.new(params[:initiatives_in_area_grid]) do |scope|
-      scope.where(:area_id => @area, :archived => false).page(params[:page])
+      scope.where(:area_id => @area, :archived => false)
     end
 
     # Builds a DataGrid using users only enrolled in initiatives in this area
