@@ -366,4 +366,14 @@
         </div>
       </div>
     </div>
+
+
+
+<% end %>
+  <% if current_user.privilege > 0 %>
+      <h1>Open service requests</h1>
+      <div class="stdcontainer">
+        <%= datagrid_table(@service_requests_grid) %>
+      </div>
   <% end %>
+

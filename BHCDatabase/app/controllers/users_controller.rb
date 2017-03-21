@@ -39,6 +39,9 @@ class UsersController < ApplicationController
     @removed_funders_for_users_grid = RemovedFundingsForUsersGrid.new(params[:removed_funding_for_users_grid]) do |scope|
       scope.where(:id => @user.removed_user_fundings.ids)
     end
+    @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
+      scope.where(:user_id => @current_user)
+    end
   end
 
   def new
