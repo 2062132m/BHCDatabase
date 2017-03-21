@@ -119,7 +119,7 @@
               <h4>This user has been archived.</h4>
               <h4>Reason: <%= @user.reason_archived %></h4>
           <% end %>
-          <% if @user.privilege > 0 && current_user.privilege < 2 %>
+          <% if @user.privilege > 0 %>
               <h2 id="graph-title">Number of Meetings Attended (per month)</h2>
               <%= line_chart @user.meetings.group_by_month(:datetime).count, download: true, xtitle: "Month", ytitle: "Meetings Attended" %>
           <% end %>
