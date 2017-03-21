@@ -6,11 +6,11 @@ class FundersGrid
   end
 
   filter(:id, :string, :multiple => ',')
-  filter(:name, :string) { |value| where('name like ? ', "%#{value}%") }
-  filter(:address, :string) { |value| where('address like ? ', "%#{value}%") }
-  filter(:url, :string) { |value| where('url like ? ', "%#{value}%") }
-  filter(:email, :string) { |value| where('email like ? ', "%#{value}%") }
-  filter(:telephone, :string) { |value| where('telephone like ? ', "%#{value}%") }
+  filter(:name, :string) { |value| where.has { name =~ "%#{value}%" } }
+  filter(:address, :string) { |value| where.has { address =~ "%#{value}%" } }
+  filter(:url, :string) { |value| where.has { url =~ "%#{value}%" } }
+  filter(:email, :string) { |value| where.has { email =~ "%#{value}%" } }
+  filter(:telephone, :string) { |value| where.has { telephone =~ "%#{value}%" }}
 
   column(:id, :mandatory => true) do |model|
     format(model.id) { |value| link_to value, model }
