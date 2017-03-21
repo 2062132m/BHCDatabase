@@ -4,132 +4,115 @@
 
     <%= f.hidden_field :user_id, :value => @user.id %>
 
+    <div class="stdcontainer">
+      <div class="container-fluid">
+        <%= f.fields_for :answers do |a| %>
+            <% case @questions.find(a.object.question_id).id when 1, 15, 16, 17, 18 %>
+              <div class="form-column">
+                <table class="table table-striped table-hover">
+                  <tbody>
+            <% end %>
+            <tr>
+              <td class="col-md-5">
 
-    <%= f.fields_for :answers do |a| %>
+              <h><%= a.label @questions.find(a.object.question_id).id %> | <%= a.label @questions.find(a.object.question_id).question %></h>
+              </td>
 
-        <% case @questions.find(a.object.question_id).id
-             when 1, 15, 16, 17, 18 %>
-            <div class="feedbackcontainer">
-              <table class="table table-striped table-hover">
-                <tbody>
+              <%= a.hidden_field :question_id, :value => a.object.question_id %>
+
+              <% case @questions.find(a.object.question_id).question_type when 0 %>
+                <%= a.collection_radio_buttons :response, [['None of the time', 'None of the time'],
+                                                           ['Rarely', 'Rarely'],
+                                                           ['Some of the time', 'Some of the time'],
+                                                           ['Often', 'Often'],
+                                                           ['All of the time', 'All of the time']],
+                                               :first,
+                                               :last do |b| %>
+                    <td>
+                      <div class="radiofeed">
+                        <%= b.label do %>
+                          <%= b.radio_button + b.text %>
+                        <% end %>
+                      </div>
+                  <% end %>
+
+              <% when 1 %>
+                  <%= a.collection_radio_buttons :response, [['Less than montly', 'Less than montly'],
+                                                             ['1-3 times per month', '1-3 times per month'],
+                                                             ['1-2 times per week', '1-2 times per week'],
+                                                             ['3 times per or more', '3 times per or more']],
+                                                 :first,
+                                                 :last do |b| %>
+                    <td>
+                      <div class="radiofeed">
+                        <%= b.label do %>
+                            <%= b.radio_button + b.text %>
+                        <% end %>
+                      </div>
+                  <% end %>
+              <% when 2 %>
+                  <%= a.collection_radio_buttons :response, [['Very strongly Connected', 'Very strongly Connected'],
+                                                             ['Connected', 'Connected'],
+                                                             ['Somewhat connected', 'Somewhat connected'],
+                                                             ['Weakly connected', 'Weakly connected'],
+                                                             ['Not connected at all', 'Not connected at all']],
+                                                 :first,
+                                                 :last do |b| %>
+                    <td>
+                      <div class="radiofeed">
+                        <%= b.label do %>
+                            <%= b.radio_button + b.text %>
+                        <% end %>
+                      </div>
+                  <% end %>
+              <% when 3 %>
+                  <%= a.collection_radio_buttons :response, [['Strongly agree', 'Strongly agree'],
+                                                             ['Agree', 'Agree'],
+                                                             ['2', 'Neither agree or disagree'],
+                                                             ['Disagree', 'Disagree'],
+                                                             ['Strongly disagree', 'Strongly disagree']],
+                                                 :first,
+                                                 :last do |b| %>
+                    <td>
+                      <div class="radiofeed">
+                        <%= b.label do %>
+                            <%= b.radio_button + b.text %>
+                        <% end %>
+                      </div>
+                  <% end %>
+              <% when 4 %>
+                  <%= a.collection_radio_buttons :response, [['Most people can be trusted', 'Most people can be trusted'],
+                                                             ['Need to be very careful', 'Need to be very careful']],
+                                                 :first,
+                                                 :last do |b| %>
+                    <td>
+                      <div class="radiofeed">
+                        <%= b.label do %>
+                            <%= b.radio_button + b.text %>
+                        <% end %>
+                      </div>
+                  <% end %>
+              <% else %>
+                  <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
+              <% end %>
+              </td>
+
+              </tr>
+
+
+              <% case @questions.find(a.object.question_id).id
+                   when 14, 15, 16, 17, 18 %>
+                  </tr>
+                  </tbody>
+                  </table>
+                </div>
+              <% end %>
         <% end %>
 
-        <tr>
 
-          <% case @questions.find(a.object.question_id).id when 1,2,3,4,5,6,7,8,9,10,11,12,13,14 %>
-              <td class="col-md-5">
-          <%end%>
+        <br>
 
-          <% case @questions.find(a.object.question_id).id when 15, 16, 17, 18 %>
-              <td class="col-md-12 col-offset-3">
-
-          <%end%>
-
-          <h><%= a.label @questions.find(a.object.question_id).id %> | <%= a.label @questions.find(a.object.question_id).question %></h>
-
-          </td>
-          <%= a.hidden_field :question_id, :value => a.object.question_id %>
-
-
-
-          <% case @questions.find(a.object.question_id).id when 15, 16, 17, 18 %>
-              <tr>
-              <td class="col-md-12">
-          <%end%>
-
-          <% case @questions.find(a.object.question_id).question_type
-               when 0 %>
-              <%= a.collection_radio_buttons :response, [['None of the time', 'None of the time'],
-                                                         ['Rarely', 'Rarely'],
-                                                         ['Some of the time', 'Some of the time'],
-                                                         ['Often', 'Often'],
-                                                         ['All of the time', 'All of the time']],
-                                             :first,
-                                             :last do |b| %>
-                <td>
-                  <div class="radiofeed">
-                    <%= b.label do %>
-                        <%= b.radio_button + b.text %>
-                    <% end %>
-                  </div>
-              <% end %>
-
-          <% when 1 %>
-              <%= a.collection_radio_buttons :response, [['Less than montly', 'Less than montly'],
-                                                         ['1-3 times per month', '1-3 times per month'],
-                                                         ['1-2 times per week', '1-2 times per week'],
-                                                         ['3 times per or more', '3 times per or more']],
-                                             :first,
-                                             :last do |b| %>
-
-                  <div class="radiofeed">
-                    <%= b.label do %>
-                        <%= b.radio_button + b.text %>
-                    <% end %>
-                  </div>
-              <% end %>
-          <% when 2 %>
-              <%= a.collection_radio_buttons :response, [['Very strongly Connected', 'Very strongly Connected'],
-                                                         ['Connected', 'Connected'],
-                                                         ['Somewhat connected', 'Somewhat connected'],
-                                                         ['Weakly connected', 'Weakly connected'],
-                                                         ['Not connected at all', 'Not connected at all']],
-                                             :first,
-                                             :last do |b| %>
-
-                  <div class="radiofeed">
-                    <%= b.label do %>
-                        <%= b.radio_button + b.text %>
-                    <% end %>
-                  </div>
-              <% end %>
-          <% when 3 %>
-              <%= a.collection_radio_buttons :response, [['Strongly agree', 'Strongly agree'],
-                                                         ['Agree', 'Agree'],
-                                                         ['2', 'Neither agree or disagree'],
-                                                         ['Disagree', 'Disagree'],
-                                                         ['Strongly disagree', 'Strongly disagree']],
-                                             :first,
-                                             :last do |b| %>
-                  <div class="radiofeed">
-                    <%= b.label do %>
-                        <%= b.radio_button + b.text %>
-                    <% end %>
-                  </div>
-              <% end %>
-          <% when 4 %>
-              <%= a.collection_radio_buttons :response, [['Most people can be trusted', 'Most people can be trusted'],
-                                                         ['Need to be very careful', 'Need to be very careful']],
-                                             :first,
-                                             :last do |b| %>
-
-                  <div class="radiofeed">
-                    <%= b.label do %>
-                        <%= b.radio_button + b.text %>
-                    <% end %>
-                  </div>
-              <% end %>
-          <% else %>
-              <%= a.text_field :response, :value => Faker::Lorem.sentence, :class => "form-control" %>
-          <% end %>
-          </td>
-
-          </tr>
-
-
-          <% case @questions.find(a.object.question_id).id
-               when 14, 15, 16, 17, 18 %>
-              </tr>
-              </tbody>
-              </table>
-              </div>
-
-          <% end %>
-    <% end %>
-
-
-    <br>
-
-    <%= f.submit 'Submit Feedback', class: 'btn btn-success' %>
+        <%= f.submit 'Submit Feedback', class: 'btn btn-default form-submit-btn' %>
+  </div>
+</div>
 <% end %>
-
