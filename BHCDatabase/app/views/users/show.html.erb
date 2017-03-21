@@ -5,6 +5,7 @@
     <%= render 'archive_form' %>
   </div>
 </div>
+
 <div id="passwordmodalcontainer" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -13,6 +14,7 @@
     <%= render 'update_password_form' %>
   </div>
 </div>
+
 <div id="editmodalcontainer" class="modal">
   <div class="edit-modal-content">
     <span class="close">&times;</span>
@@ -20,6 +22,7 @@
     <%= render 'edit_form' %>
   </div>
 </div>
+
 <div id="initiative">
   <div class="stdcontainer">
     <div class="container-fluid">
@@ -230,6 +233,7 @@
                       - <%= link_to 'Leave Feedback', new_feedback_path(user_id: @user.id) %>
                     </h2>
                 <% end %>
+              </div>
           <% else %>
               <div class="info-container">
                 <h2 id="show-details-title">Personal Details</h2>
@@ -237,7 +241,9 @@
                   Enrolled Initiatives:
                   <% i = 0 %>
                   <% @user.initiatives.each do |init| %>
-                      <%= init.name %><% unless i == @user.initiatives.length - 1 %>, <% end %>
+                      <%= init.name %>
+                      <% unless i == @user.initiatives.length - 1 %>,
+                      <% end %>
                       <% i = i + 1 %>
                   <% end %>
                 </h2>
@@ -245,7 +251,9 @@
                   Assigned Conditions:
                   <% i = 0 %>
                   <% @user.medical_conditions.each do |cond| %>
-                      <%= cond.name %><% unless i == @user.medical_conditions.length - 1 %>, <% end %>
+                      <%= cond.name %>
+                      <% unless i == @user.medical_conditions.length - 1 %>,
+                      <% end %>
                       <% i = i + 1 %>
                   <% end %>
                 </h2>
@@ -253,7 +261,9 @@
                   Direct Funding:
                   <% i = 0 %>
                   <% @user.user_funders.each do |fund| %>
-                      <%= fund.funder.name %><% unless i == @user.user_funders.length - 1 %>, <% end %>
+                      <%= fund.funder.name %>
+                      <% unless i == @user.user_funders.length - 1 %>,
+                      <% end %>
                       <% i = i + 1 %>
                   <% end %>
                 </h2>
@@ -261,54 +271,56 @@
                   Feedbacks Completed:
                   <% i = 0 %>
                   <% @user.feedbacks.each do |feedback| %>
-                      <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %><% unless i == @user.feedbacks.length - 1 %>, <% end %>
+                      <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %>
+                      <% unless i == @user.feedbacks.length - 1 %>,
+                      <% end %>
                       <% i = i + 1 %>
                   <% end %>
                 </h2>
               </div>
           <% end %>
-          </div>
         </div>
       </div>
     </div>
   </div>
-  <% if current_user.privilege == 0 %>
-      <h1>Feedbacks</h1>
-      <div class="stdcontainer">
-        <%= datagrid_table(@feedbacks_grid) %>
-      </div>
-      <h1 id="meetingtitle">Current Enrolments</h1>
-      <div class="stdcontainer">
-        <%= datagrid_table(@enrolments_grid) %>
-      </div>
-      <% unless @unenrolments_grid.rows.empty? %>
-          <h1>Enrolment History</h1>
-          <div class="stdcontainer">
-            <%= datagrid_table(@unenrolments_grid) %>
-          </div>
-      <% end %>
-      <h1>Current Medical Conditions</h1>
-      <div class="stdcontainer">
-        <%= datagrid_table(@conditions_grid) %>
-      </div>
-      <% unless @unassigned_conditions_grid.rows.empty? %>
-          <h1>Medical Condition History</h1>
-          <div class="stdcontainer">
-            <%= datagrid_table(@unassigned_conditions_grid) %>
-          </div>
-      <% end %>
-      <h1>Direct Funding</h1>
-      <div class="stdcontainer">
-        <%= datagrid_table(@funders_for_user_grid) %>
-      </div>
-      <% unless @removed_funders_for_users_grid.rows.empty? %>
-          <h1>Direct Funding History</h1>
-          <div class="stdcontainer">
-            <%= datagrid_table(@removed_funders_for_users_grid) %>
-          </div>
-      <% end %>
-  <% end %>
-  <% if current_user.privilege == 0 %>
+</div>
+<% if current_user.privilege == 0 %>
+    <h1>Feedbacks</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@feedbacks_grid) %>
+    </div>
+    <h1 id="meetingtitle">Current Enrolments</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@enrolments_grid) %>
+    </div>
+    <% unless @unenrolments_grid.rows.empty? %>
+        <h1>Enrolment History</h1>
+        <div class="stdcontainer">
+          <%= datagrid_table(@unenrolments_grid) %>
+        </div>
+    <% end %>
+    <h1>Current Medical Conditions</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@conditions_grid) %>
+    </div>
+    <% unless @unassigned_conditions_grid.rows.empty? %>
+        <h1>Medical Condition History</h1>
+        <div class="stdcontainer">
+          <%= datagrid_table(@unassigned_conditions_grid) %>
+        </div>
+    <% end %>
+    <h1>Direct Funding</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@funders_for_user_grid) %>
+    </div>
+    <% unless @removed_funders_for_users_grid.rows.empty? %>
+        <h1>Direct Funding History</h1>
+        <div class="stdcontainer">
+          <%= datagrid_table(@removed_funders_for_users_grid) %>
+        </div>
+    <% end %>
+<% end %>
+<% if current_user.privilege == 0 %>
     <h1>Indirect Funding</h1>
     <div class="stdcontainer">
       <div class="container-fluid">
@@ -366,14 +378,11 @@
         </div>
       </div>
     </div>
-
-
-
 <% end %>
-  <% if current_user.privilege > 0 %>
-      <h1>Open service requests</h1>
-      <div class="stdcontainer">
-        <%= datagrid_table(@service_requests_grid) %>
-      </div>
-  <% end %>
+<% if current_user.privilege > 0 %>
+    <h1>Open service requests</h1>
+    <div class="stdcontainer">
+      <%= datagrid_table(@service_requests_grid) %>
+    </div>
+<% end %>
 
