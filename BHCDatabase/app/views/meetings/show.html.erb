@@ -37,9 +37,7 @@
                 <icon class="glyphicon glyphicon-user"></icon>
                 <% i = 0 %>
                 <% @initiative.users.where(:privilege => 1).each do |user| %>
-                    <%= link_to user.known_as, user %>
-                    <% unless i == @initiative.users.where(:privilege => 1).length - 1 %>,
-                    <% end %>
+                    <%= link_to user.known_as, user %><% unless i == @initiative.users.where(:privilege => 1).length - 1 %>, <% end %>
                     <% i = i + 1 %>
                 <% end %>
               </td>
