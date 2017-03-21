@@ -1,9 +1,8 @@
 % =============================================================================
-% l3proj.cls
+% bhcguides.cls
 %
-% Template for level 3 projects in the Department of Computing Science at the
-% University of Glasgow. Please contact Colin Perkins <csp@dcs.gla.ac.uk> with 
-% any questions, comments, or corrections.
+% Based on the template for level 3 projects in the Department of Computing Science at the
+% University of Glasgow by Colin Perkins <csp@dcs.gla.ac.uk>
 %
 % =============================================================================
 \NeedsTeXFormat{LaTeX2e}
@@ -69,12 +68,3 @@
 \global\let\date\relax
 \global\let\and\relax
 }
-
-\newcommand{\educationalconsent}{
-\vfill
-{\bfseries Education Use Consent}\par
-We hereby give our permission for this project to be shown to other
-University of Glasgow students and to be distributed in an electronic
-format.
-}
-
