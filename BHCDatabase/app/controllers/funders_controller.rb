@@ -109,7 +109,7 @@ class FundersController < ApplicationController
     else
       flash[:danger] = "An unknown error occurred and funding was not removed. Please try again later or contact support."
     end
-    redirect_to funders_url
+    redirect_to user_url(@removed_user_funding.user_id)
   end
 
   def remove_initiative_funding
@@ -127,7 +127,7 @@ class FundersController < ApplicationController
     else
       flash[:danger] = "An unknown error occurred and funding was not removed. Please try again later or contact support."
     end
-    redirect_to funders_url
+    redirect_to initiative_url(@removed_initiative.initiative_id)
   end
 
   def remove_medical_funding
@@ -145,7 +145,7 @@ class FundersController < ApplicationController
     else
       flash[:danger] = "An unknown error occurred and funding was not removed. Please try again later or contact support."
     end
-    redirect_to funders_url
+    redirect_to medical_condition_url(@removed_medical.medical_condition_id)
   end
 
   private
