@@ -3,5 +3,8 @@ class ServiceUsersHomepageController < ApplicationController
   before_action :service_user_only
 
   def index
+    @service_requests_grid = ServiceRequestsGrid.new(params[:service_requests_grid]) do |scope|
+      scope.where(:user_id => @current_user)
+    end
   end
 end
