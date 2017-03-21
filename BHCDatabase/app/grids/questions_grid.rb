@@ -6,7 +6,7 @@ class QuestionsGrid
   end
 
   filter(:id, :string, :multiple => ',')
-  filter(:question, :string) { |value| where('question like ?', "%#{value}%") }
+  filter(:question, :string) { |value| where.has { question =~ "%#{value}%" } }
   filter(:visible, :boolean)
   filter(:question_type, :integer)
 
