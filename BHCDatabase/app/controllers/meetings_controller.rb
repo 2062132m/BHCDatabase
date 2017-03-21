@@ -20,10 +20,10 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new
     @meetings = Initiative.find(params[:initiative_id]).meetings
     if @meetings.count == 0
-      @last_meeting_time = DateTime.now
+      @last_meeting_time = Time.zone.now
     else
       @last_meeting_time = Initiative.find(params[:initiative_id]).meetings.last.datetime
-      @last_meeting_time += 1.week
+      @last_meeting_time = 1.weeks.since(@last_meeting_time)
     end
   end
 
@@ -31,7 +31,7 @@ class MeetingsController < ApplicationController
     params[:weeks].to_i.times do |i|
       @meeting = Meeting.new(meeting_params)
       @first_meeting = @meeting if i == 0
-      unless @meeting.update(:datetime => @meeting.datetime + i.weeks)
+      unless @meeting.update(:datetime => i.weeks.since(@meeting.datetime))
         flash[:danger] = "An unknown error occurred and the session was not created. Please try again later or contact support."
         render 'new'
         return
