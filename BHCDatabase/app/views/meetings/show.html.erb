@@ -18,7 +18,7 @@
             <tr>
               <td>Area:</td>
               <td>
-                <icon class="glyphicon glyphicon-home"></icon><%= link_to @meeting.initiative.area.name, @meeting.initiative.area %>
+                <icon class="glyphicon glyphicon-home"></icon><%= link_to_if current_user.privilege == 0, @meeting.initiative.area.name, @meeting.initiative.area %>
               </td>
             </tr>
             <tr>
@@ -37,7 +37,7 @@
                 <icon class="glyphicon glyphicon-user"></icon>
                 <% i = 0 %>
                 <% @initiative.users.where(:privilege => 1).each do |user| %>
-                    <%= link_to user.known_as, user %><% unless i == @initiative.users.where(:privilege => 1).length - 1 %>, <% end %>
+                    <%= link_to_if current_user.privilege == 0, user.known_as, user %><% unless i == @initiative.users.where(:privilege => 1).length - 1 %>, <% end %>
                     <% i = i + 1 %>
                 <% end %>
               </td>
@@ -69,7 +69,7 @@
                 <tbody>
                 <% @users.each do |user| %>
                     <tr><td class="col-md-12">
-                      <%= link_to user.known_as, user %>
+                      <%= link_to_if current_user.privilege == 0, user.known_as, user %>
                     </td></tr>
                 <% end %>
                 </tbody>
