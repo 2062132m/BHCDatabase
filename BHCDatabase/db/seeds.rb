@@ -51,11 +51,12 @@ User.create(forename: 'Volunteer',
             postcode: Faker::Address.postcode,
             aims: User.aims[:improve_health],
             aims_other: Faker::Lorem.sentence,
+            prevent_attending: Faker::Lorem.sentence,
             privilege: 1,
             feedback_due: 1.months.ago)
 User.create(forename: 'Service',
             surname: 'User',
-            known_as: 'Service',
+            known_as: 'Service User',
             email: 'user@user.com',
             password: 'user123',
             password_confirmation: 'user123',
@@ -70,6 +71,7 @@ User.create(forename: 'Service',
             postcode: Faker::Address.postcode,
             aims: User.aims[:improve_health],
             aims_other: Faker::Lorem.sentence,
+            prevent_attending: Faker::Lorem.sentence,
             privilege: 2,
             feedback_due: 1.months.ago)
 
@@ -96,6 +98,7 @@ random.rand(50..100).times do
                       postcode: Faker::Address.postcode,
                       aims: User.aims[:improve_health],
                       aims_other: Faker::Lorem.sentence,
+                      prevent_attending: Faker::Lorem.sentence,
                       feedback_due: 6.months.from_now,
                       privilege: 1)
 end
@@ -123,6 +126,7 @@ random.rand(400..500).times do
                       postcode: Faker::Address.postcode,
                       aims: User.aims[:improve_health],
                       aims_other: Faker::Lorem.sentence,
+                      prevent_attending: Faker::Lorem.sentence,
                       privilege: 2,
                       feedback_due: 6.months.from_now)
 end
@@ -280,4 +284,9 @@ random.rand(30..40).times do
   random.rand(3..5).times do
     @funder.user_funders.create(user: User.find(random.rand(1..User.count)))
   end
+end
+
+# Ensure Service User has at least one direct feedback
+random.rand(3..5).times do
+  @funder.user_funders.create(user: User.find(3))
 end
