@@ -78,10 +78,17 @@ class AreasController < ApplicationController
     redirect_to areas_url
   end
 
+  def archive
+    @area = Area.find(params[:id])
+  end
+
   def update_archive
     @area = Area.find(params[:id])
-    flash[:danger] = 'An unknown error occurred and the archive could not be updated. Please try again later or contact support.' unless @area.update_attributes(archive_params)
-    redirect_to @area
+    if @area.update_attributes(archive_params)
+      redirect_to @area
+    else
+      render 'archive'
+    end
   end
 
   def unarchive

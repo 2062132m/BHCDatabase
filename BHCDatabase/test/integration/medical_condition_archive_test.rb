@@ -12,7 +12,7 @@ class MedicalConditionArchiveTest < ActionDispatch::IntegrationTest
     assert_template 'medical_conditions/show'
     reason = 'a' * 256
     patch update_archive_medical_condition_path(@medical_condition), params: { medical_condition: { archived:  true, reason_archived: reason} }
-    assert_redirected_to @medical_condition
+    assert_template 'medical_conditions/archive'
     @medical_condition.reload
     assert_not @medical_condition.archived
     assert_not_equal reason,  @medical_condition.reason_archived

@@ -71,10 +71,10 @@ class UsersController < ApplicationController
     @user.feedback_due = Date.today unless user_params[:privilege].to_i == 0
     if @user.update(user_params)
       flash[:success] = 'The users details were successfully updated'
+      redirect_to @user
     else
-      flash[:danger] = "An unknown error occurred and the user was not updated. Please try again later or contact support."
+      render 'edit'
     end
-    redirect_to @user
   end
 
   def destroy
@@ -100,14 +100,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def archive
+    @user = User.find(params[:id])
+  end
+
   def update_archive
     @user = User.find(params[:id])
     if @user.update(archive_params)
-      flash[:success] = 'Successfully updated the archived user'
+      redirect_to @user
     else
-      flash[:danger] = "An unknown error occurred and the user was not archived. Please try again later or contact support."
+      render 'archive'
     end
-    redirect_to @user
   end
 
   def unarchive
@@ -126,12 +129,16 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(params[:id])
+  end
+
+  def change_password
+    @user = User.find(params[:id])
     if @user.update(password_params)
       flash[:success] = 'The users password was changed!'
+      redirect_to @user
     else
-      flash[:danger] = "An unknown error occurred and the user's password was not changed. Please try again later or contact support."
+      render 'update_password'
     end
-    redirect_to @user
   end
 
   private

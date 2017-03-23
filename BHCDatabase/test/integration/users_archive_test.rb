@@ -12,7 +12,7 @@ class UsersArchiveTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     reason = 'a' * 256
     patch update_archive_user_path(@service_user), params: { user: { archived:  true, reason_archived: reason} }
-    assert_redirected_to @service_user
+    assert_template 'users/archive'
     @service_user.reload
     assert_not @service_user.archived
     assert_not_equal reason,  @service_user.reason_archived

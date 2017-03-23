@@ -12,7 +12,7 @@ class InitiativesArchiveTest < ActionDispatch::IntegrationTest
     assert_template 'initiatives/show'
     reason = 'a' * 256
     patch update_archive_initiative_path(@initiative), params: { initiative: { archived:  true, reason_archived: reason} }
-    assert_redirected_to @initiative
+    assert_template 'initiatives/archive'
     @initiative.reload
     assert_not @initiative.archived
     assert_not_equal reason,  @initiative.reason_archived
