@@ -99,7 +99,6 @@ class InitiativesController < ApplicationController
   def update_archive
     @initiative = Initiative.find(params[:id])
     if @initiative.update(archive_params)
-      flash[:success] = 'Archived initiative was successfully updated'
       redirect_to @initiative
     else
       render 'archive'

@@ -107,7 +107,6 @@ class UsersController < ApplicationController
   def update_archive
     @user = User.find(params[:id])
     if @user.update(archive_params)
-      flash[:success] = 'Successfully updated the archived user'
       redirect_to @user
     else
       render 'archive'
