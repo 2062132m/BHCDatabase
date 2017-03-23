@@ -8,15 +8,20 @@
         </div>
       </div>
       <div class="row">
-        <p>This is where new meetings can be arranged for <%= link_to Initiative.find(params[:initiative_id]).name, Initiative.find(params[:initiative_id]) %>.
-        Please select the date and time you would like the next meeting to be scheduled for (note: the default is one week after the last scheduled meeting).
-        You can arrange for this meeting to run at the same time multiple weeks into the future by modifying the 'Weeks to run for' field.
-        </p><br>
+        <p>
+          This is where new meetings can be arranged
+          for <%= link_to Initiative.find(params[:initiative_id]).name, Initiative.find(params[:initiative_id]) %>
+          .Please select the date and time you would like the next meeting to be scheduled for (note: the default is one
+          week after the 'most recent' meeting. If the 'most recent' meeting is in the future, it will still be one week
+          after that date).You can arrange for this meeting to run at the same time multiple weeks
+          into the future by modifying the 'Weeks to run for' field.
+        </p>
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <%= render 'form' %>
         </div>
       </div>
+    </div>
   </div>
 </div>
