@@ -23,7 +23,7 @@ class ServiceRequestsController < ApplicationController
     if ServiceRequest.find(params[:id]).destroy
       flash[:success] = 'Service request deleted'
     else
-      flash[:danger] = "An unknown error occurred and the service request was not deleted. Please try again later or contact support."
+      flash[:danger] = 'An unknown error occurred and the service request was not deleted. Please try again later or contact support.'
     end
     redirect_to root_url
   end

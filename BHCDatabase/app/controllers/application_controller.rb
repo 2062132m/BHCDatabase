@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   def require_login
     unless current_user
       redirect_to login_path
-      flash[:danger] = 'Please log in.'
     end
   end
 
@@ -50,6 +49,17 @@ class ApplicationController < ActionController::Base
         flash[:danger] = 'Sorry, this page no longer exists.'
         redirect_to :back
       end
+    end
+  end
+
+  def show_browser_alert
+    browser = Browser.new(request.user_agent)
+    if browser.device.mobile? || browser.device.tablet?
+      flash[:info] = 'Oh! We see you are on a mobile phone or tablet... Please note that not all features of the website have been optimised to work on smaller screens... If you have any difficulites, please switch to landscape mode!'
+    elsif browser.ie?(8)
+      flash[:info] = 'We see that you are on Internet Explorer 8. Please note that although some advanced features like charts will not be available, the website will still function correctly. '
+    elsif browser.ie?(['<8'])
+      flash[:info] = 'We see that you are running a very old version of Internet Explorer. Please update to a modern browser, like Google Chrome. The website is not guaranteed to function at all on your current browser.'
     end
   end
 end

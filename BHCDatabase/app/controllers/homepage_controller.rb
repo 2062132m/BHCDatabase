@@ -51,5 +51,6 @@ class HomepageController < ApplicationController
   def redirect
     redirect_to volunteershome_url if current_user.volunteer?
     redirect_to serviceusershome_url if current_user.service_user?
+    show_browser_alert
   end
 end
