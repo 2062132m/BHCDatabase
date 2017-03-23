@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.reg_date &&= Date.today
     @user.known_as &&= @user.forename
-    @user.feedback_due = @user.privilege > 0 ? Date.today : nil
+    @user.feedback_due = Date.today unless @user.admin?
     if @user.save
       if @user.privilege == 1
         flash[:success] = 'Successfully signed up new volunteer! Please fill in their volunteer details using the button below.'
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.feedback_due = user_params[:privilege].to_i > 0 ? Date.today : nil
+    @user.feedback_due = Date.today unless user_params[:privilege].to_i == 0
     if @user.update(user_params)
       flash[:success] = 'The users details were successfully updated'
     else
