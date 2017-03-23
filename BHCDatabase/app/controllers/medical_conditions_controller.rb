@@ -63,8 +63,11 @@ class MedicalConditionsController < ApplicationController
 
   def update_archive
     @medical_condition = MedicalCondition.find(params[:id])
-    flash[:danger] = "An unknown error occurred and the archive wasn't updated. Please try again later or contact support." unless @medical_condition.update(archive_params)
-    redirect_to @medical_condition
+    if @medical_condition.update(archive_params)
+      redirect_to @medical_condition
+    else
+      render 'archive'
+    end
   end
 
   def unarchive
