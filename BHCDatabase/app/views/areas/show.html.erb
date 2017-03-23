@@ -22,9 +22,7 @@
         <div class="col-md-6">
           <div class="container-fluid buttons-container right-split">
             <% if !@area.archived %>
-                <button id="openmodal" class="btn btn-default archive-btn">
-                  <span class="glyphicon glyphicon-folder-close glyphicon-edit"></span> Archive
-                </button>
+              <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_area_path, class: 'btn btn-default archive-btn' %>
             <% else %>
                 <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_area_path, class: 'btn btn-default archive-btn' %>
             <% end %>
