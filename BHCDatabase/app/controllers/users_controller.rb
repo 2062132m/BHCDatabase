@@ -126,6 +126,10 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(params[:id])
+  end
+
+  def update_password_temp
+    @user = User.find(params[:id])
     if @user.update(password_params)
       flash[:success] = 'The users password was changed!'
     else

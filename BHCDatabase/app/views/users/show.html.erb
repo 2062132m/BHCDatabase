@@ -5,15 +5,6 @@
     <%= render 'archive_form' %>
   </div>
 </div>
-
-<div id="passwordmodalcontainer" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Update Password</h3>
-    <p>Password must be atleast 6 characters.</p><br>
-    <%= render 'update_password_form' %>
-  </div>
-</div>
 <div id="initiative">
   <div class="stdcontainer">
     <div class="container-fluid">
@@ -36,9 +27,7 @@
                                         \nNote: All associated enrolments, conditions and feedbacks will be deleted!"},
                             class: "btn btn-default delete-btn" %>
                 <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_user_path, class: 'btn btn-default edit-btn' %>
-                <button id="openpasswordmodal" class="btn btn-default password-btn">
-                  <span class="glyphicon glyphicon-lock"></span> Change Password
-                </button>
+                <%= link_to "<i class='glyphicon glyphicon-lock'></i> Change Password".html_safe, update_password_user_path, class: 'btn btn-default password-btn' %>
             <% end %>
           </div>
           <table id="info-table">
