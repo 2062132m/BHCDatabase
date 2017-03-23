@@ -58,8 +58,11 @@
           </div>
           <div class="info-container">
             <h2 id="show-details-title">Initiative Details</h2>
-            <% if @initiative.meetings.count > 0 %>
-              <h2>Most Recent Meeting: <%= link_to @meetings.maximum(:datetime).strftime('%d/%m/%Y'), @meetings.ordering{datetime.desc}.first %></h2>
+            <% if @next_meeting %>
+                <h2>Next Meeting: <%= link_to @next_meeting.datetime.strftime('%d/%m/%Y - %H:%M %p'), @next_meeting %></h2>
+            <% end %>
+            <% if @last_meeting %>
+              <h2>Last Meeting: <%= link_to @last_meeting.datetime.strftime('%d/%m/%Y - %H:%M %p'), @last_meeting %></h2>
             <% end %>
             <h2>Members Enrolled: <%= @initiative.users.count %></h2>
             <h2>Funders: <%= @initiative.initiative_funders.count %></h2>
