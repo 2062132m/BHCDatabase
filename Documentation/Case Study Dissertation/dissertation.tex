@@ -39,30 +39,45 @@ Maria Papadopoulou, 2136603p}
 
 \begin{abstract}
 
-Building Healthy Communities in Dumfries and Galloway is a community development programme which aims to advance the health and well-being of all individuals within its area, but particularly those in difficult circumstances. Its main goal is to improve the lives of people who may otherwise become isolated, by encouraging participation in initiatives which help keep them physically and mentally healthy while also promoting the creation and sustaining of social bonds. The programme consists of three different types of participants:
+Building Healthy Communities in Dumfries and Galloway is a community development programme which aims to advance the health and well-being of all individuals within its area, but particularly those in difficult circumstances. Its main goal is to improve the lives of people who may otherwise become isolated, by encouraging participation in initiatives which help keep them physically and mentally healthy, while also promoting the creation and sustaining of social bonds. The programme consists of three different types of participants:
 \begin{itemize}
 	\item Administrators
 	\item Volunteers
 	\item Members
 \end{itemize}
-Members are the individuals participating in the initiatives themselves. Volunteers run the initiatives and are responsible for tracking the members progress. They must inform administrators not only about the progress of the members but also about the whole process. Currently all this is being performed by hand. Administrators must manually input the data into a database, and also search the database using only inbuilt functions of the database software. This is a difficult and time consuming process.
+Members are the individuals participating in the initiatives themselves. Volunteers run the initiatives and are responsible for tracking the member?s progress and attendance. They must inform administrators not only about the progress of the members but also about the whole process. Currently all this is being performed by hand. Administrators must manually input the data into a database, and also search the database using only inbuilt functions of the database software. This is a difficult and time consuming process. 
 
-Our team was responsible for building a system to automate the input and retrieval of relevant data. We designed and implemented a system that accepts the current database, and allows it to be modified and extended. The system has the following features:
-\begin{itemize}
-	\item Registering new members and deleting those who leave the program
-	\item Keeping track of members' attendance
-	\item Keeping track of the progress of both members and volunteers
-	\item Deleting and adding initiatives
-	\item Searching the database for particular parameters and organising the information in an easy to read manner.
+Our team was responsible for building a system to automate the input and retrieval of relevant data. We designed and implemented a system that accepts the current database and allows it to be modified and extended. The system has different features for the different privileges each type of users have.\\
+An Administrator is able to : 
+\begin{itemize} 
+	\item Register new members and delete those who leave the program 
+	\item Delete and add initiatives
+	\item Search the database for particular parameters and organise the information 
+	\item Export graphs and tables into csv
+	\item Manage the fundings to particular initiative or a member	
+	\item Access all the given personal information of all users and make changes if necessary 
+	\item Keep track of the progress of both members and volunteers
+	\item Preview the answers from the feedback received
 \end{itemize}
-
+A Volunteer is able to : 
+\begin{itemize} 
+	\item Give feedback
+	\item Create a new session for initiatives they are assigned to
+	\item Keep track of members' attendance to those initiatives
+	\item Access restricted information about a user
+\end{itemize}
+An User is able to : 
+\begin{itemize} 
+	\item Give feedback
+	\item Make request to the Administrator if they wish to change their personal information
+\end{itemize}
 \end{abstract}
+
+\educationalconsent
 
 %% Comment out this line if you do not wish to give consent for your
 %% work to be distributed in electronic format.
-\educationalconsent
 
-\newpage
 
 %==============================================================================
 \section{Introduction}
@@ -78,19 +93,17 @@ Through the following pages, an explanation in more depth will be performed on h
 %% Incomplete paragraph
 %%A paragraph written in the end describing the structure of the paper
 
-Our dissertation is being divided..
-
 %==============================================================================
 \section{Case Study Background}
 
 \subsection{Customer Organisation and Background}
 \label{customer}
 
-Building Healthy Communities is an NHS programme based in Dumfries and Galloway, utilising the concept of 'Healthy Living Centres'. Founded in 2001, it is a partnership of public, community, and voluntary organisations that operates regionwide to improve the health, wellbeing and quality of life of all people, particularly those in difficult circumstances. The programme consists of a Regional Partnership of strategic and local representation to help shape and direct, and four local Area Partnerships operating across the region. These Area Partnerships co-ordinate and take collective action by creating intiatives to tackle community health issues and the root causes of ill health.
+Building Healthy Communities is a programme based in Dumfries and Galloway, utilising the concept of 'Healthy Living Centres'. Founded in 2001, it is a partnership of public, community, and voluntary organisations that operates regionwide to improve the health, wellbeing and quality of life of all people, particularly those in difficult circumstances. The programme consists of a Regional Partnership of strategic and local representation to help shape and direct, and four local Area Partnerships operating across the region. These Area Partnerships co-ordinate and take collective action by creating initiatives to tackle community health issues and the root causes of ill health.
 
-The primary method by which Building Healthy Communities tackles its main objective is the creation and running of health initiatives. These are regular events, run by community members, for community members, with the aim of bettering the leath of individuals and the community as a whole. They foster a sense of well-being, and focus on people who might not otherwise be engaged in social events and feel isolated. Individuals are given the opportunity to become Community Health Volunteers through training and one-to-one support. This allows members of the community to feel even more active and helpful in their community.
+The primary method by which Building Healthy Communities tackles its main objective is the creation and running of health initiatives. These are regular events, run by community members, for community members, with the aim of bettering the health of individuals and the community as a whole. They foster a sense of well-being, and focus on people who might not otherwise be engaged in social events and feel isolated. Individuals are given the opportunity to become Community Health Volunteers through training and one-to-one support. This allows members of the community to feel even more active and helpful in their community.
 
-While initiative events are run by volunteers from the local communities, the programme itself is run and maintained by a group of NHS employed administrators. These administrators are NHS employees, and have access to all the data produced by the programme. This includes the personal and medical details of all service users and volunteers, along with their feedback forms, and the funding status of every initiative. During the project execution, intermediate contact was taken with two of the programme's administrators. They attended each customer meeting, and were instrumental in the shaping of our product, providing requirements and feedback. There also was some incidental contact with another NHS employee from the same area running a different project, whose advice was of particular use when designing the database and deciding which informtaion needed to be included.
+While initiative events are run by volunteers from the local communities, the programme itself is run and maintained by a group of NHS employed administrators. These administrators are NHS employees, and have access to all the data produced by the programme. This includes the personal and medical details of all service users and volunteers, along with their feedback forms, and the funding status of every initiative. During the project execution, intermediate contact was taken with two of the programme's administrators. They attended each customer meeting, and were instrumental in the shaping of our product, providing requirements and feedback. There also was some incidental contact with another NHS employee from the same area running a different project, whose advice was of particular use when designing the database and deciding which informtation needed to be included.
 
 \subsection{Initial Objectives for the project}
 \label{objectives}
@@ -219,8 +232,8 @@ A couple of highly representative functional user stories are:
 \item As an administrator, I want to add a member to the database, so that they can join a group.
 
 	\begin{enumerate}
- 	\item Add an activity to add a person
- 	
+	\item Add an activity to add a person
+	
 	\item Add an activity to enter their information
 
 	\item Add an activity for choosing groups
@@ -303,9 +316,9 @@ After collecting all these useful information, the next process was ready to be 
 A sample screenshot of the index page which was presented to the customers can be found in Figure 1.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{wireframe.png}}
- \caption{Given structure of WireFrame}
- \label{fig:initialWireframe}
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{wireframe.png}}
+\caption{Given structure of WireFrame}
+\label{fig:initialWireframe}
 \end{figure}
 
 
@@ -325,19 +338,19 @@ An overall satisfaction was kept from both the team and the customers. After the
 \subsection{Objectives}
 \label{sec:objectives}
 
-During the next iteration, after a group discussion, the objectives for the next customer meeting were stated. ER (Entity-relationship) and Component diagrams were about to be designed for the documentation of the project. Particular team members were assigned with new issues to do that. Not only the diagrams were created, but also the designing and the coding for the application were in progress.  
+During the next iteration, after a group discussion, the objectives for the next customer meeting were stated. ER (Entity-relationship) and Component diagrams were about to be designed for the documentation of the project. Particular team members were assigned with new issues to do that. Not only the diagrams were created, but also the designing and the coding for the application were in progress. 
 
 \subsection{ER Diagram}
 \label{sec:er}
 
-An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team had started the development of the application only after an ER diagram was present to specify the structure of the database. 
+An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team had started the development of the application only after an ER diagram was present to specify the structure of the database.
 
 The ER diagram is shown in Figure 2.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
- \caption{Entity Relationship Diagram}
- \label{fig:er}
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
+\caption{Entity Relationship Diagram}
+\label{fig:er}
 \end{figure}
 
 The main aspect of the diagram is the initiatives, which are different courses that the program provides. They are specified with a name, ID and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. Each sessions has an ID, date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
@@ -350,9 +363,9 @@ In addition we decided to use Docker \cite{Docker} to aid the implementation of 
 All of those are illustrated in Figure 3 which demonstrates visually the component architecture of our application.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
- \caption{Component Architecturem}
- \label{fig:ca}
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
+\caption{Component Architecturem}
+\label{fig:ca}
 \end{figure}
 
 \subsection{Initial Prototype}
@@ -361,8 +374,8 @@ All of those are illustrated in Figure 3 which demonstrates visually the compone
 Having the basic database structure, initial prototypes of the page were created, in order to discuss potential design changes. The first version of the page can be found in Figure 4.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
- \caption{Initial Prototype}
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
+\caption{Initial Prototype}
 \end{figure}
 
 The initial page was very basic, not very colourful and errors containing. It was created to point out the idea of the design and to outline a vision of how the site would work. After that we added the colours following a similar theme as the blog, which the customers already had.
@@ -373,8 +386,8 @@ The initial page was very basic, not very colourful and errors containing. It wa
 The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the members would not be able to sign up, which had the consequence of deleting this feature. Furthermore, the home page and the login page have been merged into one single page in order to provide easier access for the customers. The new prototype can be found in Figure 5.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
- \caption{Second version of the prototype}
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
+\caption{Second version of the prototype}
 \end{figure}
 
 
@@ -394,7 +407,7 @@ The retrospective performed by the end of the second milestone, showed some lack
 \subsection{Objectives}
 \label{objectives}
 
-Before the beginning of the fourth milestone, the next objectives were outlined. Due to the fact that by the end of the current milestone a working version of the website was expected to be delivered,the main goals were to resolve opened issues that were raised from the previous retrospective and customer meeting. In the following weeks the website had all the added functionality created. The most critical issues that were raised is the newest demands that the customers were requested including the flag feature described above. 
+Before the beginning of the fourth milestone, the next objectives were outlined. Due to the fact that by the end of the current milestone a working version of the website was expected to be delivered,the main goals were to resolve opened issues that were raised from the previous retrospective and customer meeting. In the following weeks the website had all the added functionality created. The most critical issues that were raised is the newest demands that the customers were requested including the flag feature described above.
 
 
 \subsection{User Authentication}
@@ -412,8 +425,8 @@ A huge issue that was raised at that point, was the browser compatibility and mo
 An important amount of the user's site, will only have as a mean of access to the site their mobile phones. Thus, a good mobile compatibility is demanded. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility. An example screenshot can be found in Figure 6.
 
 \begin{figure}
- \centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
- \caption{Mobile Compatibility Prototype}
+\centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
+\caption{Mobile Compatibility Prototype}
 \end{figure}
 
 \subsection{Testing}
@@ -422,8 +435,8 @@ An important amount of the user's site, will only have as a mean of access to th
 It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the initial development states, every completed section was not considered to be fully complete until the proper testing were implemented. Providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in Figure 7 displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
- \caption{Increasing rate of costs in different software development stages }
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
+\caption{Increasing rate of costs in different software development stages }
 \end{figure}
 
 Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. The file created for the specific software is using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in the proposed project. Then, every time a commit or merge is triggered to the repository, tests are running to check whether there are issues. Furthermore, the team developed their own tests using mutants. The program has an impressive percentage of testing coverage reaching more than 90\%.
@@ -441,16 +454,15 @@ The fourth milestone was successfully completed with all its major goals succeed
 %==============================================================================
 \section{User Documentation}
 \label{sec:user_doc}
- 
 A very essential product that needed to be developed was the user documentation. Due to the fact that this is a university course, the software life cycle would not be strictly followed. For example, no future maintenance would take place. A well defined user documentation had to be produced. To put more depth, the documentation mainly explains how to navigate in the program and perform simple tasks such as adding a new user or deleting an old one. The documentation was given in the form of a small book. It is divided in three different parts, the administrator section, the volunteer and the member section. Three sections, each referring to one of the three different authentication types. The development of the documentation was based on a single principle, develop it such as every aspect, every word will be possibly read by a person who has no idea how to navigate through the site so he/she can understand and successfully complete their task. Due to the fact that this is a fund based program, many different people will have administrate the website through the years. Thus, a well understood user documentation is obligatory.
 Figure 8 contains a screenshot of the user manual.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{usermanual.jpg}}
- \caption{User Manual }
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{usermanual.jpg}}
+\caption{User Manual }
 \end{figure}
 
-Focusing on figure 8 which demonstrates an example page of the user documentation, we can observe that both text and screenshots are included, leading to a conclusion that the navigation is interactive, enabling the user to instantly locate the section that answers their question. 
+Focusing on figure 8 which demonstrates an example page of the user documentation, we can observe that both text and screenshots are included, leading to a conclusion that the navigation is interactive, enabling the user to instantly locate the section that answers their question.
 
 %==============================================================================
 \section{Formative Application Evaluation}
@@ -459,11 +471,11 @@ Focusing on figure 8 which demonstrates an example page of the user documentatio
 The Formative Application Evaluation is the stage when a developer receives objective feedback, useful comments and suggestions about their product.  After the successful early delivering of the application to the customers, the next step was creating a questionnaire. In combination with the simple user guide, an evaluation was performed. The evaluation was only performed from the customers. Due to the fact that the team had already discussed the design issues with them, the evaluation and questionnaire were mainly focused in the navigation and understanding of the page. On the  fourth customer meeting, the team leader performed a sample navigation to the page, explaining to the customers how the pages work.  Additionally, a user guide and a simple questionnaire was given. Our was to study whether the customers are able to navigate to the page and to what extent they are able to solve their issues using the user guide. The questionnaires were collected and studied.  The questionnaire was made via simple "Google Form" and can be found in Figure 9.
 
 \begin{figure}
- \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{evalQuestCustomers.jpg}}
- \caption{Evaluation Questionnaire for customers }
+\centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{evalQuestCustomers.jpg}}
+\caption{Evaluation Questionnaire for customers }
 \end{figure}
 
-As a consequence of having a small amount of responses, the results were rather qualitative than quantitative. The responses of the questionnaire showed no major issues except of the fact that they have asked for more features that again were not discussed in previous meetings. The team focused on solving the small navigation issues that the customers identified and left the new requirements on a side during time-constraints. 
+As a consequence of having a small amount of responses, the results were rather qualitative than quantitative. The responses of the questionnaire showed no major issues except of the fact that they have asked for more features that again were not discussed in previous meetings. The team focused on solving the small navigation issues that the customers identified and left the new requirements on a side during time-constraints.
 
 
 
@@ -490,13 +502,31 @@ Last but not least was the creation of a User Manual. Developing a user manual i
 \section{Final Customer Day}
 \label{sec:finalDay}
 
-On the 22nd of March the final demonstration of the product was performed. The teams had to present the website to the customers and demonstrators. The demonstration lasted approximately half an hour where the team leader demonstrated and delivered the final product to the customers.
+On the 22nd of March the final demonstration of the product was performed. The teams had to present the website to the customers and lecturers. The demonstration lasted approximately half an hour where each team demonstrated and delivered the final product to the customers and answered some questions from the audience.
 
-The final state of the product was a fully working software with some added functionality. As previously stated unfortunately the clients were constantly demanding new features. A big amount of them was managed to be delivered but due to time constraints the team mainly focused to deliver a fully working software with less functionality. Considering the fact that a major addition had to be done due to a mistake performed by the customers just eight days before the final customer day, not all the extra functionality that the customers required was added. The customers were informed of the time constraints, thus the new features was just a suggestion and not a demand resulting good relationships between the customers and the team.
+The final state of the product was a fully working software with some added functionality. As previously stated unfortunately the clients were constantly demanding new features. All the major and important features were successfully delivered on time. Considering the fact that a major addition had to be done due to a mistake performed by the customers just eight days before the final customer day, not all the extra functionality that the customers required was added. The customers were informed of the time constraints, thus a couple of minor features were just a suggestion and not a demand resulting good relationships between the customers and the team.
 
+During the demo the teams were graded on the following factors:
+\begin{itemize}
+	\item Clear explanation of motivation for project
+	\item Outline of key achievements and product features
+	\item Explanation of technical features/challenges
+	\item Live demonstration
+	\item Proposals for future work
+\item Effective use of visual aids
+\end{itemize}
+The demonstration lasted approximately 20 minutes and it was a combination of a seven minute presentation answering every graded factor plus thirteen minutes of live demonstration. The demonstration was consisted of three different parts:
 
+\begin{itemize}
+	\item Navigation through the administrator?s side
+	\item Navigation through the volunteer?s side
+	\item Navigation through the service user?s side
+\end{itemize}
 
-**** further additions of how the day was taken over ******
+Following was a five minute question allowance. An overall summary was that the customers? were satisfied of the overall progress. The lecturer was impressed with the high test coverage that the team managed to create.
+
+After the demonstration had finished, the customers expressed their gratitude to us for the work we had done. Upon request the deployment version was updated including the latest updates in order to enable the customers to test the application themselves.
+
 
 
 
@@ -505,7 +535,7 @@ The final state of the product was a fully working software with some added func
 
 Taking everything into account, designing and developing a software application wasn't an easy process. Considering the fact that the team was consisted of six novice students with no experience at all in using agile software programming, the resulting presented material was more than satisfactory. Having real customers with high demands was definitely a challenge. By the adaptation of several techniques and methodologies every difficulty was successfully confronted.
 
-Agile programming proved it self that is a very good practice to be followed from novice students. Pair programming played a critical role in terms of identifying bugs and errors in the code. By the early weeks the team lacked of organisation but the team reviewed some valuable Agile programming rules and with some team reorganisation valuable time was definitively saved. Communication was also identified to be extremely important, since many major issues that could not be solve from one, were solved from another. Although, at some point during the Christmas's break the team faced some communication issues, they were not considered important since the team was already in a very good position in the project so very few things were done during the break. Christmas break was mainly dedicated on revising and self studying about the project. Putting in practice so many technologies such as Ruby and Docker was undoubtedly one of the hardest task that the team had to undergo. Thus, during the Christmas break a wiki page was created which pointed out many useful sites for self-studying and self-practicing.
+Agile programming proved it self that is a very good practice to be followed from novice students. Pair programming played a critical role in terms of identifying bugs and errors in the code. By the early weeks the team lacked of organisation but the team reviewed some valuable Agile programming rules and with some team reorganisation valuable time was definitively saved. Communication was also identified to be extremely important, since many major issues that could not be solve from one, were solved from another. Although, at some point during the Christmas break the team faced some communication issues, they were not considered important since the team was already in a very good position in the project so very few things were done during the break. Christmas break was mainly dedicated on revising and self studying about the project. Putting in practice so many technologies such as Ruby and Docker was undoubtedly one of the hardest task that the team had to undergo. Thus, during the Christmas break a wiki page was created which pointed out many useful sites for self-studying and self-practicing.
 
 One of the best practices that were kept, was to strictly follow the university guidance and create test cases for each new aspect we created in the application. The test cases identified many bugs and errors which the team managed to successfully solve. Many other teams did not kept that practice and as a result many serious issues were not identified in advance resulting to the inability of delivering their software within the time constraints.
 
@@ -513,7 +543,7 @@ Furthermore, branching was another important practice that we kept. The team fol
 
 Delivering a software do not only demand to create a code but to create a software exactly the same with the customers visions, realistically of course. Despite the fact that the clients where characterised by politeness and cooperation, they were very high demanding. Until the very last week new features were requested. After endless hours of re-factoring the system the team managed to deliver as many features as they were able. The team learned that even with such demanding clients, you have to always tell the truth to the clients. When the team decides that due to time constraints a feature cannot be implemented or even when the team does not know how to implement a feature, the customers must be contacted and the issue must be discussed. Promising features that will never been delivered will result to a mistrustful relationship between the clients and the developing team. This experiences helped the team to realise that requirements negotiation is an important factor in the software development process.
 
-On the 24th of February the team managed to deliver a fully working website to the customers. Furthermore, on the 22 of March, final demonstration date, an improved website with added functionality was delivered to its final state.
+On the 24th of February the team managed to deliver a fully working website to the customers. Furthermore, on the 22nd of March, final demonstration date, an improved website with added functionality was delivered to its final state.
 
 To conclude, working with real clients, gave to each member the opportunity to develop a minor working experience, to realise how the future is going to be and develop the proper bases needed for working in a real company. Every student discovered in more depth their abilities and weakness and most importantly learned that a customer has not only a vision but also important requirements that need to be followed step by step. Everyone managed to develop professionalism were you have to constantly communicate with inexperienced customers and listen with respect their demands, even when they are impossible to be developed. Backtracking the experience, everyone managed to develop new skill that will be later used in their software engineering career.
 
@@ -615,3 +645,5 @@ Testing
 \fi
 
 \end{document}
+
+
