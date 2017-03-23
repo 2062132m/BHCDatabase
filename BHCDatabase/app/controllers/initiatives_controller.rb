@@ -31,7 +31,7 @@ class InitiativesController < ApplicationController
     @average_attendance = 0
     begin
       @initiative.meetings.each { |meeting| @average_attendance += meeting.attendance }
-      @average_attendance = @average_attendance / @initiative.meetings.count
+      @average_attendance /= @initiative.meetings.count
     rescue
       @average_attendance = 0
     end
