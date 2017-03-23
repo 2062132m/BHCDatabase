@@ -100,14 +100,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def archive
+    @user = User.find(params[:id])
+  end
+
   def update_archive
     @user = User.find(params[:id])
     if @user.update(archive_params)
       flash[:success] = 'Successfully updated the archived user'
+      redirect_to @user
     else
-      flash[:danger] = "An unknown error occurred and the user was not archived. Please try again later or contact support."
+      render 'archive'
     end
-    redirect_to @user
   end
 
   def unarchive
