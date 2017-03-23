@@ -24,7 +24,7 @@
           <table id="info-table">
             <tr>
               <td>Area:</td>
-              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to_if current_user.privilege == 0, @area.name, @area %></td>
+              <td><icon class="glyphicon glyphicon-home"></icon><%= link_to_if current_user.admin?, @area.name, @area %></td>
             </tr>
             <tr>
               <td>Location:</td>
@@ -69,14 +69,10 @@
             <h2>Total Meetings: <%= @initiative.meetings.count %></h2>
             <h2>Average Attendance: <%= @average_attendance %>%</h2>
             <h2>Members Unenrolled: <%= @initiative.unenrolments.count %></h2>
-            <% if current_user.admin? %>
+            <% if current_user.volunteer? %>
             <h2>
               Direct Funding:
-              <% i = 0 %>
-              <% @initiative.initiative_funders.each do |fund| %>
-                <%= fund.funder.name %><% unless i == @initiative.initiative_funders.length - 1 %>, <% end %>
-                <% i = i + 1 %>
-              <% end %>
+              <%= @initiative.funders.map(&:name).to_sentence %>
             </h2>
             <% end %>
           </div>
