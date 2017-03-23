@@ -12,18 +12,17 @@ class MeetingsController < ApplicationController
   def show
     @meeting = Meeting.find(params[:id])
     @initiative = Meeting.find(params[:id]).initiative
-    @users = @meeting.users.where(:archived => false)
+    @users = @meeting.users.where(archived: false)
     @attendance = Attendance.new
   end
 
   def new
     @meeting = Meeting.new
     @meetings = Initiative.find(params[:initiative_id]).meetings
-    if @meetings.count == 0
+    if @meetings.count.zero?
       @last_meeting_time = Time.zone.now
     else
-      @last_meeting_time = Initiative.find(params[:initiative_id]).meetings.last.datetime
-      @last_meeting_time = 1.weeks.since(@last_meeting_time)
+      @last_meeting_time = 1.weeks.since(@meetings.maximum(:datetime))
     end
   end
 

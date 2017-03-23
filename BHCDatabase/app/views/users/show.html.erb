@@ -239,41 +239,21 @@
                 <h2 id="show-details-title">Personal Details</h2>
                 <h2>
                   Enrolled Initiatives:
-                  <% i = 0 %>
-                  <% @user.initiatives.each do |init| %>
-                      <%= init.name %>
-                      <% unless i == @user.initiatives.length - 1 %>,
-                      <% end %>
-                      <% i = i + 1 %>
-                  <% end %>
+                  <%= @user.initiatives.map(&:name).to_sentence %>
                 </h2>
                 <h2>
                   Assigned Conditions:
-                  <% i = 0 %>
-                  <% @user.medical_conditions.each do |cond| %>
-                      <%= cond.name %>
-                      <% unless i == @user.medical_conditions.length - 1 %>,
-                      <% end %>
-                      <% i = i + 1 %>
-                  <% end %>
+                  <%= @user.medical_conditions.map(&:name).to_sentence %>
                 </h2>
                 <h2>
                   Direct Funding:
-                  <% i = 0 %>
-                  <% @user.user_funders.each do |fund| %>
-                      <%= fund.funder.name %>
-                      <% unless i == @user.user_funders.length - 1 %>,
-                      <% end %>
-                      <% i = i + 1 %>
-                  <% end %>
+                  <%= @user.user_funders.map(&:name).to_sentence %>
                 </h2>
                 <h2>
                   Feedbacks Completed:
                   <% i = 0 %>
                   <% @user.feedbacks.each do |feedback| %>
-                      <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %>
-                      <% unless i == @user.feedbacks.length - 1 %>,
-                      <% end %>
+                      <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %><% unless i == @user.feedbacks.length - 1 %>,<% end %>
                       <% i = i + 1 %>
                   <% end %>
                 </h2>
