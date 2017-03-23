@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.feedback_due = user_params[:privilege] != '2' ? nil : Date.today
+    @user.feedback_due = user_params[:privilege].to_i > 0 ? Date.today : nil
     if @user.update(user_params)
       flash[:success] = 'The users details were successfully updated'
     else
