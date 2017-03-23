@@ -92,14 +92,18 @@ class InitiativesController < ApplicationController
     redirect_to initiatives_url
   end
 
+  def archive
+    @initiative = Initiative.find(params[:id])
+  end
+
   def update_archive
     @initiative = Initiative.find(params[:id])
     if @initiative.update(archive_params)
       flash[:success] = 'Archived initiative was successfully updated'
+      redirect_to @initiative
     else
-      flash[:danger] = "An unknown error occurred and the archived initiative was not updated. Please try again later or contact support."
+      render 'archive'
     end
-    redirect_to @initiative
   end
 
   def unarchive
