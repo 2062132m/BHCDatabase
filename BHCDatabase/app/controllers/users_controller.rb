@@ -128,12 +128,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def update_password_temp
+  def change_password
     @user = User.find(params[:id])
     if @user.update(password_params)
       flash[:success] = 'The users password was changed!'
     else
-      flash[:danger] = "An unknown error occurred and the user's password was not changed. Please try again later or contact support."
+      render 'update_password'
+      return
     end
     redirect_to @user
   end

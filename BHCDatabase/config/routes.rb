@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :unarchive
       patch :update_archive
       get :update_password
+      patch :change_password
     end
   end
 
