@@ -6,6 +6,7 @@ class Initiative < ApplicationRecord
   has_many :unenrolments, dependent: :delete_all
   has_many :users, through: :enrolments
   has_many :initiative_funders, dependent: :delete_all
+  has_many :funders, through: :initiative_funders
   has_many :removed_initiative_fundings, dependent: :delete_all
 
   validates :name, presence: true, length: {maximum: 255}, uniqueness: {:scope => :location, case_sensitive: false}

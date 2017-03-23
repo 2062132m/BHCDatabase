@@ -49,6 +49,9 @@ class InitiativesController < ApplicationController
     @removed_funders_for_initiative_grid = RemovedFundingsForInitiativesGrid.new(params[:removed_fundings_for_initiatives_grid]) do |scope|
       scope.where(:id => @initiative.removed_initiative_fundings.ids)
     end
+
+    @last_meeting = @meetings.where.has{datetime <= Time.zone.now}.ordering{datetime.desc}.first
+    @next_meeting = @meetings.where.has{datetime >= Time.zone.now}.ordering{datetime.asc}.first
   end
 
   def new
