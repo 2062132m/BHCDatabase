@@ -12,7 +12,7 @@ class AreaArchiveTest < ActionDispatch::IntegrationTest
     assert_template 'areas/show'
     reason = 'a' * 256
     patch update_archive_area_path(@area), params: { area: { archived:  true, reason_archived: reason} }
-    assert_redirected_to @area
+    assert_template 'areas/archive'
     @area.reload
     assert_not @area.archived
     assert_not_equal reason,  @area.reason_archived
