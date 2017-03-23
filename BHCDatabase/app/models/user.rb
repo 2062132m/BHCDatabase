@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :feedbacks, dependent: :delete_all
   has_many :answers, through: :feedbacks
   has_many :user_funders, dependent: :delete_all
+  has_many :funders, through: :user_funders
   has_many :removed_user_fundings, dependent: :delete_all
 
   before_save { self.email = email.downcase }
