@@ -28,8 +28,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                                     aims: @service_user.aims,
                                                     aims_other: @service_user.aims_other,
                                                     privilege: @service_user.privilege}}
-    assert_not flash.empty?
-    assert_redirected_to @service_user
+    assert_template 'users/edit'
     @service_user.reload
     assert_not_equal @service_user.forename, ''
 

@@ -12,8 +12,8 @@ class UsersChangePasswordTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     oldpassword = @service_user.password_digest
     newpassword = 'abc'
-    patch update_password_user_path(@service_user), params: {user: {password: newpassword, password_confirmation: newpassword}}
-    assert_redirected_to @service_user
+    patch change_password_user_path(@service_user), params: {user: {password: newpassword, password_confirmation: newpassword}}
+    assert_template 'users/update_password'
     @service_user.reload
     assert_equal oldpassword, @service_user.password_digest
   end
@@ -23,7 +23,7 @@ class UsersChangePasswordTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     oldpassword = @service_user.password_digest
     newpassword = 'abc123'
-    patch update_password_user_path(@service_user), params: {user: {password: newpassword, password_confirmation: newpassword}}
+    patch change_password_user_path(@service_user), params: {user: {password: newpassword, password_confirmation: newpassword}}
     assert_redirected_to @service_user
     @service_user.reload
     assert_not_equal oldpassword, @service_user.password_digest
