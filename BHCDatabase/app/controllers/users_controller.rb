@@ -71,10 +71,10 @@ class UsersController < ApplicationController
     @user.feedback_due = Date.today unless user_params[:privilege].to_i == 0
     if @user.update(user_params)
       flash[:success] = 'The users details were successfully updated'
+      redirect_to @user
     else
-      flash[:danger] = "An unknown error occurred and the user was not updated. Please try again later or contact support."
+      render 'edit'
     end
-    redirect_to @user
   end
 
   def destroy
@@ -132,11 +132,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(password_params)
       flash[:success] = 'The users password was changed!'
+      redirect_to @user
     else
       render 'update_password'
-      return
     end
-    redirect_to @user
   end
 
   private
