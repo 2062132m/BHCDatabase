@@ -2,8 +2,8 @@
 
 one:
   medical_condition: one
-  user: one
+  user: service_user
 
 two:
   medical_condition: two
-  user: two
+  user: service_user2
