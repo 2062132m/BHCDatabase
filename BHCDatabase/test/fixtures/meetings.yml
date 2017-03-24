@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  initiative: one
   datetime: 2017-01-23 13:15:20
+  attendance: 0
 
 two:
+  initiative: two
   datetime: 2017-01-23 13:15:20
+  attendance: 50

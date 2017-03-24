@@ -12,6 +12,7 @@ class MeetingsNewTest < ActionDispatch::IntegrationTest
   test "one new meeting test" do
     get new_meeting_path, params: { initiative_id: @initiative_one.id }
     assert_difference 'Meeting.count', 1 do
+      # Create 1 meeting
       post meetings_path, params: { meeting: { initiative_id: @initiative_one.id, datetime: Time.zone.now }, weeks: 1 }
     end
     follow_redirect!
@@ -21,6 +22,7 @@ class MeetingsNewTest < ActionDispatch::IntegrationTest
   test "ten new meetings test" do
     get new_meeting_path, params: { initiative_id: @initiative_two.id }
     assert_difference 'Meeting.count', 10 do
+      #Create 10 meetngs
       post meetings_path, params: { meeting: { initiative_id: @initiative_two.id, datetime: Time.zone.now }, weeks: 10 }
     end
     follow_redirect!
