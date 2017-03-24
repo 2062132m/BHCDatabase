@@ -8,11 +8,11 @@ class MedicalConditionsGrid
   filter(:id, :string, :multiple => ',')
   filter(:name, :string) { |value| where.has { name =~ "%#{value}%" } }
 
-  column(:id, :mandatory => true) do |model|
+  column(:id) do |model|
     format(model.id) { |value| link_to value, model }
   end
-  column(:name, :mandatory => true) do |model|
+  column(:name) do |model|
     format(model.name) { |value| link_to value, model }
   end
-  column(:description, :mandatory => true)
+  column(:description)
 end
