@@ -2,8 +2,7 @@
 
 one:
   funder: one
-  medical_condition: one
 
 two:
   funder: two
-  medical_condition: two
+  medical_condition: one

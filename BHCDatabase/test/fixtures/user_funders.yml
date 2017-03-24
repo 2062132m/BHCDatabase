@@ -2,8 +2,7 @@
 
 one:
   funder: one
-  user: one
 
 two:
   funder: two
-  user: two
+  user: one
