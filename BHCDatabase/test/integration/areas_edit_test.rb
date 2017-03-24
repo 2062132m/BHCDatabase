@@ -11,7 +11,6 @@ class AreasEditTest < ActionDispatch::IntegrationTest
     get edit_area_path(@area)
     assert_template 'areas/edit'
     patch area_path(@area), params: { area: { name:  '', description: ''} }
-
     assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
     assert_template 'areas/edit'
@@ -20,11 +19,9 @@ class AreasEditTest < ActionDispatch::IntegrationTest
   test "successful edit" do
     get edit_area_path(@area)
     assert_template 'areas/edit'
-    name  = Faker::Address.city
-    description = Faker::Lorem.paragraph
-
+    name = 'example city'
+    description = 'example description'
     patch area_path(@area), params: { area: { name:  name, description: description} }
-
     assert_not flash.empty?
     assert_redirected_to @area
     @area.reload
