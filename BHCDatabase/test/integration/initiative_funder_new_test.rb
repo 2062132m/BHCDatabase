@@ -15,6 +15,8 @@ class InitiativeFunderNewTest < ActionDispatch::IntegrationTest
     assert_difference 'InitiativeFunder.count', 1 do
       post new_fund_initiative_funder_path, params: { initiative_funder: { funder_id: @funder_one.id, initiative_id: @initiative.id } }
     end
+    follow_redirect!
+    assert_template 'initiatives/show'
   end
 
   # Invalid in the sense that this funder is already funding the initiative
@@ -23,5 +25,7 @@ class InitiativeFunderNewTest < ActionDispatch::IntegrationTest
     assert_no_difference 'InitiativeFunder.count' do
       post new_fund_initiative_funder_path, params: { initiative_funder: { funder_id: @funder_two.id, initiative_id: @initiative.id } }
     end
+    follow_redirect!
+    assert_template 'initiatives/show'
   end
 end
