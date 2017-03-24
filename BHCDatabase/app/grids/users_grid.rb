@@ -28,11 +28,13 @@ class UsersGrid
   column(:dob) do |model|
     format(model.dob) { |value| value.strftime('%d/%m/%Y') }
   end
-  column(:privilege,
-         :header => 'Privileges <html><button button id="pop" data-placement="top" data-trigger="hover"
-                    data-toggle="popover" title="Levels of Privileges:"
-                    data-content="<b>LEVEL 0: </b>Admin <br>
-                    <b>LEVEL 1: </b>Volunteer <br>
-                    <b>LEVEL 2: </b>User <br>"> <span class="glyphicon glyphicon-question-sign"></span></button>
-                    <script>$("#pop").popover({html:true}); </script> </html>'.html_safe, :html => true,)
+  column(:privilege) do |value|
+    if value.privilege == 0
+      'Admin'
+    elsif value.privilege == 1
+      'Volunteer'
+    else
+      'Service User'
+    end
+  end
 end
