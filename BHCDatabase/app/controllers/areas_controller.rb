@@ -4,20 +4,19 @@ class AreasController < ApplicationController
   before_action :archive_redirect, only: [:show]
 
   def index
-    @areas = Area.all
-
-    # We create 2 grids, one for normal usage and one to be used for download
+    # Permit params to allow conversion to a hash
+    params[:areas_grid].permit! unless params[:areas_grid].nil?
+    # Instantiate the grid, without any archived rows
     @areas_grid = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
-    @areas_grid_csv = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
 
     respond_to do |f|
       f.html do
-        # Display the first grid as normal
+        # Display the grid as normal
         @areas_grid.scope { |scope| scope.page(params[:page]) }
       end
       f.csv do
-        # Send the second grid to csv format and allow to be downloaded
-        send_data @areas_grid_csv.to_csv,
+        # Upon csv url format, send the grid to a downloadable csv file
+        send_data @areas_grid.to_csv,
                   type: 'text/csv',
                   disposition: 'inline',
                   filename: "areas-#{Time.now.to_s}.csv"
