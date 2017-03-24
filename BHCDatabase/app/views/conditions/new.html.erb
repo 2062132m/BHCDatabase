@@ -1,5 +1,4 @@
 <% provide(:title, 'Assign Medical Condition') %>
-<% @user = User.find(params[:user_id]) %>
 <div id="newcontainer">
   <h1>Assign Condition</h1>
   <div class="stdcontainer">
@@ -12,33 +11,35 @@
   </div>
 </div>
 <script>
-// Bloodhound object used to parse JSON object
-var medical_conditions = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-  queryTokenizer: Bloodhound.tokenizers.whitespace,
-  identify: function(obj) { return obj.name; },
-  prefetch: '/medical_condition.json'  // get the medical_condition JSON object
-});
+    // Bloodhound object used to parse JSON object
+    var medical_conditions = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        identify: function (obj) {
+            return obj.name;
+        },
+        prefetch: '/medical_condition.json'  // get the medical_condition JSON object
+    });
 
-function namesWithDefaults(q, sync) {
-  if (q === '') {   // if the search field is empty, return all results
-    sync(medical_conditions.index.all());
-  }
+    function namesWithDefaults(q, sync) {
+        if (q === '') {   // if the search field is empty, return all results
+            sync(medical_conditions.index.all());
+        }
 
-  else {   // otherwise, search as normal
-    medical_conditions.search(q, sync);
-  }
-}
+        else {   // otherwise, search as normal
+            medical_conditions.search(q, sync);
+        }
+    }
 
-// initialise typeahead UI
-$('#condition-scrollable-dropdown-menu .typeahead').typeahead({
-  minLength: 0,
-  highlight: true
-},
-{
-  name: 'medical_condition',
-  displayKey: 'name',
-  limit: 500, // hard coded value, not sure how to get actual length of the json file
-  source: namesWithDefaults
-});
+    // initialise typeahead UI
+    $('#condition-scrollable-dropdown-menu .typeahead').typeahead({
+            minLength: 0,
+            highlight: true
+        },
+        {
+            name: 'medical_condition',
+            displayKey: 'name',
+            limit: 500, // hard coded value, not sure how to get actual length of the json file
+            source: namesWithDefaults
+        });
 </script>
