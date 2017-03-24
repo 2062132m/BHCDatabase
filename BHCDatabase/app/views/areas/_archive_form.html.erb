@@ -1,11 +1,13 @@
-<%= form_for @area, :url => {:action => "update_archive"} do |f| %>
+<%= form_for @area, url: {action: 'update_archive'} do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-column">
-      <%= f.hidden_field(:archived, :value => true) %>
+
+      <%= f.hidden_field(:archived, value: true) %>
 
       <%= f.label :reason_archived %>
-      <%= f.text_field :reason_archived, class: "form-control" %>
+      <%= f.text_field :reason_archived, class: 'form-control' %>
 
       <%= f.submit 'Submit', class: 'btn btn-default form-submit-btn' %>
+
     </div>
 <% end %>
