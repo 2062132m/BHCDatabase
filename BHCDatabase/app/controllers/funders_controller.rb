@@ -68,7 +68,8 @@ class FundersController < ApplicationController
       flash[:success] = 'Added Funding!'
       redirect_to @initiative_funder.initiative
     else
-      redirect_to :back
+      flash[:danger] = 'An unknown error has occured, the funder has not been added.'
+      redirect_to Initiative.find(initiative_funder_params[:initiative_id])
     end
   end
 

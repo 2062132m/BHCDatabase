@@ -2,8 +2,7 @@
 
 one:
   funder: one
-  initiative: one
 
 two:
   funder: two
-  initiative: two
+  initiative: one
