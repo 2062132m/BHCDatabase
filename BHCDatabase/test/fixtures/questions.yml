@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
   question: MyTextOne
-  visible: false
+  visible: true
+  question_type: 0
 
 two:
-  id: 2
   question: MyTextTwo
-  visible: false
+  visible: true
+  question_type: 0
