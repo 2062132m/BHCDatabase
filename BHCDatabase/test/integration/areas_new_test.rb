@@ -20,7 +20,7 @@ class AreasNewTest < ActionDispatch::IntegrationTest
   test "valid new area information" do
     get new_area_path
     assert_difference 'Area.count', 1 do
-      post areas_path, params: { area: { name: Faker::Name.name, description: Faker::Lorem.sentence} }
+      post areas_path, params: { area: { name: 'example name', description: 'example description' } }
     end
     follow_redirect!
     assert_template 'areas/show'

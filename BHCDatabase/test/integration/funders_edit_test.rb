@@ -13,10 +13,10 @@ class FundersEditTest < ActionDispatch::IntegrationTest
     get edit_funder_url(@funder_one)
     assert_template 'funders/edit'
     patch funder_url(@funder_one), params: { funder: { name: '',
-                                                       description: 'example sentence',
-                                                       email: 'example email',
+                                                       description: 'example description',
+                                                       email: 'example@example.com',
                                                        telephone: '0123456789',
-                                                       url: 'example url',
+                                                       url: 'https://www.example.com',
                                                        address: 'example address' } }
     assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
