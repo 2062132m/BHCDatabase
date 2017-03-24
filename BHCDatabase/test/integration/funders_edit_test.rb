@@ -12,25 +12,27 @@ class FundersEditTest < ActionDispatch::IntegrationTest
   test 'unsuccessul funder edit' do
     get edit_funder_url(@funder_one)
     assert_template 'funders/edit'
-    patch funder_url(@funder_one), params: {funder: {name: '',
-                                                     description: Faker::Lorem.sentence,
-                                                     email: Faker::Internet.email,
-                                                     telephone: Faker::PhoneNumber.phone_number,
-                                                     url: Faker::Internet.url,
-                                                     address: Faker::Lorem.sentence}}
+    patch funder_url(@funder_one), params: { funder: { name: '',
+                                                       description: 'example sentence',
+                                                       email: 'example email',
+                                                       telephone: '0123456789',
+                                                       url: 'example url',
+                                                       address: 'example address' } }
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
     assert_template 'funders/edit'
   end
 
   test 'successful funder edit' do
     get edit_funder_url(@funder_two)
     assert_template 'funders/edit'
-    description = Faker::Lorem.sentence
-    patch funder_url(@funder_two), params: {funder: {name: @funder_two.name,
-                                                     description: description,
-                                                     email: @funder_two.email,
-                                                     telephone: @funder_two.telephone,
-                                                     url: @funder_two.url,
-                                                     address: @funder_two.address}}
+    description = 'example description'
+    patch funder_url(@funder_two), params: { funder: { name: @funder_two.name,
+                                                       description: description,
+                                                       email: @funder_two.email,
+                                                       telephone: @funder_two.telephone,
+                                                       url: @funder_two.url,
+                                                       address: @funder_two.address } }
     assert_not flash.empty?
     assert_redirected_to @funder_two
     @funder_two.reload
