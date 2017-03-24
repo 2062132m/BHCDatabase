@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# AnswerTest is the model test for an answer
 class AnswerTest < ActiveSupport::TestCase
   def setup
     @answer = answers(:one)
