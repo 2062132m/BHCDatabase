@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AttendancessNewTest < ActionDispatch::IntegrationTest
+class AttendancesNewTest < ActionDispatch::IntegrationTest
 
   def setup
     @admin = users(:admin)
@@ -28,7 +28,20 @@ class AttendancessNewTest < ActionDispatch::IntegrationTest
       # Empty array to simulate empty attendance form
       post attendances_path, params: { meeting_id: @meeting.id, attendance: [] }
     end
-    # Ensuring the attendance has not changed
+    # Ensure the attendance has not changed
+    assert_equal 0, @meeting.attendance
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'meetings/show'
+  end
+
+  test "invalid new attendance test" do
+    get meeting_path(@meeting)
+    assert_difference 'Attendance.count', 0 do
+      # Invalid user_id to force error
+      post attendances_path, params: { meeting_id: @meeting.id, attendance: [-1] }
+    end
+    # Ensure the attendance has not changed
     assert_equal 0, @meeting.attendance
     follow_redirect!
     assert_not flash.empty?
