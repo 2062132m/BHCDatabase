@@ -5,4 +5,4 @@ one:
 
 two:
   funder: two
-  user: one
+  user: service_user
