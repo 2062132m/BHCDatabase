@@ -5,17 +5,17 @@ class EnrolmentsInUsersGrid
     Enrolment
   end
 
-  column(:initiative_id, :header => 'Initiative', :mandatory => true) do |model|
+  column(:initiative_id, :header => 'Initiative') do |model|
     format(model.initiative_id) do |value|
       init = Initiative.find(value)
       link_to init.name, init
     end
   end
-  column(:created_at, :header => 'Date Enrolled', :mandatory => true) do |model|
+  column(:created_at, :header => 'Date Enrolled') do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
   # Display button to unenrol a user from the initiative
-  column(:id, :header => 'Unenrol', :mandatory => true) do |model|
+  column(:id, :header => 'Unenrol') do |model|
     format(model.id) do |value|
       @enrolment = Enrolment.find(value)
       # Delete the enrolment, which will in turn create an 'unenrolment'

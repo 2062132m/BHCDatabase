@@ -5,17 +5,21 @@ class UsersController < ApplicationController
   before_action :archive_redirect, only: [:show]
 
   def index
-    # We create 2 grids, one for normal usage and one to be used for download
+
+    # Permit params to allow conversion to a hash
+    params[:users_grid].permit! unless params[:users_grid].nil?
+
+    # Instantiate the grid, without any archived rows
     @users_grid = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:archived => false) }
-    @users_grid_csv = UsersGrid.new(params[:users_grid]) { |scope| scope.where(:archived => false) }
+
     respond_to do |f|
       f.html do
-        # Display the first grid as normal
+        # Display the grid as normal
         @users_grid.scope { |scope| scope.page(params[:page]) }
       end
       f.csv do
-        # Send the second grid to csv format and allow to be downloaded
-        send_data @users_grid_csv.to_csv,
+        # Upon csv url format, send the grid to a downloadable csv file
+        send_data @users_grid.to_csv,
                   type: 'text/csv',
                   disposition: 'inline',
                   filename: "users-#{Time.now.to_s}.csv"

@@ -12,14 +12,14 @@ class FundersGrid
   filter(:email, :string) { |value| where.has { email =~ "%#{value}%" } }
   filter(:telephone, :string) { |value| where.has { telephone =~ "%#{value}%" }}
 
-  column(:id, :mandatory => true) do |model|
+  column(:id) do |model|
     format(model.id) { |value| link_to value, model }
   end
-  column(:name, :mandatory => true) do |model|
+  column(:name) do |model|
     format(model.name) { |value| link_to value, model }
   end
-  column(:address, :mandatory => true)
-  column(:url, :mandatory => true)
-  column(:email, :mandatory => true)
-  column(:telephone, :mandatory => true)
+  column(:address)
+  column(:url)
+  column(:email)
+  column(:telephone)
 end
