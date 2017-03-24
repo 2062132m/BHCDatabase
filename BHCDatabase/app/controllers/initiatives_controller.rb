@@ -5,18 +5,21 @@ class InitiativesController < ApplicationController
   before_action :archive_redirect, only: [:show]
 
   def index
-    @initiatives = Initiative.where(:archived => false)
-    # We create 2 grids, one for normal usage and one to be used for download
+
+    # Permit params to allow conversion to a hash
+    params[:initiatives_grid].permit! unless params[:initiatives_grid].nil?
+
+    # Instantiate the grid, without any archived rows
     @initiatives_grid = InitiativesGrid.new(params[:initiatives_grid]) { |scope| scope.where(:archived => false) }
-    @initiatives_grid_csv = InitiativesGrid.new(params[:initiatives_grid]) { |scope| scope.where(:archived => false) }
+
     respond_to do |f|
       f.html do
-        # Display the first grid as normal
+        # Display the grid as normal
         @initiatives_grid.scope { |scope| scope.page(params[:page]) }
       end
       f.csv do
-        # Send the second grid to csv format and allow to be downloaded
-        send_data @initiatives_grid_csv.to_csv,
+        # Upon csv url format, send the grid to a downloadable csv file
+        send_data @initiatives_grid.to_csv,
                   type: 'text/csv',
                   disposition: 'inline',
                   filename: "initiatives-#{Time.now.to_s}.csv"

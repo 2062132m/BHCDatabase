@@ -4,8 +4,10 @@ class AreasController < ApplicationController
   before_action :archive_redirect, only: [:show]
 
   def index
+
     # Permit params to allow conversion to a hash
     params[:areas_grid].permit! unless params[:areas_grid].nil?
+    
     # Instantiate the grid, without any archived rows
     @areas_grid = AreasGrid.new(params[:areas_grid]) { |scope| scope.where(:archived => false) }
 
