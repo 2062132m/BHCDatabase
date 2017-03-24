@@ -12,30 +12,30 @@
         <div class="col-md-6">
           <h2 id="show-title"><%= @area.name %></h2>
           <br>
-          <% if @area.archived %>
+          <% if @area.archived? %>
               <h4>This area has been archived.</h4>
               <h4>Reason: <%= @area.reason_archived %></h4>
           <% end %>
           <h2 id="graph-title">Number of Members (per initiative)</h2>
-          <%= column_chart @initiative_graph, download: true, xtitle: "Initiative", ytitle: "Number of Members" %>
+          <%= column_chart @initiative_graph, download: true, xtitle: 'Initiative', ytitle: 'Number of Members' %>
         </div>
         <div class="col-md-6">
           <div class="container-fluid buttons-container right-split">
-            <% if !@area.archived %>
-              <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_area_path, class: 'btn btn-default archive-btn' %>
-            <% else %>
+            <% if @area.archived %>
                 <%= link_to "<i class='glyphicon glyphicon-folder-open glyphicon-edit'></i> Unarchive".html_safe, unarchive_area_path, class: 'btn btn-default archive-btn' %>
+            <% else %>
+                <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_area_path, class: 'btn btn-default archive-btn' %>
             <% end %>
             <%= link_to "<i class='glyphicon glyphicon-trash'></i> Delete".html_safe, @area, method: :delete,
                         data: {confirm: "Are you sure you want to delete this area?
                                                         \nNote: All associated initiatives will be deleted!"},
-                        class: "btn btn-default delete-btn" %>
+                        class: 'btn btn-default delete-btn' %>
             <%= link_to "<i class='glyphicon glyphicon-edit'></i> Edit".html_safe, edit_area_path, class: 'btn btn-default edit-btn' %>
           </div>
           <div class="info-container">
             <h2>Description: <%= @area.description %></h2>
-            <h2>Initiatives in this Area: <%= @initiatives.count %></h2>
-            <h2>Users in this Area: <%= @users.count %></h2>
+            <h2>Initiatives in this Area: <%= @initiatives.size %></h2>
+            <h2>Users in this Area: <%= @users.size %></h2>
           </div>
         </div>
       </div>
