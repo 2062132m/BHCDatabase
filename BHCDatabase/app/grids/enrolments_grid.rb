@@ -9,23 +9,23 @@ class EnrolmentsGrid
   filter(:user, :integer, :multiple => ',')
   filter(:initiative, :integer, :multiple => ',')
 
-  column(:id, :mandatory => true)
-  column(:user_id, :header => 'User', :mandatory => true) do |model|
+  column(:id)
+  column(:user_id, :header => 'User') do |model|
     format(model.user_id) do |value|
       user = User.find(value)
       link_to user.known_as, user
     end
   end
-  column(:initiative_id, :header => 'Initiative', :mandatory => true) do |model|
+  column(:initiative_id, :header => 'Initiative') do |model|
     format(model.initiative_id) do |value|
       init = Initiative.find(value)
       link_to init.name, init
     end
   end
-  column(:created_at, :header => 'Enrolled', :mandatory => true) do |model|
+  column(:created_at, :header => 'Enrolled') do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
-  column(:created_at, :header => 'Un-Enrolled', :mandatory => true) do |model|
+  column(:created_at, :header => 'Un-Enrolled') do |model|
     format(model.updated_at) do |value|
       value == model.created_at ? 'Still Enrolled' : value.strftime('%d/%m/%Y - %H:%M')
     end

@@ -13,7 +13,7 @@
     <%= will_paginate @users_grid.assets %>
 
     <div class="CSV-container">
-      <%= link_to "<i class='glyphicon glyphicon-download-alt'></i> Download CSV".html_safe, url_for(format: 'csv', users_grid_csv: params[:users_grid]), class: "CSV" %>
+      <%= link_to "<i class='glyphicon glyphicon-download-alt'></i> Download CSV".html_safe, url_for(format: 'csv', users_grid: params[:users_grid].to_h), class: "CSV" %>
     </div>
   </div>
 </div>

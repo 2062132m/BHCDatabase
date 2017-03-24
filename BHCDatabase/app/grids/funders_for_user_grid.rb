@@ -5,15 +5,15 @@ class FundersForUserGrid
     UserFunder
   end
 
-  column(:funder_id, :mandatory => true) do |model|
+  column(:funder_id) do |model|
     format(model.funder_id) do
       link_to Funder.find(model.funder_id).name, Funder.find(model.funder_id)
     end
   end
-  column(:created_at, :mandatory => true, :header => 'Date Assigned') do |model|
+  column(:created_at, :header => 'Date Assigned') do |model|
     format(model.created_at) { |value| value.strftime('%d/%m/%Y - %H:%M') }
   end
-  column(:id, :header => 'Remove Funding', :mandatory => true) do |model|
+  column(:id, :header => 'Remove Funding') do |model|
     format(model.id) do |value|
       @user_funder = UserFunder.find(value)
       # Delete the condition, which will in turn create an 'unassigned_condition'

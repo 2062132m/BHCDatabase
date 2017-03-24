@@ -10,12 +10,12 @@ class QuestionsGrid
   filter(:visible, :boolean)
   filter(:question_type, :integer)
 
-  column(:id, :mandatory => true) do |model|
+  column(:id) do |model|
     format(model.id) { |value| link_to value, model }
   end
-  column(:question, :mandatory => true) do |model|
+  column(:question) do |model|
     format(model.question) { |value| link_to value, model }
   end
-  column(:visible, :mandatory => true)
-  column(:question_type, :mandatory => true)
+  column(:visible)
+  column(:question_type)
 end
