@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AttendancesRetakeTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
     @volunteer = users(:volunteer)
@@ -10,6 +9,8 @@ class AttendancesRetakeTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
   end
 
+  # Ensure attendances are deleted and attendance percentage is reset to 0
+  #   upon 'retaking' the attendance
   test "retake attendance test" do
     # Start by creating an attendance
     get meeting_path(@meeting)
@@ -21,12 +22,12 @@ class AttendancesRetakeTest < ActionDispatch::IntegrationTest
     @meeting.update_attributes(attendance: 50)
     follow_redirect!
     assert_template 'meetings/show'
-    # Delete the meeting and thus delete the attendances
-    assert_difference 'Attendance.count', -3 do
+    # Assert attendances are deleted upon deleting the meeting
+    assert_difference 'Attendance.count', -2 do
       delete meeting_url(@meeting)
     end
     @meeting.reload
-    # Ensure the attendance has been reset to 0
+    # Assert the attendance has been reset to 0
     assert_equal 0, @meeting.attendance
   end
 end
