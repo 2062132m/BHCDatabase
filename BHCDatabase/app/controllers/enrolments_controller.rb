@@ -3,7 +3,7 @@ class EnrolmentsController < ApplicationController
     @user = User.where(:known_as => enrolment_params[:user_id]).first
     @initiative = Initiative.where(:name => enrolment_params[:initiative_id]).first
 
-    if @initiative || @user
+    if @initiative && @user
       @enrolment = Enrolment.new(initiative_id: @initiative.id, user_id: @user.id)
     else
       flash[:danger] = "Either that initiative doesn't exist or you didn't select one"

@@ -9,6 +9,7 @@ class ConditionDeleteTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
   end
 
+  # Remove a condition and ensure a unassigned condition is also created
   test "delete condition test" do
     get user_path(@service_user)
     assert_difference 'Condition.count', -1 do
