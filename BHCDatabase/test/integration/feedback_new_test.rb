@@ -6,6 +6,7 @@ class FeedbackNewTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     @service_user = users(:service_user)
     @service_user_two = users(:service_user2)
+    @feedback = feedbacks(:two)
     log_in_as(@admin)
   end
 
@@ -25,9 +26,10 @@ class FeedbackNewTest < ActionDispatch::IntegrationTest
     assert_template 'feedbacks/show'
   end
 
-  test "access other feedback" do
+  # Ensure you can only view your own feedback
+  test "access other feedback show" do
     log_in_as(@service_user)
-    get new_feedback_path, params: { user_id: @service_user_two.id }
+    get feedback_path(@feedback)
     follow_redirect!
     assert_not flash.empty?
     assert_template 'users/show'
