@@ -6,9 +6,14 @@ class EnrolmentsController < ApplicationController
     if @initiative && @user
       @enrolment = Enrolment.new(initiative_id: @initiative.id, user_id: @user.id)
     else
-      flash[:danger] = "Either that initiative doesn't exist or you didn't select one"
-      redirect_to :back
-      return
+      if @initiative.nil?
+        flash[:danger] = "Either that initiative doesn't exist or you didn't select one"
+        redirect_to @user
+        return
+      else
+        flash[:danger] = "Either that user doesn't exist or you didn't select one"
+        redirect_to @initiative
+      end
     end
 
     if @enrolment.save
