@@ -3,7 +3,7 @@ require 'test_helper'
 # InitiativeFunderTest is the models for an initiative funder
 class InitiativeFunderTest < ActiveSupport::TestCase
   def setup
-    @initiative_funder = initiative_funders(:one)
+    @initiative_funder = initiative_funders(:two)
   end
 
   test 'should be valid' do
