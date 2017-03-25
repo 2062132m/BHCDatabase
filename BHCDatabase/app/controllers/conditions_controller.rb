@@ -16,7 +16,7 @@ class ConditionsController < ApplicationController
       @condition = Condition.new(medical_condition_id: @medical_condition.id, user_id: condition_params[:user_id])
     else
       flash[:danger] = "Either that condition doesn't exist or you didn't select one."
-      redirect_to :back
+      redirect_to User.find(condition_params[:user_id])
       return
     end
 
@@ -24,8 +24,8 @@ class ConditionsController < ApplicationController
       flash[:success] = 'Assigned the new condition!'
       redirect_to @condition.user
     else
-      flash[:danger] = 'An unknown error occurred and the condition was not successfully assigned. Please contact support.'
-      redirect_to :back
+      flash[:danger] = 'An unknown error occurred and the condition was not successfully assigned. Check the user does not already have this condition.'
+      redirect_to User.find(condition_params[:user_id])
     end
   end
 
