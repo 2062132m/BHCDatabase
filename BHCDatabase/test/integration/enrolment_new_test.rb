@@ -22,7 +22,7 @@ class EnrolmentNewTest < ActionDispatch::IntegrationTest
   end
 
   test "valid new enrolment (from initiative page) test" do
-    get user_path(@service_user)
+    get initiative_path(@initiative_one)
     get enrol_user_enrolment_path, params: { initiative_id: @initiative_one.id }
     assert_difference 'Enrolment.count', 1 do
       post enrolments_path, params: { enrolment: { initiative_id: @initiative_one.name, user_id: @service_user.known_as } }
@@ -33,11 +33,35 @@ class EnrolmentNewTest < ActionDispatch::IntegrationTest
   end
 
   # Where specified initiative doesn't exist
-  test "invalid new enrolment test" do
+  test "invalid new enrolment (from user page) test" do
     get user_path(@service_user)
     get enrol_initiative_enrolment_path, params: { user_id: @service_user.id }
     assert_no_difference 'Enrolment.count' do
       post enrolments_path, params: { enrolment: { initiative_id: '', user_id: @service_user.known_as } }
+    end
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
+  end
+
+  # Where specified user doesn't exist
+  test "invalid new enrolment (from initiative page) test" do
+    get initiative_path(@initiative_one)
+    get enrol_user_enrolment_path, params: { initiative_id: @initiative_one.id }
+    assert_no_difference 'Enrolment.count' do
+      post enrolments_path, params: { enrolment: { initiative_id: @initiative_one.name, user_id: '' } }
+    end
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'initiatives/show'
+  end
+
+  # Where user is already enrolled in the initiative
+  test "duplicate enrolment test" do
+    get user_path(@service_user)
+    get enrol_initiative_enrolment_path, params: { user_id: @service_user.id }
+    assert_no_difference 'Enrolment.count' do
+      post enrolments_path, params: { enrolment: { initiative_id: @initiative_two.name, user_id: @service_user.known_as } }
     end
     follow_redirect!
     assert_not flash.empty?

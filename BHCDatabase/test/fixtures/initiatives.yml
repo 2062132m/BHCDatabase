@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: MyStringOne
   description: MyText
   area: one
   location: MyLocationOne
 
 two:
-  name: MyString
+  name: MyStringTwo
   description: MyText
   area: one
   location: MyLocationTwo

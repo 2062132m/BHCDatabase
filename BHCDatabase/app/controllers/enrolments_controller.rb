@@ -13,6 +13,7 @@ class EnrolmentsController < ApplicationController
       else
         flash[:danger] = "Either that user doesn't exist or you didn't select one"
         redirect_to @initiative
+        return
       end
     end
 
@@ -21,7 +22,7 @@ class EnrolmentsController < ApplicationController
       redirect_to @enrolment.user
     else
       flash[:danger] = "An unknown error occurred and the user was not enrolled. Please try again later or contact support."
-      redirect_to :back
+      redirect_to @enrolment.user
     end
   end
 
