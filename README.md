@@ -2,8 +2,6 @@
 
 [![build status](http://localhost:8080/DaBrown95/BHCDatabase/badges/master/build.svg)](http://localhost:8080/DaBrown95/BHCDatabase/commits/master)
 
-"The following presentation presents a case study of building a database for the public health program "Building Healthy Communities". By the expression "case study" we mean the investigation of a person, group of people or a situation. The following report investigates the situation of creating a database. The team that is involved in this case study is "Team N" which consists of six, third year colleagues studying Computing Science in the University of Glasgow."
-
 To access our GitLab from a machine other than the lab machines, you should configure your .ssh/config file to look something like this,
 
     Host sibu
@@ -27,10 +25,7 @@ Once your conifg is configured, cloning the repo will be as simple as running th
             
 Once you have the source cloned, you can set up the app by running...
 
-    rails db:create
-    rails db:migrate
-    (can instead run rails db:setup which will migrate but also populate the db with the 4 initial areas and 6 user accounts for each developer. Email: forename@forename.com. Password: forename123).
-    rails start
+    bundle install --without production
+    rails db:steup
+    rails server
     
-Following the link provided you will come to our web app! Please don't look directly at the bugs.
-        

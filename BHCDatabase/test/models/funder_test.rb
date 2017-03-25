@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# FunderTest contains the model tests for a Funder
 class FunderTest < ActiveSupport::TestCase
 
   def setup
@@ -36,7 +37,7 @@ class FunderTest < ActiveSupport::TestCase
   end
 
   test "description shouldn't be too long" do
-    @funder.description = 'a' * 65537
+    @funder.description = 'a' * 65_537
     assert_not @funder.valid?
   end
 

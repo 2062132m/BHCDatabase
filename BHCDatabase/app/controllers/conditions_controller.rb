@@ -1,7 +1,8 @@
 class ConditionsController < ApplicationController
   def new
     @condition = Condition.new
-    @medical_conditions = MedicalCondition.where(:archived => false)
+    @medical_conditions = MedicalCondition.where(archived: false)
+    @user = User.find(params[:user_id])
 
     # Get all the medical_conditions and consolidate into a JSON object
     respond_to do |format|

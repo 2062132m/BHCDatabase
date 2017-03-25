@@ -1,3 +1,4 @@
+# Meeting is the generic model for a given 'meeting' of an initiative.
 class Meeting < ApplicationRecord
   belongs_to :initiative
 
@@ -5,5 +6,5 @@ class Meeting < ApplicationRecord
   has_many :users, through: :attendances
 
   validates :datetime, presence: true
-  validates :initiative_id, presence: true, uniqueness: {:scope => :datetime}
+  validates :initiative_id, presence: true, uniqueness: { scope: :datetime }
 end
