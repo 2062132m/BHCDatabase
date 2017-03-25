@@ -16,6 +16,7 @@ class UserFunderNewTest < ActionDispatch::IntegrationTest
       post new_fund_user_funder_path, params: { user_funder: { funder_id: @funder_one.id, user_id: @user.id } }
     end
     follow_redirect!
+    assert_not flash.empty?
     assert_template 'users/show'
   end
 
@@ -26,6 +27,7 @@ class UserFunderNewTest < ActionDispatch::IntegrationTest
       post new_fund_user_funder_path, params: { user_funder: { funder_id: @funder_two.id, user_id: @user.id } }
     end
     follow_redirect!
+    assert_not flash.empty?
     assert_template 'users/show'
   end
 end

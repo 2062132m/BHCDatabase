@@ -16,6 +16,7 @@ class InitiativeFunderNewTest < ActionDispatch::IntegrationTest
       post new_fund_initiative_funder_path, params: { initiative_funder: { funder_id: @funder_one.id, initiative_id: @initiative.id } }
     end
     follow_redirect!
+    assert_not flash.empty?
     assert_template 'initiatives/show'
   end
 
@@ -26,6 +27,7 @@ class InitiativeFunderNewTest < ActionDispatch::IntegrationTest
       post new_fund_initiative_funder_path, params: { initiative_funder: { funder_id: @funder_two.id, initiative_id: @initiative.id } }
     end
     follow_redirect!
+    assert_not flash.empty?
     assert_template 'initiatives/show'
   end
 end

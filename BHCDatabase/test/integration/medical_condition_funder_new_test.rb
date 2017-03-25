@@ -16,6 +16,7 @@ class MedicalConditionFunderNewTest < ActionDispatch::IntegrationTest
       post new_fund_medical_condition_funder_path, params: { medical_condition_funder: { funder_id: @funder_one.id, medical_condition_id: @medical_condition.id } }
     end
     follow_redirect!
+    assert_not flash.empty?
     assert_template 'medical_conditions/show'
   end
 
@@ -26,6 +27,7 @@ class MedicalConditionFunderNewTest < ActionDispatch::IntegrationTest
       post new_fund_medical_condition_funder_path, params: { medical_condition_funder: { funder_id: @funder_two.id, medical_condition_id: @medical_condition.id } }
     end
     follow_redirect!
+    assert_not flash.empty?
     assert_template 'medical_conditions/show'
   end
 end
