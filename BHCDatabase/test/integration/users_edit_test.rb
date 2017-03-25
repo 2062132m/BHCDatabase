@@ -1,17 +1,17 @@
 require 'test_helper'
 
 class UsersEditTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
-    @volunteer = users(:volunteer)
     @service_user = users(:service_user)
     log_in_as @admin
   end
 
+  # Ensure user editing should fail with invalid parameters
   test 'unsuccessful edit' do
     get user_path(@service_user)
     assert_template 'users/show'
+    # Surname cannot be blank
     patch user_path(@service_user), params: {user: {forename: @service_user.forename,
                                                     surname: '',
                                                     known_as: @service_user.known_as,
@@ -28,16 +28,18 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                                     aims: @service_user.aims,
                                                     aims_other: @service_user.aims_other,
                                                     privilege: @service_user.privilege}}
+    # Assert error message divs are displayed
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
+    # Assert we are redirected back to the edit page
     assert_template 'users/edit'
-    @service_user.reload
-    assert_not_equal @service_user.forename, ''
-
   end
 
+  # Ensure user editing is successful with valid parameters
   test 'successful edit' do
     get user_path(@service_user)
     assert_template 'users/show'
-    surname = Faker::Name.last_name
+    surname = 'example surname'
     patch user_path(@service_user), params: {user: {forename: @service_user.forename,
                                                     surname: surname,
                                                     known_as: @service_user.known_as,
@@ -57,6 +59,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to @service_user
     @service_user.reload
+    # Assert surname has been changed correctly
     assert_equal surname, @service_user.surname
   end
 

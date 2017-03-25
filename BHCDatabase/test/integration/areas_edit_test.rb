@@ -7,15 +7,20 @@ class AreasEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
   end
 
+  # Ensure area editing should fail with invalid parameters
   test "unsuccessful edit" do
     get edit_area_path(@area)
     assert_template 'areas/edit'
+    # Name/description cannot be blank
     patch area_path(@area), params: { area: { name:  '', description: ''} }
+    # Assert error message divs are displayed
     assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
+    # Assert we are redirected back to the edit page
     assert_template 'areas/edit'
   end
 
+  # Ensure area editing is successful with valid parameters
   test "successful edit" do
     get edit_area_path(@area)
     assert_template 'areas/edit'
@@ -25,7 +30,9 @@ class AreasEditTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to @area
     @area.reload
+    # Assert name has been changed correctly
     assert_equal name,  @area.name
+    # Assert description has been changed correctly
     assert_equal description, @area.description
   end
 end
