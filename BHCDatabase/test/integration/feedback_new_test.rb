@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class FeedbackNewTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
     @service_user = users(:service_user)
@@ -19,7 +18,7 @@ class FeedbackNewTest < ActionDispatch::IntegrationTest
                 '1' => { question_id: @question_two.id, response: 'example' } }
     assert_difference 'Feedback.count', 1 do
       post feedbacks_path, params: { feedback: { user_id: @service_user.id,
-                                                 answers_attributes: answers }}
+                                                 answers_attributes: answers } }
     end
     follow_redirect!
     assert_not flash.empty?
@@ -38,7 +37,22 @@ class FeedbackNewTest < ActionDispatch::IntegrationTest
   # Ensure you can only get new for your own feedback
   test 'access other feedback new' do
     log_in_as @service_user
-    get new_feedback_url, params: {user_id: @service_user2.id}
+    get new_feedback_url, params: { user_id: @service_user2.id }
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
+  end
+
+  # Ensure you can only create for your feedback
+  test 'access other feedback create' do
+    log_in_as @service_user
+    get new_feedback_path, params: { user_id: @service_user.id }
+    answers = { '0' => { question_id: @question_one.id, response: 'example' },
+                '1' => { question_id: @question_two.id, response: 'example' } }
+    assert_difference 'Feedback.count', 0 do
+      post feedbacks_path, params: { feedback: { user_id: @service_user2.id,
+                                                 answers_attributes: answers } }
+    end
     follow_redirect!
     assert_not flash.empty?
     assert_template 'users/show'
