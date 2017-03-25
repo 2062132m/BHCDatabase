@@ -5,12 +5,19 @@ class ConditionDeleteTest < ActionDispatch::IntegrationTest
   def setup
     @admin = users(:admin)
     @service_user = users(:service_user)
-    @medical_condition_one = medical_conditions(:one)
-    @medical_condition_two = medical_conditions(:two)
+    @condition = conditions(:two)
     log_in_as(@admin)
   end
 
   test "delete condition test" do
     get user_path(@service_user)
+    assert_difference 'Condition.count', -1 do
+      assert_difference 'UnassignedCondition.count', 1 do
+        delete condition_path(@condition)
+      end
+    end
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
   end
 end

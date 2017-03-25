@@ -45,7 +45,7 @@ class ConditionsController < ApplicationController
     else
       flash[:danger] = "An unknown error occurred and the condition wasn't successfully unassigned. Please contact support."
     end
-    redirect_to :back
+    redirect_to User.find(@condition.user_id)
   end
 
   private
