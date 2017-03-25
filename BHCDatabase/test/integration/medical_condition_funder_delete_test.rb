@@ -13,7 +13,9 @@ class MedicalConditionFunderDeleteTest < ActionDispatch::IntegrationTest
   test "delete medical condition funder test" do
     get medical_condition_path(@medical_condition)
     assert_difference 'MedicalConditionFunder.count', -1 do
-      get remove_medical_funding_funder_path(@funder_two), params: { medical_condition_id: @medical_condition.id }
+      assert_difference 'RemovedMedicalFunding.count', 1 do
+        get remove_medical_funding_funder_path(@funder_two), params: { medical_condition_id: @medical_condition.id }
+      end
     end
     follow_redirect!
     assert_not flash.empty?

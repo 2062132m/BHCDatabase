@@ -13,7 +13,9 @@ class UserFunderDeleteTest < ActionDispatch::IntegrationTest
   test "delete user funder test" do
     get user_path(@user)
     assert_difference 'UserFunder.count', -1 do
-      get remove_user_funding_funder_path(@funder_two), params: { user_id: @user.id }
+      assert_difference 'RemovedUserFunding.count', 1 do
+        get remove_user_funding_funder_path(@funder_two), params: { user_id: @user.id }
+      end
     end
     follow_redirect!
     assert_not flash.empty?

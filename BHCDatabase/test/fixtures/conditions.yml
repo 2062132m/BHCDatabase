@@ -2,8 +2,7 @@
 
 one:
   medical_condition: one
-  user: one
 
 two:
   medical_condition: two
-  user: two
+  user: service_user

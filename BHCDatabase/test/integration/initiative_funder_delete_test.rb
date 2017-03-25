@@ -13,7 +13,9 @@ class InitiativeFunderDeleteTest < ActionDispatch::IntegrationTest
   test "delete initiative funder test" do
     get initiative_path(@initiative)
     assert_difference 'InitiativeFunder.count', -1 do
-      get remove_initiative_funding_funder_path(@funder_two), params: { initiative_id: @initiative.id }
+      assert_difference 'RemovedInitiativeFunding.count', 1 do
+        get remove_initiative_funding_funder_path(@funder_two), params: { initiative_id: @initiative.id }
+      end
     end
     follow_redirect!
     assert_not flash.empty?
