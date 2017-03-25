@@ -21,7 +21,7 @@ class EnrolmentsController < ApplicationController
       flash[:success] = 'Created the new enrolment!'
       redirect_to @enrolment.user
     else
-      flash[:danger] = "An unknown error occurred and the user was not enrolled. Please try again later or contact support."
+      flash[:danger] = "An unknown error occurred and the user was not enrolled. Check this user has not already been enrolled."
       redirect_to @enrolment.user
     end
   end
@@ -63,7 +63,7 @@ class EnrolmentsController < ApplicationController
     else
       flash[:danger] = "An unknown error occurred the user was not un-enrolled. Please try again later or contact support."
     end
-    redirect_to :back
+    redirect_to User.find(@un_enrolment.user_id)
   end
 
   private
