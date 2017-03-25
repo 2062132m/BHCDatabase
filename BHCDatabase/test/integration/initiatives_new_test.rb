@@ -27,6 +27,7 @@ class InitiativesNewTest < ActionDispatch::IntegrationTest
     assert_template 'initiatives/show'
   end
 
+  # Ensure a volunteer can't access initiatives other than the ones they run
   test "access other initiative" do
     log_in_as(@volunteer)
     get initiative_path(@initiative)

@@ -4,8 +4,10 @@ class MeetingsNewTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:admin)
+    @volunteer = users(:volunteer)
     @initiative_one = initiatives(:one)
     @initiative_two = initiatives(:two)
+    @meeting = meetings(:one)
     log_in_as(@user)
   end
 
@@ -27,5 +29,21 @@ class MeetingsNewTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'meetings/show'
+  end
+
+  test "access other initiative" do
+    log_in_as(@volunteer)
+    get new_meeting_path, params: { initiative_id: @initiative_two.id }
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
+  end
+
+  test "access other meeting" do
+    log_in_as(@volunteer)
+    get meeting_path(@meeting)
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
   end
 end
