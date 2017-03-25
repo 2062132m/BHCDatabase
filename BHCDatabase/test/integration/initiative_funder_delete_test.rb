@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class InitiativeFunderDeleteTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
     @initiative = initiatives(:one)
