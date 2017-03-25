@@ -3,6 +3,8 @@ require 'test_helper'
 class InitiativesNewTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:admin)
+    @volunteer = users(:volunteer)
+    @initiative = initiatives(:one)
     log_in_as(@user)
   end
 
@@ -23,5 +25,13 @@ class InitiativesNewTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'initiatives/show'
+  end
+
+  test "access other initiative" do
+    log_in_as(@volunteer)
+    get initiative_path(@initiative)
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
   end
 end
