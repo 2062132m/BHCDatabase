@@ -3,7 +3,7 @@ require 'test_helper'
 # MedicalConditionFunderTest is the model tests for MedicalConditionFunders
 class MedicalConditionFunderTest < ActiveSupport::TestCase
   def setup
-    @medical_condition_funder = medical_condition_funders(:one)
+    @medical_condition_funder = medical_condition_funders(:two)
   end
 
   test 'should be valid' do
