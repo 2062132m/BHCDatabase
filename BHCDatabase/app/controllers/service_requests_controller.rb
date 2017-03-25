@@ -1,10 +1,6 @@
 class ServiceRequestsController < ApplicationController
   skip_before_action :admin_only
 
-  def show
-    @service_request = ServiceRequest.find(params[:user_id])
-  end
-
   def new
     @service_request = ServiceRequest.new
   end
