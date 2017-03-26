@@ -4,7 +4,7 @@ require 'test_helper'
 #   holding the special attributes that a volunteer user should have.
 class VolunteerTest < ActiveSupport::TestCase
   def setup
-    @volunteer = volunteers(:one)
+    @volunteer = volunteers(:two)
   end
 
   test 'should be valid' do
@@ -84,5 +84,13 @@ class VolunteerTest < ActiveSupport::TestCase
   test 'induction_completed should be present' do
     @volunteer.induction_completed = nil
     assert_not @volunteer.valid?
+  end
+
+  test 'should not allow duplicate users' do
+    @duplicate_volunteer = @volunteer.dup
+    assert_not @duplicate_volunteer.valid?
+    assert_no_difference 'Volunteer.count' do
+      @duplicate_volunteer.save
+    end
   end
 end
