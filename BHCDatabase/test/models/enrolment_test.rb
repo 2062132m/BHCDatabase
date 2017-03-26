@@ -19,4 +19,12 @@ class EnrolmentTest < ActiveSupport::TestCase
     @enrolment.initiative = nil
     assert_not @enrolment.valid?
   end
+
+  test 'index on user and initiative' do
+    @duplicate_enrolment = @enrolment.dup
+    assert_not @duplicate_enrolment.valid?
+    assert_no_difference 'Enrolment.count' do
+      @duplicate_enrolment.save
+    end
+  end
 end
