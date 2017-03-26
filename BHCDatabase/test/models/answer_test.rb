@@ -29,4 +29,13 @@ class AnswerTest < ActiveSupport::TestCase
     @answer.feedback = nil
     assert @answer.valid?
   end
+
+  test 'index on feedback and question' do
+    @duplicate_answer = @answer.dup
+    @duplicate_answer.response = @duplicate_answer.response.upcase
+    assert_not @duplicate_answer.valid?
+    assert_no_difference 'Answer.count' do
+      @duplicate_answer.save
+    end
+  end
 end
