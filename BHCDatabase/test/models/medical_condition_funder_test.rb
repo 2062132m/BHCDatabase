@@ -19,4 +19,12 @@ class MedicalConditionFunderTest < ActiveSupport::TestCase
     @medical_condition_funder.medical_condition = nil
     assert_not @medical_condition_funder.valid?
   end
+
+  test 'index on medical condition and funder' do
+    @duplicate_funder = @medical_condition_funder.dup
+    assert_not @duplicate_funder.valid?
+    assert_no_difference 'MedicalConditionFunder.count' do
+      @duplicate_funder.save
+    end
+  end
 end
