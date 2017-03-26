@@ -68,7 +68,8 @@ class FundersController < ApplicationController
       flash[:success] = 'Added Funding!'
       redirect_to @initiative_funder.initiative
     else
-      redirect_to :back
+      flash[:danger] = 'An unknown error has occured, check this funder is not already funding this initiative.'
+      redirect_to Initiative.find(initiative_funder_params[:initiative_id])
     end
   end
 
@@ -79,7 +80,8 @@ class FundersController < ApplicationController
       flash[:success] = 'Added Funding!'
       redirect_to @medical_condition_funder.medical_condition
     else
-      redirect_to :back
+      flash[:danger] = 'An unknown error has occured, check this funder is not already funding this medical condition.'
+      redirect_to MedicalCondition.find(medical_condition_funder_params[:medical_condition_id])
     end
   end
 
@@ -90,7 +92,8 @@ class FundersController < ApplicationController
       flash[:success] = 'Added Funding!'
       redirect_to @user_funder.user
     else
-      redirect_to :back
+      flash[:danger] = 'An unknown error has occured, check this funder is not already funding this user.'
+      redirect_to User.find(user_funder_params[:user_id])
     end
   end
 

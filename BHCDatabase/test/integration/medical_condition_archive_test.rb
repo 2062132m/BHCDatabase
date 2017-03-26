@@ -44,5 +44,4 @@ class MedicalConditionArchiveTest < ActionDispatch::IntegrationTest
     assert_not @medical_condition.archived
     assert_not_equal reason,  @medical_condition.reason_archived
   end
-
 end

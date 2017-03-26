@@ -5,10 +5,6 @@ class MeetingsController < ApplicationController
   before_action :correct_meeting_only, only: [:show]
   before_action :correct_initiative_only, only: [:new]
 
-  def index
-    @meetings = Meeting.all
-  end
-
   def show
     @meeting = Meeting.find(params[:id])
     @initiative = Meeting.find(params[:id]).initiative

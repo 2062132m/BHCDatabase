@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MedicalConditionNewTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:admin)
     log_in_as(@user)
@@ -27,5 +26,4 @@ class MedicalConditionNewTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'medical_conditions/show'
   end
-
 end

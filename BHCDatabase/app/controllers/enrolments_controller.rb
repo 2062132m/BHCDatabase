@@ -3,20 +3,26 @@ class EnrolmentsController < ApplicationController
     @user = User.where(:known_as => enrolment_params[:user_id]).first
     @initiative = Initiative.where(:name => enrolment_params[:initiative_id]).first
 
-    if @initiative || @user
+    if @initiative && @user
       @enrolment = Enrolment.new(initiative_id: @initiative.id, user_id: @user.id)
     else
-      flash[:danger] = "Either that initiative doesn't exist or you didn't select one"
-      redirect_to :back
-      return
+      if @initiative.nil?
+        flash[:danger] = "Either that initiative doesn't exist or you didn't select one"
+        redirect_to @user
+        return
+      else
+        flash[:danger] = "Either that user doesn't exist or you didn't select one"
+        redirect_to @initiative
+        return
+      end
     end
 
     if @enrolment.save
       flash[:success] = 'Created the new enrolment!'
       redirect_to @enrolment.user
     else
-      flash[:danger] = "An unknown error occurred and the user was not enrolled. Please try again later or contact support."
-      redirect_to :back
+      flash[:danger] = "An unknown error occurred and the user was not enrolled. Check this user has not already been enrolled."
+      redirect_to @enrolment.user
     end
   end
 
@@ -57,7 +63,7 @@ class EnrolmentsController < ApplicationController
     else
       flash[:danger] = "An unknown error occurred the user was not un-enrolled. Please try again later or contact support."
     end
-    redirect_to :back
+    redirect_to User.find(@un_enrolment.user_id)
   end
 
   private

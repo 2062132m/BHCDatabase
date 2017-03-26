@@ -55,6 +55,7 @@ service_user2:
   forename: Service-User2
   surname: Example2
   email: serviceuse2r@example.com
+  known_as: Ex456
   telephone: 987654321
   emergency_name: Example contact2
   emergency_telephone: 0987654321

@@ -5,17 +5,20 @@ class AttendancesController < ApplicationController
     # The number of users who attended this particular meeting
     num_attendees = 0
 
+    # Get the current meeting
+    @meeting = Meeting.find(params[:meeting_id])
+
     # If at least one name was checked
     if params[:attendance].nil?
       flash[:danger] = 'Please select at least one attendant'
-      redirect_to :back
+      redirect_to @meeting
     else
       params[:attendance].each do |user_id|
         # Create a new attendance object
         @attendance = Attendance.new(:user_id => user_id, :meeting_id => params[:meeting_id])
         unless @attendance.save
           flash[:danger] = 'An unknown error occurred. Please try again later or contact support.'
-          redirect_to Meeting.find(params[:meeting_id])
+          redirect_to @meeting
           return
         end
         # Total the number of attendants
@@ -33,7 +36,7 @@ class AttendancesController < ApplicationController
       else
         flash[:danger] = "An unknown error occurred and attendance wasn't calculated. Please try again later or contact support."
       end
-      redirect_to Meeting.find(params[:meeting_id])
+      redirect_to @meeting
     end
   end
 end

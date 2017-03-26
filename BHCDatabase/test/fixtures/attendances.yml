@@ -3,7 +3,3 @@
 one:
   user: service_user
   meeting: one
-
-two:
-  user: two
-  meeting: two

@@ -3,12 +3,16 @@ require 'test_helper'
 class InitiativesNewTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:admin)
+    @volunteer = users(:volunteer)
+    @initiative = initiatives(:one)
     log_in_as(@user)
   end
 
+  # Ensure initiative should fail with invalid parameters
   test 'invalid new initiative information' do
     get new_initiative_path
     assert_no_difference 'Initiative.count' do
+      # None of these parameters can be blank
       post initiatives_path, params: { initiative: {name: '', description:'', area_id:'', location:''}}
     end
     assert_template 'initiatives/new'
@@ -23,5 +27,15 @@ class InitiativesNewTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'initiatives/show'
+  end
+
+  # Ensure a volunteer can't access initiatives other than the ones they run
+  test "access other initiative" do
+    log_in_as(@volunteer)
+    # Volunteer does not belong to initiative
+    get initiative_path(@initiative)
+    follow_redirect!
+    assert_not flash.empty?
+    assert_template 'users/show'
   end
 end

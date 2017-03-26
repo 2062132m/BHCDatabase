@@ -28,5 +28,4 @@ class UsersChangePasswordTest < ActionDispatch::IntegrationTest
     @service_user.reload
     assert_not_equal oldpassword, @service_user.password_digest
   end
-
 end
