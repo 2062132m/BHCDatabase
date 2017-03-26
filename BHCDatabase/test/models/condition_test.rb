@@ -19,4 +19,12 @@ class ConditionTest < ActiveSupport::TestCase
     @condition.user = nil
     assert_not @condition.valid?, @condition.errors.full_messages.inspect
   end
+
+  test 'index on medical_condition and user' do
+    @duplicate_condition = @condition.dup
+    assert_not @duplicate_condition.valid?
+    assert_no_difference 'Condition.count' do
+      @duplicate_condition.save
+    end
+  end
 end
