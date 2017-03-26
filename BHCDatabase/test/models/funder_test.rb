@@ -41,4 +41,14 @@ class FunderTest < ActiveSupport::TestCase
     assert_not @funder.valid?
   end
 
+  test 'index on name and email' do
+    @duplicate_funder = @funder.dup
+    assert_not @duplicate_funder.valid?
+    assert @duplicate_funder.name == @funder.name
+    assert @duplicate_funder.email == @funder.email
+    assert_no_difference 'Funder.count' do
+      @duplicate_funder.save
+    end
+  end
+
 end
