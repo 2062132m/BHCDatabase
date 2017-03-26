@@ -32,7 +32,7 @@ class UnenrolmentTest < ActiveSupport::TestCase
     assert_raises(Exception) { @unenroled.date_enrolled.to_datetime }
   end
 
-  test 'should allow from same initiative' do
+  test 'should allow several un-enrolments from same initiative' do
     @duplicate_un = @unenroled.dup
     @duplicate_un.date_enrolled = '2016-01-23 13:15:20'
     assert @duplicate_un.valid?

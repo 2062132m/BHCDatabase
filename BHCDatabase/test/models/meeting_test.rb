@@ -3,9 +3,11 @@ require 'test_helper'
 # MeetingTest is the model test for a generic meeting/session.
 class MeetingTest < ActiveSupport::TestCase
   def setup
-    @area = Area.create(name: 'Example Area', description: 'Example description')
+    @area = Area.create(name: 'Example Area',
+                        description: 'Example description')
     @initiative = Initiative.create(name: 'Example Initiative',
-                                    description: 'Example description.', area_id: @area.id, location: 'TestTest')
+                                    description: 'Example description.',
+                                    area_id: @area.id, location: 'TestTest')
     @meeting = @initiative.meetings.create(datetime: Time.now)
   end
 
@@ -35,6 +37,7 @@ class MeetingTest < ActiveSupport::TestCase
     assert_raises(Exception) { @meeting.datetime.to_datetime }
   end
 
+  # Tests that two meetings for an initiative at can't happen at the same time.
   test 'index on initiative and time' do
     @duplicate_meeting = @meeting.dup
     assert @duplicate_meeting.datetime == @meeting.datetime

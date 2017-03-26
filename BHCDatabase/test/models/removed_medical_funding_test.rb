@@ -1,6 +1,7 @@
 require 'test_helper'
 
-# RemovedMedicalFundingTest is the generic model test for a removed medical funder.
+# RemovedMedicalFundingTest is the generic model test for a removed
+#   medical funder.
 class RemovedMedicalFundingTest < ActiveSupport::TestCase
   def setup
     @removed_med_funder = removed_medical_fundings(:one)

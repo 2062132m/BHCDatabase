@@ -2,7 +2,6 @@ require 'test_helper'
 
 # UserTest is the model test for a generic user.
 class UserTest < ActiveSupport::TestCase
-
   def setup
     @user = User.new(forename: Faker::Name.first_name,
                      surname: Faker::Name.last_name,
@@ -81,7 +80,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test 'doesnt need to have feedback_due' do
+  test 'does not need to have feedback_due' do
     @user.privilege = 0
     @user.feedback_due = nil
     assert @user.valid?

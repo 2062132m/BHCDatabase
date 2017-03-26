@@ -30,6 +30,7 @@ class AreaTest < ActiveSupport::TestCase
     assert_not @area.valid?
   end
 
+  # Tests that duplicate area names are not allowed.
   test 'index on name' do
     @area2 = Area.new(name: @area.name, description: 'Fake description')
     assert_not @area2.description == @area.description

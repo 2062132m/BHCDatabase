@@ -20,6 +20,7 @@ class UserFunderTest < ActiveSupport::TestCase
     assert_not @user_funder.valid?
   end
 
+  # Tests that a funder can't fund a user twice at the same time.
   test 'index on user and funder' do
     @duplicate_funder = @user_funder.dup
     assert_not @duplicate_funder.valid?

@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# UnassignedConditionTest is the model test for a generic unassigned condition.
 class UnassignedConditionTest < ActiveSupport::TestCase
   def setup
     @un_condition = unassigned_conditions(:one)

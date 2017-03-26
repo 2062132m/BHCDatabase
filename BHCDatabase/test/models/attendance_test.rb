@@ -7,7 +7,7 @@ class AttendanceTest < ActiveSupport::TestCase
   end
 
   test 'should be valid' do
-    assert@attendance.valid?
+    assert @attendance.valid?
   end
 
   test 'should have user' do
@@ -20,6 +20,7 @@ class AttendanceTest < ActiveSupport::TestCase
     assert_not @attendance.valid?
   end
 
+  # Tests that duplicate attendances to a meeting are not allowed.
   test 'index on user_id and meeting_id' do
     @duplicate_attendance = @attendance.dup
     assert_not @duplicate_attendance.valid?

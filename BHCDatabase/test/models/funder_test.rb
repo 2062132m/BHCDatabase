@@ -2,7 +2,6 @@ require 'test_helper'
 
 # FunderTest contains the model tests for a Funder
 class FunderTest < ActiveSupport::TestCase
-
   def setup
     @funder = Funder.create(name: 'Example Funder',
                             address: 'Example Address',
@@ -41,6 +40,7 @@ class FunderTest < ActiveSupport::TestCase
     assert_not @funder.valid?
   end
 
+  # Tests that two funders can't have the same name and email address
   test 'index on name and email' do
     @duplicate_funder = @funder.dup
     assert_not @duplicate_funder.valid?
@@ -50,5 +50,4 @@ class FunderTest < ActiveSupport::TestCase
       @duplicate_funder.save
     end
   end
-
 end

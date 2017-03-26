@@ -20,6 +20,7 @@ class InitiativeFunderTest < ActiveSupport::TestCase
     assert_not @initiative_funder.valid?
   end
 
+  # Tests that a funder can't fund an initiative twice.
   test 'index on funder and initiative' do
     @duplicate_funder = @initiative_funder.dup
     assert_not @duplicate_funder.valid?

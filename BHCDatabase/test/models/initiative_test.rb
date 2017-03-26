@@ -46,6 +46,7 @@ class InitiativeTest < ActiveSupport::TestCase
     assert_not @initiative.valid?
   end
 
+  # Tests that two initiatives can't have the same name and location.
   test 'index on name and location' do
     @duplicate_initiative = @initiative.dup
     assert @duplicate_initiative.name == @initiative.name

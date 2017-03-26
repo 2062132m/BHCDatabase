@@ -20,6 +20,7 @@ class EnrolmentTest < ActiveSupport::TestCase
     assert_not @enrolment.valid?
   end
 
+  # Tests that a user cannot be enrolled for an initiative twice.
   test 'index on user and initiative' do
     @duplicate_enrolment = @enrolment.dup
     assert_not @duplicate_enrolment.valid?
