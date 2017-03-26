@@ -19,4 +19,12 @@ class InitiativeFunderTest < ActiveSupport::TestCase
     @initiative_funder.initiative = nil
     assert_not @initiative_funder.valid?
   end
+
+  test 'index on funder and initiative' do
+    @duplicate_funder = @initiative_funder.dup
+    assert_not @duplicate_funder.valid?
+    assert_no_difference 'InitiativeFunder.count' do
+      @duplicate_funder.save
+    end
+  end
 end
