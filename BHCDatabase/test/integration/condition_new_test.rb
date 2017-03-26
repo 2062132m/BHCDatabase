@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ConditionNewTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
     @service_user = users(:service_user2)
@@ -10,6 +9,7 @@ class ConditionNewTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
   end
 
+  # Ensure condition creation should be successful with valid parameters
   test 'valid new condition test' do
     get new_condition_path, params: { user_id: @service_user.id }
     assert_difference 'Condition.count', 1 do
@@ -21,10 +21,11 @@ class ConditionNewTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
   end
 
-  # Where specified medical condition doesn't exist
+  # Ensure condition creation should fail when invalid condition is selected
   test 'invalid new condition test' do
     get new_condition_path, params: { user_id: @service_user.id }
     assert_no_difference 'Condition.count' do
+      # Medical condition id cannot be blank
       post conditions_path, params: { condition: { user_id: @service_user.id,
                                                    medical_condition_id: '' } }
     end
@@ -33,10 +34,12 @@ class ConditionNewTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
   end
 
-  # Where user already has specified medical condition
+  # Ensure should condition creation should fail if user already has specified
+  #   condition
   test 'duplicate new condition test' do
     get new_condition_path, params: { user_id: @service_user.id }
     assert_no_difference 'Condition.count' do
+      # Service user already has medical_condition_two (refer to fixtures)
       post conditions_path, params: { condition: { user_id: @service_user.id,
                                                    medical_condition_id: @medical_condition_two.name } }
     end
