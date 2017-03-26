@@ -11,6 +11,16 @@ class RemovedInitiativeFundingTest < ActiveSupport::TestCase
     assert @removed_init_funder.valid?
   end
 
+  test 'should have an initiative' do
+    @removed_init_funder.initiative = nil
+    assert_not @removed_init_funder.valid?
+  end
+
+  test 'should have a funder' do
+    @removed_init_funder.funder = nil
+    assert_not @removed_init_funder.valid?
+  end
+
   test 'datetime should accept valid dates' do
     valid_date = '01/01/2012 23:59:59'
     @removed_init_funder.date_given = valid_date

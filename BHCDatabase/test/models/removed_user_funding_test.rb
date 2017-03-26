@@ -10,6 +10,16 @@ class RemovedUserFundingTest < ActiveSupport::TestCase
     assert @removed_user_funder.valid?
   end
 
+  test 'should have a user' do
+    @removed_user_funder.user = nil
+    assert_not @removed_user_funder.valid?
+  end
+
+  test 'should have a funder' do
+    @removed_user_funder.funder = nil
+    assert_not @removed_user_funder.valid?
+  end
+
   test 'datetime should accept valid dates' do
     valid_date = '01/01/2012 23:59:59'
     @removed_user_funder.date_given = valid_date

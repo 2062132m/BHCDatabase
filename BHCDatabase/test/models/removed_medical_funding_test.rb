@@ -10,6 +10,16 @@ class RemovedMedicalFundingTest < ActiveSupport::TestCase
     assert @removed_med_funder.valid?
   end
 
+  test 'should have a medical condition' do
+    @removed_med_funder.medical_condition = nil
+    assert_not @removed_med_funder.valid?
+  end
+
+  test 'should have a funder' do
+    @removed_med_funder.funder = nil
+    assert_not @removed_med_funder.valid?
+  end
+
   test 'datetime should accept valid dates' do
     valid_date = '01/01/2012 23:59:59'
     @removed_med_funder.date_given = valid_date
