@@ -7,3 +7,11 @@ one:
 two:
   user: service_user2
   initiative: two
+
+three:
+  user: volunteer
+  initiative: three
+
+four:
+  user: service_user
+  initiative: three

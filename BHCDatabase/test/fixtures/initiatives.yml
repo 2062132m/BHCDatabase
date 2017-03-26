@@ -12,6 +12,12 @@ two:
   area: one
   location: MyLocationTwo
 
+three:
+  name: MyStringThree
+  description: MyText
+  area: two
+  location: MyLocationThree
+
 archived_initiative:
   name: MyString
   description: MyTest

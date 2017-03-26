@@ -6,7 +6,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @volunteer = users(:volunteer)
     @service_user = users(:service_user)
     @area = areas(:one)
-    @initiative = initiatives(:one)
+    @initiative = initiatives(:three)
   end
 
   test "layout links when logged out" do
@@ -58,6 +58,8 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", users_path,      count: 0
     assert_select "a[href=?]", areas_path,      count: 0
     assert_select "a[href=?]", initiatives_path,      count: 0
+    # Volunteer has access to this initiative
+    assert_select "a[href=?]", initiative_path(@initiative), count: 1
   end
 
   test "layout links when logged in as user" do
@@ -70,5 +72,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", users_path,      count: 0
     assert_select "a[href=?]", areas_path,      count: 0
     assert_select "a[href=?]", initiatives_path,      count: 0
+    # Service user should not have access despite enrolment
+    assert_select "a[href=?]", initiative_path(@initiative), count: 0
   end
 end
