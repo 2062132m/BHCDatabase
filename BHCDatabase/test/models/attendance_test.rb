@@ -20,4 +20,11 @@ class AttendanceTest < ActiveSupport::TestCase
     assert_not @attendance.valid?
   end
 
+  test 'index on user_id and meeting_id' do
+    @duplicate_attendance = @attendance.dup
+    assert_not @duplicate_attendance.valid?
+    assert_no_difference 'Attendance.count' do
+      @duplicate_attendance.save
+    end
+  end
 end
