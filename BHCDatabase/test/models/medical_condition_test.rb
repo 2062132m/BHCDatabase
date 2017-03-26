@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# MedicalConditionTest contains the model tests for a generic MedicalCondition
 class MedicalConditionTest < ActiveSupport::TestCase
 
   def setup
@@ -26,7 +27,7 @@ class MedicalConditionTest < ActiveSupport::TestCase
   end
 
   test 'description cannot be too long' do
-    @valid_condition.description = 'a' * 65537
+    @valid_condition.description = 'a' * 65_537
     assert_not @valid_condition.valid?
   end
 
