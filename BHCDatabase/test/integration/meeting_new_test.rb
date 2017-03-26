@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MeetingsNewTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:admin)
     @volunteer = users(:volunteer)

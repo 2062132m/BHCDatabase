@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserFunderNewTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
     @user = users(:service_user)

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MedicalConditionDeleteTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:admin)
     @condition = medical_conditions(:one)
@@ -21,5 +20,4 @@ class MedicalConditionDeleteTest < ActionDispatch::IntegrationTest
     assert_redirected_to medical_conditions_url
     assert_not flash.empty?
   end
-
 end

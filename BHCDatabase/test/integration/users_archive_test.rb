@@ -57,5 +57,4 @@ class UsersArchiveTest < ActionDispatch::IntegrationTest
     # Assert reason_archived has been reset to 'nil'
     assert_not_equal reason,  @service_user.reason_archived
   end
-
 end

@@ -62,5 +62,4 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     # Assert surname has been changed correctly
     assert_equal surname, @service_user.surname
   end
-
 end

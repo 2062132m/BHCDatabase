@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MedicalConditionFunderNewTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:admin)
     @medical_condition = medical_conditions(:one)
