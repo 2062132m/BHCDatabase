@@ -5,6 +5,8 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @user = users(:admin)
     @volunteer = users(:volunteer)
     @service_user = users(:service_user)
+    @area = areas(:one)
+    @initiative = initiatives(:one)
   end
 
   test "layout links when logged out" do
@@ -15,14 +17,21 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", logout_path,      count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
     assert_select "a[href=?]", users_path,       count:0
+    assert_select "a[href=?]", area_path(@area), count: 0
+    assert_select "a[href=?]", areas_path,       count:0
+    assert_select "a[href=?]", initiative_path(@initiative), count: 0
+    assert_select "a[href=?]", initiatives_path,       count:0
     assert_select "a[href=?]", root_url,         count: 0
     assert_select "a[href=?]", contact_path,     count: 1
     get contact_path
     assert_template 'static_pages/contact'
     assert_select "title", full_title("Contact")
+    assert_select "a[href=?]", contact_path,     count: 1
     assert_select "a[href=?]", login_path,       count: 1
     assert_select "a[href=?]", logout_path,      count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
+    assert_select "a[href=?]", area_path(@area), count: 0
+    assert_select "a[href=?]", initiative_path(@initiative), count: 0
     assert_select "a[href=?]", root_url,         count: 0
   end
 
@@ -33,6 +42,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", root_path, count: 3
     get new_user_path
     assert_select "title", full_title("New User")
+    get new_area_path
+    assert_select "title", full_title("New Area")
+    get new_initiative_path
+    assert_select "title", full_title("New Initiative")
   end
 
   test "layout links when logged in as volunteer" do
