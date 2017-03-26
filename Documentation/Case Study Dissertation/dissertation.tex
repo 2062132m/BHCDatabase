@@ -350,7 +350,7 @@ During the next iteration, after a group discussion, the objectives for the next
 \subsection{ER Diagram}
 \label{sec:er}
 
-An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team had started the development of the application only after an ER diagram was present to specify the structure of the database.
+An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team started the development of the application only after an ER diagram was present to specify the structure of the database.
 
 The ER diagram is shown in Figure 2.
 
@@ -360,18 +360,20 @@ The ER diagram is shown in Figure 2.
 \label{fig:er}
 \end{figure}
 
+% The paragraph below needs to be updated
+
 The main aspect of the diagram is the initiatives, which are different courses that the program provides. They are specified with a name, ID and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. Each sessions has an ID, date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
 
 \subsection{Component Architecture}
 \label{sec:component}
 
-Since Ruby on Rails uses Model-View-Controller architecture pattern, it allows our team to develop Agile application. The Model layer represents the logic of the application and the management of interactions with elements in the database. The View is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation.
+Since Ruby on Rails uses a model-view-controller architecture pattern, it allows our team to develop an agile application. The model layer represents the logic of the application and the management of interactions with elements in the database. The view is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation.
 In addition we decided to use Docker \cite{Docker} to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
 All of those are illustrated in \autoref{fig:ca} which demonstrates visually the component architecture of our application.
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
-\caption{Component Architecturem}
+\caption{Component Architecture}
 \label{fig:ca}
 \end{figure}
 
