@@ -95,10 +95,6 @@ This paper presents a case study of the building of a database system for the pu
 
 Throughout the following pages, a more in-depth explanation will be given on how the software described above was designed and created using not only our previous knowledge, but also the knowledge that the team managed to gain from the university's courses. More specifically, the "Professional Software Development and SIT" course and the "Interactive Systems 3" course played a critical role in every step that was taken in creating the software. From requirements gathering to the coding of the software, close study of the material allowed for the development process to be much smoother than would have otherwise been the case, and led to a more polished product.
 
-%% Incomplete paragraph
-%%A paragraph written in the end describing the structure of the paper
-
-Our dissertation is being divided..
 
 %==============================================================================
 \section{Case Study Background}
@@ -363,7 +359,8 @@ During the next iteration, after a group discussion, the objectives for the next
 
 An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team started the development of the application only after an ER diagram was present to specify the structure of the database.
 
-The ER diagram is shown in Figure 2.
+The main aspect of the diagram is that the users of the programme have different privileges depending on whether they are administrators, volunteers or members. Each group of those users is permitted to do different actions as already mentioned in the Abstract section above \ref{sec:abstract}. For example, only the administrators are allowed to add/remove users and volunteers or to enroll/unenroll them from different initiatives. Moreover, only the administrators can apply different fundings either to specific initiatives or members based on their medical conditions. Furthermore, the volunteers have restrictions on seeing all of the members' personal information compared to the administrators. Only the volunteers are able to track members attendance and to create new session of  the initiatives they are enrolled to. The members would fill the questionnaire form in order to give their feedback every 3/6 months. As the customers required, both volunteers and members could not change their own personal details. The only way to do that is to send a service request to the administrators, specifying the changes they wish to apply. The full ER diagram is shown in Figure 2.
+
 
 \begin{figure}
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
@@ -371,9 +368,6 @@ The ER diagram is shown in Figure 2.
 \label{fig:er}
 \end{figure}
 
-% The paragraph below needs to be updated
-
-The main aspect of the diagram is the initiatives, which are different courses that the program provides. They are specified with a name, ID and location. The initiatives are provided in specific areas that have and ID. The buildings provide some sessions such as art class. Each sessions has an ID, date and time. In every session attendance is recorded from the members, who are able to give a feedback. The members must specify some information in order to get tracked such us date of birth, name, email etc. The NHS team is consisted of the administrators who can control almost everything in the site and the volunteers who have a more limited access and they are responsible for tracking the attendance of the members in every class. The NHS team also have some basic retrieval information in the system, similar to the members.
 
 \subsection{Component Architecture}
 \label{sec:component}
