@@ -450,7 +450,7 @@ Another requirement that was provided for the system is the mobile compatibility
 \subsection{Testing}
 \label{testing}
 
-It is well known, that the development of any type of application is incomplete without the proper testings. Testing is a vital procedure in the process because it detects many defects and errors. Since the initial development states, every completed section was not considered to be fully complete until the proper testing were implemented. Providing testing in advance reduces the time and the cost needed to identify and correct defects. The graph provided in \autoref{fig:errors} displays the sharp increase of the costs of providing the defect tests very late in the process. The graph is from the level two "Software Engineering" course lecture notes.
+An integral step in developing an application is constructing a test suite that is as complete and as robust as possible. It is vital that testing begin early in project development, as the costs required to implement defect tests late in the process can be extremely costly, as evididenced in \autoref{fig:errors}. With this is mind, testing began almost immediately, any time a feature was to be implemented, the corresponding tests were to be written before the issue could be closed. The tests were constructed using Rail's built-in testing framework. Upon creation of an app in Rails, a 'test' directory is created which holds many other directories intended to contain different testing groups. For example, the 'controllers' directory holds all tests for the controllers and the 'integration' directory holds all tests that involve many controllers interacting together. When creating a model or a controller, the skeleton code for the tests is automatically generated and placed within the corresponding directory. 'Fixtures' are a way of creating and organising test data. On top of using Rail's testing, the 'SimpleCov' gem was introduced. SimpleCov is a code coverage analysis tool which amongst many other things, displays coverage statistics upon test execution. It also generates a 'coverage' folder which contains interactive documentation displaying the code coverage of each file, which lines were hit, and how many times. The application's tests were designed in an attempt to ensure correct functionality in as many target areas as possible, this includes: controller execution, model validations, uniqueness validations, page restriction validations, etc. Tests were not designed to achieve a high test coverage. Whilst lines covered does give a good indication of which areas of the project need attention, it should not be used as a defining tool for 'good' test coverage. It is perfectly possible to have extremely high test coverage, with relatively meaningless, superficial tests.
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
@@ -458,8 +458,11 @@ It is well known, that the development of any type of application is incomplete 
 \label{fig:errors}
 \end{figure}
 
+% -- This section is for you to change David Brown -- %
+
 Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file. The file created for the specific software is using all the three stages provided: build, test and deploy. Then we have deployed the \textit{Runners}. A runner picks up a build in the proposed project. Then, every time a commit or merge is triggered to the repository, tests are running to check whether there are issues. Furthermore, the team developed their own tests using mutants. The program has an impressive percentage of testing coverage reaching an approximate of 86.6\%.
 
+% --------------------------------------------------- %
 
 \subsection{End of fourth milestone}
 \label{sec:milestone4}
