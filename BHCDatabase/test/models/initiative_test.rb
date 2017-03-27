@@ -3,12 +3,8 @@ require 'test_helper'
 # InitiativeTest model contains the model tests for an Initiative
 class InitiativeTest < ActiveSupport::TestCase
   def setup
-    @area = Area.create(name: 'Example Area',
-                        description: 'Example description')
-    @initiative = Initiative.new(name: 'Example Initiative',
-                                 description: 'Example description.',
-                                 area_id: @area.id,
-                                 location: 'TestTest')
+    @area = areas(:one)
+    @initiative = initiatives(:one)
   end
 
   test 'should be valid' do
@@ -48,5 +44,16 @@ class InitiativeTest < ActiveSupport::TestCase
   test 'description should not be too long' do
     @initiative.description = 'a' * 65_537
     assert_not @initiative.valid?
+  end
+
+  # Tests that two initiatives can't have the same name and location.
+  test 'index on name and location' do
+    @duplicate_initiative = @initiative.dup
+    assert @duplicate_initiative.name == @initiative.name
+    assert @duplicate_initiative.location == @initiative.location
+    assert_not @duplicate_initiative.valid?
+    assert_no_difference 'Initiative.count' do
+      @duplicate_initiative.save
+    end
   end
 end

@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20170319213018) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "area_id"
-    t.text "location"
+    t.text     "location"
     t.boolean  "archived",        default: false
     t.string   "reason_archived"
     t.index ["name", "location"], name: "index_initiatives_on_name_and_location", unique: true
@@ -212,29 +212,29 @@ ActiveRecord::Schema.define(version: 20170319213018) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "forename"
+    t.string   "forename"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "password_digest"
     t.string   "telephone"
     t.date     "dob"
     t.integer  "privilege"
     t.date     "feedback_due"
-    t.string "emergency_telephone"
-    t.boolean "archived", default: false
+    t.string   "emergency_telephone"
+    t.boolean  "archived",            default: false
     t.string   "reason_archived"
-    t.string "surname"
-    t.string "known_as"
-    t.string "address1"
-    t.string "address2"
-    t.string "town"
-    t.string "postcode"
-    t.string "emergency_name"
-    t.integer "aims", default: 0
-    t.string "aims_other"
-    t.string "prevent_attending"
-    t.date "reg_date"
+    t.string   "surname"
+    t.string   "known_as"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "town"
+    t.string   "postcode"
+    t.string   "emergency_name"
+    t.integer  "aims",                default: 0
+    t.string   "aims_other"
+    t.string   "prevent_attending"
+    t.date     "reg_date"
     t.index ["dob", "email", "telephone"], name: "index_users_on_dob_and_email_and_telephone", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end

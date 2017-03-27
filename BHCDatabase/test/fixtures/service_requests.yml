@@ -2,6 +2,8 @@
 
 one:
   request: MyText
+  user: service_user
 
 two:
   request: MyText
+  user: service_user2

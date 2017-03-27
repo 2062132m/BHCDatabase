@@ -3,11 +3,15 @@ class Volunteer < ApplicationRecord
   validates :life_experiences, presence: true, length: { maximum: 65_536 }
   validates :skills, presence: true, length: { maximum: 65_536 }
   validates :aspirations, presence: true, length: { maximum: 65_536 }
-  validates :num_children, presence: true, numericality: { only_integer: true }
+  validates :num_children,
+            presence: true,
+            numericality: { only_integer: true,
+                            greater_than_or_equal_to: 0 }
   validates :childcare_help, inclusion: { in: [true, false] }
   validates :carer, inclusion: { in: [true, false] }
   validates :carer_costs, inclusion: { in: [true, false] }
   validates :employment, presence: true, length: { maximum: 255 }
   validates :registered_disabled, inclusion: { in: [true, false] }
   validates :induction_completed, inclusion: { in: [true, false] }
+  validates_uniqueness_of :user_id
 end

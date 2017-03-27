@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user: service_user
   initiative: one
+  date_enrolled: 2017-01-23 13:15:20
 
 two:
-  user: two
+  user: service_user2
   initiative: two
+  date_enrolled: 2017-01-23 13:15:20

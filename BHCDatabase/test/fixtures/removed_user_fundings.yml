@@ -2,10 +2,10 @@
 
 one:
   funder: one
-  user: one
+  user: service_user
   date_given: 2017-03-13 14:46:59
 
 two:
   funder: two
-  user: two
+  user: service_user2
   date_given: 2017-03-13 14:46:59

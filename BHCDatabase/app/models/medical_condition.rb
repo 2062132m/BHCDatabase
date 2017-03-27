@@ -12,6 +12,7 @@ class MedicalCondition < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { maximum: 255 }
   validates :description, presence: true, length: { maximum: 65_536 }
+  validates :archived, inclusion: [true, false]
   validates :reason_archived, length: { maximum: 255 }
 
   def archived?

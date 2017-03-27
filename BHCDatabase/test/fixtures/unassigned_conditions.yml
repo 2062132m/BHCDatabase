@@ -2,10 +2,10 @@
 
 one:
   medical_condition: one
-  user: one
+  user: service_user
   date_assigned: 2017-03-13 14:46:59
 
 two:
   medical_condition: two
-  user: two
+  user: service_user2
   date_assigned: 2017-03-13 14:46:59

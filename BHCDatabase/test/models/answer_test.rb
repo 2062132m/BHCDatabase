@@ -1,6 +1,6 @@
 require 'test_helper'
 
-# AnswerTest is the model test for an answer
+# AnswerTest is the model test for an answer.
 class AnswerTest < ActiveSupport::TestCase
   def setup
     @answer = answers(:one)
@@ -28,5 +28,16 @@ class AnswerTest < ActiveSupport::TestCase
   test "doesn't need a feedback" do
     @answer.feedback = nil
     assert @answer.valid?
+  end
+
+  # This test allows us to validate the unique/index on the feedback and
+  #   question fields.
+  test 'index on feedback and question' do
+    @duplicate_answer = @answer.dup
+    @duplicate_answer.response = @duplicate_answer.response.upcase
+    assert_not @duplicate_answer.valid?
+    assert_no_difference 'Answer.count' do
+      @duplicate_answer.save
+    end
   end
 end

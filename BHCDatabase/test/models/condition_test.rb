@@ -10,7 +10,7 @@ class ConditionTest < ActiveSupport::TestCase
     assert @condition.valid?
   end
 
-  test 'should have a medical_conditon' do
+  test 'should have a medical_condition' do
     @condition.medical_condition = nil
     assert_not @condition.valid?, @condition.errors.full_messages.inspect
   end
@@ -18,5 +18,14 @@ class ConditionTest < ActiveSupport::TestCase
   test 'should have a user' do
     @condition.user = nil
     assert_not @condition.valid?, @condition.errors.full_messages.inspect
+  end
+
+  # Tests that a user cannot have a medical condition twice at the same time.
+  test 'index on medical_condition and user' do
+    @duplicate_condition = @condition.dup
+    assert_not @duplicate_condition.valid?
+    assert_no_difference 'Condition.count' do
+      @duplicate_condition.save
+    end
   end
 end
