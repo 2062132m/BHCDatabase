@@ -5,19 +5,7 @@
 % Modified
 
 \documentclass{l3proj}
-
-\usepackage[legalpaper, portrait, margin=1.2in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{tabu}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6 pt}
-
-\usepackage{graphicx}
 \graphicspath{ {images/} }
-
-\usepackage{url}
-\usepackage{hyperref}
-\usepackage{cite}
 
 \begin{document}
 
@@ -216,56 +204,41 @@ User stories \cite{UserStories} play a critical role in the agile methods which 
 
 A couple of highly representative functional user stories (with their corresponding story tasks) are:
 \begin{itemize}
-
 \item As an administrator, I want to add a member to the database, so that they can join a group.
 
 	\begin{enumerate}
 	\item Add an activity to add a person
-
 	\item Add an activity to enter their information
-
 	\item Add an activity for choosing groups
-
 	\item Create a query for retrieving groups
 	\end{enumerate}
+
 \item As a volunteer, I want to be able to register attendance at my group(s), so that I can contribute data.
 
 	\begin{enumerate}
 	\item Create a query to retrieve groups I run
-
 	\item Add an activity to log attendance
-
 	\item Create a query for members of the group
-
 	\item Add an activity to enter attendance per member
-
 	\end{enumerate}
 
 \item As a member, I want to be able to log in, so that I can view my information.
 
 	\begin{enumerate}
-
 	\item Add an activity to log in
 	\item Add an activity to enter log in information
-
 	\end{enumerate}
-
 \end{itemize}
 
 Now, some non-functional user stories had to be outlined in order for practical examples to be created, specifying how the system will work. Some non-functional user stories (which their corresponding story tasks) are:
 
 \begin{itemize}
-
 \item  As an administrator, I want to replace a member's name with numbers in the database, so that I can find them easier.
 
 	\begin{enumerate}
-
 	\item Create a query for retrieving a person
-
 	\item Add an activity to update a person's information
-
 	\item Create a warning message for wrong type of input
-
 	\item Do not allow this modifications to be saved
 	\end{enumerate}
 
@@ -281,7 +254,6 @@ Now, some non-functional user stories had to be outlined in order for practical 
 	\item Restrict the member's redirected page to do very basic tasks
 	\item Do not provide this functionality to members.
 	\end{enumerate}
-
 \end{itemize}
 
 \subsection{User Scenarios}
@@ -309,8 +281,6 @@ A sample screenshot of the index page which was presented to the customers can b
 \label{fig:initialWireframe}
 \end{figure}
 
-
-
 \subsection{End of First Milestone}
 \label{sec:milestone1}
 
@@ -335,13 +305,11 @@ An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying
 
 The main aspect of the diagram is that the users of the programme have different privileges depending on whether they are administrators, volunteers or members. Each group of those users is permitted to do different actions as already mentioned in the Abstract section above. For example, only the administrators are allowed to add/remove users and volunteers or to enroll/unenroll them from different initiatives. Moreover, only the administrators can apply different fundings either to specific initiatives or members based on their medical conditions. Furthermore, the volunteers have restrictions on seeing all of the members' personal information compared to the administrators. Only the volunteers are able to track members attendance and to create new session of  the initiatives they are enrolled to. The members would fill the questionnaire form in order to give their feedback every 3/6 months. As the customers required, both volunteers and members could not change their own personal details. The only way to do that is to send a service request to the administrators, specifying the changes they wish to apply. The full ER diagram is shown in \autoref{fig:er}.
 
-
 \begin{figure}
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
 \caption{Entity Relationship Diagram}
 \label{fig:er}
 \end{figure}
-
 
 \subsection{Component Architecture}
 \label{sec:component}
@@ -382,7 +350,6 @@ The second design was more simplified in terms of account organisation. The cust
 
 Note that this is not the final design of the page but final prototype presented to customers in terms of structure.
 
-
 \subsection{End of second and third milestone}
 \label{sec:milestone23}
 
@@ -414,7 +381,6 @@ The aim for browser compatibility was quite broad. Throughout the customers' mee
 A huge issue that was raised at that point, was the browser compatibility and more specifically the support of Internet Explorer’s version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, the final decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system. An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
 Another requirement that was provided for the system is the mobile compatibility. Thus, a good mobile compatibility is demanded. Although, all the different types of users support mobile compatibility, the one type that it is guaranteed to fully work is the volunteer's side which was actually the only site that was demanded. The volunteer side compatibility was highly important since a volunteer must be able to quickly take attendance from his/her mobile phone. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility. An example screenshot can be found in \autoref{fig:compatibility}.
 
-
 \begin{figure}[ht]
 \centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
 \caption{Mobile Compatibility Prototype}
@@ -442,7 +408,6 @@ Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file
 \label{sec:milestone4}
 
 The fourth milestone was successfully completed with all its major goals succeeded. The website was successfully presented to the customers on the customer meeting performed on the 23rd of February. Although some minor features were not yet implemented, a fully working version was delivered and in the following month all the features were progressively added. During the navigation process, information were provided to the customers about how to access the deployed website in all three different types of users (administrators, volunteers and service users). The initial online deployment was in heroku. Unfortunately, the customers made more last minute demands to the team. This additions were added to the next milestone. Finally, a questionnaire was asked to be answered based on their navigation experience which was later used in the next milestone for the application evaluation.
-
 
 %==============================================================================
 \section{User Documentation}
@@ -486,8 +451,6 @@ Having an agile oriented development sometimes leads to unexpected demands. This
 
 Last but not least was the creation of a User Manual. Developing a user manual is useful not only for the current customers but also for any other future users of the application. Any user can have a simple and brief guidance how to navigate through the application and to take as much advantage of it as they can.
 
-
-
 %------------------------------------------------------------------------------
 \section{Final Customer Day}
 \label{sec:finalDay}
@@ -517,9 +480,6 @@ The demonstration ended with questions from the audience and the customers. An o
 
 After the demonstration had finished, the customers expressed their gratitude to us for the work we had done. Upon request the deployment version was updated including the latest updates in order to enable the customers to test the application themselves.
 
-
-
-
 %------------------------------------------------------------------------------
 \section{Conclusion}
 
@@ -539,99 +499,10 @@ To conclude, working with real clients, gave to each member the opportunity to d
 
 %==============================================================================
 
-
 %    BIBLIOGRAPHY
-\pagebreak
 
-\bibliography{dissertation.bib}{}
-\bibliographystyle{plain}
-
-
-
-
-\iffalse
+\newpage
 \bibliographystyle{plain}
 \bibliography{dissertation}
-\subsection{Bibliography}
-\label{Bibliography}
-
-
-\label{tech}
-Technology
-\begin{itemize}
-
-\item "wikipedia.org: Ruby on Rails"
-\newline https://en.wikipedia.org/wiki/Ruby\_on\_Rails[Accessed 14 December 2016]
-
-\item "wikipedia.org: Django"
-\newline https://en.wikipedia.org/wiki/Django\_(web\_framework) [Accessed 14 December 2016]
-
-\item "skilledup.com: Comparison of Django and Rails
-\newline http://www.skilledup.com/articles/battle-frameworks-django-vs-rails [Accessed 14 December 2016]
-
-\item "wikipedia.org: RubyGems"
-\newline https://en.wikipedia.org/wiki/RubyGems [Accessed 14 December 2016]
-
-\item "postgresql.org: PostgreSQL"
-\newline https://www.postgresql.org/ [Accessed 14 December 2016]
-
-\item "docker.com: What is Docker?"
-\newline https://www.docker.com/what-docker [Accessed 26 January 2017]
-
-
-\end{itemize}
-
-
-
-
-\label{user_stories}
-
-User stories
-
-\begin{itemize}
-
-\item "agilemodeling.com:User stories"
-\newline http://www.agilemodeling.com/artifacts/userStory.html [Accessed 26 December 2016]
-
-\end{itemize}
-
-
-\label{er}
-Entity Relationship diagram
-
-\begin{itemize}
-
-\item "smartdraw.com: ER diagram"
-\newline https://www.smartdraw.com/entity-relationship-diagram/ [Accessed 12 January 2017]
-
-\end{itemize}
-
-\label{authentication}
-User authentication
-
-\begin{itemize}
-
-\item " searchsecurity.techtarget.com: User authentication"
-\newline http://searchsecurity.techtarget.com/definition/authentication [Accessed 15 January 2017]
-
-\item "github.com: Devise"
-\newline https://github.com/plataformatec/devise [Accessed 15 January 2017]
-
-\item "railstutorial.org: Ruby on Rails Tutorial (Rails 5) By Michael Hartl"
-\newline https://www.railstutorial.org/book/ [Accessed 15 January 2017]
-
-\end{itemize}
-
-\label{testing}
-
-Testing
-
-\begin{itemize}
-
-\item "docs.gitlab.com: Continuous Integration (CI)"
-\newline https://docs.gitlab.com/ce/ci/quick\_start/README.html [Accessed 19 January 2017]
-
-\end{itemize}
-\fi
 
 \end{document}
