@@ -5,23 +5,9 @@
 % Modified
 
 \documentclass{l3proj}
-
-\usepackage[legalpaper, portrait, margin=1.2in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{tabu}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6 pt}
-
-\usepackage{graphicx}
 \graphicspath{ {images/} }
 
-\usepackage{url}
-\usepackage{hyperref}
-\usepackage{cite}
-
-
 \begin{document}
-
 
 \title{Building Healthy Communities Database}
 
@@ -56,7 +42,7 @@ An administrator is able to:
 	\item Assign medical conditions to users.
 	\item Export tables into csv format.
 	\item Display various statistics and metrics that can be downloaded.
-	\item Manage the funding for users, initiatives and medical conditions.	
+	\item Manage the funding for users, initiatives and medical conditions.
 	\item Access the supplied personal information of all users and make changes if necessary.
 	\item Archive data records.
 	\item Keep track of the progress of members and volunteers.
@@ -86,16 +72,11 @@ A member is able to:
 \newpage
 %==============================================================================
 \section{Introduction}
-
-Software engineering
-
 Third year undergraduates on the Computing Science course of the University of Glasgow undergo a year long team project, the aim of which is to give the students experience of working in a team on an extended software engineering project. It helps to develop an ability to work with customers, and teaches the use of agile software development practices and methodologies. Importantly, it also teaches the value of retrospection; the act of looking back to see what can be improved in future. With this case study, our intention was to analyse and explore the methods and practices we employed, in order to hopefully better understand their intricacies, how they should be used in a project such as ours, and to potentially develop new, better ways of applying these methods in future.
 
 This paper presents a case study of the building of a database system for the public health program "Building Healthy Communities", and the development practices we used in the process. The BHC system is designed to replace the cumbersome, manual database currently in use by the NHS team that administers the BHC initiatives. It is intended to be a much more streamlined service, allowing for much faster input and retrieval of data from the system, while also allowing for varying levels of access, depending on who is using the system. The aim of the BHC programme is to encourage individuals who may be experiencing difficulties to lead healthier, less isolated lives through a collection of healthy living initiatives. A system which allows for the secure, rapid organisation of data helps ensure this aim can be easily met.
 
 Throughout the following pages, a more in-depth explanation will be given on how the software described above was designed and created using not only our previous knowledge, but also the knowledge that the team managed to gain from the university's courses. More specifically, the "Professional Software Development and SIT" course and the "Interactive Systems 3" course played a critical role in every step that was taken in creating the software. From requirements gathering to the coding of the software, close study of the material allowed for the development process to be much smoother than would have otherwise been the case, and led to a more polished product.
-
-
 %==============================================================================
 \section{Case Study Background}
 
@@ -109,7 +90,7 @@ The primary method by which Building Healthy Communities tackles its main object
 While initiative events are run by volunteers from the local communities, the programme itself is run and maintained by a group of NHS employed administrators. These administrators are NHS employees, and have access to all the data produced by the programme. This includes the personal and medical details of all service users and volunteers, along with their feedback forms, and the funding status of every user, initiative and medical condition. During the project development, contact was had with two of the programme's administrators. They attended each customer meeting, and were instrumental in the shaping of our product, providing requirements and feedback. There was also some incidental contact with another NHS employee from the same area running a different project, whose more technical advice was of particular use when designing the database and deciding which information needed to be included.
 
 \subsection{Initial Objectives for the Project}
-\label{objectives}
+\label{sec:initial-objectives}
 
 The initial objectives for the project were to develop a software which will be used by the service users, volunteers and administrators of the programme. Different types of user have different levels of access to the database. The service users would use the software to complete a small questionnaire and give a regular feedback for the initiatives they attend. Volunteers, on the other hand, would be able to view that feedback and check the attendance of the members for the initiatives they are assigned to. Administrators have the access and rights to do everything, they can see all the information about both volunteers and service users, they can add or delete an initiative and can review feedback and attendance as well. Since we are following agile development practices, the initial requirements could change over the following customer meetings, as explained later in the dissertation.
 
@@ -130,7 +111,7 @@ In terms of project planning, agile methods are one of the most trusted methods 
 \subsection{Technologies Used}
 \label{tech}
 
-With the agile methods that are going to be used already outlined; the technologies needed regarding the project management have to be outlined too. The university Moodle page suggested a litany of technologies to use for handling the project such as "Ant and Ivy", "Jenkins", "Apache", etc. After a small group meeting and a discussion with the supervisors about what technologies were permitted, the decision was taken to use Gitlab \cite{Gitlab} for our project and repository management. 
+With the agile methods that are going to be used already outlined; the technologies needed regarding the project management have to be outlined too. The university Moodle page suggested a litany of technologies to use for handling the project such as "Ant and Ivy", "Jenkins", "Apache", etc. After a small group meeting and a discussion with the supervisors about what technologies were permitted, the decision was taken to use Gitlab \cite{Gitlab} for our project and repository management.
 
 Gitlab is a complete repository management system, in that it not only provided us with a git based repository, but also gave us an integrated wiki in which to store documentation, a comprehensive issue tracking system like Trac, and a continuous integration suite in the same vein as Jenkins. The combination of all of these features in one discrete package made Gitlab the obvious choice for us, negating the need for multiple cumbersome systems that we would need to keep track of separately. The next few paragpraphs illustrate the reasons why the use of Gitlab turned out to be a wise choice.
 
@@ -179,7 +160,7 @@ The team voted to elect a team leader. The team leader will conduct any retrospe
 After some initial consideration, we decided that fortnightly sprints would be ideal. Each sprint corresponded to the conclusion of a milestone. Issues would then be created, most of which having a deadline of the upcoming milestone. The following portion of the case study will chronologically outline the software process from the requirements elicitation, to the final software presentation.
 
 \subsection{Objectives}
-\label{objectives}
+\label{sec:objectives}
 
 During the first customer meeting, where projects were assigned, the customers outlined their desired application. During the culmination of the meeting, the customers were asked what they wanted to see for the next meeting, their answer was: "I guess, some sketches!". A new milestone was created with the next goal to be some basic documentation and the creation of wireframes.
 
@@ -190,45 +171,26 @@ During the first customer meeting, some basic requirements were outlined. Notes 
 
 The final version of the functional requirements are:
 \begin{itemize}
-
 \item An administrator should be able to view all information stored in the database.
-
 \item An administrator should be able to add/remove/modify volunteers, members and groups that are stored in the database.
-
 \item An administrator should be able to search and sort on specific fields belonging to tuples.
-
-\item An administrator should be able to view data metrics on how particular groups/initiatives are progressing.
-
+\item An administrator should be able to view data metrics on how particular initiatives are progressing.
 \item Different groups of users should have differing levels of permission to the data stored.
-
 \item Volunteers should be able to view the data associated with their specific group(s), that they are allowed to see, and no other groups.
-
 \item Volunteers should be able to record member attendance.
-
 \item Provide a facility to register attendance.
-
 \item Provide a facility to gather feedback from end users (members).
-
 \end{itemize}
 
 The final version of the non-functional requirements is:
-
 \begin{itemize}
-
 \item The system should be secure.
-
 \item The system has to conform to the Data Protection Act.
-
 \item The system should be stable whilst in use and have a high up time.
-
 \item The system should be able to operate for long periods of time without intervention from system admins.
-
 \item The system should be simple to use.
-
 \item The system should be modular and hence maintainable.
-
 \item The system should be lightweight.
-
 \item The site should be compatible with many platforms. (Portable)
 
 \end{itemize}
@@ -242,72 +204,56 @@ User stories \cite{UserStories} play a critical role in the agile methods which 
 
 A couple of highly representative functional user stories (with their corresponding story tasks) are:
 \begin{itemize}
-
 \item As an administrator, I want to add a member to the database, so that they can join a group.
 
 	\begin{enumerate}
 	\item Add an activity to add a person
-	
 	\item Add an activity to enter their information
-
 	\item Add an activity for choosing groups
-
 	\item Create a query for retrieving groups
 	\end{enumerate}
+
 \item As a volunteer, I want to be able to register attendance at my group(s), so that I can contribute data.
 
 	\begin{enumerate}
 	\item Create a query to retrieve groups I run
-	
 	\item Add an activity to log attendance
-	
 	\item Create a query for members of the group
-	
 	\item Add an activity to enter attendance per member
-	
 	\end{enumerate}
 
 \item As a member, I want to be able to log in, so that I can view my information.
 
 	\begin{enumerate}
-	
 	\item Add an activity to log in
 	\item Add an activity to enter log in information
-	
 	\end{enumerate}
-
 \end{itemize}
 
 Now, some non-functional user stories had to be outlined in order for practical examples to be created, specifying how the system will work. Some non-functional user stories (which their corresponding story tasks) are:
 
 \begin{itemize}
-
 \item  As an administrator, I want to replace a member's name with numbers in the database, so that I can find them easier.
 
 	\begin{enumerate}
-	
 	\item Create a query for retrieving a person
-	
 	\item Add an activity to update a person's information
-	
 	\item Create a warning message for wrong type of input
-	
 	\item Do not allow this modifications to be saved
 	\end{enumerate}
-	
+
 \item As a volunteer, I want to be able to have access to the database, so that I can add a new program that the administrators haven't added yet.
 
 	\begin{enumerate}
 	\item Restrict the "Add a new page", "Add a new page", "Add a new member", etc buttons to can be only accessed from administrators
 	\end{enumerate}
-	
+
 \item As a member, I want to be able to add or delete a group that I am part to, so that I can register my self to new groups or delete me from the old ones.
 
 	\begin{enumerate}
 	\item Restrict the member's redirected page to do very basic tasks
 	\item Do not provide this functionality to members.
 	\end{enumerate}
-
 \end{itemize}
 
 \subsection{User Scenarios}
@@ -329,13 +275,11 @@ After creating and compiling the previously mentioned documentation, the next pr
 
 A sample screenshot of the index page which was presented to the customers can be found in \autoref{fig:initialWireframe}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{wireframe.png}}
 \caption{Wireframe of Index Page}
 \label{fig:initialWireframe}
 \end{figure}
-
-
 
 \subsection{End of First Milestone}
 \label{sec:milestone1}
@@ -350,9 +294,9 @@ After the meeting, the team completed a retrospective. A summarisation of the re
 \label{sec:design}
 
 \subsection{Objectives}
-\label{sec:objectives}
+\label{sec:design-objectives}
 
-During the next iteration, after a group discussion, the objectives for the next customer meeting were stated. An ER (Entity-relationship) diagram and Component diagram were to be designed for the documentation of the project. Particular team members were assigned with new issues to do this. Not only were the diagrams created, but the process of designing and coding the application had begun. 
+During the next iteration, after a group discussion, the objectives for the next customer meeting were stated. An ER (Entity-relationship) diagram and Component diagram were to be designed for the documentation of the project. Particular team members were assigned with new issues to do this. Not only were the diagrams created, but the process of designing and coding the application had begun.
 
 \subsection{ER Diagram}
 \label{sec:er}
@@ -361,13 +305,11 @@ An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying
 
 The main aspect of the diagram is that the users of the programme have different privileges depending on whether they are administrators, volunteers or members. Each group of those users is permitted to do different actions as already mentioned in the Abstract section above. For example, only the administrators are allowed to add/remove users and volunteers or to enroll/unenroll them from different initiatives. Moreover, only the administrators can apply different fundings either to specific initiatives or members based on their medical conditions. Furthermore, the volunteers have restrictions on seeing all of the members' personal information compared to the administrators. Only the volunteers are able to track members attendance and to create new session of  the initiatives they are enrolled to. The members would fill the questionnaire form in order to give their feedback every 3/6 months. As the customers required, both volunteers and members could not change their own personal details. The only way to do that is to send a service request to the administrators, specifying the changes they wish to apply. The full ER diagram is shown in \autoref{fig:er}.
 
-
 \begin{figure}
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
 \caption{Entity Relationship Diagram}
 \label{fig:er}
 \end{figure}
-
 
 \subsection{Component Architecture}
 \label{sec:component}
@@ -376,7 +318,7 @@ Since Ruby on Rails uses a model-view-controller architecture pattern, it allows
 In addition we decided to use Docker \cite{Docker} to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
 All of those are illustrated in \autoref{fig:ca} which demonstrates visually the component architecture of our application.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
 \caption{Component Architecture}
 \label{fig:ca}
@@ -387,7 +329,7 @@ All of those are illustrated in \autoref{fig:ca} which demonstrates visually the
 
 Having the basic database structure, initial prototypes of the page were created, in order to discuss potential design changes. The first version of the page can be found in \autoref{fig:oldhome}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{oldhome.png}}
 \caption{Initial Prototype}
 \label{fig:oldhome}
@@ -400,14 +342,13 @@ The initial page was very basic, not very colourful and errors containing. It wa
 
 The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the members would not be able to sign up, which had the consequence of deleting this feature. Furthermore, the home page and the login page have been merged into one single page in order to provide easier access for the customers. The new prototype can be found in \autoref{fig:newhome}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
 \caption{Second version of the prototype}
 \label{fig:newhome}
 \end{figure}
 
 Note that this is not the final design of the page but final prototype presented to customers in terms of structure.
-
 
 \subsection{End of second and third milestone}
 \label{sec:milestone23}
@@ -421,7 +362,7 @@ The retrospective performed by the end of the second milestone, showed some lack
 \label{sec:backend}
 
 \subsection{Objectives}
-\label{objectives}
+\label{sec:backend-objectives}
 
 Before the beginning of the fourth milestone, the next objectives were outlined. Due to the fact that by the end of the current milestone a working version of the website was expected to be delivered,the main goals were to resolve opened issues that were raised from the previous retrospective and customer meeting. In the following weeks the website had all the added functionality created. The most critical issues that were raised is the newest demands that the customers were requested including the flag feature described above.
 
@@ -440,8 +381,7 @@ The aim for browser compatibility was quite broad. Throughout the customers' mee
 A huge issue that was raised at that point, was the browser compatibility and more specifically the support of Internet Explorer’s version 7 and before. The earliest Internet Explorer version we aim to support is IE 8. This is because IE8 comes as standard with Windows 7. Although possible, we have chosen not to support IE 7 due to it coming with Windows Vista. Vista has 'Extended support until 11 April 2017.' After all, the final decision not to support IE7, as to do so would be to support a soon to be dangerously out of date operating system. An important point to note is that Bootstrap only officially supports Internet Explorer 8-11.
 Another requirement that was provided for the system is the mobile compatibility. Thus, a good mobile compatibility is demanded. Although, all the different types of users support mobile compatibility, the one type that it is guaranteed to fully work is the volunteer's side which was actually the only site that was demanded. The volunteer side compatibility was highly important since a volunteer must be able to quickly take attendance from his/her mobile phone. Moreover, some screenshots have been taken from the initial prototypes of the page showing the mobile compatibility. An example screenshot can be found in \autoref{fig:compatibility}.
 
-
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[ scale=0.3]{mobilePrototype.png}}
 \caption{Mobile Compatibility Prototype}
 \label{fig:compatibility}
@@ -452,7 +392,7 @@ Another requirement that was provided for the system is the mobile compatibility
 
 An integral step in developing an application is constructing a test suite that is as complete and as robust as possible. It is vital that testing begin early in project development, as the costs required to implement defect tests late in the process can be extremely costly, as evidenced in \autoref{fig:errors}. With this is mind, testing began almost immediately, any time a feature was to be implemented, the corresponding tests were to be written before the issue could be closed. The tests were constructed using Rail's built-in testing framework. Upon creation of an app in Rails, a 'test' directory is created which holds many other directories intended to contain different testing groups. For example, the 'controllers' directory holds all tests for the controllers and the 'integration' directory holds all tests that involve many controllers interacting together. When creating a model or a controller, the skeleton code for the tests is automatically generated and placed within the corresponding directory. 'Fixtures' are a way of creating and organising test data. On top of using Rail's testing, the 'SimpleCov' gem was introduced. SimpleCov is a code coverage analysis tool which amongst many other things, displays coverage statistics upon test execution. It also generates a 'coverage' folder which contains interactive documentation displaying the code coverage of each file, which lines were hit, and how many times. The application's tests were designed in an attempt to ensure correct functionality in as many target areas as possible, this includes: controller execution, model validations, uniqueness validations, page restriction validations, etc. Tests were not designed to achieve a high test coverage. Whilst lines covered does give a good indication of which areas of the project need attention, it should not be used as a defining tool for 'good' test coverage. It is perfectly possible to have extremely high test coverage, with relatively meaningless, superficial tests.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{costOfErrors.png}}
 \caption{Increasing rate of costs in different software development stages }
 \label{fig:errors}
@@ -467,8 +407,7 @@ Gitlab's CI provides tests in every build using the \textit{.gitlab-ci.yml} file
 \subsection{End of fourth milestone}
 \label{sec:milestone4}
 
-The fourth milestone was successfully completed with all its major goals succeeded. The website was successfully presented to the customers on the customer meeting performed on the 23rd of February. Although some minor features were not yet implemented, a fully working version was delivered and in the following month all the features were progressively added. During the navigation process, information were provided to the customers about how to access the deployed website in all three different types of users (administrators, volunteers and service users). The initial online deployment was in heroku. Unfortunately, the customers made more last minute demands to the team. This additions were added to the next milestone. Finally, a questionnaire was asked to be answered based on their navigation experience which was later used in the next milestone for the application evaluation. 
-
+The fourth milestone was successfully completed with all its major goals succeeded. The website was successfully presented to the customers on the customer meeting performed on the 23rd of February. Although some minor features were not yet implemented, a fully working version was delivered and in the following month all the features were progressively added. During the navigation process, information were provided to the customers about how to access the deployed website in all three different types of users (administrators, volunteers and service users). The initial online deployment was in heroku. Unfortunately, the customers made more last minute demands to the team. This additions were added to the next milestone. Finally, a questionnaire was asked to be answered based on their navigation experience which was later used in the next milestone for the application evaluation.
 
 %==============================================================================
 \section{User Documentation}
@@ -476,7 +415,7 @@ The fourth milestone was successfully completed with all its major goals succeed
 A very essential product that needed to be developed was the user documentation. Due to the fact that this is a university course, the software life cycle would not be strictly followed. For example, no future maintenance would take place. A well defined user documentation had to be produced. To put more depth, the documentation mainly explains how to navigate in the program and perform simple tasks such as adding a new user or deleting an old one. The documentation was given in the form of a small book. It is divided in three different parts, the administrator section, the volunteer and the member section. Three sections, each referring to one of the three different authentication types. The development of the documentation was based on a single principle, develop it such as every aspect, every word will be possibly read by a person who has no idea how to navigate through the site so he/she can understand and successfully complete their task. Due to the fact that this is a fund based program, many different people will have administrate the website through the years. Thus, a well understood user documentation is obligatory.
 \autoref{fig:usermanual} contains a screenshot of the user manual.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{usermanual.jpg}}
 \caption{User Manual }
  \label{fig:usermanual}
@@ -495,7 +434,7 @@ The Formative Application Evaluation is the stage when a developer receives obje
  \item Have you faced any difficulties in adding new sessions, users, questions and so on?
 \end{itemize}
 
-As a consequence of having a small amount of responses, the results were rather qualitative than quantitative. The responses of the questionnaire showed no major issues except of the fact that they have asked for more features that again were not discussed in previous meetings.  The team focused on solving the small navigation issues that the customers identified first and in a following time managed to add the new features. 
+As a consequence of having a small amount of responses, the results were rather qualitative than quantitative. The responses of the questionnaire showed no major issues except of the fact that they have asked for more features that again were not discussed in previous meetings.  The team focused on solving the small navigation issues that the customers identified first and in a following time managed to add the new features.
 
 %==============================================================================
 
@@ -512,13 +451,11 @@ Having an agile oriented development sometimes leads to unexpected demands. This
 
 Last but not least was the creation of a User Manual. Developing a user manual is useful not only for the current customers but also for any other future users of the application. Any user can have a simple and brief guidance how to navigate through the application and to take as much advantage of it as they can.
 
-
-
 %------------------------------------------------------------------------------
 \section{Final Customer Day}
 \label{sec:finalDay}
 
-On the 22nd of March the final demonstration of the product was performed. The team had to present the website to the customers and lecturers. 
+On the 22nd of March the final demonstration of the product was performed. The team had to present the website to the customers and lecturers.
 
 The final state of the product was a fully working software with some added functionality. As previously stated, the customers were having new requirements in the ongoing process of meetings and communication. All of the major and important features were successfully delivered on time. Considering the fact that a major addition had to be done due to a mistake performed by the customers just eight days before the final customer day, not all the extra functionality that the customers required was added. The customers were informed of the time constraints, thus a couple of minor features were just a suggestion and not a demand resulting good relationships between the customers and the team.
 
@@ -543,9 +480,6 @@ The demonstration ended with questions from the audience and the customers. An o
 
 After the demonstration had finished, the customers expressed their gratitude to us for the work we had done. Upon request the deployment version was updated including the latest updates in order to enable the customers to test the application themselves.
 
-
-
-
 %------------------------------------------------------------------------------
 \section{Conclusion}
 
@@ -565,102 +499,10 @@ To conclude, working with real clients, gave to each member the opportunity to d
 
 %==============================================================================
 
-
 %    BIBLIOGRAPHY
-\pagebreak
 
-\bibliography{dissertation.bib}{}
-\bibliographystyle{plain}
-
-
-
-
-\iffalse
+\newpage
 \bibliographystyle{plain}
 \bibliography{dissertation}
-\subsection{Bibliography}
-\label{Bibliography}
-
-
-\label{tech}
-Technology
-\begin{itemize}
-
-\item "wikipedia.org: Ruby on Rails"
-\newline https://en.wikipedia.org/wiki/Ruby\_on\_Rails[Accessed 14 December 2016]
-
-\item "wikipedia.org: Django"
-\newline https://en.wikipedia.org/wiki/Django\_(web\_framework) [Accessed 14 December 2016]
-
-\item "skilledup.com: Comparison of Django and Rails
-\newline http://www.skilledup.com/articles/battle-frameworks-django-vs-rails [Accessed 14 December 2016]
-
-\item "wikipedia.org: RubyGems"
-\newline https://en.wikipedia.org/wiki/RubyGems [Accessed 14 December 2016]
-
-\item "postgresql.org: PostgreSQL"
-\newline https://www.postgresql.org/ [Accessed 14 December 2016]
-
-\item "docker.com: What is Docker?"
-\newline https://www.docker.com/what-docker [Accessed 26 January 2017]
-
-
-\end{itemize}
-
-
-
-
-\label{user_stories}
-
-User stories
-
-\begin{itemize}
-
-\item "agilemodeling.com:User stories"
-\newline http://www.agilemodeling.com/artifacts/userStory.html [Accessed 26 December 2016]
-
-\end{itemize}
-
-
-\label{er}
-Entity Relationship diagram
-
-\begin{itemize}
-
-\item "smartdraw.com: ER diagram"
-\newline https://www.smartdraw.com/entity-relationship-diagram/ [Accessed 12 January 2017]
-
-\end{itemize}
-
-\label{authentication}
-User authentication
-
-\begin{itemize}
-
-\item " searchsecurity.techtarget.com: User authentication"
-\newline http://searchsecurity.techtarget.com/definition/authentication [Accessed 15 January 2017]
-
-\item "github.com: Devise"
-\newline https://github.com/plataformatec/devise [Accessed 15 January 2017]
-
-\item "railstutorial.org: Ruby on Rails Tutorial (Rails 5) By Michael Hartl"
-\newline https://www.railstutorial.org/book/ [Accessed 15 January 2017]
-
-\end{itemize}
-
-\label{testing}
-
-Testing
-
-\begin{itemize}
-
-\item "docs.gitlab.com: Continuous Integration (CI)"
-\newline https://docs.gitlab.com/ce/ci/quick\_start/README.html [Accessed 19 January 2017]
-
-\end{itemize}
-\fi
 
 \end{document}
-
-
-
