@@ -25,58 +25,21 @@ Maria Papadopoulou, 2136603p}
 
 \begin{abstract}
 
-Building Healthy Communities in Dumfries and Galloway is a community development programme which aims to advance the health and well-being of all individuals within its area, but particularly those in difficult circumstances. Its main goal is to improve the lives of people who may otherwise become isolated, by encouraging participation in initiatives which help keep them physically and mentally healthy, while also promoting the creation and sustaining of social bonds. The programme consists of three different types of participants:
-\begin{itemize}
-	\item Administrators
-	\item Volunteers
-	\item Members
-\end{itemize}
-Members are the individuals participating in the initiatives themselves. Volunteers run the initiatives and are responsible for tracking the member's progress and attendance. They must inform administrators not only about the progress of the members, but also about the process as a whole. Currently all this is being performed by hand. Administrators must manually input the data into a database and then search the database using only the inbuilt functions of the database software. This is a difficult and time consuming process.
-
-Our team was responsible for building a system to automate the input and retrieval of relevant data. We designed and implemented a front-end interface that could recreate the current database and allow it to be modifiable and extensible. The system has different features for different types of users.\\
-An administrator is able to:
-\begin{itemize}
-	\item Add and delete users, areas, initiatives and medical conditions.
-	\item Search, filter and organise various data records in the database.
-	\item Enrol users into initiatives.
-	\item Assign medical conditions to users.
-	\item Export tables into csv format.
-	\item Display various statistics and metrics that can be downloaded.
-	\item Manage the funding for users, initiatives and medical conditions.
-	\item Access the supplied personal information of all users and make changes if necessary.
-	\item Archive data records.
-	\item Keep track of the progress of members and volunteers.
-	\item Review the answers from the feedback received.
-\end{itemize}
-A volunteer is able to:
-\begin{itemize}
-	\item Leave feedback detailing their experiences.
-	\item View the initiatives they are enrolled in.
-	\item Create a new session for the initiatives they are assigned to.
-	\item Keep track of a members' attendance to those initiatives.
-	\item Access important details about the users in the initiatives they are assigned to.
-\end{itemize}
-A member is able to:
-\begin{itemize}
-	\item Leave feedback detailing their experiences.
-	\item View the initiatives they are enrolled in.
-	\item Make a request to an administrator if they wish to change their personal information.
-\end{itemize}
+Building Healthy Communities in Dumfries and Galloway is a community development programme which aims to advance the health and well-being of all individuals within its area, but particularly those in difficult circumstances. Its main goal is to improve the lives of people who may otherwise become isolated, by encouraging participation in initiatives which help keep them physically and mentally healthy, while also promoting the creation and sustaining of social bonds. The programme consists of three different types of participants; \textit{Administrators}, \textit{Volunteers} and \textit{Service Users.} Both \textit{Service Users} and \textit{Volunteers} attend the initiatives that come under the scheme. The difference being \textit{Volunteers} have the added responsibility of running the weekly meetings and recording attendance of \textit{Service Users.} Currently, many of the administrative tasks associated with the scheme are done by hand. Administrators must manually input the data given to them into \textit{Microsoft Access}, which is a slow and laborious process.
 
 \end{abstract}
 
 %% Comment out this line if you do not wish to give consent for your
 %% work to be distributed in electronic format.
 \educationalconsent
-
-\newpage
 %==============================================================================
 \section{Introduction}
-Third year undergraduates on the Computing Science course of the University of Glasgow undergo a year long team project, the aim of which is to give the students experience of working in a team on an extended software engineering project. It helps to develop an ability to work with customers, and teaches the use of agile software development practices and methodologies. Importantly, it also teaches the value of retrospection; the act of looking back to see what can be improved in future. With this case study, our intention was to analyse and explore the methods and practices we employed, in order to hopefully better understand their intricacies, how they should be used in a project such as ours, and to potentially develop new, better ways of applying these methods in future.
 
-This paper presents a case study of the building of a database system for the public health program "Building Healthy Communities", and the development practices we used in the process. The BHC system is designed to replace the cumbersome, manual database currently in use by the NHS team that administers the BHC initiatives. It is intended to be a much more streamlined service, allowing for much faster input and retrieval of data from the system, while also allowing for varying levels of access, depending on who is using the system. The aim of the BHC programme is to encourage individuals who may be experiencing difficulties to lead healthier, less isolated lives through a collection of healthy living initiatives. A system which allows for the secure, rapid organisation of data helps ensure this aim can be easily met.
+Third year undergraduates on the Computing Science course of the University of Glasgow undergo a year long team project, the aim of which is to give students the experience of working in a team on an extended software engineering project. The lesson the course instills in students is how to liaise with customers, and use agile software development practices and methodologies to turn this communication into an end product. Another takeaway from the course is the \textit{art} of Retrospection; the act of looking back to see what can be improved in future. With this case study; our intention is to analyse and explore the methodologies we employed in order to better understand their intricacies and how they should be used in a project.
 
-Throughout the following pages, a more in-depth explanation will be given on how the software described above was designed and created using not only our previous knowledge, but also the knowledge that the team managed to gain from the university's courses. More specifically, the "Professional Software Development and SIT" course and the "Interactive Systems 3" course played a critical role in every step that was taken in creating the software. From requirements gathering to the coding of the software, close study of the material allowed for the development process to be much smoother than would have otherwise been the case, and led to a more polished product.
+This paper presents a case study of the building of a database system for the public health program 'Building Healthy Communities', and the development practices we used in the process. The BHC system is designed to replace the cumbersome, manual database currently in use by the NHS team that administers the BHC initiatives. It is intended to be a streamlined service, allowing for faster input and retrieval of data. Which before required the cumbersome use of \textit{Microsoft access.} \textit{Service Users} and \textit{Volunteers} will be able to log in and perform tasks that would otherwise require the time of an \textit{Administrator.} The aim of the BHC programme is to encourage individuals who may be experiencing difficulties to lead healthier, less isolated lives through a collection of healthy living initiatives. A system which allows for the secure and efficient organisation of data helps ensure this \textit{manifesto} can be easily met.
+
+Throughout this study, a more in-depth explanation will be given on how the software described above was designed and created. Using not only knowledge gained in our spare time, but also that which has been imparted upon us by courses at the University. More specifically; \textit{Professional Software Development and SIT}, \textit{Interactive Systems 3} and \textit{Database Systems.} The aforementioned courses played a critical role in the development of the end product. By following principles taught to us, it led to the smooth development of the end of product. Which is of a standard and quality that we can all be proud of.
 %==============================================================================
 \section{Case Study Background}
 
