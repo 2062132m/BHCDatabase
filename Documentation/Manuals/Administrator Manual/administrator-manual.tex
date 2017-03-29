@@ -1,6 +1,6 @@
 \documentclass{bhcguides}
 
-\usepackage[legalpaper, portrait, margin=1.2in]{geometry}
+\usepackage[a4paper, portrait, margin=1.2in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{tabu}
 \setlength{\parindent}{0pt}
@@ -21,6 +21,7 @@
 \maketitle
 
 \tableofcontents
+\pagebreak
 
 \section{Overview}
 
@@ -28,10 +29,12 @@ The Building Healthy Communities programme is a partnership that delivers a rang
 
 The Building Healthy Communities web system is a way to give you, the administrator, the power to easily and simply manage all the data driven aspects of the BHC programme from one consistent location. The service users and volunteers each use other sections of the system, with all their data feeding through to you, where you can view it in the manner you wish. Data can be viewed from the initiative level, through funding, all the way down to the details of individual service users and volunteers, and can be viewed in tables, searched, and downloaded for use elsewhere. Feedback is also integrated into the system, allowing you to track the efficacy of initiatives and the welfare of service users. This manual will walk you through the use of the system, and introduce you to the various features and intricacies of the system, giving examples as we go.
 
+\pagebreak
+
 \section{System Access and Login}
 \label{sec:syslogin}
 
-The system is currently hosted at \url{http://hidden-mountain-49766.herokuapp.com} , which can be accessed through most major web browsers (Chrome, Firefox, Safari, IE8 or higher). Before accessing the system, you should have your email address and password on hand. If you are a new administrator, who has not previously accessed the system, you should ask another administrator to create an account for you. Upon entering the system, you will be taken to the login page, as seen in \autoref{fig:initialLogin}.
+The system is currently hosted can be accessed through most major web browsers (Chrome, Firefox, Safari, IE8 or higher). Before accessing the system, you should have your email address and password on hand. If you are a new administrator, who has not previously accessed the system, you should ask another administrator to create an account for you. Upon entering the system, you will be taken to the login page, as seen in \autoref{fig:initialLogin}.
 
 \begin{figure}[h!]
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{loginscreen.png}}
@@ -41,18 +44,17 @@ The system is currently hosted at \url{http://hidden-mountain-49766.herokuapp.co
 
 To login to the system, enter your email address and password. Until you do so, there is no way to gain access beyond this page. In the case that you have forgotten your email address and/or password, see \autoref{sec:contacts}: Contacts and Forgotten Passwords.
 
-\pagebreak
-
 \section{Menu Bar}
 \label{sec:menubar}
 
-The menu bar is a persistent feature, appearing at the top of every page on the system. It is designed to allow quick access to every major area of the site. The bar is split in two parts; a collection of links to the most commonly used parts of the system, and a drop down menu of links to the lesser used sections. Every link leads to its matching data table, except for Home and Profile, which lead to the home page and your profile page, respectively. There is also a Log out button that will log you out and return you to the login screen.
+The menu bar is a persistent feature, appearing at the top of every page on the system. It is designed to allow quick access to every major area of the site, combining a collection of quick links to commonly used sections with a menu bar containing links to the other sections. There is also a Log out button that will log you out and return you to the login screen.
 
 \begin{figure}[h!]
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{menubar.png}}
  \caption{Menu bar with drop down}
  \label{fig:initialLogin}
 \end{figure}
+\pagebreak
 
 \section{Home Page}
 \label{sec:homepage}
@@ -102,11 +104,56 @@ The service requests section allows you to see all the messages sent to you by s
  \label{fig:serviceRequests}
 \end{figure}
 
-\section{Profile}
-\label{sec:profile}
+\pagebreak
 
 \section{Data Tables}
 \label{sec:datatables}
+
+The data tables are the main focus of the system, the 'power tabs', so to speak. From these pages, you can browse all the entries in the system, or query the database to find specific data. The data tables can be accessed by clicking the relevant link in the menu bar; for example, to get to the Initiatives data table, click the 'Initiatives' link. 
+
+\subsection{Browsing and Organising}
+\label{ssec:browsingtables}
+
+To browse a table, simply scroll down the page to view more results. There are 30 results displayed per page, and more can be loaded by clicking the 'next' button or a number at the bottom of the page. The tables can also be organised by any of the columns; clicking the up or down arrow in a column will sort the table by that column in ascending or descending order respectively. \autoref{fig:initAscName} shows the second page of the Initiatives table ranked in ascending order by name.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{initiativesnameascending.png}}
+ \caption{Second page of initiatives ranked in ascending name order}
+ \label{fig:initAscName}
+\end{figure}
+
+\subsection{Querying}
+\label{ssec:search}
+
+The data tables can also be queries by each column. To query a table, type your query into the relevant search box, and click search. The boxes are not case sensitive, so 'TAI' and 'tai', or even 'tAi' will return the same results. Queries can also be partial matches, so a search for the number '0141' in a telephone field for example would return every result with a phone number containing those numbers. Incorrect spellings however, are not corrected, so a search for 'Thai' when you intended to search for 'Tai' will not return any results relating to 'Tai'. It is also possible to query multiple columns at once. In \autoref{fig:initSearch}), there is an example of the result of searching for all 'Tai' events in a location containing the word 'North'. Queries can be reset by clicking the red 'Reset' button to the right of the search button.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{initsearch.png}}
+ \caption{Initiative search for 'Tai' and 'North'}
+ \label{fig:initSearch}
+\end{figure}
+
+\subsection{Downloading}
+\label{ssec:download}
+
+It is possible to download the result of any query in the Areas, Initiatives, and Users tables. To do so, scroll to the bottom of the table and click the blue 'Download CSV' button, seen in \autoref{fig:download}. This will download a CSV file, compatible with spreadsheet software such as Microsoft Excel. It is also possible to download the contents of an entire table without querying, by clicking download without entering a query.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{downloadbutton.png}}
+ \caption{Download Button}
+ \label{fig:download}
+\end{figure}
+
+\subsection{Adding New Entries}
+\label{ssec:addentries}
+
+The final feature available on the data table pages is the ability to add a new entry to the table. The content of a new entry varies by table, but the method is always the same. To add a new entry, click the green 'New Entry' button to the left of the search button. This will take you to the relevant new entry screen. The example in \autoref{fig:newUser} shows a new user being added to the Users table. For more information on the full content of an entry, see the relevant section of the guide.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newuser.png}}
+ \caption{Adding a new user}
+ \label{fig:newUser}
+\end{figure}
 
 \section{Areas}
 \label{sec:areas}
@@ -116,6 +163,9 @@ The service requests section allows you to see all the messages sent to you by s
 
 \section{Users}
 \label{sec:users}
+
+\subsection{Profile}
+\label{ssec:profile}
 
 \section{Medical Conditions}
 \label{sec:medical}
