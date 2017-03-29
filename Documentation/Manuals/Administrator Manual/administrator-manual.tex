@@ -155,8 +155,57 @@ The final feature available on the data table pages is the ability to add a new 
  \label{fig:newUser}
 \end{figure}
 
+\pagebreak
+
 \section{Areas}
 \label{sec:areas}
+
+Areas are the largest unit in the Building Healthy Communities programme, being the geographic regions in which initiatives take place. To access the main page of an area, click its name anywhere in the system where it is in blue text. The easiest places to find a link such as this are the Area table, and the links on the home page.
+
+\subsection{Information and Statistics}
+\label{ssec:areainfoandstats}
+
+The main page for an area consists of all the information pertaining to that area laid out in three sections:
+
+\begin{itemize}
+	\item The first section contains the area's name, a brief description, the numbers of initiatives active in the area and the number of users enrolled in those initiatives. It also contains a graph of the number of users per initiative.
+	\item The second section contains a table listing all the initiatives for the area. It can be organised by column the same way as the data tables, but not searched.
+	\item The third section contains another table, this time listing all the users enrolled in initiatives within the area. Again, it can be organised but not searched.
+\end{itemize}
+
+\begin{figure}[h]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{areamainpage.png}}
+ \caption{Area Main Page}
+ \label{fig:areaMainPage}
+\end{figure}
+
+\subsection{Editing, Deleting and Archiving}
+\label{ssec:areaeditdelete}
+
+The only actions that can be taken with an existing area are editing its details, deleting it, or archiving it. The buttons for all three actions are placed next to each other, above the information box.
+
+Editing the area allows you to change its name and description. As an area is effectively just a geographic region in which other things happen, there is no other information to change. The editing screen can be seen in \autoref{fig:areaEdit}.
+
+Deleting an area will permanently delete it from the database. Any associated initiatives will also be permanently deleted, and those initiatives will disappear from the enrolment lists of each user that was enrolled in them. This is a permanent action, deleting the data itself, and cannot be undone!
+
+Archiving an area is similar to deleting, except that it will not permanently delete data. Instead, the area and its initiatives will be placed in the archives. For more on archiving, see \autoref{sec:archives}
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{areaedit.png}}
+ \caption{Editing an area}
+ \label{fig:areaEdit}
+\end{figure}
+
+\subsection{Creating a New Area}
+\label{ssec:createArea}
+
+To create a new area, you must click the 'New' button on the Area data table page, as described in \autoref{sec:datatables}: Data Tables, and you will be taken to a short area creation screen, as seen in \autoref{fig:createArea}. As with the edit option, adding a name and description is all that is necessary to create an area. The newly created area will have no initiatives, and therefore no members either. To see how to assign users and initiatives to an area, see \autoref{sec:initiatives}: Initiatives and \autoref{sec:users}: Users.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{createarea.png}}
+ \caption{Creating an area}
+ \label{fig:createArea}
+\end{figure}
 
 \section{Initiatives}
 \label{sec:initiatives}
