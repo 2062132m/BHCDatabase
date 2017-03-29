@@ -5,6 +5,10 @@
 % Modified
 
 \documentclass{l3proj}
+% Below two lines are only to be used if necessary. They shrink the spacing between
+% 	list items and save almsot a page worth of space in the document.
+% \usepackage{enumitem}
+% \setlist[itemize]{noitemsep}
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -101,32 +105,26 @@ Due to the fact that the team was composed of novice programmers, the team roles
 \section{Documentation}
 \label{documentation}
 
-After some initial consideration, we decided that fortnightly sprints would be ideal. Each sprint corresponded to the conclusion of a milestone. Issues would then be created, most of which having a deadline of the upcoming milestone. The following portion of the case study will chronologically outline the software process from the requirements elicitation, to the final software presentation.
-
-\subsection{Objectives}
-\label{sec:objectives}
-
-During the first customer meeting, where projects were assigned, the customers outlined their desired application. During the culmination of the meeting, the customers were asked what they wanted to see for the next meeting, their answer was: "I guess, some sketches!". A new milestone was created with the next goal to be some basic documentation and the creation of wireframes.
+After some initial consideration, we decided that fortnightly sprints would be ideal. Each sprint corresponded to the conclusion of a milestone. Issues would then be created, most of which having a deadline of the upcoming milestone. The following portion of the case study will chronologically outline the development process from the requirements elicitation, to the final software presentation.
 
 \subsection{Requirements Gathering}
 \label{requirements}
 
-During the first customer meeting, some basic requirements were outlined. Notes were taken during the meeting and a wiki page was created containing a summary of the meeting. Our aim during this meeting was to get a basic understanding of the functional and non-functional requirements of the website. Using our summary and further email clarifications we managed to establish a final version of the functional and non-functional requirements for the application.
+During the first customer meeting, some basic requirements were outlined. Notes were taken during the meeting and a wiki page was created containing a summary of the meeting. Our aim during this meeting was to get a basic understanding of the functional and non-functional requirements for what the website could be. Using our summary and further conversations with the client through email, we managed to establish a solid basis from which to launch the project.
 
-The final version of the functional requirements are:
+The functional requirements were:
 \begin{itemize}
 \item An administrator should be able to view all information stored in the database.
-\item An administrator should be able to add/remove/modify volunteers, members and groups that are stored in the database.
-\item An administrator should be able to search and sort on specific fields belonging to tuples.
-\item An administrator should be able to view data metrics on how particular initiatives are progressing.
-\item Different groups of users should have differing levels of permission to the data stored.
-\item Volunteers should be able to view the data associated with their specific group(s), that they are allowed to see, and no other groups.
-\item Volunteers should be able to record member attendance.
-\item Provide a facility to register attendance.
-\item Provide a facility to gather feedback from end users (members).
+\item An administrator should be able to add/remove/modify users and groups that are stored in the database.
+\item An administrator should be able to search and sort on specific fields belonging tables.
+\item An administrator should be able to view metrics on how particular initiatives are progressing.
+\item Different groups of users should have differing levels of permission to the data they can access.
+\item Volunteers should be able to view some data about the specific initiatives they are enrolled for.
+\item Volunteers should be able to record attendance for initiatives.
+\item Provide a facility to gather feedback from service users and volunteers.
 \end{itemize}
 
-The final version of the non-functional requirements is:
+The non-functional requirements were:
 \begin{itemize}
 \item The system should be secure.
 \item The system has to conform to the Data Protection Act.
@@ -135,18 +133,16 @@ The final version of the non-functional requirements is:
 \item The system should be simple to use.
 \item The system should be modular and hence maintainable.
 \item The system should be lightweight.
-\item The site should be compatible with many platforms. (Portable)
+\item The site should be compatible with many web browsers on a range of devices.
 
 \end{itemize}
-
-After we had identified the requirements, the team got divided into groups and documented various artefacts such as user stories, user scenarios and wireframes.
 
 \subsection{User Stories}
 \label{user_stories}
 
-User stories \cite{UserStories} play a critical role in the agile methods which we are following. A user story formally describes the state of the application and the basic functions that a potential user can expect it to have. Functional and non-functional user stories were created. User stories help to put the application into action and to fully understand how it will work.
+User stories \cite{UserStories} play a critical role in the agile methodologies which we followed. A user story formally describes the state of the application and the basic functionality that a potential user can expect it to have. We compiled a list of Functional and Non-Functional user stories. These helped us tremendously in figuring out not only the flow of the interface, but what features the website could/should have.
 
-A couple of highly representative functional user stories (with their corresponding story tasks) are:
+These are a few highly representative functional user stories:
 \begin{itemize}
 \item As an administrator, I want to add a member to the database, so that they can join a group.
 
@@ -174,7 +170,7 @@ A couple of highly representative functional user stories (with their correspond
 	\end{enumerate}
 \end{itemize}
 
-Now, some non-functional user stories had to be outlined in order for practical examples to be created, specifying how the system will work. Some non-functional user stories (which their corresponding story tasks) are:
+Some non-functional user stories are:
 
 \begin{itemize}
 \item  As an administrator, I want to replace a member's name with numbers in the database, so that I can find them easier.
@@ -203,35 +199,32 @@ Now, some non-functional user stories had to be outlined in order for practical 
 \subsection{User Scenarios}
 \label{user_scenarios}
 
-Although user stories provide a clear outline about what the user and the system needs, there is nothing more representative than a scenario where an everyday user of the system will describe what they actually need. Thus, a couple of team members wrote some representative scenarios of example users.
-Example scenarios can be found below:
+Although user stories provide a clear outline of the features and attributes the system should have; Scenarios helped us to concretise how our 'real world' users could would interact with the system.
+Example scenarios:
 \begin{itemize}
 \item Carolyn is an administrator in the Building Healthy Communities program. She is in charge of tracking the volunteers progress and checking if they are doing their work correctly. It is important for the program to not only track members attendance and feedback but also to track the same for volunteers. This is vital for ensuring the programme is being run correctly and also would be an advantage in building the relationship between members and volunteers.
 
-\item Rebecca is a volunteer in the Building Healthy Communities program at the Arts group. She is currently working with a group of eight people. At the end of every session she collects attendance and feedback forms from the members. The process of reading and analysing them is very time consuming. Various handwritten forms are messy and some information are not that useful. She would prefer to have an automatic program that does all this so she can completely skip the time she spends on tracking attendance and focus on improving the Art class based on the feedback provided.
+\item Rebecca is a volunteer in the Building Healthy Communities program at the Arts group. She is currently working with a group of eight people. At the end of every session she collects attendance. The process of submitting attendance on paper is very time consuming. She would prefer to have a website to input this data, to save her time and to provide administrators with instant access to the information.
 
 \end{itemize}
 
 \subsection{Wireframes}
 \label{wireframes}
 
-After creating and compiling the previously mentioned documentation, the next process was to develop wireframes. Wireframes were the final goal of the first milestone and the only requirement specified by the customers. After researching wireframing tools as a team, Balsamiq proved to be the most suitable application for our needs. Balsamiq is a very useful application, easy to use and focuses on the creation of wireframes. Before we started sketching in Balsamiq, we decided to take an initial low-fidelity route and sketch the wireframes on paper. Low-fidelity wireframes are often a good starting point as they are quick to produce and thus many designs can be produced rapidly, allowing the best from a selection to be chosen to move ahead with.
+After creating and compiling the previously mentioned documentation, the next process was to develop wireframes. Wireframes were the final goal of the first milestone and the only requirement specified by the customers for the next meeting. After researching wireframe and prototyping tools, Balsamiq proved to be the most suitable application for our needs. Balsamiq is a very useful application, easy to use and focuses on the creation of wireframes. Before we started sketching in Balsamiq, we decided to take an initial low-fidelity route and sketch the wireframes on paper. Low-fidelity wireframes are often a good starting point as they are quick to produce and thus many designs can be produced rapidly, allowing the best from a selection to be chosen to move ahead with.
 
-A sample screenshot of the index page which was presented to the customers can be found in \autoref{fig:initialWireframe}.
+A wireframe of the login page which was presented to the customers can be found in \autoref{fig:initialWireframe}.
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{wireframe.png}}
-\caption{Wireframe of Index Page}
+\caption{Wireframe of the login page}
 \label{fig:initialWireframe}
 \end{figure}
 
 \subsection{End of First Milestone}
 \label{sec:milestone1}
 
-The second customer meeting was held on the 16th November. In the meeting some example user scenarios were outlined and a brief demo was given through our interactive wireframes. The customers expressed their opinion about our current progress and what they expect to be completed by the next customer meeting.
-
-After the meeting, the team completed a retrospective. A summarisation of the retrospective was that the team during this period of time improved its knowledge on using Gitlab as a project management tool. Moreover, a conclusion led to the fact that in order to complete a project successfully, not only are coding skills needed but also strong organisational skills, combined with strong documentation. The biggest aim was to improve the communication with the customers, since some aspects of the application were left ambiguous and misunderstood.
-
+The second customer meeting was held on the 16th November. In the meeting some example user scenarios were showed to the customer and a brief demo was given through our interactive wireframes. The customers expressed their opinion about our current progress and what they expect to be completed by the next customer meeting. After the meeting, the team completed a retrospective. We found that during the interim period between this meeting and the last, we as a team improved our knowledge on using Gitlab as a project management tool. The biggest issue we identified was that further and more frequent communication with the customers was needed. As some aspects of the application were left ambiguous and misunderstood. Not entirely our fault, but just teething problems that arose as the customers fine tuned their ultimate vision of the project/website.
 
 %==============================================================================
 \section{Design of the Website}
