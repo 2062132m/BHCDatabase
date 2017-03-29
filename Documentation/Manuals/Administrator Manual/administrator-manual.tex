@@ -197,9 +197,9 @@ Archiving an area is similar to deleting, except that it will not permanently de
 \end{figure}
 
 \subsection{Creating a New Area}
-\label{ssec:createArea}
+\label{ssec:createarea}
 
-To create a new area, you must click the 'New' button on the Area data table page, as described in \autoref{sec:datatables}: Data Tables, and you will be taken to a short area creation screen, as seen in \autoref{fig:createArea}. As with the edit option, adding a name and description is all that is necessary to create an area. The newly created area will have no initiatives, and therefore no members either. To see how to assign users and initiatives to an area, see \autoref{sec:initiatives}: Initiatives and \autoref{sec:users}: Users.
+To create a new area, you must click the 'New' button on the Area data table page, as described in \autoref{sec:datatables}: Data Tables, and you will be taken to a short area creation screen, as seen in \autoref{fig:createArea}. As with the edit option, adding a name and description is all that is necessary to create an area. The newly created area will have no initiatives, and therefore no users either. To see how to assign users and initiatives to an area, see \autoref{sec:initiatives}: Initiatives and \autoref{sec:users}: Users.
 
 \begin{figure}[h!]
  \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{createarea.png}}
@@ -209,6 +209,70 @@ To create a new area, you must click the 'New' button on the Area data table pag
 
 \section{Initiatives}
 \label{sec:initiatives}
+
+Initiatives are the main thrust of the BHC programme, being the events that are run for the benefit of the community. To access the main page of an area, click its name anywhere that it can be found, as with areas. Again, the easiest place to find an initiative name is on the home page or in the Initiatives table.
+
+\subsection{Information and Statistics}
+\label{ssec:initinfoandstats}
+
+The main page for an initiative displays all the relevant information about that initiative, laid out in four sections:
+
+\begin{itemize}
+	\item The first section contains the initiative's name, a brief description, the date of the last meeting, and the number of enrolled users, and a few other statistics. It also contains a graph of the attendance over time.
+	\item The second section contains a table listing all the users enrolled in the initiative. It can be organised by column the same way as the data tables, but not searched.
+	\item The third section contains another table, this time listing all meetings of the initiative, both past and scheduled. Again, it can be organised but not searched.
+	\item The final section conatins a third table, listing the funding the initiative receives.
+\end{itemize}
+
+
+
+\subsection{Editing, Deleting and Archiving}
+\label{ssec:initeditdelete}
+
+The edit, delete and archive buttons are in the same section as the main statistics, as with areas, but are slightly differently placed.
+
+Editing an initiative allows you to change the name, description and location of an initiative, and also allows you to change the area that initiative belongs to. The editing screen can be seen in \autoref{fig:initEdit}.
+
+Deleting permanently deletes all trace of the initiative from the database, and all users enrolled in it will no longer have it on their enrolment lists. This is a permanent action, deleting actual data, and cannot be undone!
+
+Archiving does not delete the data, but instead places the initiative into the archives. For more on archiving, see \autoref{sec:archives}
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{editinitiative.png}}
+ \caption{Editing an initiative}
+ \label{fig:initEdit}
+\end{figure}
+
+\subsection{Creating a New Initiative}
+\label{ssec:createinit}
+
+To create a new initiative, you must click the 'New' button on the Initiatives data table page, as described in \autoref{sec:datatables}: Data Tables, and you will be taken to a short initiative creation screen, as seen in \autoref{fig:createInit}. As with the edit option, adding a name, description, location and area is all that is necessary to create an initiative. The newly created initiative will have no users. To see how to assign users to an area, see the Enrolment and Funding section below.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{createinitiative.png}}
+ \caption{Creating an initiative}
+ \label{fig:createInit}
+\end{figure}
+
+\subsection{Enrolment and Funding}
+\label{ssec:initenrolfund}
+
+To enrol a new user, simply click the purple 'Enrol' button near the top of the first section of the page, and type in a user's name in the box that appears. Clicking submit will enrol them in the initiative. Unenrolling must be done from the user's page, described in \autoref{sec:users}.
+
+To add new funding, follow a similar procedure to the above, this time selecting the dark green 'Add Funding' button, and selecting a funder from the drop down menu that appears on the next screen. Clicking submit will add them as a funder to the initiative, where they can be viewed at the bottom of the main page, and removed by clikcing the blue 'Remove funding' button.
+
+\subsection{Meetings and Sessions}
+\label{ssec:initmeets}
+
+To add a new session, click the green 'New Session' button near the top right of the initiative main page. This will take you to a page titled 'New Meeting', seen in \autoref{fig:initNewSession}. A session is a series of meetings, spaced one week apart but at the same time of day. Use the drop down menus to select the time you want the first meeting to be scheduled for, and the number of weeks you want it to run for. To schedule a single meeting, select 1 week in the 'Weeks to run for' drop down.
+
+For more information on meetings, see \autoref{sec:meetings}: Meetings.
+
+\begin{figure}[h!]
+ \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{initnewsession.png}}
+ \caption{Creating a new session}
+ \label{fig:initNewSession}
+\end{figure}
 
 \section{Users}
 \label{sec:users}
