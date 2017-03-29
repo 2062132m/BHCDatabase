@@ -233,14 +233,12 @@ The second customer meeting was held on the 16th November. In the meeting some e
 \subsection{Objectives}
 \label{sec:design-objectives}
 
-During the next iteration, after a group discussion, the objectives for the next customer meeting were stated. An ER (Entity-relationship) diagram and Component diagram were to be designed for the documentation of the project. Particular team members were assigned with new issues to do this. Not only were the diagrams created, but the process of designing and coding the application had begun.
+For the next iteration, we outlined our main priorities and assigned issues to everyone. The design of the ER diagram was one of our top priories, but by this point the process of implementing the application was well underway.
 
 \subsection{ER Diagram}
 \label{sec:er}
 
-An Entity-Relationship diagram \cite{er} is a useful tool in terms of clarifying the development of every application. Having an ER diagram represents clearly the relationships between the entities and the attributes that belong to them. The team started the development of the application only after an ER diagram was present to specify the structure of the database.
-
-The main aspect of the diagram is that the users of the programme have different privileges depending on whether they are administrators, volunteers or members. Each group of those users is permitted to do different actions as already mentioned in the Abstract section above. For example, only the administrators are allowed to add/remove users and volunteers or to enroll/unenroll them from different initiatives. Moreover, only the administrators can apply different fundings either to specific initiatives or members based on their medical conditions. Furthermore, the volunteers have restrictions on seeing all of the members' personal information compared to the administrators. Only the volunteers are able to track members attendance and to create new session of  the initiatives they are enrolled to. The members would fill the questionnaire form in order to give their feedback every 3/6 months. As the customers required, both volunteers and members could not change their own personal details. The only way to do that is to send a service request to the administrators, specifying the changes they wish to apply. The full ER diagram is shown in \autoref{fig:er}.
+An Entity-Relationship diagram \cite{er} is a useful tool for clarifying the development of every database supported application. Having an ER diagram represents clearly the relationships between entities and the attributes that belong to them. Having a diagram to work from meant that development went smoother than expected. Using Rails's powerful ActiveRecord system allowed us to quickly design and implement the database. The full ER diagram is shown in \autoref{fig:er}.
 
 \begin{figure}
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{er2.png}}
@@ -251,9 +249,9 @@ The main aspect of the diagram is that the users of the programme have different
 \subsection{Component Architecture}
 \label{sec:component}
 
-Since Ruby on Rails uses a model-view-controller architecture pattern, it allows our team to develop an agile application. The model layer represents the logic of the application and the management of interactions with elements in the database. The view is the front-end of the application and the HTML files with embedded Ruby code. Controllers interact with models and views because the requests coming from the browser are processed by them. This means that the controllers fetch data from the models and pass it to the views for representation.
-In addition we decided to use Docker \cite{Docker} to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
-All of those are illustrated in \autoref{fig:ca} which demonstrates visually the component architecture of our application.
+Ruby on Rails uses a model-view-controller architecture pattern, which allows our team to develop an agile application. The model layer represents the logic of the application and the management of interactions with elements in the database. The view is the front-end of the application and the HTML files with embedded Ruby. Controllers interact with models and views responding to requests from a user. Which in turn generates the pages that a user will see.
+% In addition we decided to use Docker \cite{Docker} to aid the implementation of our Continuous Integration. This contains everything we needed to run the application from code to libraries. It builds a Docker image of our application using Dockerfile and then runs the test suite inside a container. Using Docker has many benefits, the most important one regards the deploying of the project.
+\autoref{fig:ca} demonstrates visually the component architecture of our application.
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{component.png}}
@@ -272,12 +270,13 @@ Having the basic database structure, initial prototypes of the page were created
 \label{fig:oldhome}
 \end{figure}
 
-The initial page was very basic, not very colourful and errors containing. It was created to point out the idea of the design and to outline a vision of how the site would work. After that we added the colours following a similar theme as the blog, which the customers already had.
+The design of the website originally was basic, not very colourful. This was intentional, to help bring a modern and simplistic style to the website. However when we showed this to the customer, they didn't really like this approach. They requested that more colour was injected into the website, following the colours of the BHC scheme. This change resulted in the look and feel of the website that we continued through the entire development of the website.
 
 \subsection{Final Prototype}
 \label{sec:prototype2}
 
-The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the members would not be able to sign up, which had the consequence of deleting this feature. Furthermore, the home page and the login page have been merged into one single page in order to provide easier access for the customers. The new prototype can be found in \autoref{fig:newhome}.
+The second design was more simplified in terms of account organisation. The customers clarified one of their requirements regarding that the service users would not be able to sign up on their own, which had the consequence of deleting this feature as it was already fully implemented. This new prototype/design can be found in \autoref{fig:newhome}. Note that this is not the final design of the website but the final prototype that we presented to the customers early on in development.
+
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{newhome.png}}
@@ -285,14 +284,12 @@ The second design was more simplified in terms of account organisation. The cust
 \label{fig:newhome}
 \end{figure}
 
-Note that this is not the final design of the page but final prototype presented to customers in terms of structure.
-
 \subsection{End of second and third milestone}
 \label{sec:milestone23}
 
-The above section was generally outlining the progress in the second and third milestone. The progress was steady and specific. By the 7th of December, a third customer meeting has held which was again mainly used for further clarifications about the software implementation and navigation to some more complete wireframes. Furthermore, after the Christmas break and before the fourth customer meeting at the 26th of January, the team managed to create an initial version of the application. The application was presented to the customers up to its current point and their opinion was taken into account. An impresion was expressed for the progress that was taken place to the website since in the previous customer meeting the back end development was not even started. Further clarifications were made about the navigation of the page, since once the customers had a visualisation of the application, it was more convenient for them to express their view for it. Additionally, they requested a new feature which was never discussed before - the addition of a funding flag which represents which funding is from which organisation and where in which groups it is applied. Furthermore, different funding's apply to a specifying group of people and different funding's apply to a specified initiatives group.
+The above section generally outlines the progress in the second and third milestone. The progress we made was steady. By the 7th of December, a third customer meeting was held which was mainly used for further clarifications about the software implementation and navigation through the early version of the website. Once we were able to walk the customers through a functioning version of the website, it proved to be an invaluable part of the meetings. They were quick to point out flaws, and it allowed everyone to see how things could be improved. Additionally, they requested a new feature which hadn't been identified to us perviously, the ability to 'fund' entities. A funder could fund the progress of a particular initiative, user or medical addition. This feature addition was a costly addition, but once it was added to the ER diagram the solution to how to implement it became clear.
 
-The retrospective performed by the end of the second milestone, showed some lack of communication. The team did not consider this as a major issue since there was a three week holiday gap during which everyone was focused on self studying about how to develop and deploy the application. Additionally, the team lacked on clarifying some basic features of the website with the customers. All the issues outlined on the second retrospective, they were clearly solved during the next. The team was more organised and communicative. Due to the fact that an initial stage of the application was presented on the fourth customer meeting lack of clarification of the features that was raised as an issue in the previous retrospective was know clearly solved.
+The retrospective performed by the end of the third milestone, showed some lack of communication. The team did not consider this a major issue since there was in theory a three week holiday during this time period. Although some members of the team continued work over Christmas, and this is when our CI system and deployment strategy was implemented. Additionally, the team lacked clarification on some basic features of the website with the customers. All the issues outlined in the second retrospective, were solved during the next. The team was more organised and communicative. Upon our fourth customer meeting; lack of clarification on features that was raised as an issue in the previous retrospective was now solved. We approached them with a clear list of questions that we had compiled and created an issue for. We continued doing this for the rest of development and it helped us tremendously.
 
 %==============================================================================
 \section{Working on the backend development}
