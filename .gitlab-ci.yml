@@ -10,8 +10,6 @@ build_test:
   stage: build
   script:
     - docker build -f ./BHCDatabase/Dockerfile-test -t my-docker-test-image ./BHCDatabase/
-  except:
-    - 175-improve-and-implement-user-guides
 
 test:
   stage: test
@@ -19,8 +17,6 @@ test:
     - ls
     - docker run my-docker-test-image ./bin/rails db:migrate RAILS_ENV=test
     - docker run my-docker-test-image ./bin/rails t
-  except:
-    - 175-improve-and-implement-user-guides
 
 build_deploy:
   stage: deploy
