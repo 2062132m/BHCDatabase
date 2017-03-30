@@ -3,7 +3,7 @@
 [![build status](http://localhost:8080/DaBrown95/BHCDatabase/badges/master/build.svg)](http://localhost:8080/DaBrown95/BHCDatabase/commits/master)
 
 **If you navigate to port 81 on our server, you will arrive at the live production version of our website that is running on Docker.** Please note if it is not reachable, then the easiest solution is to re-run the lastest 'pipeline' on master. Otherwise running the commands specificed in gitlab-ci.yml can start our website.
-
+For more information if you need it, please turn to our wiki section on Docker.
 ### Instructions for remote access
 
 To access our GitLab from a machine other than the lab machines, you should configure your .ssh/config file to look something like this,
