@@ -11,6 +11,7 @@ admin:
   town: Example town2
   postcode: Example2
   privilege: 0
+  chi: 1111111111
 
 volunteer:
   forename: Volunteer
@@ -30,6 +31,7 @@ volunteer:
   password_digest: <%= User.digest('password') %>
   feedback_due: <%= Date.today %>
   privilege: 1
+  chi: 2222222222
 
 service_user:
   forename: Service-User
@@ -50,6 +52,7 @@ service_user:
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>
+  chi: 3333333333
 
 service_user2:
   forename: Service-User2
@@ -70,3 +73,4 @@ service_user2:
   password_digest: <%= User.digest('password') %>
   privilege: 2
   feedback_due: <%= Date.today %>
+  chi: 4444444444

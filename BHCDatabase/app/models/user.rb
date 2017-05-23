@@ -71,7 +71,7 @@ class User < ApplicationRecord
   validates :aims_other, length: { maximum: 255 }, unless: :admin?
   validates :prevent_attending, length: { maximum: 255 }, unless: :admin?
   validates :reg_date, presence: true
-  validates :chi, length: { maximum: 10 }
+  validates :chi, length: { maximum: 10 }, uniqueness: { case_sensitive: false }
   validate :dob_before_today
   validate :zero_and_one_have_feedback
 

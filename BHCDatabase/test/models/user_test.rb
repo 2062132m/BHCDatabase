@@ -21,7 +21,8 @@ class UserTest < ActiveSupport::TestCase
                      aims: 0,
                      aims_other: Faker::Lorem.sentence,
                      feedback_due: Time.zone.now,
-                     privilege: 1)
+                     privilege: 1,
+                     chi: 1)
   end
 
   test 'should be valid' do
