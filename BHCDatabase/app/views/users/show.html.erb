@@ -42,6 +42,11 @@
                 <icon class="glyphicon glyphicon-user"></icon><%= @user.surname %></td>
             </tr>
             <tr>
+              <td>CHI Number:</td>
+              <td>
+                <icon class="glyphicon glyphicon-grain"></icon><%= @user.chi %></td>
+            </tr>
+            <tr>
               <td>Telephone:</td>
               <td>
                 <icon class="glyphicon glyphicon-earphone"></icon><%= @user.telephone %></td>
@@ -109,7 +114,7 @@
           <div class="container-fluid buttons-container right-split">
             <% if current_user.privilege == 0 %>
                 <% if !@user.archived %>
-                  <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_user_path, class: 'btn btn-default archive-btn' %>
+                    <%= link_to "<i class='glyphicon glyphicon-folder-close'></i> Archive".html_safe, archive_user_path, class: 'btn btn-default archive-btn' %>
                 <% else %>
                     <%= link_to "<i class='glyphicon glyphicon-folder-open'></i> Unarchive".html_safe, unarchive_user_path, class: 'btn btn-default archive-btn' %>
                 <% end %>
@@ -229,7 +234,9 @@
                   Feedbacks Completed:
                   <% i = 0 %>
                   <% @user.feedbacks.each do |feedback| %>
-                      <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %><% unless i == @user.feedbacks.length - 1 %>,<% end %>
+                      <%= link_to feedback.created_at.strftime('%d/%m/%Y'), feedback %>
+                      <% unless i == @user.feedbacks.length - 1 %>,
+                      <% end %>
                       <% i = i + 1 %>
                   <% end %>
                 </h2>

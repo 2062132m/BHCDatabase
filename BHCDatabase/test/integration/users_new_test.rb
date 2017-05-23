@@ -42,7 +42,8 @@ class UsersNewTest < ActionDispatch::IntegrationTest
                                        postcode: Faker::Address.postcode,
                                        aims: User.aims.first,
                                        aims_other: Faker::Lorem.sentence,
-                                       privilege: 2}}
+                                       privilege: 2,
+                                       chi: '9999999999'}}
     end
     follow_redirect!
     assert_template 'users/show'

@@ -21,7 +21,8 @@ class UserTest < ActiveSupport::TestCase
                      aims: 0,
                      aims_other: Faker::Lorem.sentence,
                      feedback_due: Time.zone.now,
-                     privilege: 1)
+                     privilege: 1,
+                     chi: 1)
   end
 
   test 'should be valid' do
@@ -230,6 +231,11 @@ class UserTest < ActiveSupport::TestCase
 
   test 'reg_date should be present' do
     @user.reg_date = ''
+    assert_not @user.valid?
+  end
+
+  test 'chi should not be longer than 10' do
+    @user.chi = '0' * 11
     assert_not @user.valid?
   end
 end
