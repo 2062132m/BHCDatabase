@@ -232,4 +232,9 @@ class UserTest < ActiveSupport::TestCase
     @user.reg_date = ''
     assert_not @user.valid?
   end
+
+  test 'chi should not be longer than 10' do
+    @user.chi = '0' * 11
+    assert_not @user.valid?
+  end
 end
