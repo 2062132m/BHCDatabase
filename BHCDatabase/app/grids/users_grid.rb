@@ -5,7 +5,7 @@ class UsersGrid
     User
   end
 
-  filter(:id, :string, :multiple => ',')
+  filter(:chi, :string, header: 'CHI') {|value| where.has {chi =~ "%#{value}%"}}
   filter(:forename, :string) { |value| where.has { forename =~ "%#{value}%" } }
   filter(:surname, :string) { |value| where.has { surname =~ "%#{value}%" } }
   filter(:email, :string) { |value| where.has { email =~ "%#{value}%" } }
@@ -13,8 +13,8 @@ class UsersGrid
   filter(:emergency_telephone, :string) { |value| where.has { emergency_telephone =~ "%#{value}%" } }
   filter(:dob, :date, :range => true)
 
-  column(:id) do |model|
-    format(model.id) { |value| link_to value, model }
+  column(:chi, header: 'CHI') do |model|
+    format(model.chi) { |value| link_to value, model }
   end
   column(:forename) do |model|
     format(model.forename) { |value| link_to value, model }
