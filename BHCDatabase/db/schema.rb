@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523113121) do
+ActiveRecord::Schema.define(version: 20170523120926) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "feedback_id"
@@ -235,8 +235,8 @@ ActiveRecord::Schema.define(version: 20170523113121) do
     t.string   "aims_other"
     t.string   "prevent_attending"
     t.date     "reg_date"
-    t.string   "CHI_Number"
-    t.index ["CHI_Number"], name: "index_users_on_CHI_Number", unique: true
+    t.string   "chi"
+    t.index ["chi"], name: "index_users_on_chi", unique: true
     t.index ["dob", "email", "telephone"], name: "index_users_on_dob_and_email_and_telephone", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end

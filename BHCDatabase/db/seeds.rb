@@ -101,7 +101,7 @@ random.rand(50..100).times do
                       prevent_attending: Faker::Lorem.sentence,
                       feedback_due: 6.months.from_now,
                       privilege: 1)
-  @user.update_attribute(:CHI_Number, @user.id)
+  @user.update_attribute(:chi, @user.id)
 end
 
 # Add service users
@@ -130,7 +130,7 @@ random.rand(400..500).times do
                       prevent_attending: Faker::Lorem.sentence,
                       privilege: 2,
                       feedback_due: 6.months.from_now)
-  @user.update_attribute(:CHI_Number, @user.id)
+  @user.update_attribute(:chi, @user.id)
 end
 # Create areas with their initiatives
 puts 'Inserting areas with initiatives'
